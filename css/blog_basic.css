@@ -39,8 +39,8 @@
 }
 
 pre {
-  font-size: 15px;
-  background-color: #f0f0f0!important;
+  font-size: 0.8em!important;
+  background-color: #f8f8f8!important;
   font-family: 'Roboto Mono','Lucida Console','Trebuchet MS','Courier New', Monaco, courier,'PingFang SC','Hiragino Sans GB','Microsoft Jhenghei','Microsoft YaHei', monospace!important
 }
 
@@ -238,10 +238,10 @@ html {
                 font-size: 1.3rem; }
 
                 h5 {
-                  font-size: 1.2rem; }
+                  font-size: 1.3rem; }
 
                   h6 {
-                    font-size: 1.1rem; }
+                    font-size: 1.3rem; }
 
                     img {
                       max-width: 100%;
@@ -314,7 +314,7 @@ dl dt {
                     code, tt {
                       padding: 1px 3px;
                       font-family: Inconsolata, monospace, sans-serif;
-                      font-size: 0.95em;
+                      font-size: 0.85em;
                       white-space: pre-wrap;
                       border: 1px solid #E3EDF3;
                       background: #f7f7f9;
@@ -519,15 +519,4 @@ dl dt {
   @media screen and (max-width: 320px) {
     #fb_comments .c_content, #fb_comments .comment_body {
       margin-left: 57px;   }
-}
-
-.tag_box{
-  position: relative;
-  width: 80%;
-  margin-top: 1%;
-  margin-left: 7.2%;
-}
-
-.leancloud-visitors-count{
-  margin-left: 5px;
 }
