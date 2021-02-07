@@ -2,51 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2021/01/17/python-notes-1/</loc>
+    <loc>http://example.com/2021/02/07/pyqt-mv-2/</loc>
     
-    <lastmod>2021-01-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/01/31/python-style/</loc>
-    
-    <lastmod>2021-01-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/01/23/python-notes-3/</loc>
-    
-    <lastmod>2021-01-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/01/17/python-notes-2/</loc>
-    
-    <lastmod>2021-01-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/01/24/python-notes-4/</loc>
-    
-    <lastmod>2021-01-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/01/23/pyqt-sorting/</loc>
-    
-    <lastmod>2021-01-24</lastmod>
+    <lastmod>2021-02-07</lastmod>
     
   </url>
   
   <url>
     <loc>http://example.com/2021/01/16/pyqt-template/</loc>
     
-    <lastmod>2021-01-17</lastmod>
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/01/23/pyqt-sorting/</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/02/06/pyqt-mv-1/</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/01/31/python-style/</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/01/17/python-notes-2/</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/01/23/python-notes-3/</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/01/24/python-notes-4/</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/01/16/python-notes-1/</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/repository/index.html</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/index.html</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/links/index.html</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/index.html</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/books/index.html</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/about/index.html</loc>
+    
+    <lastmod>2021-02-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/404.html</loc>
+    
+    <lastmod>2021-02-07</lastmod>
     
   </url>
   
@@ -123,6 +186,13 @@
 
   
   <url>
+    <loc>http://example.com/tags/c/</loc>
+    <lastmod>2021-02-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/maya/</loc>
     <lastmod>2021-02-07</lastmod>
     <changefreq>daily</changefreq>
@@ -145,13 +215,6 @@
   
   <url>
     <loc>http://example.com/tags/version-control/</loc>
-    <lastmod>2021-02-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/c/</loc>
     <lastmod>2021-02-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -195,14 +258,14 @@
 
   
   <url>
-    <loc>http://example.com/categories/tech-summary/</loc>
+    <loc>http://example.com/categories/learning-log/</loc>
     <lastmod>2021-02-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/learning-log/</loc>
+    <loc>http://example.com/categories/tech-summary/</loc>
     <lastmod>2021-02-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
