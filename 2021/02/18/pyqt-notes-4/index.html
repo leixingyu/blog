@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Structure vs. Class | Xingyu&#39;s Blog</title>
-  <meta name="description" content="Struct vs. Classsharp123456789# this is a structpublic struct Coord&amp;#123;		public Coord(float x, float y)&amp;#123;		X &#x3D; x;		Y &#x3D; y;	&amp;#125;	public float X &amp;#123; get; &amp;#125;	public float Y &amp;#123; get; &amp;#12">
+  <title>PyQt Notes Part.4 (Custom Temporary Widget) | Xingyu&#39;s Blog</title>
+  <meta name="description" content="Sometimes you need a quick window to display some information,but the built-in qt message boxes aren’t suitable for the job. Temporary WidgetYou can choose to create a widget class, but also for savin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Structure vs. Class">
-<meta property="og:url" content="http://example.com/2020/12/20/structure-class/index.html">
+<meta property="og:title" content="PyQt Notes Part.4 (Custom Temporary Widget)">
+<meta property="og:url" content="http://example.com/2021/02/18/pyqt-notes-4/index.html">
 <meta property="og:site_name" content="Xingyu Lei">
-<meta property="og:description" content="Struct vs. Classsharp123456789# this is a structpublic struct Coord&amp;#123;		public Coord(float x, float y)&amp;#123;		X &#x3D; x;		Y &#x3D; y;	&amp;#125;	public float X &amp;#123; get; &amp;#125;	public float Y &amp;#123; get; &amp;#12">
+<meta property="og:description" content="Sometimes you need a quick window to display some information,but the built-in qt message boxes aren’t suitable for the job. Temporary WidgetYou can choose to create a widget class, but also for savin">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-12-20T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-11T02:24:41.239Z">
+<meta property="article:published_time" content="2021-02-18T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-27T15:40:15.008Z">
 <meta property="article:author" content="Xingyu">
-<meta property="article:tag" content="c#">
+<meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2020/12/20/structure-class/index.html">
+  <link rel="canonical" href="http://example.com/2021/02/18/pyqt-notes-4/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Xingyu Lei" type="application/atom+xml">
   
@@ -194,14 +194,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-structure-class" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-pyqt-notes-4" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Structure vs. Class
+      PyQt Notes Part.4 (Custom Temporary Widget)
     </h1>
   
 
@@ -209,37 +209,49 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/12/20/structure-class/" class="article-date">
-	  <time datetime="2020-12-20T05:00:00.000Z" itemprop="datePublished">2020-12-20</time>
+	<a href="/2021/02/18/pyqt-notes-4/" class="article-date">
+	  <time datetime="2021-02-18T05:00:00.000Z" itemprop="datePublished">2021-02-18</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/c/" rel="tag">c#</a>
+	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/20/structure-class/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/18/pyqt-notes-4/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="Struct-vs-Class"><a href="#Struct-vs-Class" class="headerlink" title="Struct vs. Class"></a>Struct vs. Class</h3><figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># this is a struct</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">struct</span> <span class="title">Coord</span>&#123;</span>	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Coord</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y)</span></span>&#123;</span><br><span class="line">		X = x;</span><br><span class="line">		Y = y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">float</span> X &#123; get; &#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">float</span> Y &#123; get; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># this is a class</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span>	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="built_in">string</span> name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">		Name = name;</span><br><span class="line">		Age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="built_in">string</span> Name &#123; get; <span class="built_in">set</span>; &#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> Age &#123; get; <span class="built_in">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Structure</strong> types have value semantics. That is, a variable of a structure type contains an instance of the type. By default, variable values are copied on assignment, passing an argument to a method, and returning a method result. In the case of a structure-type variable, an instance of the type is copied Because structure type have value semantics, it is recommended using “readonly” to declare structure type as immutable.</p>
-<p><strong>Class</strong> types have reference semantics. That is, a variable of a class type contains a reference to an instance of the type, not the instance itself. Therefore, the following example shows the different use cases.</p>
-<figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person Jack = <span class="keyword">new</span> Person(<span class="string">&quot;Jack&quot;</span>, <span class="number">28</span>);</span><br><span class="line">Jack.Name = <span class="string">&quot;Jackson&quot;</span>;</span><br><span class="line">Console.WriteLine(Jack.Name);</span><br><span class="line"></span><br><span class="line">Coord origin = <span class="keyword">new</span> Coord(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">Console.WriteLine(origin.X);</span><br><span class="line">origin.X = <span class="number">5</span>;   			<span class="comment">// error! the return value X is not a variable</span></span><br><span class="line">							<span class="comment">// it is actrually the copy of the instance</span></span><br><span class="line">origin = <span class="keyword">new</span> Coord(<span class="number">5</span>, <span class="number">0</span>);	<span class="comment">// clear! can only set new X this way</span></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1747654/error-cannot-modify-the-return-value-c-sharp">https://stackoverflow.com/questions/1747654/error-cannot-modify-the-return-value-c-sharp</a><br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct">https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct</a></p>
+        <p>Sometimes you need a quick window to display some information,<br>but the built-in qt message boxes aren’t suitable for the job.</p>
+<h3 id="Temporary-Widget"><a href="#Temporary-Widget" class="headerlink" title="Temporary Widget"></a>Temporary Widget</h3><p>You can choose to create a widget class, but also for saving time, you can create<br>a temporary custom widget</p>
+<p>example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWidget</span>(<span class="params">QtWidgets.QMainWindow</span>):</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">    self.connectSignal()</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">connectSignal</span>(<span class="params">self</span>):</span></span><br><span class="line">    self.someBtn.clicked.connect(self.openCustomWidget)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">openCustomWidget</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="comment"># initialize with a widget and a layout</span></span><br><span class="line">    self.customWidget = QtWidgets.QWidget()</span><br><span class="line">    layout = QtWidgets.QHBoxLayout(self.customWidget)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># title</span></span><br><span class="line">    self.customWidget.setWindowTitle(<span class="string">&#x27;Error Log&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># set window display behavior</span></span><br><span class="line">    self.customWidget.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># set window icon (using a built-in icon)</span></span><br><span class="line">    name = <span class="string">&quot;SP_MessageBoxCritical&quot;</span></span><br><span class="line">    style = self.customWidget.style()</span><br><span class="line">    icon = style.standardIcon(<span class="built_in">getattr</span>(QtWidgets.QStyle, name))</span><br><span class="line">    self.customWidget.setWindowIcon(icon)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># add custom elements here</span></span><br><span class="line">    message = <span class="string">&quot;happy new year&quot;</span></span><br><span class="line">    errorLabel = QtWidgets.QLabel(messages)</span><br><span class="line">    scrollArea = QtWidgets.QScrollArea()</span><br><span class="line">    scrollArea.setWidgetResizable(<span class="literal">True</span>)</span><br><span class="line">    scrollArea.setWidget(errorLabel)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># finalize</span></span><br><span class="line">    layout.addWidget(scrollArea)</span><br><span class="line">    self.customWidget.show()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">showWindow</span>():</span></span><br><span class="line">    win = MainWidget()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        win.close()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    win.setAttribute(QtCore.Qt.WA_DeleteOnClose)</span><br><span class="line">    win.show()</span><br></pre></td></tr></table></figure>
+<p>Couple of things worth noting:</p>
+<ol>
+<li><p>correctly initialize the widget</p>
+<p> <code>self.customWidget = QtWidgets.QWidget()</code> will allow widget be child of the main window,<br> thus allow widget to close when main window is closed</p>
+<p> so not <code>customWidget = QtWidgets.QWidget()</code> or <code>self.customWidget = QtWidgets.QWidget(self)</code></p>
+</li>
+<li><p>use <code>getattr</code> in combination with <code>QStyle</code> and name of the built-in icon</p>
+</li>
+<li><p>use <code>win.setAttribute(QtCore.Qt.WA_DeleteOnClose)</code> to make sure the child widget is killed<br>after main window is closed, because default close only hides window objects</p>
+</li>
+<li><p><code>self.customWidget.show()</code> is the core command to call it to display</p>
+</li>
+</ol>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a target="_blank" rel="noopener" href="https://www.programiz.com/python-programming/methods/built-in/getattr">https://www.programiz.com/python-programming/methods/built-in/getattr</a><br><a target="_blank" rel="noopener" href="https://forum.learnpyqt.com/t/are-there-any-built-in-qicons/185/2">https://forum.learnpyqt.com/t/are-there-any-built-in-qicons/185/2</a></p>
 
       
     </div>
@@ -249,7 +261,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2020/12/20/structure-class/" title="Structure vs. Class" target="_blank" rel="external">http://example.com/2020/12/20/structure-class/</a>
+      <a href="http://example.com/2021/02/18/pyqt-notes-4/" title="PyQt Notes Part.4 (Custom Temporary Widget)" target="_blank" rel="external">http://example.com/2021/02/18/pyqt-notes-4/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -293,13 +305,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/12/20/field-property/" title="Field vs. Property"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/11/19/verlet-integration/" title="Verlet Integration"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/02/11/pyqt-notes-3/" title="PyQt Notes Part.3 (Custom Dialog)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

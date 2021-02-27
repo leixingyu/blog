@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://example.com/2021/02/07/pyqt-mv-2/</loc>
-    <lastmod>2021-02-07</lastmod>
+    <loc>http://example.com/2021/02/11/pyqt-notes-3/</loc>
+    <lastmod>2021-02-27</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/02/05/pyqt-notes-2/</loc>
+    <lastmod>2021-02-27</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/02/18/pyqt-notes-4/</loc>
+    <lastmod>2021-02-27</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/01/28/pyqt-notes-1/</loc>
+    <lastmod>2021-02-27</lastmod>
   </url>
   <url>
     <loc>http://example.com/2021/01/16/pyqt-template/</loc>
+    <lastmod>2021-02-27</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/01/16/python-notes-1/</loc>
+    <lastmod>2021-02-27</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/02/07/pyqt-mv-2/</loc>
     <lastmod>2021-02-07</lastmod>
   </url>
   <url>
@@ -30,10 +50,6 @@
   </url>
   <url>
     <loc>http://example.com/2021/01/24/python-notes-4/</loc>
-    <lastmod>2021-02-07</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2021/01/16/python-notes-1/</loc>
     <lastmod>2021-02-07</lastmod>
   </url>
   <url>

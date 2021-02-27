@@ -17,22 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Conditional Expression &amp; List Comprehension | Xingyu&#39;s Blog</title>
-  <meta name="description" content="Conditional ExpressionConditional Expression (also known as Ternary Operators) Example: 1234if condition:    value &#x3D; value_if_trueelse:    value &#x3D; value_if_false this can be re-written as: 1value &#x3D; va">
+  <title>PyQt Notes Part.1 (Convenient Message Box) | Xingyu&#39;s Blog</title>
+  <meta name="description" content="Using self reference in class 1234567891011121314151617181920212223242526272829class MainWindow():    def __init__(self):        pass    def _messageBoxCritical(self, message, title&#x3D;&amp;#x27;Error&amp;#x27;)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Conditional Expression &amp; List Comprehension">
-<meta property="og:url" content="http://example.com/2021/01/06/python-shortcut-1/index.html">
+<meta property="og:title" content="PyQt Notes Part.1 (Convenient Message Box)">
+<meta property="og:url" content="http://example.com/2021/01/28/pyqt-notes-1/index.html">
 <meta property="og:site_name" content="Xingyu Lei">
-<meta property="og:description" content="Conditional ExpressionConditional Expression (also known as Ternary Operators) Example: 1234if condition:    value &#x3D; value_if_trueelse:    value &#x3D; value_if_false this can be re-written as: 1value &#x3D; va">
+<meta property="og:description" content="Using self reference in class 1234567891011121314151617181920212223242526272829class MainWindow():    def __init__(self):        pass    def _messageBoxCritical(self, message, title&#x3D;&amp;#x27;Error&amp;#x27;)">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-06T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-11T02:18:35.144Z">
+<meta property="article:published_time" content="2021-01-28T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-27T15:19:52.197Z">
 <meta property="article:author" content="Xingyu">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="style">
+<meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2021/01/06/python-shortcut-1/index.html">
+  <link rel="canonical" href="http://example.com/2021/01/28/pyqt-notes-1/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Xingyu Lei" type="application/atom+xml">
   
@@ -195,14 +194,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-python-shortcut-1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-pyqt-notes-1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Conditional Expression &amp; List Comprehension
+      PyQt Notes Part.1 (Convenient Message Box)
     </h1>
   
 
@@ -210,8 +209,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/01/06/python-shortcut-1/" class="article-date">
-	  <time datetime="2021-01-06T05:00:00.000Z" itemprop="datePublished">2021-01-06</time>
+	<a href="/2021/01/28/pyqt-notes-1/" class="article-date">
+	  <time datetime="2021-01-28T05:00:00.000Z" itemprop="datePublished">2021-01-28</time>
 	</a>
 </span>
         
@@ -223,31 +222,27 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/style/" rel="tag">style</a>
+	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/06/python-shortcut-1/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/28/pyqt-notes-1/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="Conditional-Expression"><a href="#Conditional-Expression" class="headerlink" title="Conditional Expression"></a>Conditional Expression</h2><p>Conditional Expression (also known as Ternary Operators)</p>
-<p>Example:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> condition:</span><br><span class="line">    value = value_if_true</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    value = value_if_false</span><br></pre></td></tr></table></figure>
-<p>this can be re-written as:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value = value_if_true <span class="keyword">if</span> condition <span class="keyword">else</span> value_if_false</span><br></pre></td></tr></table></figure>
-<h2 id="List-Comprehension"><a href="#List-Comprehension" class="headerlink" title="List Comprehension"></a>List Comprehension</h2><p>Example</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = []</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">    <span class="built_in">list</span>.append(item)</span><br></pre></td></tr></table></figure>
-<p>this can be re-written as:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [item <span class="keyword">for</span> item <span class="keyword">in</span> items]</span><br></pre></td></tr></table></figure>
-<p>it can also be combined with statements and operations</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [operate_func(item) <span class="keyword">for</span> item <span class="keyword">in</span> items <span class="keyword">if</span> condition]</span><br></pre></td></tr></table></figure>
-<p>However, list comprehension is meant for creating list, not executing multiple operations</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[operation() <span class="keyword">for</span> _ <span class="keyword">in</span> steps]  <span class="comment"># Wrong</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> steps:               <span class="comment"># Do this instead</span></span><br><span class="line">    operation()</span><br></pre></td></tr></table></figure>
+        <p>Using self reference in class</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_messageBoxCritical</span>(<span class="params">self, message, title=<span class="string">&#x27;Error&#x27;</span></span>):</span></span><br><span class="line">        msgBox = QtWidgets.QMessageBox(self)</span><br><span class="line">        msgBox.setIcon(QtWidgets.QMessageBox.Critical)</span><br><span class="line">        msgBox.setWindowTitle(title)</span><br><span class="line">        msgBox.setText(message)</span><br><span class="line">        msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok)</span><br><span class="line">        <span class="keyword">return</span> msgBox.exec_()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_messageBoxYesNo</span>(<span class="params">self, message, title=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">        msgBox = QtWidgets.QMessageBox(self)</span><br><span class="line">        msgBox.setIcon(QtWidgets.QMessageBox.Question)</span><br><span class="line">        msgBox.setWindowTitle(title)</span><br><span class="line">        msgBox.setText(message)</span><br><span class="line">        msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)</span><br><span class="line">        userChoice = msgBox.exec_()</span><br><span class="line">        <span class="keyword">return</span> userChoice</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_messageBoxOk</span>(<span class="params">self, message, title=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">        msgBox = QtWidgets.QMessageBox(self)</span><br><span class="line">        msgBox.setIcon(QtWidgets.QMessageBox.Information)</span><br><span class="line">        msgBox.setWindowTitle(title)</span><br><span class="line">        msgBox.setText(message)</span><br><span class="line">        msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok)</span><br><span class="line">        <span class="keyword">return</span> msgBox.exec_()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Using it outside of class or in class as static method</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">messageBoxCritical</span>(<span class="params">message, title=<span class="string">&#x27;Error&#x27;</span></span>):</span></span><br><span class="line">    msgBox = QtWidgets.QMessageBox()</span><br><span class="line">    msgBox.setIcon(QtWidgets.QMessageBox.Critical)</span><br><span class="line">    msgBox.setWindowTitle(title)</span><br><span class="line">    msgBox.setText(message)</span><br><span class="line">    msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok)</span><br><span class="line">    <span class="keyword">return</span> msgBox.exec_()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">messageBoxYesNo</span>(<span class="params">message, title=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">    msgBox = QtWidgets.QMessageBox()</span><br><span class="line">    msgBox.setIcon(QtWidgets.QMessageBox.Question)</span><br><span class="line">    msgBox.setWindowTitle(title)</span><br><span class="line">    msgBox.setText(message)</span><br><span class="line">    msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)</span><br><span class="line">    userChoice = msgBox.exec_()</span><br><span class="line">    <span class="keyword">return</span> userChoice</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">messageBoxOk</span>(<span class="params">message, title=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">    msgBox = QtWidgets.QMessageBox()</span><br><span class="line">    msgBox.setIcon(QtWidgets.QMessageBox.Information)</span><br><span class="line">    msgBox.setWindowTitle(title)</span><br><span class="line">    msgBox.setText(message)</span><br><span class="line">    msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok)</span><br><span class="line">    <span class="keyword">return</span> msgBox.exec_()</span><br></pre></td></tr></table></figure>
+<p>Usage:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">msg = <span class="string">&quot;Did you recieve this message?&quot;</span></span><br><span class="line"><span class="comment"># within class</span></span><br><span class="line">userChoice = self._messageBoxYesNo(msg, title=<span class="string">&#x27;Test Title&#x27;</span>)</span><br><span class="line"><span class="comment"># static method</span></span><br><span class="line">userChoice = MainWindow._messageBoxYesNo(msg, title=<span class="string">&#x27;Test Title&#x27;</span>)</span><br><span class="line"><span class="comment"># call outside class</span></span><br><span class="line">userChoice = messageBoxYesNo(msg, title=<span class="string">&#x27;Test Title&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> userChoice == QtWidgets.QMessageBox.Yes:</span><br><span class="line">    function()</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/52463896/what-kind-of-difference-does-self-makes-as-parameter-in-pyqt5">“Self” as parameter in PyQt5</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49651490/pyqt5-self-reference">PyQt5 self reference</a></p>
+
       
     </div>
     <div class="article-footer">
@@ -256,7 +251,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2021/01/06/python-shortcut-1/" title="Conditional Expression &amp; List Comprehension" target="_blank" rel="external">http://example.com/2021/01/06/python-shortcut-1/</a>
+      <a href="http://example.com/2021/01/28/pyqt-notes-1/" title="PyQt Notes Part.1 (Convenient Message Box)" target="_blank" rel="external">http://example.com/2021/01/28/pyqt-notes-1/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -301,12 +296,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/01/16/python-notes-1/" title="Python Learning (1. Import)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/2021/01/31/python-style/" title="Python Style (1. Breaking Lines)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2020/12/22/git-learning/" title="Learning Git"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/01/24/python-notes-4/" title="Python Learning (4. Error Handling)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
