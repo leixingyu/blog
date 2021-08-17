@@ -10,7 +10,7 @@
   <id>http://example.com/</id>
   
   <author>
-    <name>Xingyu</name>
+    <name>Xingyu Lei</name>
     
   </author>
   
@@ -429,9 +429,9 @@
     <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
     
     
-    <category term="c#" scheme="http://example.com/tags/c/"/>
-    
     <category term="python" scheme="http://example.com/tags/python/"/>
+    
+    <category term="c#" scheme="http://example.com/tags/c/"/>
     
   </entry>
   
@@ -507,9 +507,9 @@
     <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
     <category term="maya" scheme="http://example.com/tags/maya/"/>
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
     
   </entry>
   
