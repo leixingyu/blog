@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Error Handling in Python | Xingyu Lei</title>
-  <meta name="description" content="Error Handlingfinally will guarantee execution in try-exception-finally block even after  return raise  Raise error back to parent function 12345678910111213141516171819202122232425262728# eg. this li">
+  <title>QDialog Template (without .ui file) | Xingyu Lei</title>
+  <meta name="description" content="Main Window1234567891011121314151617class AttrConnectWindow(QtWidgets.QMainWindow):    def __init__(self, parent&#x3D;getMainWindow()):        super(AttrConnectWindow, self).__init__(parent)        list &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Error Handling in Python">
-<meta property="og:url" content="http://example.com/2021/01/24/python-notes-4/index.html">
+<meta property="og:title" content="QDialog Template (without .ui file)">
+<meta property="og:url" content="http://example.com/2021/02/11/qt-dialog-template/index.html">
 <meta property="og:site_name" content="Xingyu Lei">
-<meta property="og:description" content="Error Handlingfinally will guarantee execution in try-exception-finally block even after  return raise  Raise error back to parent function 12345678910111213141516171819202122232425262728# eg. this li">
+<meta property="og:description" content="Main Window1234567891011121314151617class AttrConnectWindow(QtWidgets.QMainWindow):    def __init__(self, parent&#x3D;getMainWindow()):        super(AttrConnectWindow, self).__init__(parent)        list &#x3D;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-24T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-08-11T03:27:00.046Z">
+<meta property="article:published_time" content="2021-02-11T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-18T04:00:58.135Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2021/01/24/python-notes-4/index.html">
+  <link rel="canonical" href="http://example.com/2021/02/11/qt-dialog-template/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Xingyu Lei" type="application/atom+xml">
   
@@ -184,14 +184,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-python-notes-4" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-qt-dialog-template" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Error Handling in Python
+      QDialog Template (without .ui file)
     </h1>
   
 
@@ -199,41 +199,33 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/01/24/python-notes-4/" class="article-date">
-	  <time datetime="2021-01-24T05:00:00.000Z" itemprop="datePublished">2021-01-24</time>
+	<a href="/2021/02/11/qt-dialog-template/" class="article-date">
+	  <time datetime="2021-02-11T05:00:00.000Z" itemprop="datePublished">2021-02-11</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
+	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/24/python-notes-4/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/11/qt-dialog-template/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="Error-Handling"><a href="#Error-Handling" class="headerlink" title="Error Handling"></a>Error Handling</h3><p><code>finally</code> will guarantee execution in <code>try-exception-finally</code> block even after</p>
-<ul>
-<li><code>return</code></li>
-<li><code>raise</code></li>
-</ul>
-<p>Raise error back to parent function</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># eg. this line will give an ZeroDivision Error</span></span><br><span class="line"><span class="number">10</span> / <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># what if this belongs to a function and we want to raise the</span></span><br><span class="line"><span class="comment"># error code to let whatever calls it to handle instead of itself</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># so instead of</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">occur_error</span>():</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        output = <span class="number">10</span> / <span class="number">0</span></span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="comment"># error handling</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># we do this</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handle_error</span>():</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        occur_error()</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="comment"># error handling</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">occur_error</span>():</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        output = <span class="number">10</span> / <span class="number">0</span></span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="keyword">raise</span> ZeroDivisionError</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49262379/does-finally-always-execute-in-python">https://stackoverflow.com/questions/49262379/does-finally-always-execute-in-python</a></p>
-
+        <h2 id="Main-Window"><a href="#Main-Window" class="headerlink" title="Main Window"></a>Main Window</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AttrConnectWindow</span>(<span class="params">QtWidgets.QMainWindow</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=getMainWindow(<span class="params"></span>)</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(AttrConnectWindow, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">list</span> = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="string">&#x27;pear&#x27;</span>]</span><br><span class="line">        dialog = NamespaceEditDialog()</span><br><span class="line">        dialog.setNamespaceCBox(<span class="built_in">list</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># only when self.accept() is returned</span></span><br><span class="line">        <span class="keyword">if</span> dialog.exec_():</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&#x27;accepted&#x27;</span></span><br><span class="line">            </span><br><span class="line">        text = dialog.getText()</span><br><span class="line">        option = dialog.getCombo()</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span> text, option</span><br></pre></td></tr></table></figure>
+<h2 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NamespaceEditDialog</span>(<span class="params">QtWidgets.QDialog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(NamespaceEditDialog, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Create widgets</span></span><br><span class="line">        self.namespaceCBox = QtWidgets.QComboBox()</span><br><span class="line">        self.namespaceEdit = QtWidgets.QLineEdit()</span><br><span class="line">        self.acceptButton = QtWidgets.QPushButton(<span class="string">&quot;Confirm&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Create layout and add widgets</span></span><br><span class="line">        layout = QtWidgets.QGridLayout()</span><br><span class="line">        layout.addWidget(self.namespaceCBox, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        layout.addWidget(self.namespaceEdit, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">        layout.addWidget(self.acceptButton, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Set dialog layout</span></span><br><span class="line">        self.setLayout(layout)</span><br><span class="line">        self.acceptButton.clicked.connect(self.onClickAccept)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClickAccept</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.accept()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getNamespaceEdit</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.namespaceEdit.text()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getNamespaceCBox</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.namespaceCBox.currentText()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setNamespaceCBox</span>(<span class="params">self, items</span>):</span></span><br><span class="line">        self.namespaceCBox.addItems(items)</span><br></pre></td></tr></table></figure>
       
     </div>
     <div class="article-footer">
@@ -242,7 +234,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2021/01/24/python-notes-4/" title="Error Handling in Python" target="_blank" rel="external">http://example.com/2021/01/24/python-notes-4/</a>
+      <a href="http://example.com/2021/02/11/qt-dialog-template/" title="QDialog Template (without .ui file)" target="_blank" rel="external">http://example.com/2021/02/11/qt-dialog-template/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -287,12 +279,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/01/28/pyqt-notes-1/" title="Qt Common Message Box"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/2021/02/18/qt-widget-template/" title="QWidget Template (without .ui file)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/01/23/pyqt-sorting/" title="Qt Custom Sorting"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/02/07/qt-mv-list/" title="Qt Model View List Model"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
@@ -314,9 +306,9 @@
 	
     <div class="copyright">
     	
-        <div class="publishby">
+        <!-- <div class="publishby">
         	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
-        </div>
+        </div> -->
     </div>
 </footer>
   <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
