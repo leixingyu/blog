@@ -3,11 +3,11 @@
   <title>Xingyu Lei</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://xingyulei.xyz/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://xingyulei.xyz/"/>
   <updated>2021-08-22T03:04:12.437Z</updated>
-  <id>http://example.com/</id>
+  <id>http://xingyulei.xyz/</id>
   
   <author>
     <name>Xingyu Lei</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>How to organize your own python library (In Progress)</title>
-    <link href="http://example.com/2021/08/24/python-organize-module/"/>
-    <id>http://example.com/2021/08/24/python-organize-module/</id>
+    <link href="http://xingyulei.xyz/2021/08/24/python-organize-module/"/>
+    <id>http://xingyulei.xyz/2021/08/24/python-organize-module/</id>
     <published>2021-08-24T04:00:00.000Z</published>
     <updated>2021-08-22T03:04:12.437Z</updated>
     
@@ -33,17 +33,17 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
+    <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Qt Left Align Icon, Center Align Text (Python)</title>
-    <link href="http://example.com/2021/08/21/qt-button-alignment/"/>
-    <id>http://example.com/2021/08/21/qt-button-alignment/</id>
+    <link href="http://xingyulei.xyz/2021/08/21/qt-button-alignment/"/>
+    <id>http://xingyulei.xyz/2021/08/21/qt-button-alignment/</id>
     <published>2021-08-21T04:00:00.000Z</published>
     <updated>2021-08-22T03:39:49.177Z</updated>
     
@@ -57,17 +57,17 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Constant in Python</title>
-    <link href="http://example.com/2021/07/16/python-constant/"/>
-    <id>http://example.com/2021/07/16/python-constant/</id>
+    <link href="http://xingyulei.xyz/2021/07/16/python-constant/"/>
+    <id>http://xingyulei.xyz/2021/07/16/python-constant/</id>
     <published>2021-07-16T04:00:00.000Z</published>
     <updated>2021-08-22T02:25:23.915Z</updated>
     
@@ -81,17 +81,17 @@
     
     
     
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
+    <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Qt Using Role to Embed Data</title>
-    <link href="http://example.com/2021/05/04/qt-data-role/"/>
-    <id>http://example.com/2021/05/04/qt-data-role/</id>
+    <link href="http://xingyulei.xyz/2021/05/04/qt-data-role/"/>
+    <id>http://xingyulei.xyz/2021/05/04/qt-data-role/</id>
     <published>2021-05-04T04:00:00.000Z</published>
     <updated>2021-08-22T02:35:20.581Z</updated>
     
@@ -105,17 +105,17 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>QWidget Template (without .ui file)</title>
-    <link href="http://example.com/2021/02/18/qt-widget-template/"/>
-    <id>http://example.com/2021/02/18/qt-widget-template/</id>
+    <link href="http://xingyulei.xyz/2021/02/18/qt-widget-template/"/>
+    <id>http://xingyulei.xyz/2021/02/18/qt-widget-template/</id>
     <published>2021-02-18T05:00:00.000Z</published>
     <updated>2021-08-18T04:00:58.131Z</updated>
     
@@ -130,17 +130,17 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>QDialog Template (without .ui file)</title>
-    <link href="http://example.com/2021/02/11/qt-dialog-template/"/>
-    <id>http://example.com/2021/02/11/qt-dialog-template/</id>
+    <link href="http://xingyulei.xyz/2021/02/11/qt-dialog-template/"/>
+    <id>http://xingyulei.xyz/2021/02/11/qt-dialog-template/</id>
     <published>2021-02-11T05:00:00.000Z</published>
     <updated>2021-08-18T04:00:58.135Z</updated>
     
@@ -154,17 +154,17 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Qt Model View List Model</title>
-    <link href="http://example.com/2021/02/07/qt-mv-list/"/>
-    <id>http://example.com/2021/02/07/qt-mv-list/</id>
+    <link href="http://xingyulei.xyz/2021/02/07/qt-mv-list/"/>
+    <id>http://xingyulei.xyz/2021/02/07/qt-mv-list/</id>
     <published>2021-02-07T05:00:00.000Z</published>
     <updated>2021-08-18T03:55:46.916Z</updated>
     
@@ -179,17 +179,17 @@
     
     
     
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Qt Model View Intro</title>
-    <link href="http://example.com/2021/02/06/qt-mv-intro/"/>
-    <id>http://example.com/2021/02/06/qt-mv-intro/</id>
+    <link href="http://xingyulei.xyz/2021/02/06/qt-mv-intro/"/>
+    <id>http://xingyulei.xyz/2021/02/06/qt-mv-intro/</id>
     <published>2021-02-06T05:00:00.000Z</published>
     <updated>2021-08-18T03:55:46.911Z</updated>
     
@@ -204,17 +204,17 @@
     
     
     
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Qt Context Menu &amp; Sub-menu</title>
-    <link href="http://example.com/2021/02/05/qt-context-menu/"/>
-    <id>http://example.com/2021/02/05/qt-context-menu/</id>
+    <link href="http://xingyulei.xyz/2021/02/05/qt-context-menu/"/>
+    <id>http://xingyulei.xyz/2021/02/05/qt-context-menu/</id>
     <published>2021-02-05T05:00:00.000Z</published>
     <updated>2021-08-18T03:58:51.919Z</updated>
     
@@ -228,17 +228,17 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Qt Quick MessageBox</title>
-    <link href="http://example.com/2021/01/28/qt-messagebox/"/>
-    <id>http://example.com/2021/01/28/qt-messagebox/</id>
+    <link href="http://xingyulei.xyz/2021/01/28/qt-messagebox/"/>
+    <id>http://xingyulei.xyz/2021/01/28/qt-messagebox/</id>
     <published>2021-01-28T05:00:00.000Z</published>
     <updated>2021-08-18T03:57:51.057Z</updated>
     
@@ -253,17 +253,17 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Error Handling in Python</title>
-    <link href="http://example.com/2021/01/24/python-error-handle/"/>
-    <id>http://example.com/2021/01/24/python-error-handle/</id>
+    <link href="http://xingyulei.xyz/2021/01/24/python-error-handle/"/>
+    <id>http://xingyulei.xyz/2021/01/24/python-error-handle/</id>
     <published>2021-01-24T05:00:00.000Z</published>
     <updated>2021-08-11T03:27:00.046Z</updated>
     
@@ -277,41 +277,17 @@
     
     
     
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to use Dunder in Python</title>
-    <link href="http://example.com/2021/01/23/python-dunder/"/>
-    <id>http://example.com/2021/01/23/python-dunder/</id>
-    <published>2021-01-23T05:00:00.000Z</published>
-    <updated>2021-08-22T02:41:43.892Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Underscore-Naming"><a href="#Underscore-Naming" class="headerlink" title="Underscore Naming"></a>Underscore Naming</h3><p>Single Leading Underscore: <code>_var</code></p><ul><li>Indicating a name is <strong>protected</strong>, for internal use. Not enforced by python interpreter</li></ul><p>Double Leading Underscore: <code>__var</code></p><ul><li>Indicating a name is <strong>private</strong>. Enforced by interpreter, attempt to call it will trigger <code>AttributeError</code></li></ul><p>Double Leading Trailing Underscore: <code>__var__</code></p><ul><li>Special methods (magic methods) defined by python language, avoid naming your own attribute</li></ul><p>Single Trailing Underscore: <code>var_</code></p><ul><li>Avoid naming conflict with python keywords</li></ul><p>Single Underscore: <code>_</code></p><ul><li><p>Temporary variable name, variables that are never used</p></li><li><p>example:</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a, b, c, d = ([] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> random_list:</span><br><span class="line">    some_operation()</span><br></pre></td></tr></table></figure><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://dbader.org/blog/meaning-of-underscores-in-python#">https://dbader.org/blog/meaning-of-underscores-in-python#</a><br><a href="https://www.tutorialsteacher.com/python/public-private-protected-modifiers">https://www.tutorialsteacher.com/python/public-private-protected-modifiers</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;Underscore-Naming&quot;&gt;&lt;a href=&quot;#Underscore-Naming&quot; class=&quot;headerlink&quot; title=&quot;Underscore Naming&quot;&gt;&lt;/a&gt;Underscore Naming&lt;/h3&gt;&lt;p&gt;Single Lea</summary>
-      
-    
-    
-    
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
-    
-    
-    <category term="python" scheme="http://example.com/tags/python/"/>
+    <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Qt Custom Sorting</title>
-    <link href="http://example.com/2021/01/23/pyqt-sorting/"/>
-    <id>http://example.com/2021/01/23/pyqt-sorting/</id>
+    <link href="http://xingyulei.xyz/2021/01/23/pyqt-sorting/"/>
+    <id>http://xingyulei.xyz/2021/01/23/pyqt-sorting/</id>
     <published>2021-01-23T05:00:00.000Z</published>
     <updated>2021-08-11T03:25:14.883Z</updated>
     
@@ -325,17 +301,41 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to use Dunder in Python</title>
+    <link href="http://xingyulei.xyz/2021/01/23/python-dunder/"/>
+    <id>http://xingyulei.xyz/2021/01/23/python-dunder/</id>
+    <published>2021-01-23T05:00:00.000Z</published>
+    <updated>2021-08-22T02:41:43.892Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Underscore-Naming"><a href="#Underscore-Naming" class="headerlink" title="Underscore Naming"></a>Underscore Naming</h3><p>Single Leading Underscore: <code>_var</code></p><ul><li>Indicating a name is <strong>protected</strong>, for internal use. Not enforced by python interpreter</li></ul><p>Double Leading Underscore: <code>__var</code></p><ul><li>Indicating a name is <strong>private</strong>. Enforced by interpreter, attempt to call it will trigger <code>AttributeError</code></li></ul><p>Double Leading Trailing Underscore: <code>__var__</code></p><ul><li>Special methods (magic methods) defined by python language, avoid naming your own attribute</li></ul><p>Single Trailing Underscore: <code>var_</code></p><ul><li>Avoid naming conflict with python keywords</li></ul><p>Single Underscore: <code>_</code></p><ul><li><p>Temporary variable name, variables that are never used</p></li><li><p>example:</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a, b, c, d = ([] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> random_list:</span><br><span class="line">    some_operation()</span><br></pre></td></tr></table></figure><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://dbader.org/blog/meaning-of-underscores-in-python#">https://dbader.org/blog/meaning-of-underscores-in-python#</a><br><a href="https://www.tutorialsteacher.com/python/public-private-protected-modifiers">https://www.tutorialsteacher.com/python/public-private-protected-modifiers</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Underscore-Naming&quot;&gt;&lt;a href=&quot;#Underscore-Naming&quot; class=&quot;headerlink&quot; title=&quot;Underscore Naming&quot;&gt;&lt;/a&gt;Underscore Naming&lt;/h3&gt;&lt;p&gt;Single Lea</summary>
+      
+    
+    
+    
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
+    
+    
+    <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Override vs. Overload</title>
-    <link href="http://example.com/2021/01/17/override-overload/"/>
-    <id>http://example.com/2021/01/17/override-overload/</id>
+    <link href="http://xingyulei.xyz/2021/01/17/override-overload/"/>
+    <id>http://xingyulei.xyz/2021/01/17/override-overload/</id>
     <published>2021-01-17T05:00:00.000Z</published>
     <updated>2021-08-18T03:55:00.982Z</updated>
     
@@ -349,41 +349,17 @@
     
     
     
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Import in Python</title>
-    <link href="http://example.com/2021/01/16/python-import/"/>
-    <id>http://example.com/2021/01/16/python-import/</id>
-    <published>2021-01-16T05:00:00.000Z</published>
-    <updated>2021-08-22T02:08:08.874Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="from-…-import-…-or-import-…"><a href="#from-…-import-…-or-import-…" class="headerlink" title="from … import … or import …"></a>from … import … or import …</h3><p>Always avoid wildcard imports like such as it will pollute namespaces:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> my_module <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure><p>Instead use regular import like:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> my_module</span><br></pre></td></tr></table></figure><p>Using wildcard import will <strong>not</strong> import names with a leading underscore (unless the module defines an <code>__all__</code> list)</p><p>It is also suggested by <em>PEP8</em></p><h3 id="init-py-when-importing"><a href="#init-py-when-importing" class="headerlink" title="__init__.py when importing"></a>__init__.py when importing</h3><p><code>__init__.py</code> is used to specify a package, when import is trying to find the modules,<br>But it is not required: meaning a package without <code>__init__.py</code>,<br>The system can still find the modules after configuring appropriate PYTHONPATH using<br><code>sys.path.append</code>.</p><p><code>__init__.py</code> is executed after importing the package, I’ve seen<br>sub-directory being imported by appending as environment variable within <code>__init__.py</code></p><p>so instead of this file structure with import like <code>import project.foo.bar</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">project&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        foo&#x2F;</span><br><span class="line">                __init__.py</span><br><span class="line">                bar&#x2F;</span><br><span class="line">                        b.py</span><br></pre></td></tr></table></figure><p>inside the <code>__init__.py</code>, it could do a sys.path.append(PATH_TO_BAR)</p><p>so with this file structure, you can just do <code>import project</code></p><p>they could even add the import statement for you in the <code>__init__.py</code>, although it is not transparent.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">project&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        foo&#x2F;</span><br><span class="line">                bar&#x2F;</span><br><span class="line">                        b.py</span><br></pre></td></tr></table></figure><p>Also, it seems like whats ever getting appended last overrides the previous<br>env variable, so import to the same name module will find the latest append</p><h3 id="Dot-notation-in-Import"><a href="#Dot-notation-in-Import" class="headerlink" title="Dot notation in Import"></a>Dot notation in Import</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">parent&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    file.py</span><br><span class="line">    one&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        anotherfile.py</span><br><span class="line">    two&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">    three&#x2F;</span><br><span class="line">        __init__.py</span><br></pre></td></tr></table></figure><p>Each dot in your import will refer to something inside the package, could be another package<br>or a module. But it can’t be a class.</p><p>Import python modules could look like:<br><code>import parent.file</code> or <code>import parent.one.anotherfile</code></p><p>From … import classes or functions look like this:<br><code>from parent.file import class</code><br>which gives you direct access to the class namespace, but not the example above.</p><h3 id="Import-Order"><a href="#Import-Order" class="headerlink" title="Import Order"></a>Import Order</h3><p>Based on PEP8, imports should be grouped by the following order:</p><ol><li>Standard library import</li><li>Related third-party import</li><li>Local application/library specific import</li></ol><p><strong>What is Standard Library Imports?</strong></p><p>Standard library are installed automatically by Python installer, full documentation link<br>is here: <a href="https://docs.python.org/3/library/">https://docs.python.org/3/library/</a></p><p><strong>What is the order after grouping?</strong></p><p>There is no specific rules, but based on common preferences, use alphabetical order, with<br>import first and from … import after</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> abc</span><br><span class="line"><span class="keyword">import</span> <span class="function"><span class="keyword">def</span></span></span><br><span class="line"><span class="function"><span class="title">import</span> <span class="title">x</span></span></span><br><span class="line"><span class="function"><span class="title">from</span> <span class="title">g</span> <span class="title">import</span> <span class="title">gg</span></span></span><br><span class="line"><span class="function"><span class="title">from</span> <span class="title">x</span> <span class="title">import</span> <span class="title">xx</span></span></span><br></pre></td></tr></table></figure><h3 id="Intra-Package"><a href="#Intra-Package" class="headerlink" title="Intra-Package"></a>Intra-Package</h3><p>In a structure like this, how would you do import from another directory?<br>say from <code>module-x.py</code> import <code>module-a</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">top-package&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        sub-package-a&#x2F;</span><br><span class="line">                __init__.py</span><br><span class="line">                module-x.py</span><br><span class="line">                module-y.py</span><br><span class="line">        sub-package-b&#x2F;</span><br><span class="line">                __init__.py</span><br><span class="line">                module-a.py</span><br><span class="line">                module-b.py</span><br></pre></td></tr></table></figure><p>Here’s some examples doing relative imports in <code>module-x</code></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module-y</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> module-y</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .module-y <span class="keyword">import</span> <span class="class"><span class="keyword">class</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">from</span> .. <span class="title">import</span> <span class="title">sub</span>-<span class="title">package</span>-<span class="title">b</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">from</span> ..<span class="title">subpackage</span>-<span class="title">b</span> <span class="title">import</span> <span class="title">module</span>-<span class="title">a</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">from</span> ..<span class="title">subpackage</span>-<span class="title">b</span>.<span class="title">module</span>-<span class="title">a</span> <span class="title">import</span> <span class="title">class</span></span></span><br></pre></td></tr></table></figure><p>##Reference<br><a href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a><br><a href="https://stackoverflow.com/questions/37974843/why-can-i-import-successfully-without-init-py">https://stackoverflow.com/questions/37974843/why-can-i-import-successfully-without-init-py</a><br><a href="https://stackoverflow.com/questions/9427037/relative-path-not-working-even-with-init-py">https://stackoverflow.com/questions/9427037/relative-path-not-working-even-with-init-py</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;from-…-import-…-or-import-…&quot;&gt;&lt;a href=&quot;#from-…-import-…-or-import-…&quot; class=&quot;headerlink&quot; title=&quot;from … import … or import …&quot;&gt;&lt;/a&gt;from </summary>
-      
-    
-    
-    
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
-    
-    
-    <category term="python" scheme="http://example.com/tags/python/"/>
+    <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Maya Qt Template</title>
-    <link href="http://example.com/2021/01/16/pyqt-template/"/>
-    <id>http://example.com/2021/01/16/pyqt-template/</id>
+    <link href="http://xingyulei.xyz/2021/01/16/pyqt-template/"/>
+    <id>http://xingyulei.xyz/2021/01/16/pyqt-template/</id>
     <published>2021-01-16T05:00:00.000Z</published>
     <updated>2021-08-11T03:25:40.435Z</updated>
     
@@ -397,17 +373,41 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://example.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="http://xingyulei.xyz/tags/pyqt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Import in Python</title>
+    <link href="http://xingyulei.xyz/2021/01/16/python-import/"/>
+    <id>http://xingyulei.xyz/2021/01/16/python-import/</id>
+    <published>2021-01-16T05:00:00.000Z</published>
+    <updated>2021-08-22T02:08:08.874Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="from-…-import-…-or-import-…"><a href="#from-…-import-…-or-import-…" class="headerlink" title="from … import … or import …"></a>from … import … or import …</h3><p>Always avoid wildcard imports like such as it will pollute namespaces:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> my_module <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure><p>Instead use regular import like:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> my_module</span><br></pre></td></tr></table></figure><p>Using wildcard import will <strong>not</strong> import names with a leading underscore (unless the module defines an <code>__all__</code> list)</p><p>It is also suggested by <em>PEP8</em></p><h3 id="init-py-when-importing"><a href="#init-py-when-importing" class="headerlink" title="__init__.py when importing"></a>__init__.py when importing</h3><p><code>__init__.py</code> is used to specify a package, when import is trying to find the modules,<br>But it is not required: meaning a package without <code>__init__.py</code>,<br>The system can still find the modules after configuring appropriate PYTHONPATH using<br><code>sys.path.append</code>.</p><p><code>__init__.py</code> is executed after importing the package, I’ve seen<br>sub-directory being imported by appending as environment variable within <code>__init__.py</code></p><p>so instead of this file structure with import like <code>import project.foo.bar</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">project&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        foo&#x2F;</span><br><span class="line">                __init__.py</span><br><span class="line">                bar&#x2F;</span><br><span class="line">                        b.py</span><br></pre></td></tr></table></figure><p>inside the <code>__init__.py</code>, it could do a sys.path.append(PATH_TO_BAR)</p><p>so with this file structure, you can just do <code>import project</code></p><p>they could even add the import statement for you in the <code>__init__.py</code>, although it is not transparent.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">project&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        foo&#x2F;</span><br><span class="line">                bar&#x2F;</span><br><span class="line">                        b.py</span><br></pre></td></tr></table></figure><p>Also, it seems like whats ever getting appended last overrides the previous<br>env variable, so import to the same name module will find the latest append</p><h3 id="Dot-notation-in-Import"><a href="#Dot-notation-in-Import" class="headerlink" title="Dot notation in Import"></a>Dot notation in Import</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">parent&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    file.py</span><br><span class="line">    one&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        anotherfile.py</span><br><span class="line">    two&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">    three&#x2F;</span><br><span class="line">        __init__.py</span><br></pre></td></tr></table></figure><p>Each dot in your import will refer to something inside the package, could be another package<br>or a module. But it can’t be a class.</p><p>Import python modules could look like:<br><code>import parent.file</code> or <code>import parent.one.anotherfile</code></p><p>From … import classes or functions look like this:<br><code>from parent.file import class</code><br>which gives you direct access to the class namespace, but not the example above.</p><h3 id="Import-Order"><a href="#Import-Order" class="headerlink" title="Import Order"></a>Import Order</h3><p>Based on PEP8, imports should be grouped by the following order:</p><ol><li>Standard library import</li><li>Related third-party import</li><li>Local application/library specific import</li></ol><p><strong>What is Standard Library Imports?</strong></p><p>Standard library are installed automatically by Python installer, full documentation link<br>is here: <a href="https://docs.python.org/3/library/">https://docs.python.org/3/library/</a></p><p><strong>What is the order after grouping?</strong></p><p>There is no specific rules, but based on common preferences, use alphabetical order, with<br>import first and from … import after</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> abc</span><br><span class="line"><span class="keyword">import</span> <span class="function"><span class="keyword">def</span></span></span><br><span class="line"><span class="function"><span class="title">import</span> <span class="title">x</span></span></span><br><span class="line"><span class="function"><span class="title">from</span> <span class="title">g</span> <span class="title">import</span> <span class="title">gg</span></span></span><br><span class="line"><span class="function"><span class="title">from</span> <span class="title">x</span> <span class="title">import</span> <span class="title">xx</span></span></span><br></pre></td></tr></table></figure><h3 id="Intra-Package"><a href="#Intra-Package" class="headerlink" title="Intra-Package"></a>Intra-Package</h3><p>In a structure like this, how would you do import from another directory?<br>say from <code>module-x.py</code> import <code>module-a</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">top-package&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        sub-package-a&#x2F;</span><br><span class="line">                __init__.py</span><br><span class="line">                module-x.py</span><br><span class="line">                module-y.py</span><br><span class="line">        sub-package-b&#x2F;</span><br><span class="line">                __init__.py</span><br><span class="line">                module-a.py</span><br><span class="line">                module-b.py</span><br></pre></td></tr></table></figure><p>Here’s some examples doing relative imports in <code>module-x</code></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module-y</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> module-y</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .module-y <span class="keyword">import</span> <span class="class"><span class="keyword">class</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">from</span> .. <span class="title">import</span> <span class="title">sub</span>-<span class="title">package</span>-<span class="title">b</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">from</span> ..<span class="title">subpackage</span>-<span class="title">b</span> <span class="title">import</span> <span class="title">module</span>-<span class="title">a</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">from</span> ..<span class="title">subpackage</span>-<span class="title">b</span>.<span class="title">module</span>-<span class="title">a</span> <span class="title">import</span> <span class="title">class</span></span></span><br></pre></td></tr></table></figure><p>##Reference<br><a href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a><br><a href="https://stackoverflow.com/questions/37974843/why-can-i-import-successfully-without-init-py">https://stackoverflow.com/questions/37974843/why-can-i-import-successfully-without-init-py</a><br><a href="https://stackoverflow.com/questions/9427037/relative-path-not-working-even-with-init-py">https://stackoverflow.com/questions/9427037/relative-path-not-working-even-with-init-py</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;from-…-import-…-or-import-…&quot;&gt;&lt;a href=&quot;#from-…-import-…-or-import-…&quot; class=&quot;headerlink&quot; title=&quot;from … import … or import …&quot;&gt;&lt;/a&gt;from </summary>
+      
+    
+    
+    
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
+    
+    
+    <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Conditional Expression &amp; List Comprehension</title>
-    <link href="http://example.com/2021/01/06/conditional-expression/"/>
-    <id>http://example.com/2021/01/06/conditional-expression/</id>
+    <link href="http://xingyulei.xyz/2021/01/06/conditional-expression/"/>
+    <id>http://xingyulei.xyz/2021/01/06/conditional-expression/</id>
     <published>2021-01-06T05:00:00.000Z</published>
     <updated>2021-01-11T02:18:35.144Z</updated>
     
@@ -421,19 +421,19 @@
     
     
     
-    <category term="tech summary" scheme="http://example.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
+    <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
-    <category term="style" scheme="http://example.com/tags/style/"/>
+    <category term="style" scheme="http://xingyulei.xyz/tags/style/"/>
     
   </entry>
   
   <entry>
     <title>Learning Git</title>
-    <link href="http://example.com/2020/12/22/git-learning/"/>
-    <id>http://example.com/2020/12/22/git-learning/</id>
+    <link href="http://xingyulei.xyz/2020/12/22/git-learning/"/>
+    <id>http://xingyulei.xyz/2020/12/22/git-learning/</id>
     <published>2020-12-22T05:00:00.000Z</published>
     <updated>2021-01-11T02:17:10.967Z</updated>
     
@@ -447,19 +447,19 @@
     
     
     
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="git" scheme="http://example.com/tags/git/"/>
+    <category term="git" scheme="http://xingyulei.xyz/tags/git/"/>
     
-    <category term="version control" scheme="http://example.com/tags/version-control/"/>
+    <category term="version control" scheme="http://xingyulei.xyz/tags/version-control/"/>
     
   </entry>
   
   <entry>
     <title>Field vs. Property</title>
-    <link href="http://example.com/2020/12/20/field-property/"/>
-    <id>http://example.com/2020/12/20/field-property/</id>
+    <link href="http://xingyulei.xyz/2020/12/20/field-property/"/>
+    <id>http://xingyulei.xyz/2020/12/20/field-property/</id>
     <published>2020-12-20T05:00:00.000Z</published>
     <updated>2021-02-28T00:58:20.264Z</updated>
     
@@ -473,19 +473,19 @@
     
     
     
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
+    <category term="c#" scheme="http://xingyulei.xyz/tags/c/"/>
     
-    <category term="c#" scheme="http://example.com/tags/c/"/>
+    <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Structure vs. Class</title>
-    <link href="http://example.com/2020/12/20/structure-class/"/>
-    <id>http://example.com/2020/12/20/structure-class/</id>
+    <link href="http://xingyulei.xyz/2020/12/20/structure-class/"/>
+    <id>http://xingyulei.xyz/2020/12/20/structure-class/</id>
     <published>2020-12-20T05:00:00.000Z</published>
     <updated>2021-01-11T02:24:41.239Z</updated>
     
@@ -499,10 +499,10 @@
     
     
     
-    <category term="learning log" scheme="http://example.com/categories/learning-log/"/>
+    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="c#" scheme="http://example.com/tags/c/"/>
+    <category term="c#" scheme="http://xingyulei.xyz/tags/c/"/>
     
   </entry>
   
