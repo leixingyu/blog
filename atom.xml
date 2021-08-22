@@ -476,9 +476,9 @@
     <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
     
     
-    <category term="c#" scheme="http://xingyulei.xyz/tags/c/"/>
-    
     <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
+    
+    <category term="c#" scheme="http://xingyulei.xyz/tags/c/"/>
     
   </entry>
   
