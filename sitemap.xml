@@ -2,28 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://xingyulei.xyz/about/index.html</loc>
+    <loc>http://xingyulei.xyz/2021/08/08/qt-detect-click/</loc>
     
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/2021/08/14/py-organize-module/</loc>
+    
+    <lastmod>2021-08-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/2021/08/22/qt-pixmap-scale/</loc>
+    
+    <lastmod>2021-08-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/2021/02/07/qt-mv-list/</loc>
+    
+    <lastmod>2021-08-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/2021/02/06/qt-mv-intro/</loc>
+    
+    <lastmod>2021-08-23</lastmod>
     
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/2021/08/21/qt-button-alignment/</loc>
-    
-    <lastmod>2021-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xingyulei.xyz/2021/08/24/python-organize-module/</loc>
-    
-    <lastmod>2021-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xingyulei.xyz/2021/01/23/python-dunder/</loc>
     
     <lastmod>2021-08-22</lastmod>
     
@@ -37,14 +51,28 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/2021/07/16/python-constant/</loc>
+    <loc>http://xingyulei.xyz/about/index.html</loc>
     
     <lastmod>2021-08-22</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/2021/01/16/python-import/</loc>
+    <loc>http://xingyulei.xyz/2021/01/23/py-dunder/</loc>
+    
+    <lastmod>2021-08-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/2021/07/16/py-constant/</loc>
+    
+    <lastmod>2021-08-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/2021/01/16/py-import/</loc>
     
     <lastmod>2021-08-22</lastmod>
     
@@ -86,20 +114,6 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/2021/02/07/qt-mv-list/</loc>
-    
-    <lastmod>2021-08-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xingyulei.xyz/2021/02/06/qt-mv-intro/</loc>
-    
-    <lastmod>2021-08-18</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xingyulei.xyz/2021/01/17/override-overload/</loc>
     
     <lastmod>2021-08-18</lastmod>
@@ -107,21 +121,21 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/2021/01/24/python-error-handle/</loc>
+    <loc>http://xingyulei.xyz/2021/01/24/py-error-handle/</loc>
     
     <lastmod>2021-08-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/2021/01/16/pyqt-template/</loc>
+    <loc>http://xingyulei.xyz/2021/01/16/qt-template/</loc>
     
     <lastmod>2021-08-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/2021/01/23/pyqt-sorting/</loc>
+    <loc>http://xingyulei.xyz/2021/01/23/qt-sorting/</loc>
     
     <lastmod>2021-08-11</lastmod>
     
@@ -156,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/books/index.html</loc>
+    <loc>http://xingyulei.xyz/categories/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/categories/index.html</loc>
+    <loc>http://xingyulei.xyz/books/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
@@ -228,7 +242,7 @@
 
   <url>
     <loc>http://xingyulei.xyz/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -236,70 +250,70 @@
   
   <url>
     <loc>http://xingyulei.xyz/tags/python/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/tags/style/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/tags/c/</loc>
-    <lastmod>2021-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://xingyulei.xyz/tags/git/</loc>
-    <lastmod>2021-08-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://xingyulei.xyz/tags/version-control/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/tags/maya/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/tags/git/</loc>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/tags/version-control/</loc>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/tags/pyqt/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/tags/Unity/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/tags/integration/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/tags/C/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -308,14 +322,14 @@
   
   <url>
     <loc>http://xingyulei.xyz/categories/tech-summary/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://xingyulei.xyz/categories/learning-log/</loc>
-    <lastmod>2021-08-22</lastmod>
+    <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
