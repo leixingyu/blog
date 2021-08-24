@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xingyulei.xyz/2019/11/08/maya-api-intro/</loc>
+    
+    <lastmod>2021-08-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xingyulei.xyz/2019/11/11/maya-api-deformer/</loc>
     
     <lastmod>2021-08-24</lastmod>
@@ -17,13 +24,6 @@
   
   <url>
     <loc>http://xingyulei.xyz/2019/11/09/maya-api-command/</loc>
-    
-    <lastmod>2021-08-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xingyulei.xyz/2019/11/08/maya-api-intro/</loc>
     
     <lastmod>2021-08-24</lastmod>
     
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/tags/index.html</loc>
+    <loc>http://xingyulei.xyz/repository/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/repository/index.html</loc>
+    <loc>http://xingyulei.xyz/tags/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
@@ -191,14 +191,14 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/books/index.html</loc>
+    <loc>http://xingyulei.xyz/categories/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/categories/index.html</loc>
+    <loc>http://xingyulei.xyz/books/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
@@ -249,7 +249,7 @@
 
   
   <url>
-    <loc>http://xingyulei.xyz/tags/maya/</loc>
+    <loc>http://xingyulei.xyz/tags/c/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -257,6 +257,20 @@
   
   <url>
     <loc>http://xingyulei.xyz/tags/python/</loc>
+    <lastmod>2021-08-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/tags/style/</loc>
+    <lastmod>2021-08-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/tags/maya/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -271,20 +285,6 @@
   
   <url>
     <loc>http://xingyulei.xyz/tags/version-control/</loc>
-    <lastmod>2021-08-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://xingyulei.xyz/tags/style/</loc>
-    <lastmod>2021-08-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://xingyulei.xyz/tags/c/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
