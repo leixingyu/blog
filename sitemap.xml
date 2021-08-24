@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xingyulei.xyz/2020/11/19/verlet-integration/</loc>
+    
+    <lastmod>2021-08-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xingyulei.xyz/2019/11/08/maya-api-intro/</loc>
     
     <lastmod>2021-08-24</lastmod>
@@ -219,13 +226,6 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/2020/11/19/verlet-integration/</loc>
-    
-    <lastmod>2021-01-11</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xingyulei.xyz/2021/01/06/conditional-expression/</loc>
     
     <lastmod>2021-01-11</lastmod>
@@ -249,13 +249,6 @@
 
   
   <url>
-    <loc>http://xingyulei.xyz/tags/c/</loc>
-    <lastmod>2021-08-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://xingyulei.xyz/tags/python/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
@@ -270,7 +263,7 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/tags/maya/</loc>
+    <loc>http://xingyulei.xyz/tags/c/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -285,6 +278,13 @@
   
   <url>
     <loc>http://xingyulei.xyz/tags/version-control/</loc>
+    <lastmod>2021-08-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/tags/maya/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -321,14 +321,14 @@
 
   
   <url>
-    <loc>http://xingyulei.xyz/categories/learning-log/</loc>
+    <loc>http://xingyulei.xyz/categories/tech-summary/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/categories/tech-summary/</loc>
+    <loc>http://xingyulei.xyz/categories/learning-log/</loc>
     <lastmod>2021-08-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

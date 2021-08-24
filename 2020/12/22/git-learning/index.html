@@ -20,12 +20,12 @@
   
   
   <title>Learning Git | Xingyu Lei</title>
-  <meta name="description" content="DVCS vs. CVCSDVCS (distributed version control system), for example: Git. Each developer are getting a complete copy of the entire history of that project. This allows developer works offline without">
+  <meta name="description" content="DVCS vs. CVCS DVCS (distributed version control system), for example: Git. Each developer are getting a complete copy of the entire history of that project. This allows developer works offline withou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Learning Git">
 <meta property="og:url" content="http://xingyulei.xyz/2020/12/22/git-learning/index.html">
 <meta property="og:site_name" content="Xingyu Lei">
-<meta property="og:description" content="DVCS vs. CVCSDVCS (distributed version control system), for example: Git. Each developer are getting a complete copy of the entire history of that project. This allows developer works offline without">
+<meta property="og:description" content="DVCS vs. CVCS DVCS (distributed version control system), for example: Git. Each developer are getting a complete copy of the entire history of that project. This allows developer works offline withou">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-22T05:00:00.000Z">
 <meta property="article:modified_time" content="2021-01-11T02:17:10.967Z">
@@ -231,7 +231,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/22/git-learning/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 437(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 440(words)</span>
 	
 	
 
@@ -239,34 +239,48 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="DVCS-vs-CVCS"><a href="#DVCS-vs-CVCS" class="headerlink" title="DVCS vs. CVCS"></a>DVCS vs. CVCS</h2><p>DVCS (distributed version control system), for example: Git. Each developer are getting a complete copy of the entire history of that project. This allows developer works offline without connecting to the master repo. Git has an additional staging phase which allows you to break down changes into seperate commits with its own comments. </p>
+        <h2 id="dvcs-vs-cvcs"><a class="markdownIt-Anchor" href="#dvcs-vs-cvcs"></a> DVCS vs. CVCS</h2>
+<p>DVCS (distributed version control system), for example: Git. Each developer are getting a complete copy of the entire history of that project. This allows developer works offline without connecting to the master repo. Git has an additional staging phase which allows you to break down changes into seperate commits with its own comments.</p>
 <p>CVCS (centralized version control system), for example: SVN. One central repository, gives manager more top down approach to control, security permission. No staging phase means one less step.</p>
 <p>Note: today, more teams are using a <strong>Centralized Git Model</strong>, where changes intended to be a part of a project are submitted as pull or merge request to the master branch.</p>
-<h2 id="GitHub-vs-GitLab"><a href="#GitHub-vs-GitLab" class="headerlink" title="GitHub vs. GitLab"></a>GitHub vs. GitLab</h2><p>They are completely different web-based Git repositories. On the surface, it looks like GitHub is really community friendly, hosting the largest version control platform, while GitLab offers great deal for enterprise professional use (equally, or better features like tracking, project import, with cheaper prices)</p>
-<h3 id="Git-SSH-protocol"><a href="#Git-SSH-protocol" class="headerlink" title="Git SSH protocol"></a>Git SSH protocol</h3><h3 id="Git-Tricky-Commands"><a href="#Git-Tricky-Commands" class="headerlink" title="Git Tricky Commands"></a>Git Tricky Commands</h3><ul>
-<li><p><code>git init</code> vs. <code>git clone</code></p>
-<p> <code>git init</code> is a setup process where you initialize a bare local repo<br> <code>git clone</code> obtain a local development clone repo from an already setup central repository, which can be treated as combining <code>git init</code> and <code>git remote add</code></p>
+<h2 id="github-vs-gitlab"><a class="markdownIt-Anchor" href="#github-vs-gitlab"></a> GitHub vs. GitLab</h2>
+<p>They are completely different web-based Git repositories. On the surface, it looks like GitHub is really community friendly, hosting the largest version control platform, while GitLab offers great deal for enterprise professional use (equally, or better features like tracking, project import, with cheaper prices)</p>
+<h3 id="git-ssh-protocol"><a class="markdownIt-Anchor" href="#git-ssh-protocol"></a> Git SSH protocol</h3>
+<h3 id="git-tricky-commands"><a class="markdownIt-Anchor" href="#git-tricky-commands"></a> Git Tricky Commands</h3>
+<ul>
+<li>
+<p><code>git init</code> vs. <code>git clone</code></p>
+<p><code>git init</code> is a setup process where you initialize a bare local repo<br />
+<code>git clone</code> obtain a local development clone repo from an already setup central repository, which can be treated as combining <code>git init</code> and <code>git remote add</code></p>
 </li>
-<li><p><code>git pull</code> (or <code>git push</code>) vs. <code>pull request</code> (or <code>push request</code>)</p>
-<p> <code>git pull</code> pull the changes from the remote repo to your local repo, which is effectively a <code>git fetch</code> followed by a <code>git merge</code></p>
-<p> <code>pull request</code> is you requesting another repo to pull your change (more or less asking them to <code>git pull</code> from your repo). A <code>push request</code> is the other way around, where the target repo ask you to <code>git push</code> your changes</p>
+<li>
+<p><code>git pull</code> (or <code>git push</code>) vs. <code>pull request</code> (or <code>push request</code>)</p>
+<p><code>git pull</code> pull the changes from the remote repo to your local repo, which is effectively a <code>git fetch</code> followed by a <code>git merge</code></p>
+<p><code>pull request</code> is you requesting another repo to pull your change (more or less asking them to <code>git pull</code> from your repo). A <code>push request</code> is the other way around, where the target repo ask you to <code>git push</code> your changes</p>
 </li>
-<li><p><code>git config</code></p>
-<p> this command allows you to configure your Git configuration on a global or local project level, some common usage includes setting up name and email, configure text color or editor choice. There are three configuration level: <code>--local</code>, <code>--global</code>, <code>--system</code></p>
+<li>
+<p><code>git config</code></p>
+<p>this command allows you to configure your Git configuration on a global or local project level, some common usage includes setting up name and email, configure text color or editor choice. There are three configuration level: <code>--local</code>, <code>--global</code>, <code>--system</code></p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example</span></span><br><span class="line">git --global user.name <span class="string">&quot;John Doh&quot;</span></span><br><span class="line">git --system core.editor vim</span><br></pre></td></tr></table></figure>
-<p> Note: most config only need to be set once, email is an exception where you will want to use personal email for personal project and professional email for work-related project</p>
+<p>Note: most config only need to be set once, email is an exception where you will want to use personal email for personal project and professional email for work-related project</p>
 </li>
 </ul>
-<h3 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h3><ul>
-<li><p><a target="_blank" rel="noopener" href="https://blog.hackbrightacademy.com/blog/svn-vs-git/#:~:text=The%20difference%20between%20Git%20and%20SVN%20version%20control%20systems%20is,well%20as%20some%20local%20repositories.">https://blog.hackbrightacademy.com/blog/svn-vs-git/#:~:text=The%20difference%20between%20Git%20and%20SVN%20version%20control%20systems%20is,well%20as%20some%20local%20repositories.</a></p>
+<h3 id="resource"><a class="markdownIt-Anchor" href="#resource"></a> Resource</h3>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://blog.hackbrightacademy.com/blog/svn-vs-git/#:~:text=The%20difference%20between%20Git%20and%20SVN%20version%20control%20systems%20is,well%20as%20some%20local%20repositories.">https://blog.hackbrightacademy.com/blog/svn-vs-git/#:~:text=The%20difference%20between%20Git%20and%20SVN%20version%20control%20systems%20is,well%20as%20some%20local%20repositories.</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/what-is-git">https://www.atlassian.com/git/tutorials/what-is-git</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/what-is-git">https://www.atlassian.com/git/tutorials/what-is-git</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://www.perforce.com/blog/vcs/git-vs-perforce-how-choose-and-when-use-both">https://www.perforce.com/blog/vcs/git-vs-perforce-how-choose-and-when-use-both</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.perforce.com/blog/vcs/git-vs-perforce-how-choose-and-when-use-both">https://www.perforce.com/blog/vcs/git-vs-perforce-how-choose-and-when-use-both</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://usersnap.com/blog/gitlab-github/">https://usersnap.com/blog/gitlab-github/</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://usersnap.com/blog/gitlab-github/">https://usersnap.com/blog/gitlab-github/</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/22585407/git-pull-vs-pull-request">https://stackoverflow.com/questions/22585407/git-pull-vs-pull-request</a></p>
+<li>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/22585407/git-pull-vs-pull-request">https://stackoverflow.com/questions/22585407/git-pull-vs-pull-request</a></p>
 </li>
 </ul>
 

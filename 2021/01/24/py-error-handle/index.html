@@ -20,12 +20,12 @@
   
   
   <title>Error Handling in Python | Xingyu Lei</title>
-  <meta name="description" content="Error Handlingfinally will guarantee execution in try-exception-finally block even after  return raise  Raise error back to parent function 12345678910111213141516171819202122232425262728# eg. this li">
+  <meta name="description" content="Error Handling finally will guarantee execution in try-exception-finally block even after  return raise  Raise error back to parent function 12345678910111213141516171819202122232425262728# eg. this">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Error Handling in Python">
 <meta property="og:url" content="http://xingyulei.xyz/2021/01/24/py-error-handle/index.html">
 <meta property="og:site_name" content="Xingyu Lei">
-<meta property="og:description" content="Error Handlingfinally will guarantee execution in try-exception-finally block even after  return raise  Raise error back to parent function 12345678910111213141516171819202122232425262728# eg. this li">
+<meta property="og:description" content="Error Handling finally will guarantee execution in try-exception-finally block even after  return raise  Raise error back to parent function 12345678910111213141516171819202122232425262728# eg. this">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-24T05:00:00.000Z">
 <meta property="article:modified_time" content="2021-08-11T03:27:00.046Z">
@@ -230,7 +230,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/24/py-error-handle/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 99(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 101(words)</span>
 	
 	
 
@@ -238,15 +238,16 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="Error-Handling"><a href="#Error-Handling" class="headerlink" title="Error Handling"></a>Error Handling</h3><p><code>finally</code> will guarantee execution in <code>try-exception-finally</code> block even after</p>
+        <h3 id="error-handling"><a class="markdownIt-Anchor" href="#error-handling"></a> Error Handling</h3>
+<p><code>finally</code> will guarantee execution in <code>try-exception-finally</code> block even after</p>
 <ul>
 <li><code>return</code></li>
 <li><code>raise</code></li>
 </ul>
 <p>Raise error back to parent function</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># eg. this line will give an ZeroDivision Error</span></span><br><span class="line"><span class="number">10</span> / <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># what if this belongs to a function and we want to raise the</span></span><br><span class="line"><span class="comment"># error code to let whatever calls it to handle instead of itself</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># so instead of</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">occur_error</span>():</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        output = <span class="number">10</span> / <span class="number">0</span></span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="comment"># error handling</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># we do this</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handle_error</span>():</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        occur_error()</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="comment"># error handling</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">occur_error</span>():</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        output = <span class="number">10</span> / <span class="number">0</span></span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="keyword">raise</span> ZeroDivisionError</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49262379/does-finally-always-execute-in-python">https://stackoverflow.com/questions/49262379/does-finally-always-execute-in-python</a></p>
+<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49262379/does-finally-always-execute-in-python">https://stackoverflow.com/questions/49262379/does-finally-always-execute-in-python</a></p>
 
       
     </div>

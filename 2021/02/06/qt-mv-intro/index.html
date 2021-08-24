@@ -20,12 +20,12 @@
   
   
   <title>Qt Model View Intro | Xingyu Lei</title>
-  <meta name="description" content="The following example demonstrated how same data is accessed through a Modeland shared across Views 1234567891011121314151617181920from Qt import QtGui, QtCore, QtWidgetsimport sysif __name__ &#x3D;&#x3D; &amp;#x27">
+  <meta name="description" content="The following example demonstrated how same data is accessed through a Model and shared across Views 1234567891011121314151617181920from Qt import QtGui, QtCore, QtWidgetsimport sysif __name__ &#x3D;&#x3D; &amp;#x2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt Model View Intro">
 <meta property="og:url" content="http://xingyulei.xyz/2021/02/06/qt-mv-intro/index.html">
 <meta property="og:site_name" content="Xingyu Lei">
-<meta property="og:description" content="The following example demonstrated how same data is accessed through a Modeland shared across Views 1234567891011121314151617181920from Qt import QtGui, QtCore, QtWidgetsimport sysif __name__ &#x3D;&#x3D; &amp;#x27">
+<meta property="og:description" content="The following example demonstrated how same data is accessed through a Model and shared across Views 1234567891011121314151617181920from Qt import QtGui, QtCore, QtWidgetsimport sysif __name__ &#x3D;&#x3D; &amp;#x2">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-06T05:00:00.000Z">
 <meta property="article:modified_time" content="2021-08-23T00:21:39.057Z">
@@ -230,7 +230,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/06/qt-mv-intro/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 158(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 161(words)</span>
 	
 	
 
@@ -238,11 +238,14 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>The following example demonstrated how same data is accessed through a Model<br>and shared across Views</p>
+        <p>The following example demonstrated how same data is accessed through a Model<br />
+and shared across Views</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> QtGui, QtCore, QtWidgets</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># no QString needed in Qt5, use python string instead</span></span><br><span class="line">    data = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    listView = QtWidgets.QListView()</span><br><span class="line">    listView.show()</span><br><span class="line"></span><br><span class="line">    model = QtCore.QStringListModel(data)</span><br><span class="line">    listView.setModel(model)</span><br><span class="line"></span><br><span class="line">    combobox = QtWidgets.QComboBox()</span><br><span class="line">    combobox.setModel(model)</span><br><span class="line">    combobox.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
 <p>In Qt 5, the <code>QtCore.QStringList()</code> is replaced by python’s built-in <code>string</code> type</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># qt 4</span></span><br><span class="line">data = QtCore.QStringList()</span><br><span class="line">data &lt;&lt; <span class="string">&quot;one&quot;</span> &lt;&lt; <span class="string">&quot;two&quot;</span> &lt;&lt; <span class="string">&quot;three&quot;</span> &lt;&lt; <span class="string">&quot;four&quot;</span> &lt;&lt; <span class="string">&quot;five&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># qt 5</span></span><br><span class="line">data = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>, <span class="string">&#x27;four&#x27;</span>, <span class="string">&#x27;five&#x27;</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mCHVI8OXDxw&list=PLG4y4w32mF3qmweFe59P_8INlVNOm_IHo">https://www.youtube.com/watch?v=mCHVI8OXDxw&amp;list=PLG4y4w32mF3qmweFe59P_8INlVNOm_IHo</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27757678/importerror-cannot-import-name-qstringlist-in-pyqt5">https://stackoverflow.com/questions/27757678/importerror-cannot-import-name-qstringlist-in-pyqt5</a></p>
+<h3 id="source"><a class="markdownIt-Anchor" href="#source"></a> Source</h3>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mCHVI8OXDxw&amp;list=PLG4y4w32mF3qmweFe59P_8INlVNOm_IHo">https://www.youtube.com/watch?v=mCHVI8OXDxw&amp;list=PLG4y4w32mF3qmweFe59P_8INlVNOm_IHo</a><br />
+<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27757678/importerror-cannot-import-name-qstringlist-in-pyqt5">https://stackoverflow.com/questions/27757678/importerror-cannot-import-name-qstringlist-in-pyqt5</a></p>
 
       
     </div>

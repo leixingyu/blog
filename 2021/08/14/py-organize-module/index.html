@@ -20,12 +20,12 @@
   
   
   <title>How to organize your library | Xingyu Lei</title>
-  <meta name="description" content="I saw this post on stack overflow and thought it is something worth summarizing How should we organize our own library? Method OneStack everything inside one root package, each module contains many fu">
+  <meta name="description" content="I saw this post on stack overflow and thought it is something worth summarizing How should we organize our own library?  Method One Stack everything inside one root package, each module contains many">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to organize your library">
 <meta property="og:url" content="http://xingyulei.xyz/2021/08/14/py-organize-module/index.html">
 <meta property="og:site_name" content="Xingyu Lei">
-<meta property="og:description" content="I saw this post on stack overflow and thought it is something worth summarizing How should we organize our own library? Method OneStack everything inside one root package, each module contains many fu">
+<meta property="og:description" content="I saw this post on stack overflow and thought it is something worth summarizing How should we organize our own library?  Method One Stack everything inside one root package, each module contains many">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-14T04:00:00.000Z">
 <meta property="article:modified_time" content="2021-08-23T03:21:46.005Z">
@@ -230,7 +230,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/08/14/py-organize-module/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 201(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 206(words)</span>
 	
 	
 
@@ -240,19 +240,24 @@
       
         <p>I saw this post on stack overflow and thought it is something worth summarizing</p>
 <p>How should we organize our own library?</p>
-<h3 id="Method-One"><a href="#Method-One" class="headerlink" title="Method One"></a>Method One</h3><p>Stack everything inside one root package, each module contains many functions, one utility module containing<br>all the generic functions</p>
+<h3 id="method-one"><a class="markdownIt-Anchor" href="#method-one"></a> Method One</h3>
+<p>Stack everything inside one root package, each module contains many functions, one utility module containing<br />
+all the generic functions</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root (package)</span><br><span class="line">    animation.py  (module)</span><br><span class="line">    audio.py      (module)</span><br><span class="line">    modelling.py  (module)</span><br><span class="line">    rigging.py    (module)</span><br><span class="line">    library.py    (module)</span><br><span class="line">    util.py       (module)</span><br></pre></td></tr></table></figure>
-<h3 id="Method-Two"><a href="#Method-Two" class="headerlink" title="Method Two"></a>Method Two</h3><p>Have multiple separated packages, and split the code into smaller modules</p>
+<h3 id="method-two"><a class="markdownIt-Anchor" href="#method-two"></a> Method Two</h3>
+<p>Have multiple separated packages, and split the code into smaller modules</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root (package)</span><br><span class="line">    animation (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        bar.py       (module)</span><br><span class="line"></span><br><span class="line">    audio (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        foo.py       (module)</span><br><span class="line"></span><br><span class="line">   rigging (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        foo.py       (module)</span><br><span class="line"></span><br><span class="line">   etc</span><br></pre></td></tr></table></figure>
 <p>The <code>__init__.py</code> inside of each package would import all the necessary functions</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Either are okay, but there are certain rules/recommendation to follow:</p>
+<h3 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h3>
+<p>Either are okay, but there are certain rules/recommendation to follow:</p>
 <ol>
 <li>Functions in the same module are closely connected</li>
 <li>Having fewer but bigger modules could be difficult to navigate</li>
 <li>Try to make each module standalone</li>
 <li>Having many separated modules makes import efficient, but the module should not be too small</li>
 </ol>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/52082078/best-way-to-keep-python-modules-organised">https://stackoverflow.com/questions/52082078/best-way-to-keep-python-modules-organised</a></p>
+<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/52082078/best-way-to-keep-python-modules-organised">https://stackoverflow.com/questions/52082078/best-way-to-keep-python-modules-organised</a></p>
 
       
     </div>

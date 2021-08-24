@@ -20,12 +20,12 @@
   
   
   <title>QWidget Template (without .ui file) | Xingyu Lei</title>
-  <meta name="description" content="Sometimes you need a quick window to display some information,but the built-in qt message boxes aren’t suitable for the job. Temporary WidgetYou can choose to create a widget class, but also for savin">
+  <meta name="description" content="Sometimes you need a quick window to display some information, but the built-in qt message boxes aren’t suitable for the job.  Temporary Widget You can choose to create a widget class, but also for sa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QWidget Template (without .ui file)">
 <meta property="og:url" content="http://xingyulei.xyz/2021/02/18/qt-widget-template/index.html">
 <meta property="og:site_name" content="Xingyu Lei">
-<meta property="og:description" content="Sometimes you need a quick window to display some information,but the built-in qt message boxes aren’t suitable for the job. Temporary WidgetYou can choose to create a widget class, but also for savin">
+<meta property="og:description" content="Sometimes you need a quick window to display some information, but the built-in qt message boxes aren’t suitable for the job.  Temporary Widget You can choose to create a widget class, but also for sa">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-18T05:00:00.000Z">
 <meta property="article:modified_time" content="2021-08-18T04:00:58.131Z">
@@ -230,7 +230,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/18/qt-widget-template/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 289(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 294(words)</span>
 	
 	
 
@@ -238,24 +238,35 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>Sometimes you need a quick window to display some information,<br>but the built-in qt message boxes aren’t suitable for the job.</p>
-<h3 id="Temporary-Widget"><a href="#Temporary-Widget" class="headerlink" title="Temporary Widget"></a>Temporary Widget</h3><p>You can choose to create a widget class, but also for saving time, you can create<br>a temporary custom widget</p>
+        <p>Sometimes you need a quick window to display some information,<br />
+but the built-in qt message boxes aren’t suitable for the job.</p>
+<h3 id="temporary-widget"><a class="markdownIt-Anchor" href="#temporary-widget"></a> Temporary Widget</h3>
+<p>You can choose to create a widget class, but also for saving time, you can create<br />
+a temporary custom widget</p>
 <p>example:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWidget</span>(<span class="params">QtWidgets.QMainWindow</span>):</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">    self.connectSignal()</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">connectSignal</span>(<span class="params">self</span>):</span></span><br><span class="line">    self.someBtn.clicked.connect(self.openCustomWidget)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">openCustomWidget</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="comment"># initialize with a widget and a layout</span></span><br><span class="line">    self.customWidget = QtWidgets.QWidget()</span><br><span class="line">    layout = QtWidgets.QHBoxLayout(self.customWidget)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># title</span></span><br><span class="line">    self.customWidget.setWindowTitle(<span class="string">&#x27;Error Log&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># set window display behavior</span></span><br><span class="line">    self.customWidget.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># set window icon (using a built-in icon)</span></span><br><span class="line">    name = <span class="string">&quot;SP_MessageBoxCritical&quot;</span></span><br><span class="line">    style = self.customWidget.style()</span><br><span class="line">    icon = style.standardIcon(<span class="built_in">getattr</span>(QtWidgets.QStyle, name))</span><br><span class="line">    self.customWidget.setWindowIcon(icon)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># add custom elements here</span></span><br><span class="line">    message = <span class="string">&quot;happy new year&quot;</span></span><br><span class="line">    errorLabel = QtWidgets.QLabel(messages)</span><br><span class="line">    scrollArea = QtWidgets.QScrollArea()</span><br><span class="line">    scrollArea.setWidgetResizable(<span class="literal">True</span>)</span><br><span class="line">    scrollArea.setWidget(errorLabel)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># finalize</span></span><br><span class="line">    layout.addWidget(scrollArea)</span><br><span class="line">    self.customWidget.show()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">showWindow</span>():</span></span><br><span class="line">    win = MainWidget()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        win.close()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    win.setAttribute(QtCore.Qt.WA_DeleteOnClose)</span><br><span class="line">    win.show()</span><br></pre></td></tr></table></figure>
 <p>Couple of things worth noting:</p>
 <ol>
-<li><p>correctly initialize the widget</p>
-<p> <code>self.customWidget = QtWidgets.QWidget()</code> will allow widget be child of the main window,<br> thus allow widget to close when main window is closed</p>
-<p> so not <code>customWidget = QtWidgets.QWidget()</code> or <code>self.customWidget = QtWidgets.QWidget(self)</code></p>
+<li>
+<p>correctly initialize the widget</p>
+<p><code>self.customWidget = QtWidgets.QWidget()</code> will allow widget be child of the main window,<br />
+thus allow widget to close when main window is closed</p>
+<p>so not <code>customWidget = QtWidgets.QWidget()</code> or <code>self.customWidget = QtWidgets.QWidget(self)</code></p>
 </li>
-<li><p>use <code>getattr</code> in combination with <code>QStyle</code> and name of the built-in icon</p>
+<li>
+<p>use <code>getattr</code> in combination with <code>QStyle</code> and name of the built-in icon</p>
 </li>
-<li><p>use <code>win.setAttribute(QtCore.Qt.WA_DeleteOnClose)</code> to make sure the child widget is killed<br>after main window is closed, because default close only hides window objects</p>
+<li>
+<p>use <code>win.setAttribute(QtCore.Qt.WA_DeleteOnClose)</code> to make sure the child widget is killed<br />
+after main window is closed, because default close only hides window objects</p>
 </li>
-<li><p><code>self.customWidget.show()</code> is the core command to call it to display</p>
+<li>
+<p><code>self.customWidget.show()</code> is the core command to call it to display</p>
 </li>
 </ol>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a target="_blank" rel="noopener" href="https://www.programiz.com/python-programming/methods/built-in/getattr">https://www.programiz.com/python-programming/methods/built-in/getattr</a><br><a target="_blank" rel="noopener" href="https://forum.learnpyqt.com/t/are-there-any-built-in-qicons/185/2">https://forum.learnpyqt.com/t/are-there-any-built-in-qicons/185/2</a></p>
+<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://www.programiz.com/python-programming/methods/built-in/getattr">https://www.programiz.com/python-programming/methods/built-in/getattr</a><br />
+<a target="_blank" rel="noopener" href="https://forum.learnpyqt.com/t/are-there-any-built-in-qicons/185/2">https://forum.learnpyqt.com/t/are-there-any-built-in-qicons/185/2</a></p>
 
       
     </div>
