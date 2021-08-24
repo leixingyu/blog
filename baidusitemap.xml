@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://xingyulei.xyz/2019/11/11/maya-api-deformer/</loc>
+    <lastmod>2021-08-24</lastmod>
+  </url>
+  <url>
+    <loc>http://xingyulei.xyz/2019/11/10/maya-api-node/</loc>
+    <lastmod>2021-08-24</lastmod>
+  </url>
+  <url>
+    <loc>http://xingyulei.xyz/2019/11/09/maya-api-command/</loc>
+    <lastmod>2021-08-24</lastmod>
+  </url>
+  <url>
+    <loc>http://xingyulei.xyz/2019/11/08/maya-api-intro/</loc>
+    <lastmod>2021-08-24</lastmod>
+  </url>
+  <url>
     <loc>http://xingyulei.xyz/2021/08/08/qt-detect-click/</loc>
     <lastmod>2021-08-23</lastmod>
   </url>
@@ -57,10 +73,6 @@
     <lastmod>2021-08-18</lastmod>
   </url>
   <url>
-    <loc>http://xingyulei.xyz/2019/10/09/maya-batch-mode/</loc>
-    <lastmod>2021-08-18</lastmod>
-  </url>
-  <url>
     <loc>http://xingyulei.xyz/2021/01/17/override-overload/</loc>
     <lastmod>2021-08-18</lastmod>
   </url>
@@ -81,23 +93,11 @@
     <lastmod>2021-02-28</lastmod>
   </url>
   <url>
-    <loc>http://xingyulei.xyz/2019/11/11/maya-api-3/</loc>
-    <lastmod>2021-01-11</lastmod>
-  </url>
-  <url>
     <loc>http://xingyulei.xyz/2020/12/20/structure-class/</loc>
     <lastmod>2021-01-11</lastmod>
   </url>
   <url>
     <loc>http://xingyulei.xyz/2020/11/19/verlet-integration/</loc>
-    <lastmod>2021-01-11</lastmod>
-  </url>
-  <url>
-    <loc>http://xingyulei.xyz/2019/11/10/maya-api-2/</loc>
-    <lastmod>2021-01-11</lastmod>
-  </url>
-  <url>
-    <loc>http://xingyulei.xyz/2019/11/09/maya-api-1/</loc>
     <lastmod>2021-01-11</lastmod>
   </url>
   <url>
