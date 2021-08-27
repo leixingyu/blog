@@ -198,14 +198,14 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/tags/index.html</loc>
+    <loc>http://xingyulei.xyz/repository/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/repository/index.html</loc>
+    <loc>http://xingyulei.xyz/tags/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
@@ -249,13 +249,6 @@
 
   
   <url>
-    <loc>http://xingyulei.xyz/tags/maya/</loc>
-    <lastmod>2021-08-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://xingyulei.xyz/tags/python/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>daily</changefreq>
@@ -278,6 +271,13 @@
   
   <url>
     <loc>http://xingyulei.xyz/tags/version-control/</loc>
+    <lastmod>2021-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://xingyulei.xyz/tags/maya/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -321,14 +321,14 @@
 
   
   <url>
-    <loc>http://xingyulei.xyz/categories/learning-log/</loc>
+    <loc>http://xingyulei.xyz/categories/tech-summary/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/categories/tech-summary/</loc>
+    <loc>http://xingyulei.xyz/categories/learning-log/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
