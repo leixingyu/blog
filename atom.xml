@@ -18,8 +18,8 @@
   
   <entry>
     <title>How to Resize QPixmap</title>
-    <link href="http://xingyulei.xyz/qt-pixmap-scale/"/>
-    <id>http://xingyulei.xyz/qt-pixmap-scale/</id>
+    <link href="http://xingyulei.xyz/post/qt-pixmap-scale/"/>
+    <id>http://xingyulei.xyz/post/qt-pixmap-scale/</id>
     <published>2021-08-22T04:00:00.000Z</published>
     <updated>2021-08-27T00:44:39.796Z</updated>
     
@@ -43,8 +43,8 @@
   
   <entry>
     <title>Qt Left Align Icon, Center Align Text (Python)</title>
-    <link href="http://xingyulei.xyz/qt-button-alignment/"/>
-    <id>http://xingyulei.xyz/qt-button-alignment/</id>
+    <link href="http://xingyulei.xyz/post/qt-button-alignment/"/>
+    <id>http://xingyulei.xyz/post/qt-button-alignment/</id>
     <published>2021-08-21T04:00:00.000Z</published>
     <updated>2021-08-22T21:45:15.057Z</updated>
     
@@ -68,8 +68,8 @@ although every button </summary>
   
   <entry>
     <title>How to Organize Custom Python Library</title>
-    <link href="http://xingyulei.xyz/py-organize-module/"/>
-    <id>http://xingyulei.xyz/py-organize-module/</id>
+    <link href="http://xingyulei.xyz/post/py-organize-module/"/>
+    <id>http://xingyulei.xyz/post/py-organize-module/</id>
     <published>2021-08-14T04:00:00.000Z</published>
     <updated>2021-08-27T00:45:01.597Z</updated>
     
@@ -94,8 +94,8 @@ although every button </summary>
   
   <entry>
     <title>Qt QPushButton Detect Double Click</title>
-    <link href="http://xingyulei.xyz/qt-detect-click/"/>
-    <id>http://xingyulei.xyz/qt-detect-click/</id>
+    <link href="http://xingyulei.xyz/post/qt-detect-click/"/>
+    <id>http://xingyulei.xyz/post/qt-detect-click/</id>
     <published>2021-08-08T04:00:00.000Z</published>
     <updated>2021-08-27T00:45:28.129Z</updated>
     
@@ -119,8 +119,8 @@ although every button </summary>
   
   <entry>
     <title>Constant in Python</title>
-    <link href="http://xingyulei.xyz/py-constant/"/>
-    <id>http://xingyulei.xyz/py-constant/</id>
+    <link href="http://xingyulei.xyz/post/py-constant/"/>
+    <id>http://xingyulei.xyz/post/py-constant/</id>
     <published>2021-07-16T04:00:00.000Z</published>
     <updated>2021-08-22T02:25:23.915Z</updated>
     
@@ -144,8 +144,8 @@ although every button </summary>
   
   <entry>
     <title>Qt Using Role to Embed Data</title>
-    <link href="http://xingyulei.xyz/qt-data-role/"/>
-    <id>http://xingyulei.xyz/qt-data-role/</id>
+    <link href="http://xingyulei.xyz/post/qt-data-role/"/>
+    <id>http://xingyulei.xyz/post/qt-data-role/</id>
     <published>2021-05-04T04:00:00.000Z</published>
     <updated>2021-08-25T18:22:31.399Z</updated>
     
@@ -170,8 +170,8 @@ display one informati</summary>
   
   <entry>
     <title>QWidget Template (without .ui file)</title>
-    <link href="http://xingyulei.xyz/qt-widget-template/"/>
-    <id>http://xingyulei.xyz/qt-widget-template/</id>
+    <link href="http://xingyulei.xyz/post/qt-widget-template/"/>
+    <id>http://xingyulei.xyz/post/qt-widget-template/</id>
     <published>2021-02-18T05:00:00.000Z</published>
     <updated>2021-08-18T04:00:58.131Z</updated>
     
@@ -196,8 +196,8 @@ but the built-in qt message boxes aren’t suitable for the job.&lt;/p&gt;
   
   <entry>
     <title>QDialog Template (without .ui file)</title>
-    <link href="http://xingyulei.xyz/qt-dialog-template/"/>
-    <id>http://xingyulei.xyz/qt-dialog-template/</id>
+    <link href="http://xingyulei.xyz/post/qt-dialog-template/"/>
+    <id>http://xingyulei.xyz/post/qt-dialog-template/</id>
     <published>2021-02-11T05:00:00.000Z</published>
     <updated>2021-08-18T04:00:58.135Z</updated>
     
@@ -221,8 +221,8 @@ but the built-in qt message boxes aren’t suitable for the job.&lt;/p&gt;
   
   <entry>
     <title>Qt Model View List Model</title>
-    <link href="http://xingyulei.xyz/qt-mv-list/"/>
-    <id>http://xingyulei.xyz/qt-mv-list/</id>
+    <link href="http://xingyulei.xyz/post/qt-mv-list/"/>
+    <id>http://xingyulei.xyz/post/qt-mv-list/</id>
     <published>2021-02-07T05:00:00.000Z</published>
     <updated>2021-08-23T00:22:02.790Z</updated>
     
@@ -247,8 +247,8 @@ displaying list-like data&lt;/p&gt;
   
   <entry>
     <title>Qt Model View Intro</title>
-    <link href="http://xingyulei.xyz/qt-mv-intro/"/>
-    <id>http://xingyulei.xyz/qt-mv-intro/</id>
+    <link href="http://xingyulei.xyz/post/qt-mv-intro/"/>
+    <id>http://xingyulei.xyz/post/qt-mv-intro/</id>
     <published>2021-02-06T05:00:00.000Z</published>
     <updated>2021-08-23T00:21:39.057Z</updated>
     
@@ -273,8 +273,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>Qt Custom Context Menu Template (Menu, Submenu and Action)</title>
-    <link href="http://xingyulei.xyz/qt-context-menu/"/>
-    <id>http://xingyulei.xyz/qt-context-menu/</id>
+    <link href="http://xingyulei.xyz/post/qt-context-menu/"/>
+    <id>http://xingyulei.xyz/post/qt-context-menu/</id>
     <published>2021-02-05T05:00:00.000Z</published>
     <updated>2021-08-25T03:48:35.518Z</updated>
     
@@ -297,8 +297,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>Qt QMessageBox Template</title>
-    <link href="http://xingyulei.xyz/qt-messagebox/"/>
-    <id>http://xingyulei.xyz/qt-messagebox/</id>
+    <link href="http://xingyulei.xyz/post/qt-messagebox/"/>
+    <id>http://xingyulei.xyz/post/qt-messagebox/</id>
     <published>2021-01-28T05:00:00.000Z</published>
     <updated>2021-08-25T03:48:17.681Z</updated>
     
@@ -322,8 +322,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>Error Handling in Python</title>
-    <link href="http://xingyulei.xyz/py-error-handle/"/>
-    <id>http://xingyulei.xyz/py-error-handle/</id>
+    <link href="http://xingyulei.xyz/post/py-error-handle/"/>
+    <id>http://xingyulei.xyz/post/py-error-handle/</id>
     <published>2021-01-24T05:00:00.000Z</published>
     <updated>2021-08-11T03:27:00.046Z</updated>
     
@@ -347,8 +347,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>How to Underscore in Python</title>
-    <link href="http://xingyulei.xyz/py-dunder/"/>
-    <id>http://xingyulei.xyz/py-dunder/</id>
+    <link href="http://xingyulei.xyz/post/py-dunder/"/>
+    <id>http://xingyulei.xyz/post/py-dunder/</id>
     <published>2021-01-23T05:00:00.000Z</published>
     <updated>2021-08-27T00:43:52.506Z</updated>
     
@@ -372,8 +372,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>Qt Custom Sorting</title>
-    <link href="http://xingyulei.xyz/qt-sorting/"/>
-    <id>http://xingyulei.xyz/qt-sorting/</id>
+    <link href="http://xingyulei.xyz/post/qt-sorting/"/>
+    <id>http://xingyulei.xyz/post/qt-sorting/</id>
     <published>2021-01-23T05:00:00.000Z</published>
     <updated>2021-08-25T03:41:22.093Z</updated>
     
@@ -397,8 +397,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>Override and Overload</title>
-    <link href="http://xingyulei.xyz/override-overload/"/>
-    <id>http://xingyulei.xyz/override-overload/</id>
+    <link href="http://xingyulei.xyz/post/override-overload/"/>
+    <id>http://xingyulei.xyz/post/override-overload/</id>
     <published>2021-01-17T05:00:00.000Z</published>
     <updated>2021-08-25T03:40:20.457Z</updated>
     
@@ -422,8 +422,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>Understand Python Imports</title>
-    <link href="http://xingyulei.xyz/py-import/"/>
-    <id>http://xingyulei.xyz/py-import/</id>
+    <link href="http://xingyulei.xyz/post/py-import/"/>
+    <id>http://xingyulei.xyz/post/py-import/</id>
     <published>2021-01-16T05:00:00.000Z</published>
     <updated>2021-08-25T03:39:43.981Z</updated>
     
@@ -446,8 +446,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>Using Qt Template</title>
-    <link href="http://xingyulei.xyz/qt-template/"/>
-    <id>http://xingyulei.xyz/qt-template/</id>
+    <link href="http://xingyulei.xyz/post/qt-template/"/>
+    <id>http://xingyulei.xyz/post/qt-template/</id>
     <published>2021-01-16T05:00:00.000Z</published>
     <updated>2021-08-25T03:30:39.329Z</updated>
     
@@ -471,8 +471,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>List Comprehension and Conditional Expression in Python</title>
-    <link href="http://xingyulei.xyz/conditional-expression/"/>
-    <id>http://xingyulei.xyz/conditional-expression/</id>
+    <link href="http://xingyulei.xyz/post/conditional-expression/"/>
+    <id>http://xingyulei.xyz/post/conditional-expression/</id>
     <published>2021-01-06T05:00:00.000Z</published>
     <updated>2021-08-25T03:19:54.555Z</updated>
     
@@ -499,8 +499,8 @@ and shared across Views&lt;/p&gt;
   
   <entry>
     <title>Learning Git</title>
-    <link href="http://xingyulei.xyz/git-learning/"/>
-    <id>http://xingyulei.xyz/git-learning/</id>
+    <link href="http://xingyulei.xyz/post/git-learning/"/>
+    <id>http://xingyulei.xyz/post/git-learning/</id>
     <published>2020-12-22T05:00:00.000Z</published>
     <updated>2021-08-25T03:19:01.241Z</updated>
     

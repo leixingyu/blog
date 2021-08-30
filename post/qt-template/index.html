@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="JbZa4ImuZ4DDxP3Xfget7xyU27AAmp0zaRWteLcT3Wo" />
+  
+  
+  <title>Using Qt Template | Tech Art Learning</title>
+  <meta name="description" content="Import Qt Module You could be using PyQt&#x2F;PySide or a custom binding, but the import is similar 12from Qt import QtCore, QtGui, QtWidgetsfrom Qt import _loadUi  System App Template 123456789101112# ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using Qt Template">
+<meta property="og:url" content="http://xingyulei.xyz/post/qt-template/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Import Qt Module You could be using PyQt&#x2F;PySide or a custom binding, but the import is similar 12from Qt import QtCore, QtGui, QtWidgetsfrom Qt import _loadUi  System App Template 123456789101112# ap">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-16T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-25T03:30:39.329Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="pyqt">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://xingyulei.xyz/post/qt-template/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/C/" style="font-size: 13px;">C#</a> <a href="/tags/Unity/" style="font-size: 13px;">Unity</a> <a href="/tags/c/" style="font-size: 13.25px;">c#</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/integration/" style="font-size: 13px;">integration</a> <a href="/tags/maya/" style="font-size: 13.5px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13px;">style</a> <a href="/tags/version-control/" style="font-size: 13px;">version control</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-qt-template" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Using Qt Template
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/qt-template/" class="article-date">
+	  <time datetime="2021-01-16T05:00:00.000Z" itemprop="datePublished">2021-01-16</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/qt-template/#comments" class="article-comment-link">Comments</a></span>
+        
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 2(minutes)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="import-qt-module"><a class="markdownIt-Anchor" href="#import-qt-module"></a> Import Qt Module</h3>
+<p>You could be using PyQt/PySide or a custom binding, but the import is similar</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> _loadUi</span><br></pre></td></tr></table></figure>
+<h3 id="system-app-template"><a class="markdownIt-Anchor" href="#system-app-template"></a> System App Template</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># appName.py</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppUI</span>(<span class="params">QtWidgets.QDialog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(AppUI, self).__init__()</span><br><span class="line">        _loadUi(UI_PATH, self)</span><br><span class="line">		</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> sys</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">    window = AppUI()</span><br><span class="line">    window.show()</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<h3 id="maya-template"><a class="markdownIt-Anchor" href="#maya-template"></a> Maya Template</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># moduleName.py</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModuleUI</span>(<span class="params">QtWidgets.QDialog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(ModuleUI, self).__init__()</span><br><span class="line">        _loadUi(UI_PATH, self)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>():</span></span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    window.show()</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<ul>
+<li>this Qt window is <strong>not</strong> parented to Maya application</li>
+<li>by default, closing the widget is hiding not destroying the object</li>
+</ul>
+<h3 id="parented-to-maya-main-window"><a class="markdownIt-Anchor" href="#parented-to-maya-main-window"></a> Parented to Maya main window</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># moduleName.py</span></span><br><span class="line"><span class="keyword">from</span> shiboken2 <span class="keyword">import</span> wrapInstance</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_maya_main_window</span>():</span></span><br><span class="line">    <span class="keyword">import</span> maya.OpenMayaUI</span><br><span class="line">    main_window_ptr = maya.OpenMayaUI.MQtUtil.mainWindow()</span><br><span class="line">    <span class="keyword">return</span> wrapInstance(long(main_window_ptr), QtWidgets.QMainWindow)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModuleUI</span>(<span class="params">QtWidgets.QDialog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=get_maya_main_window(<span class="params"></span>)</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(ModuleUI, self).__init__(parent)</span><br><span class="line">        _loadUi(UI_PATH, self)</span><br><span class="line">        self.setWindowFlags(QtCore.Qt.Window)</span><br></pre></td></tr></table></figure>
+<h3 id="destroy-window-instance-when-closed"><a class="markdownIt-Anchor" href="#destroy-window-instance-when-closed"></a> Destroy window instance when closed</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>():</span></span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        window.close()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    window.setAttribute(QtCore.Qt.WA_DeleteOnClose)</span><br><span class="line">    window.show()</span><br></pre></td></tr></table></figure>
+<h3 id="maya-script-editor"><a class="markdownIt-Anchor" href="#maya-script-editor"></a> Maya Script Editor</h3>
+<p>To call the open window function, use script editor</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">moduleName.show()</span><br></pre></td></tr></table></figure>
+<p>When the UI has no parent (Maya main window), it will get instantly destroyed by the<br />
+garbage collector, unless you keep an instance:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in the show function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>():</span></span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    window.show()</span><br><span class="line">    <span class="keyword">return</span> window</span><br><span class="line"></span><br><span class="line"><span class="comment"># in maya script editor</span></span><br><span class="line">win = moduleName.show()</span><br></pre></td></tr></table></figure>
+<h3 id="no-ui-file"><a class="markdownIt-Anchor" href="#no-ui-file"></a> No <code>.ui</code> file</h3>
+<p>There is a different between inheriting from QWidget class vs QMainWindow</p>
+<p>Inheriting from QWidget:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InheritQWidget</span>(<span class="params">QtWidgets.QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(InheritQWidget, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># initialization object</span></span><br><span class="line">        layout = QtWidgets.QGridLayout()</span><br><span class="line">        listWidget = QtWidgets.QListWidget()</span><br><span class="line">        <span class="comment">#treeWidget = QtWidgets.QTreeWidget()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># set</span></span><br><span class="line">        <span class="comment"># treeWidget.setParent(listWidget)</span></span><br><span class="line">        layout.addWidget(listWidget)</span><br><span class="line">        self.setLayout(layout)</span><br><span class="line"></span><br><span class="line">        listWidget.addItem(<span class="string">&#x27;item A&#x27;</span>)</span><br><span class="line">        listWidget.addItem(<span class="string">&#x27;item B&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>Inheriting from QMainWindow</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InheritQMainWindow</span>(<span class="params">QtWidgets.QMainWindow</span>):</span></span><br><span class="line">    <span class="comment"># Window inherits from QMainWindow the layout is already defined</span></span><br><span class="line">    <span class="comment"># to accommodate any toolbars or any other QMainWindow component</span></span><br><span class="line">    <span class="comment"># use the setCentralWidget() to accommodate this</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(InheritQMainWindow, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># initialization object</span></span><br><span class="line">        widget = QtWidgets.QWidget()</span><br><span class="line">        layout = QtWidgets.QGridLayout()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># set</span></span><br><span class="line">        self.setCentralWidget(widget)</span><br><span class="line">        widget.setLayout(layout)</span><br><span class="line">        </span><br><span class="line">        label = QtWidgets.QLabel(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">        layout.addWidget(label, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="error-in-pycharm"><a class="markdownIt-Anchor" href="#error-in-pycharm"></a> Error in PyCharm</h3>
+<p>When this error occurs, it is due to MayaDevKit environment<br />
+MayaDevKit allows maya python command auto-completion, remove it from PyCharm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app &#x3D; QtWidgets.QApplication(sys.argv)</span><br><span class="line">TypeError: &#39;NoneType&#39; object is not callable</span><br></pre></td></tr></table></figure>
+<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://www.reddit.com/r/learnpython/comments/jyw8z1/pyqt5_why_do_i_get_an_empty_window/">https://www.reddit.com/r/learnpython/comments/jyw8z1/pyqt5_why_do_i_get_an_empty_window/</a><br />
+<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58925453/pycharm-use-pyside2-typeerror-nonetype-object-is-not-callable">https://stackoverflow.com/questions/58925453/pycharm-use-pyside2-typeerror-nonetype-object-is-not-callable</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="http://xingyulei.xyz/post/qt-template/" title="Using Qt Template" target="_blank" rel="external">http://xingyulei.xyz/post/qt-template/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/py-import/" title="Understand Python Imports"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/conditional-expression/" title="List Comprehension and Conditional Expression in Python"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+
+
+</body>
+</html>
