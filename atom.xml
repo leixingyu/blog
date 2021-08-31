@@ -6,7 +6,7 @@
   <link href="http://xingyulei.xyz/atom.xml" rel="self"/>
   
   <link href="http://xingyulei.xyz/"/>
-  <updated>2021-08-27T00:44:39.796Z</updated>
+  <updated>2021-08-31T03:18:53.353Z</updated>
   <id>http://xingyulei.xyz/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>State Machine Unity Scripting API</title>
+    <link href="http://xingyulei.xyz/post/unity-api-statemachine/"/>
+    <id>http://xingyulei.xyz/post/unity-api-statemachine/</id>
+    <published>2021-08-29T04:00:00.000Z</published>
+    <updated>2021-08-31T03:18:53.353Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3><p>This post is not about state machine basic, rather how we would setup/access state machine parameters.<br />There is a higher level <code>Animator</code> class to access a part of the animator features, but we need to use<br />Unity’s <code>Animations</code> package in order to dive deeper.</p><figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEditor.Animations;</span><br></pre></td></tr></table></figure><p>There’s a lot of parts composing Unity’s Animator: Layer, Parameter, State machine (and everything inside it<br />including states of different kind, transition between states), there are of course multiple parameters inside a single state.</p><p>The examples in this post is only about accessing states and state machines, as the rest is translatable.</p><p>We start from the root: Base layer, if you think about it, a layer is essentially a state machine.<br />Inside this root state machine are sets of states (including blend tree/state/sub-state machine)</p><figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// getting the base layer state machine</span></span><br><span class="line">AnimatorStateMachine rootStateMachine = controller.layers[<span class="number">0</span>].stateMachine;</span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/HuSyYGs.png" alt="base layer state machine" /></p><p>(Base Layer)</p><p>Next up, a very confusing part of the scripting process are the definition of<br /><code>AnimatorStateMachine</code> vs. <code>ChildAnimatorStateMachine</code> and <code>AnimatorState</code> vs. <code>ChildAnimatorState</code>.<br />I really wish Unity provides internal ways to cast these to each other.</p><p>To summarize:</p><ul><li><p><code>ChildAnimatorStateMachine[]</code> and <code>ChildAnimatorState[]</code> is used in conjunction with Arrays as <code>AnimatorStateMachine.states</code> and<br /><code>AnimatorStateMachine.stateMachines</code> will return the previous mentioned type.</p></li><li><p>Instead of casting, they have an internal property <code>ChildAnimatorStateMachine.stateMachine</code> and <code>ChildAnimatorState.state</code> which<br />respectively returns <code>AnimatorStateMachine</code> and <code>AnimatorState</code> type object</p></li></ul><h3 id="states"><a class="markdownIt-Anchor" href="#states"></a> States</h3><p>All states (state or. state with blendtree inside)</p><figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ChildAnimatorState[] childStates = rootStateMachine.states;</span><br><span class="line"></span><br><span class="line">foreach(var childState in childStates)</span><br><span class="line">&#123;</span><br><span class="line">    AnimatorState state = childState.state;</span><br><span class="line">    print(state.name);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// state with blendtree</span></span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        var blendTree = (BlendTree)state.motion;</span><br><span class="line"></span><br><span class="line">        foreach (var child in blendTree.children)</span><br><span class="line">        &#123;</span><br><span class="line">            print(<span class="string">&quot;\t&quot;</span> + child.motion.name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// simple state</span></span><br><span class="line">    <span class="keyword">catch</span></span><br><span class="line">    &#123;</span><br><span class="line">        print(<span class="string">&quot;\t&quot;</span> + state.motion.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/QbLtx2O.png" alt="simple state" /></p><p>(Simple state only contains a single clip)</p><p><img src="https://i.imgur.com/vQMjJ5z.png" alt="state with blendtree" /></p><p>(BlendTree nested in a state)</p><h3 id="sub-state-machine"><a class="markdownIt-Anchor" href="#sub-state-machine"></a> Sub-state machine</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ChildAnimatorStateMachine[] childSubStateMachines &#x3D; rootStateMachine.stateMachines;</span><br><span class="line"></span><br><span class="line">foreach(var childSubStateMachine in childSubStateMachines)&#123;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; Convert &#96;ChildAnimatorStateMachine&#96; to &#96;AnimatorStateMachine&#96;</span><br><span class="line">    AnimatorStateMachine subStateMachine &#x3D; childSubStateMachine.stateMachine;</span><br><span class="line">    print(subStateMachine.name);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; all states in idle sub state machine</span><br><span class="line">    ChildAnimatorState[] states &#x3D; subStateMachine.states;</span><br><span class="line"></span><br><span class="line">    foreach (var childState in states)</span><br><span class="line">    &#123;</span><br><span class="line">        print(&quot;\t&quot; + childState.state.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/j6IoXLr.png" alt="sub state machine" /></p><p>(Essentially, another sub layer of state machine)</p><h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3><p><a href="https://docs.unity3d.com/Manual/StateMachineBasics.html">https://docs.unity3d.com/Manual/StateMachineBasics.html</a></p><p><a href="https://docs.unity3d.com/ScriptReference/Animations.AnimatorStateMachine.html">https://docs.unity3d.com/ScriptReference/Animations.AnimatorStateMachine.html</a></p><p><a href="https://docs.unity3d.com/ScriptReference/Animator.Play.html">https://docs.unity3d.com/ScriptReference/Animator.Play.html</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;introduction&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#introduction&quot;&gt;&lt;/a&gt; Introduction&lt;/h3&gt;
+&lt;p&gt;This post is not about state machine basic</summary>
+      
+    
+    
+    
+    <category term="tech summary" scheme="http://xingyulei.xyz/categories/tech-summary/"/>
+    
+    
+    <category term="c#" scheme="http://xingyulei.xyz/tags/c/"/>
+    
+    <category term="unity" scheme="http://xingyulei.xyz/tags/unity/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Resize QPixmap</title>
@@ -493,33 +520,6 @@ and shared across Views&lt;/p&gt;
     <category term="python" scheme="http://xingyulei.xyz/tags/python/"/>
     
     <category term="style" scheme="http://xingyulei.xyz/tags/style/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Learning Git</title>
-    <link href="http://xingyulei.xyz/post/git-learning/"/>
-    <id>http://xingyulei.xyz/post/git-learning/</id>
-    <published>2020-12-22T05:00:00.000Z</published>
-    <updated>2021-08-25T03:19:01.241Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="dvcs-vs-cvcs"><a class="markdownIt-Anchor" href="#dvcs-vs-cvcs"></a> DVCS vs. CVCS</h3><p>DVCS (distributed version control system), for example: Git. Each developer are getting a complete copy of the entire history of that project. This allows developer works offline without connecting to the master repo. Git has an additional staging phase which allows you to break down changes into seperate commits with its own comments.</p><p>CVCS (centralized version control system), for example: SVN. One central repository, gives manager more top down approach to control, security permission. No staging phase means one less step.</p><p>Note: today, more teams are using a <strong>Centralized Git Model</strong>, where changes intended to be a part of a project are submitted as pull or merge request to the master branch.</p><h3 id="github-vs-gitlab"><a class="markdownIt-Anchor" href="#github-vs-gitlab"></a> GitHub vs. GitLab</h3><p>They are completely different web-based Git repositories. On the surface, it looks like GitHub is really community friendly, hosting the largest version control platform, while GitLab offers great deal for enterprise professional use (equally, or better features like tracking, project import, with cheaper prices)</p><h3 id="git-ssh-protocol"><a class="markdownIt-Anchor" href="#git-ssh-protocol"></a> Git SSH protocol</h3><h3 id="git-key-commands"><a class="markdownIt-Anchor" href="#git-key-commands"></a> Git Key Commands</h3><ul><li><p><code>git init</code> vs. <code>git clone</code></p><p><code>git init</code> is a setup process where you initialize a bare local repo<br /><code>git clone</code> obtain a local development clone repo from an already setup central repository, which can be treated as combining <code>git init</code> and <code>git remote add</code></p></li><li><p><code>git pull</code> (or <code>git push</code>) vs. <code>pull request</code> (or <code>push request</code>)</p><p><code>git pull</code> pull the changes from the remote repo to your local repo, which is effectively a <code>git fetch</code> followed by a <code>git merge</code></p><p><code>pull request</code> is you requesting another repo to pull your change (more or less asking them to <code>git pull</code> from your repo). A <code>push request</code> is the other way around, where the target repo ask you to <code>git push</code> your changes</p></li><li><p><code>git config</code></p><p>this command allows you to configure your Git configuration on a global or local project level, some common usage includes setting up name and email, configure text color or editor choice. There are three configuration level: <code>--local</code>, <code>--global</code>, <code>--system</code></p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example</span></span><br><span class="line">git --global user.name <span class="string">&quot;John Doh&quot;</span></span><br><span class="line">git --system core.editor vim</span><br></pre></td></tr></table></figure><p>Note: most config only need to be set once, email is an exception where you will want to use personal email for personal project and professional email for work-related project</p></li></ul><h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3><ul><li><p><a href="https://blog.hackbrightacademy.com/blog/svn-vs-git/#:~:text=The%20difference%20between%20Git%20and%20SVN%20version%20control%20systems%20is,well%20as%20some%20local%20repositories.">https://blog.hackbrightacademy.com/blog/svn-vs-git/#:~:text=The%20difference%20between%20Git%20and%20SVN%20version%20control%20systems%20is,well%20as%20some%20local%20repositories.</a></p></li><li><p><a href="https://www.atlassian.com/git/tutorials/what-is-git">https://www.atlassian.com/git/tutorials/what-is-git</a></p></li><li><p><a href="https://www.perforce.com/blog/vcs/git-vs-perforce-how-choose-and-when-use-both">https://www.perforce.com/blog/vcs/git-vs-perforce-how-choose-and-when-use-both</a></p></li><li><p><a href="https://usersnap.com/blog/gitlab-github/">https://usersnap.com/blog/gitlab-github/</a></p></li><li><p><a href="https://stackoverflow.com/questions/22585407/git-pull-vs-pull-request">https://stackoverflow.com/questions/22585407/git-pull-vs-pull-request</a></p></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;dvcs-vs-cvcs&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#dvcs-vs-cvcs&quot;&gt;&lt;/a&gt; DVCS vs. CVCS&lt;/h3&gt;
-&lt;p&gt;DVCS (distributed version control system)</summary>
-      
-    
-    
-    
-    <category term="learning log" scheme="http://xingyulei.xyz/categories/learning-log/"/>
-    
-    
-    <category term="git" scheme="http://xingyulei.xyz/tags/git/"/>
-    
-    <category term="version control" scheme="http://xingyulei.xyz/tags/version-control/"/>
     
   </entry>
   

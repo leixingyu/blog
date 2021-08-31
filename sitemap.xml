@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xingyulei.xyz/post/unity-api-statemachine/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xingyulei.xyz/post/qt-signal-in-for-loop/</loc>
     
     <lastmod>2021-08-31</lastmod>
@@ -249,14 +256,14 @@
 
   
   <url>
-    <loc>http://xingyulei.xyz/tags/maya/</loc>
+    <loc>http://xingyulei.xyz/tags/python/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/tags/python/</loc>
+    <loc>http://xingyulei.xyz/tags/style/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -270,7 +277,7 @@
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/tags/style/</loc>
+    <loc>http://xingyulei.xyz/tags/maya/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -318,17 +325,24 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://xingyulei.xyz/tags/unity/</loc>
+    <lastmod>2021-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
-    <loc>http://xingyulei.xyz/categories/learning-log/</loc>
+    <loc>http://xingyulei.xyz/categories/tech-summary/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://xingyulei.xyz/categories/tech-summary/</loc>
+    <loc>http://xingyulei.xyz/categories/learning-log/</loc>
     <lastmod>2021-08-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
