@@ -3,11 +3,11 @@
   <title>Tech Art Learning</title>
   
   
-  <link href="http://xingyulei.com/atom.xml" rel="self"/>
+  <link href="https://www.xingyulei.com/atom.xml" rel="self"/>
   
-  <link href="http://xingyulei.com/"/>
+  <link href="https://www.xingyulei.com/"/>
   <updated>2021-09-01T22:57:54.409Z</updated>
-  <id>http://xingyulei.com/</id>
+  <id>https://www.xingyulei.com/</id>
   
   <author>
     <name>Xingyu Lei</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>State Machine Unity Scripting API</title>
-    <link href="http://xingyulei.com/post/unity-api-statemachine/"/>
-    <id>http://xingyulei.com/post/unity-api-statemachine/</id>
+    <link href="https://www.xingyulei.com/post/unity-api-statemachine/"/>
+    <id>https://www.xingyulei.com/post/unity-api-statemachine/</id>
     <published>2021-08-29T04:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.409Z</updated>
     
@@ -34,19 +34,19 @@
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="c#" scheme="http://xingyulei.com/tags/c/"/>
+    <category term="c#" scheme="https://www.xingyulei.com/tags/c/"/>
     
-    <category term="unity" scheme="http://xingyulei.com/tags/unity/"/>
+    <category term="unity" scheme="https://www.xingyulei.com/tags/unity/"/>
     
   </entry>
   
   <entry>
     <title>How to Resize QPixmap</title>
-    <link href="http://xingyulei.com/post/qt-pixmap-scale/"/>
-    <id>http://xingyulei.com/post/qt-pixmap-scale/</id>
+    <link href="https://www.xingyulei.com/post/qt-pixmap-scale/"/>
+    <id>https://www.xingyulei.com/post/qt-pixmap-scale/</id>
     <published>2021-08-22T04:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.452Z</updated>
     
@@ -61,17 +61,17 @@
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Qt Left Align Icon, Center Align Text (Python)</title>
-    <link href="http://xingyulei.com/post/qt-button-alignment/"/>
-    <id>http://xingyulei.com/post/qt-button-alignment/</id>
+    <link href="https://www.xingyulei.com/post/qt-button-alignment/"/>
+    <id>https://www.xingyulei.com/post/qt-button-alignment/</id>
     <published>2021-08-21T04:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.405Z</updated>
     
@@ -86,17 +86,17 @@ although every button </summary>
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>How to Organize Custom Python Library</title>
-    <link href="http://xingyulei.com/post/py-organize-module/"/>
-    <id>http://xingyulei.com/post/py-organize-module/</id>
+    <link href="https://www.xingyulei.com/post/py-organize-module/"/>
+    <id>https://www.xingyulei.com/post/py-organize-module/</id>
     <published>2021-08-14T04:00:00.000Z</published>
     <updated>2021-09-01T23:15:54.255Z</updated>
     
@@ -112,19 +112,19 @@ although every button </summary>
     
     
     
-    <category term="learning log" scheme="http://xingyulei.com/categories/learning-log/"/>
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://xingyulei.com/tags/python/"/>
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
-    <category term="style" scheme="http://xingyulei.com/tags/style/"/>
+    <category term="style" scheme="https://www.xingyulei.com/tags/style/"/>
     
   </entry>
   
   <entry>
     <title>Qt QPushButton Detect Double Click</title>
-    <link href="http://xingyulei.com/post/qt-detect-click/"/>
-    <id>http://xingyulei.com/post/qt-detect-click/</id>
+    <link href="https://www.xingyulei.com/post/qt-detect-click/"/>
+    <id>https://www.xingyulei.com/post/qt-detect-click/</id>
     <published>2021-08-08T04:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.419Z</updated>
     
@@ -139,17 +139,17 @@ although every button </summary>
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Constant in Python</title>
-    <link href="http://xingyulei.com/post/py-constant/"/>
-    <id>http://xingyulei.com/post/py-constant/</id>
+    <link href="https://www.xingyulei.com/post/py-constant/"/>
+    <id>https://www.xingyulei.com/post/py-constant/</id>
     <published>2021-07-16T04:00:00.000Z</published>
     <updated>2021-09-01T23:15:54.241Z</updated>
     
@@ -164,19 +164,19 @@ although every button </summary>
     
     
     
-    <category term="learning log" scheme="http://xingyulei.com/categories/learning-log/"/>
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://xingyulei.com/tags/python/"/>
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
-    <category term="style" scheme="http://xingyulei.com/tags/style/"/>
+    <category term="style" scheme="https://www.xingyulei.com/tags/style/"/>
     
   </entry>
   
   <entry>
     <title>Qt Connect Signal in For Loop</title>
-    <link href="http://xingyulei.com/post/qt-signal-in-for-loop/"/>
-    <id>http://xingyulei.com/post/qt-signal-in-for-loop/</id>
+    <link href="https://www.xingyulei.com/post/qt-signal-in-for-loop/"/>
+    <id>https://www.xingyulei.com/post/qt-signal-in-for-loop/</id>
     <published>2021-04-17T04:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.428Z</updated>
     
@@ -191,17 +191,17 @@ although every button </summary>
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>QWidget Template (without .ui file)</title>
-    <link href="http://xingyulei.com/post/qt-widget-template/"/>
-    <id>http://xingyulei.com/post/qt-widget-template/</id>
+    <link href="https://www.xingyulei.com/post/qt-widget-template/"/>
+    <id>https://www.xingyulei.com/post/qt-widget-template/</id>
     <published>2021-02-18T05:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.368Z</updated>
     
@@ -217,19 +217,19 @@ but the built-in qt message boxes aren’t suitable for the job.&lt;/p&gt;
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
-    <category term="template" scheme="http://xingyulei.com/tags/template/"/>
+    <category term="template" scheme="https://www.xingyulei.com/tags/template/"/>
     
   </entry>
   
   <entry>
     <title>QDialog Template (without .ui file)</title>
-    <link href="http://xingyulei.com/post/qt-dialog-template/"/>
-    <id>http://xingyulei.com/post/qt-dialog-template/</id>
+    <link href="https://www.xingyulei.com/post/qt-dialog-template/"/>
+    <id>https://www.xingyulei.com/post/qt-dialog-template/</id>
     <published>2021-02-11T05:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.388Z</updated>
     
@@ -244,19 +244,19 @@ but the built-in qt message boxes aren’t suitable for the job.&lt;/p&gt;
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
-    <category term="template" scheme="http://xingyulei.com/tags/template/"/>
+    <category term="template" scheme="https://www.xingyulei.com/tags/template/"/>
     
   </entry>
   
   <entry>
     <title>Qt Model View List Model</title>
-    <link href="http://xingyulei.com/post/qt-mv-list/"/>
-    <id>http://xingyulei.com/post/qt-mv-list/</id>
+    <link href="https://www.xingyulei.com/post/qt-mv-list/"/>
+    <id>https://www.xingyulei.com/post/qt-mv-list/</id>
     <published>2021-02-07T05:00:00.000Z</published>
     <updated>2021-09-01T22:58:18.674Z</updated>
     
@@ -272,17 +272,17 @@ displaying list-like data&lt;/p&gt;
     
     
     
-    <category term="model view programming" scheme="http://xingyulei.com/categories/model-view-programming/"/>
+    <category term="model view programming" scheme="https://www.xingyulei.com/categories/model-view-programming/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Qt Model View Intro</title>
-    <link href="http://xingyulei.com/post/qt-mv-intro/"/>
-    <id>http://xingyulei.com/post/qt-mv-intro/</id>
+    <link href="https://www.xingyulei.com/post/qt-mv-intro/"/>
+    <id>https://www.xingyulei.com/post/qt-mv-intro/</id>
     <published>2021-02-06T05:00:00.000Z</published>
     <updated>2021-09-01T22:58:18.679Z</updated>
     
@@ -298,17 +298,17 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="model view programming" scheme="http://xingyulei.com/categories/model-view-programming/"/>
+    <category term="model view programming" scheme="https://www.xingyulei.com/categories/model-view-programming/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Qt Custom Context Menu Template (Menu, Submenu and Action)</title>
-    <link href="http://xingyulei.com/post/qt-context-menu/"/>
-    <id>http://xingyulei.com/post/qt-context-menu/</id>
+    <link href="https://www.xingyulei.com/post/qt-context-menu/"/>
+    <id>https://www.xingyulei.com/post/qt-context-menu/</id>
     <published>2021-02-05T05:00:00.000Z</published>
     <updated>2021-09-02T22:34:46.683Z</updated>
     
@@ -322,19 +322,19 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
-    <category term="template" scheme="http://xingyulei.com/tags/template/"/>
+    <category term="template" scheme="https://www.xingyulei.com/tags/template/"/>
     
   </entry>
   
   <entry>
     <title>Qt QMessageBox Template</title>
-    <link href="http://xingyulei.com/post/qt-messagebox/"/>
-    <id>http://xingyulei.com/post/qt-messagebox/</id>
+    <link href="https://www.xingyulei.com/post/qt-messagebox/"/>
+    <id>https://www.xingyulei.com/post/qt-messagebox/</id>
     <published>2021-01-28T05:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.465Z</updated>
     
@@ -349,19 +349,19 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
-    <category term="template" scheme="http://xingyulei.com/tags/template/"/>
+    <category term="template" scheme="https://www.xingyulei.com/tags/template/"/>
     
   </entry>
   
   <entry>
     <title>Error Handling in Python</title>
-    <link href="http://xingyulei.com/post/py-error-handle/"/>
-    <id>http://xingyulei.com/post/py-error-handle/</id>
+    <link href="https://www.xingyulei.com/post/py-error-handle/"/>
+    <id>https://www.xingyulei.com/post/py-error-handle/</id>
     <published>2021-01-24T05:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.414Z</updated>
     
@@ -376,17 +376,17 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="learning log" scheme="http://xingyulei.com/categories/learning-log/"/>
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://xingyulei.com/tags/python/"/>
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>How to Underscore in Python</title>
-    <link href="http://xingyulei.com/post/py-dunder/"/>
-    <id>http://xingyulei.com/post/py-dunder/</id>
+    <link href="https://www.xingyulei.com/post/py-dunder/"/>
+    <id>https://www.xingyulei.com/post/py-dunder/</id>
     <published>2021-01-23T05:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.375Z</updated>
     
@@ -401,17 +401,17 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="learning log" scheme="http://xingyulei.com/categories/learning-log/"/>
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://xingyulei.com/tags/python/"/>
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Qt Custom Sorting</title>
-    <link href="http://xingyulei.com/post/qt-sorting/"/>
-    <id>http://xingyulei.com/post/qt-sorting/</id>
+    <link href="https://www.xingyulei.com/post/qt-sorting/"/>
+    <id>https://www.xingyulei.com/post/qt-sorting/</id>
     <published>2021-01-23T05:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.362Z</updated>
     
@@ -426,17 +426,17 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="tech summary" scheme="http://xingyulei.com/categories/tech-summary/"/>
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="pyqt" scheme="http://xingyulei.com/tags/pyqt/"/>
+    <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
   </entry>
   
   <entry>
     <title>Override and Overload</title>
-    <link href="http://xingyulei.com/post/override-overload/"/>
-    <id>http://xingyulei.com/post/override-overload/</id>
+    <link href="https://www.xingyulei.com/post/override-overload/"/>
+    <id>https://www.xingyulei.com/post/override-overload/</id>
     <published>2021-01-17T05:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.484Z</updated>
     
@@ -451,17 +451,17 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="learning log" scheme="http://xingyulei.com/categories/learning-log/"/>
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://xingyulei.com/tags/python/"/>
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Understand Python Imports</title>
-    <link href="http://xingyulei.com/post/py-import/"/>
-    <id>http://xingyulei.com/post/py-import/</id>
+    <link href="https://www.xingyulei.com/post/py-import/"/>
+    <id>https://www.xingyulei.com/post/py-import/</id>
     <published>2021-01-16T05:00:00.000Z</published>
     <updated>2021-09-01T23:15:54.262Z</updated>
     
@@ -475,19 +475,19 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="learning log" scheme="http://xingyulei.com/categories/learning-log/"/>
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://xingyulei.com/tags/python/"/>
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
-    <category term="style" scheme="http://xingyulei.com/tags/style/"/>
+    <category term="style" scheme="https://www.xingyulei.com/tags/style/"/>
     
   </entry>
   
   <entry>
     <title>List Comprehension and Conditional Expression in Python</title>
-    <link href="http://xingyulei.com/post/conditional-expression/"/>
-    <id>http://xingyulei.com/post/conditional-expression/</id>
+    <link href="https://www.xingyulei.com/post/conditional-expression/"/>
+    <id>https://www.xingyulei.com/post/conditional-expression/</id>
     <published>2021-01-06T05:00:00.000Z</published>
     <updated>2021-09-01T23:15:54.247Z</updated>
     
@@ -503,19 +503,19 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="learning log" scheme="http://xingyulei.com/categories/learning-log/"/>
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="http://xingyulei.com/tags/python/"/>
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
-    <category term="style" scheme="http://xingyulei.com/tags/style/"/>
+    <category term="style" scheme="https://www.xingyulei.com/tags/style/"/>
     
   </entry>
   
   <entry>
     <title>Learning Git</title>
-    <link href="http://xingyulei.com/post/git-learning/"/>
-    <id>http://xingyulei.com/post/git-learning/</id>
+    <link href="https://www.xingyulei.com/post/git-learning/"/>
+    <id>https://www.xingyulei.com/post/git-learning/</id>
     <published>2020-12-22T05:00:00.000Z</published>
     <updated>2021-09-01T22:57:54.401Z</updated>
     
@@ -530,12 +530,12 @@ and shared across Views&lt;/p&gt;
     
     
     
-    <category term="learning log" scheme="http://xingyulei.com/categories/learning-log/"/>
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="git" scheme="http://xingyulei.com/tags/git/"/>
+    <category term="git" scheme="https://www.xingyulei.com/tags/git/"/>
     
-    <category term="version control" scheme="http://xingyulei.com/tags/version-control/"/>
+    <category term="version control" scheme="https://www.xingyulei.com/tags/version-control/"/>
     
   </entry>
   
