@@ -27,8 +27,8 @@
 <meta property="og:site_name" content="Tech Art Learning">
 <meta property="og:description" content="Me and CFX Dynamics are the coolest thing ever, you place some geo in the scene, put in some parameters, and the machine will handle the rest. When I started learning dynamics, I thought why do we ev">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-08-21T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-05T00:50:59.419Z">
+<meta property="article:published_time" content="2021-09-05T04:00:00.000Z">
+<meta property="article:modified_time" content="2021-09-05T22:57:37.233Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="cfx">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/post/cfx-pipeline/" class="article-date">
-	  <time datetime="2021-08-21T04:00:00.000Z" itemprop="datePublished">2021-08-21</time>
+	  <time datetime="2021-09-05T04:00:00.000Z" itemprop="datePublished">2021-09-05</time>
 	</a>
 </span>
         
@@ -261,14 +261,13 @@ industry, but it is logically correct.</p>
 <h4 id="pre-cfx-stage"><a class="markdownIt-Anchor" href="#pre-cfx-stage"></a> Pre CFX Stage</h4>
 <ol>
 <li>
-<p>Character team creates the character model: including costume and hair</p>
+<p>Character team creates the character model: including costume</p>
 </li>
 <li>
 <p>Rigging team rig the character model:</p>
 <ul>
-<li>the rig can be easily extracted to joint and separated meshes (body, cloth and hair)</li>
+<li>the rig can be easily extracted to joint and separated meshes (body and cloth)</li>
 <li>cloth is usually wrapped around the character body mesh</li>
-<li>hair is usually static curves on character’s scalp</li>
 </ul>
 </li>
 <li>
@@ -280,8 +279,8 @@ industry, but it is logically correct.</p>
 </ol>
 <h4 id="cfx-stage"><a class="markdownIt-Anchor" href="#cfx-stage"></a> CFX Stage</h4>
 <ol>
-<li>Cloth/Hair Rig Building</li>
-<li>Cloth/Hair Sim</li>
+<li>Cloth Rig Building</li>
+<li>Cloth Sim</li>
 </ol>
 <h4 id="post-cfx-stage"><a class="markdownIt-Anchor" href="#post-cfx-stage"></a> Post CFX Stage</h4>
 <p>Everything is sent to Scene Assembly department, including:</p>
@@ -289,7 +288,6 @@ industry, but it is logically correct.</p>
 <li>Final body mesh is exported as cache (Note: character joint animation<br />
 must remain the same as animation but body mesh can be modified to avoid penetration to cloth)</li>
 <li>Clothes final cache</li>
-<li>Hair final curves</li>
 </ul>
 <hr />
 <h3 id="cloth-rig-building"><a class="markdownIt-Anchor" href="#cloth-rig-building"></a> Cloth Rig Building</h3>
@@ -407,16 +405,21 @@ This is useful to tone down crazy movement, or blend back to animation cloth sha
 <p>Next would be submit and review, needless to say, proper lighting is important as it could expose/hide certain areas.<br />
 Also camera focal point, effects can also play a huge role in the review.</p>
 <hr />
-<h3 id="more-tool-ideas"><a class="markdownIt-Anchor" href="#more-tool-ideas"></a> More Tool Ideas</h3>
-<p>pipeline: three stage three files, three stages one file</p>
-<p>three files:<br />
-everything is kept very clean so that the sim would run smoother.</p>
-<p>sim in batch mode: since we always need the sim to go through to see the result, running the simulation without having<br />
-the gui open would speed up the process. if we want to record the playblast, remeber to add a snapshot function<br />
-in the batch script to capture everyframe</p>
-<p>qualoth io: use for import/export qualoth settings that worked well with your previous scene, this could be<br />
-shared to other cfx artist, it can also be useful just for inspection from leads not needing to opening<br />
-your file and find all the nodes</p>
+<h3 id="more-pipeline-ideas"><a class="markdownIt-Anchor" href="#more-pipeline-ideas"></a> More Pipeline Ideas</h3>
+<p>The above pipeline can be divided into three stages, with three seperate maya file/session<br />
+handling each stage. Making each one of them cleaner, faster and easier to work with.<br />
+The pre-sim stage deals with pre-processing and T-pose transition; The sim stage only are<br />
+meant for siming and adjusting sim settings; The post-sim stage is for dealing with clean-up<br />
+and export. One of the legacy workflow bundles all three stages into one file, and the<br />
+sim process was really slow, this is due to multiple layers to the cloth rig, mainly the wrapping<br />
+causing the evaluation to significantly slow down.</p>
+<p>Sim in batch mode: since we generally don’t care what happens during the sim,<br />
+and care only the result after the sim went through, running the simulation without having<br />
+the gui open makes sense and speed up the process. To record the sim output result, remember to add a snapshot function<br />
+in the batch script to capture every frame.</p>
+<p>Cloth setting import/exporter: use for keep record of settings that worked well with scenes, this could be<br />
+shared to other cfx artist, it can also be useful just for inspection all the parameters from leads and not having to open<br />
+your chunky maya file and find all the nodes.</p>
 <!-- flag of hidden posts -->
       
     </div>
