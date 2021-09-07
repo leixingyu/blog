@@ -256,7 +256,7 @@
 
   
   <url>
-    <loc>https://www.xingyulei.com/tags/maya/</loc>
+    <loc>https://www.xingyulei.com/tags/c/</loc>
     <lastmod>2021-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -277,13 +277,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/c/</loc>
-    <lastmod>2021-09-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/git/</loc>
     <lastmod>2021-09-07</lastmod>
     <changefreq>daily</changefreq>
@@ -292,6 +285,13 @@
   
   <url>
     <loc>https://www.xingyulei.com/tags/version-control/</loc>
+    <lastmod>2021-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/maya/</loc>
     <lastmod>2021-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -321,14 +321,14 @@
 
   
   <url>
-    <loc>https://www.xingyulei.com/categories/maya-python-api/</loc>
+    <loc>https://www.xingyulei.com/categories/learning-log/</loc>
     <lastmod>2021-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/categories/learning-log/</loc>
+    <loc>https://www.xingyulei.com/categories/maya-python-api/</loc>
     <lastmod>2021-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
