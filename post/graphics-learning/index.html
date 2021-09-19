@@ -19,21 +19,28 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Learning Graphics (temp title) | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta name="description" content="Vertex lighting vs. Per-pixel lighting Vertex Lighting:   Lighting is computed per-vertex   calculation happens in the vertex shader   lighting&#x2F;color information is then linearly interpolated across">
+  <title>Learning Graphics Basics | Tech Art Learning</title>
+  <meta name="description" content="Glossary Wikipedia - Computer Graphics Glossary Shader: programs running on gpu that describes general computation (vertex transformation: vertex shader; shading calculation: fragment shader) G-buffe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Learning Graphics (temp title)">
-<meta property="og:url" content="https://www.xingyulei.com/post/wip/graphics-learning/index.html">
+<meta property="og:title" content="Learning Graphics Basics">
+<meta property="og:url" content="https://www.xingyulei.com/post/graphics-learning/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Vertex lighting vs. Per-pixel lighting Vertex Lighting:   Lighting is computed per-vertex   calculation happens in the vertex shader   lighting&#x2F;color information is then linearly interpolated across">
+<meta property="og:description" content="Glossary Wikipedia - Computer Graphics Glossary Shader: programs running on gpu that describes general computation (vertex transformation: vertex shader; shading calculation: fragment shader) G-buffe">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-09-16T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-17T03:54:54.059Z">
+<meta property="og:image" content="https://www.researchgate.net/profile/Christoph-Guetter/publication/235696712/figure/fig1/AS:299742132228097@1448475501091/The-graphics-pipeline-in-OpenGL-consists-of-these-5-steps-in-the-new-generation-of-cards.png">
+<meta property="og:image" content="https://cdn.tutsplus.com/cdn-cgi/image/width=600/gamedev/uploads/2013/11/forward-v2.png">
+<meta property="og:image" content="https://cdn.tutsplus.com/cdn-cgi/image/width=600/gamedev/uploads/2013/11/deferred-v2.png">
+<meta property="og:image" content="https://www.scratchapixel.com/images/upload/rasterization/raytracing-raster5.png?">
+<meta property="og:image" content="https://static.techspot.com/articles-info/1888/images/2019-08-11-image-8.png">
+<meta property="og:image" content="https://i.stack.imgur.com/e9CSY.png">
+<meta property="article:published_time" content="2020-09-16T04:00:00.000Z">
+<meta property="article:modified_time" content="2021-09-19T14:38:17.922Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="graphic programming">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.researchgate.net/profile/Christoph-Guetter/publication/235696712/figure/fig1/AS:299742132228097@1448475501091/The-graphics-pipeline-in-OpenGL-consists-of-these-5-steps-in-the-new-generation-of-cards.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/wip/graphics-learning/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/graphics-learning/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -161,7 +168,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -171,7 +178,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.5px;">c#</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/maya/" style="font-size: 13.5px;">maya</a> <a href="/tags/pyqt/" style="font-size: 14px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.5px;">style</a> <a href="/tags/template/" style="font-size: 13.75px;">template</a> <a href="/tags/unity/" style="font-size: 13.25px;">unity</a> <a href="/tags/version-control/" style="font-size: 13px;">version control</a>
+      <a href="/tags/c/" style="font-size: 13.5px;">c#</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.5px;">maya</a> <a href="/tags/pyqt/" style="font-size: 14px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.5px;">style</a> <a href="/tags/template/" style="font-size: 13.75px;">template</a> <a href="/tags/unity/" style="font-size: 13.25px;">unity</a> <a href="/tags/version-control/" style="font-size: 13px;">version control</a>
     </div>
   </div>
 
@@ -180,7 +187,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -193,14 +200,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-wip/graphics-learning" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-graphics-learning" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Learning Graphics (temp title)
+      Learning Graphics Basics
     </h1>
   
 
@@ -208,8 +215,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/wip/graphics-learning/" class="article-date">
-	  <time datetime="2021-09-16T04:00:00.000Z" itemprop="datePublished">2021-09-16</time>
+	<a href="/post/graphics-learning/" class="article-date">
+	  <time datetime="2020-09-16T04:00:00.000Z" itemprop="datePublished">2020-09-16</time>
 	</a>
 </span>
         
@@ -221,25 +228,33 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	
+	<a class="article-tag-link-link" href="/tags/graphic-programming/" rel="tag">graphic programming</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/wip/graphics-learning/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/graphics-learning/#comments" class="article-comment-link">Comments</a></span>
         
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 2(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 6(minutes)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="vertex-lighting-vs-per-pixel-lighting"><a class="markdownIt-Anchor" href="#vertex-lighting-vs-per-pixel-lighting"></a> Vertex lighting vs. Per-pixel lighting</h3>
-<p>Vertex Lighting:</p>
+        <h3 id="glossary"><a class="markdownIt-Anchor" href="#glossary"></a> Glossary</h3>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Glossary_of_computer_graphics">Wikipedia - Computer Graphics Glossary</a></p>
+<p><strong>Shader</strong>: programs running on gpu that describes general computation (vertex transformation: vertex shader;<br />
+shading calculation: fragment shader)</p>
+<p><strong>G-buffer</strong>: a screen space representation of geometry and material information (e.g. color, normal, position/depth)</p>
+<h2 id="fragment-is-the-corresponding-pixel-generated-by-geometric-primitivesbut-a-pixel-on-screen-can-be-a-product-of-more-than-one-fragment-due-to-z-buffering-blending-etc"><a class="markdownIt-Anchor" href="#fragment-is-the-corresponding-pixel-generated-by-geometric-primitivesbut-a-pixel-on-screen-can-be-a-product-of-more-than-one-fragment-due-to-z-buffering-blending-etc"></a> <strong>Fragment</strong>: is the corresponding pixel generated by geometric primitives,<br />
+but a pixel on screen can be a product of more than one fragment due to Z-buffering, blending etc.</h2>
+<h3 id="vertex-lighting-vs-per-pixel-lighting"><a class="markdownIt-Anchor" href="#vertex-lighting-vs-per-pixel-lighting"></a> Vertex lighting vs. Per-pixel lighting</h3>
+<p><img src="https://www.researchgate.net/profile/Christoph-Guetter/publication/235696712/figure/fig1/AS:299742132228097@1448475501091/The-graphics-pipeline-in-OpenGL-consists-of-these-5-steps-in-the-new-generation-of-cards.png" alt="modern graphics pipeline" /></p>
+<h4 id="vertex-lighting"><a class="markdownIt-Anchor" href="#vertex-lighting"></a> Vertex Lighting</h4>
 <ul>
 <li>
 <p>Lighting is computed per-vertex</p>
@@ -252,10 +267,10 @@
 then linearly interpolated across faces and rasterized</p>
 </li>
 <li>
-<p>it is cheaper, faster (since there are less vertices compared to pixels) but noticeable artifact with low-poly objects</p>
+<p>it is cheaper, faster (since there are fewer vertices compared to pixels) but noticeable artifact with low-poly objects</p>
 </li>
 </ul>
-<p>Per-Pixel Lighting:</p>
+<h4 id="per-pixel-lighting"><a class="markdownIt-Anchor" href="#per-pixel-lighting"></a> Per-Pixel Lighting</h4>
 <ul>
 <li>
 <p>Lighting is computed per-pixel/fragment (but what is this exactly? see the example below)</p>
@@ -271,26 +286,81 @@ then linearly interpolated across faces and rasterized</p>
 </li>
 </ul>
 <h3 id="example-of-a-per-pixel-lighting-shader"><a class="markdownIt-Anchor" href="#example-of-a-per-pixel-lighting-shader"></a> Example of a per-pixel lighting shader</h3>
-<h4 id="vertex-shader"><a class="markdownIt-Anchor" href="#vertex-shader"></a> vertex shader</h4>
+<h4 id="vertex-shader"><a class="markdownIt-Anchor" href="#vertex-shader"></a> Vertex Shader</h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#version 330 core</span><br><span class="line">layout (location &#x3D; 0) in vec3 aPos;</span><br><span class="line">layout (location &#x3D; 1) in vec3 aNormal;</span><br><span class="line"></span><br><span class="line">out vec3 FragPos;</span><br><span class="line">out vec3 Normal;</span><br><span class="line"></span><br><span class="line">uniform mat4 model;</span><br><span class="line">uniform mat4 view;</span><br><span class="line">uniform mat4 projection;</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    FragPos &#x3D; vec3(model * vec4(aPos, 1.0));</span><br><span class="line">    Normal &#x3D; mat3(transpose(inverse(model))) * aNormal;  </span><br><span class="line">    </span><br><span class="line">    gl_Position &#x3D; projection * view * vec4(FragPos, 1.0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="fragment-shader"><a class="markdownIt-Anchor" href="#fragment-shader"></a> fragment shader</h4>
+<h4 id="fragment-shader"><a class="markdownIt-Anchor" href="#fragment-shader"></a> Fragment Shader</h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#version 330 core</span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">in vec3 Normal;  </span><br><span class="line">in vec3 FragPos;  </span><br><span class="line">  </span><br><span class="line">uniform vec3 lightPos; </span><br><span class="line">uniform vec3 viewPos; </span><br><span class="line">uniform vec3 lightColor;</span><br><span class="line">uniform vec3 objectColor;</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; ambient</span><br><span class="line">    float ambientStrength &#x3D; 0.1;</span><br><span class="line">    vec3 ambient &#x3D; ambientStrength * lightColor;</span><br><span class="line">  	</span><br><span class="line">    &#x2F;&#x2F; diffuse </span><br><span class="line">    vec3 norm &#x3D; normalize(Normal);</span><br><span class="line">    vec3 lightDir &#x3D; normalize(lightPos - FragPos);</span><br><span class="line">    float diff &#x3D; max(dot(norm, lightDir), 0.0);</span><br><span class="line">    vec3 diffuse &#x3D; diff * lightColor;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; specular</span><br><span class="line">    float specularStrength &#x3D; 0.5;</span><br><span class="line">    vec3 viewDir &#x3D; normalize(viewPos - FragPos);</span><br><span class="line">    vec3 reflectDir &#x3D; reflect(-lightDir, norm);  </span><br><span class="line">    float spec &#x3D; pow(max(dot(viewDir, reflectDir), 0.0), 32);</span><br><span class="line">    vec3 specular &#x3D; specularStrength * spec * lightColor;  </span><br><span class="line">        </span><br><span class="line">    vec3 result &#x3D; (ambient + diffuse + specular) * objectColor;</span><br><span class="line">    FragColor &#x3D; vec4(result, 1.0);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 <p>As you can see, fragment position and normal information are passed into the fragment shader<br />
 from vertex shader (where the pre-compute happens), the lighting calculation (Phong lighting)<br />
 is calculated per-fragment.</p>
-<p>On a related note: gpu cost are related to 1. how many vertices are passed in to the gpu from<br />
+<h2 id="on-a-related-note-gpu-cost-are-related-to-1-how-many-vertices-are-passed-in-to-the-gpu-frombuffer-and-2-how-complex-the-lighting-calculation-is-in-the-fragment-shader-this-could-bethe-algorithmmodel-complexity-and-the-number-of-passes"><a class="markdownIt-Anchor" href="#on-a-related-note-gpu-cost-are-related-to-1-how-many-vertices-are-passed-in-to-the-gpu-frombuffer-and-2-how-complex-the-lighting-calculation-is-in-the-fragment-shader-this-could-bethe-algorithmmodel-complexity-and-the-number-of-passes"></a> On a related note: gpu cost are related to 1. how many vertices are passed in to the gpu from<br />
 buffer and 2. how complex the lighting calculation is in the fragment shader (this could be<br />
-the algorithm/model complexity, and the number of passes);</p>
+the algorithm/model complexity, and the number of passes);</h2>
 <h3 id="forward-vs-deferred-rendering"><a class="markdownIt-Anchor" href="#forward-vs-deferred-rendering"></a> Forward vs. Deferred Rendering</h3>
+<h4 id="forward-rendering"><a class="markdownIt-Anchor" href="#forward-rendering"></a> Forward Rendering</h4>
+<p>The standard, out-of-the-box rendering technique</p>
+<p>Geometries are passed to gpu, going through vertex shader and fragment shader,<br />
+with each geometry and each light computed separately one at a time to form the final render.</p>
+<p>Render complexity: O(num of geometry fragments * num of lights)</p>
+<p><img src="https://cdn.tutsplus.com/cdn-cgi/image/width=600/gamedev/uploads/2013/11/forward-v2.png" alt="forward rendering" /></p>
+<h4 id="deferred-rendering"><a class="markdownIt-Anchor" href="#deferred-rendering"></a> Deferred Rendering</h4>
+<p>Render is deferred until all geometry has been processed</p>
+<p>Geometries are passed to gpu, going through vertex shader and fragment shader (without lighting pass),<br />
+final rendering is computed/combined with multiple render passes<br />
+(one pass for getting all geometry information to G-buffer,<br />
+second pass for compute lighting based on the G-buffer).</p>
+<p>Render complexity: O(screen resolution * num of lights)</p>
+<p><img src="https://cdn.tutsplus.com/cdn-cgi/image/width=600/gamedev/uploads/2013/11/deferred-v2.png" alt="deferred rendering" /></p>
+<h4 id="discussion"><a class="markdownIt-Anchor" href="#discussion"></a> Discussion</h4>
+<p>Everything all comes down to lighting, as gpu can easily handle vertex information,<br />
+but the most expensive are lighting calculation which can easily slow down the rendering.<br />
+Forward rendering iterates and compute each fragments of each geometry, no matter if it overlaps or is hidden<br />
+by other fragments. So for each pixel, we could have already run multiple fragment shaders.</p>
+<p>This is where deferred rendering come in handy, the G-buffer stores information such as color, normal and depth.<br />
+The lighting later on can know how to produce the final render by combining all the information (For example: depth test can<br />
+also cull out all the fragments that are being obscured). So essentially, each pixel only runs a single fragment shader.</p>
+<hr />
 <h3 id="rasterization-vs-ray-tracing"><a class="markdownIt-Anchor" href="#rasterization-vs-ray-tracing"></a> Rasterization vs. Ray tracing</h3>
+<p>The forward, deferred rendering techniques are all in the realm of rasterization, which is the<br />
+most popular and traditional real-time rendering technique. With the advance of hardware, ray tracing,<br />
+which is computationally demanding (usually used in films/animation) can now be used in<br />
+real-time video games.</p>
+<h4 id="rasterization"><a class="markdownIt-Anchor" href="#rasterization"></a> Rasterization</h4>
+<p>We gather objects information and projects each one by one on screen (per fragment), fragment shader<br />
+computes the final color of every fragments to form pixels on screen.</p>
+<p>The fundamental of rasterizing is that for each object/geometry, we look at (rasterize it) it’s verts/triangles<br />
+to cover pixels.</p>
+<p>So, as discussed in deferred rendering, every object is drawn but not all of them are displayed on screen.<br />
+This overdraw can be accelerated by using deferred shading’s depth test.</p>
+<p><img src="https://www.scratchapixel.com/images/upload/rasterization/raytracing-raster5.png?" alt="rasterization" /></p>
+<h4 id="ray-tracing"><a class="markdownIt-Anchor" href="#ray-tracing"></a> Ray tracing</h4>
+<p>We cast rays from our eyes (camera) for each pixel and gather information of those rays as they travel<br />
+through/intersects with objects and interacts with lights<br />
+to form the final render on screen.</p>
+<p>The fundamental of ray tracing is that for each pixel, we look at (shoot a ray) each object/geometry to see<br />
+how they contribute to the color of that pixel.</p>
+<p>As for ray tracing, we need to shoot many rays for each pixel, and more when there are reflection and refraction.<br />
+One way to accelerate this is to use bounding volume.</p>
+<p><img src="https://static.techspot.com/articles-info/1888/images/2019-08-11-image-8.png" alt="ray tracing" /></p>
+<h4 id="discussion-2"><a class="markdownIt-Anchor" href="#discussion-2"></a> Discussion</h4>
+<p>The most significant difference in visual is that ray tracing is physically more accurate<br />
+than rasterization, thus more realistic. Which is more apparent in dynamic environment with<br />
+objects that reflects and refract. Rasterization needs many estimation techniques to handle lighting and shadowing<br />
+such as more render passes, baked light map, cubemap reflection, but ray tracing gets all the results out of the box.</p>
+<p><img src="https://i.stack.imgur.com/e9CSY.png" alt="rasterization vs. ray tracing" /></p>
+<hr />
 <h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
-<p><a target="_blank" rel="noopener" href="https://gamedevelopment.tutsplus.com/articles/forward-rendering-vs-deferred-rendering--gamedev-12342">https://gamedevelopment.tutsplus.com/articles/forward-rendering-vs-deferred-rendering--gamedev-12342</a></p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Deferred_shading#Deferred_lighting">https://en.wikipedia.org/wiki/Deferred_shading#Deferred_lighting</a></p>
-<p><a target="_blank" rel="noopener" href="https://learnopengl.com/Lighting/Basic-Lighting">https://learnopengl.com/Lighting/Basic-Lighting</a></p>
-<p><a target="_blank" rel="noopener" href="https://knowww.eu/nodes/59b8e93cd54a862e9d7e414a">https://knowww.eu/nodes/59b8e93cd54a862e9d7e414a</a></p>
-<p><a target="_blank" rel="noopener" href="https://answers.unity.com/questions/1749305/whats-the-difference-between-per-pixel-and-per-ver.html">https://answers.unity.com/questions/1749305/whats-the-difference-between-per-pixel-and-per-ver.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dhVJE7g3hig">https://www.youtube.com/watch?v=dhVJE7g3hig</a></p>
-<!-- flag of hidden posts -->
+<p><a target="_blank" rel="noopener" href="https://gamedevelopment.tutsplus.com/articles/forward-rendering-vs-deferred-rendering--gamedev-12342">Envato tuts+ - Forward Rendering vs. Deferred Rendering</a></p>
+<p><a target="_blank" rel="noopener" href="https://learnopengl.com/Advanced-Lighting/Deferred-Shading">Learn OpenGL - Deferred Shading</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Deferred_shading#Deferred_lighting">Wikipedia - Deferred Lighting</a></p>
+<p><a target="_blank" rel="noopener" href="https://learnopengl.com/Lighting/Basic-Lighting">Learn OpenGL - Basic Lighting</a></p>
+<p><a target="_blank" rel="noopener" href="https://knowww.eu/nodes/59b8e93cd54a862e9d7e414a">Knowww - Per-vertex vs. per-fragment lighting</a></p>
+<p><a target="_blank" rel="noopener" href="https://answers.unity.com/questions/1749305/whats-the-difference-between-per-pixel-and-per-ver.html">Unity Forum - What’s the difference between per-pixel and per-vertex lit in Forward Rendering?</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dhVJE7g3hig">Youtube - OpenGL Fragment Shaders | How Do Fragment Shaders Work?</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/ray-tracing-essentials-part-2-rasterization-versus-ray-tracing/">Nvidia - Ray Tracing Essentials</a></p>
+<p><a target="_blank" rel="noopener" href="https://computergraphics.stackexchange.com/questions/4585/mirror-reflections-ray-tracing-or-rasterisation">Stack Exchange - Mirror Reflections: Ray Tracing or Rasterization?</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.quora.com/What-is-the-diferrence-between-ray-tracing-and-very-high-shader-details">Quora - What is the diferrence between ray tracing and very high shader details?</a></p>
+
       
     </div>
     <div class="article-footer">
@@ -300,7 +370,7 @@ the algorithm/model complexity, and the number of passes);</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/wip/graphics-learning/" title="Learning Graphics (temp title)" target="_blank" rel="external">https://www.xingyulei.com/post/wip/graphics-learning/</a>
+      <a href="https://www.xingyulei.com/post/graphics-learning/" title="Learning Graphics Basics" target="_blank" rel="external">https://www.xingyulei.com/post/graphics-learning/</a>
     </li>
     
 	
@@ -344,6 +414,20 @@ the algorithm/model complexity, and the number of passes);</p>
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/verlet-integration/" title="Verlet Integration in Unity"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/maya-api-deformer/" title="Maya API (3. Custom Deformer)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
   
   
