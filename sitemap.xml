@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xingyulei.com/post/py-multi-line/</loc>
+    
+    <lastmod>2021-09-28</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-batch-mode/</loc>
+    
+    <lastmod>2021-09-28</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xingyulei.com/post/git-learning/</loc>
     
     <lastmod>2021-09-28</lastmod>
@@ -298,13 +312,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/graphic-programming/</loc>
-    <lastmod>2021-09-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/git/</loc>
     <lastmod>2021-09-28</lastmod>
     <changefreq>daily</changefreq>
@@ -320,6 +327,13 @@
   
   <url>
     <loc>https://www.xingyulei.com/tags/maya/</loc>
+    <lastmod>2021-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/graphic-programming/</loc>
     <lastmod>2021-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

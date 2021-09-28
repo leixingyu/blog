@@ -332,6 +332,32 @@ and shared across Views&lt;/p&gt;
   </entry>
   
   <entry>
+    <title>Python Style - Multi-Lines</title>
+    <link href="https://www.xingyulei.com/post/py-multi-line/"/>
+    <id>https://www.xingyulei.com/post/py-multi-line/</id>
+    <published>2021-01-31T05:00:00.000Z</published>
+    <updated>2021-09-28T03:08:43.317Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="functions-with-long-arguments"><a class="markdownIt-Anchor" href="#functions-with-long-arguments"></a> Functions with long arguments</h3><p>Here’s a snippet of my code from the previous version of autoRigger</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># don&#x27;t do this</span></span><br><span class="line">cmds.setDrivenKeyframe(<span class="string">&#x27;&#123;&#125;_parentConstraint1.&#123;&#125;W0&#x27;</span>.<span class="built_in">format</span>(jnt, ik_jnt), currentDriver=<span class="string">&#x27;&#123;&#125;.FK_IK&#x27;</span>.<span class="built_in">format</span>(switch_ctrl), driverValue=<span class="number">1</span>, value=<span class="number">1</span>)</span><br></pre></td></tr></table></figure><p>This is quite a long line, how should I break it?</p><p>My initial idea was to move whatever arguments that is over the length limit</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># don&#x27;t do this</span></span><br><span class="line">cmds.setDrivenKeyframe(<span class="string">&#x27;&#123;&#125;_parentConstraint1.&#123;&#125;W0&#x27;</span>.<span class="built_in">format</span>(jnt, ik_jnt),</span><br><span class="line">                       currentDriver=<span class="string">&#x27;&#123;&#125;.FK_IK&#x27;</span>.<span class="built_in">format</span>(switch_ctrl), </span><br><span class="line">                       driverValue=<span class="number">1</span>, value=<span class="number">1</span>)</span><br></pre></td></tr></table></figure><p>But in PEP8, the only suggestion is that the first line should not include any argument,<br />The other lines’ indentation and the closing bracket can be whatever your preference is,<br />Grouping multiple arguments in a single line can be inconsistent and some of them might get ignored.<br />Having one tab or non indentation could also be difficult to distinguish.</p><p>So here’s what I have</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># do this</span></span><br><span class="line">cmds.setDrivenKeyframe(</span><br><span class="line">        <span class="string">&#x27;&#123;&#125;_parentConstraint1.&#123;&#125;W0&#x27;</span>.<span class="built_in">format</span>(jnt, ik_jnt),</span><br><span class="line">        currentDriver=<span class="string">&#x27;&#123;&#125;.FK_IK&#x27;</span>.<span class="built_in">format</span>(switch_ctrl), </span><br><span class="line">        driverValue=<span class="number">1</span>,</span><br><span class="line">        value=<span class="number">1</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>The extra indentation and the closing bracket helps to organize function as a whole,<br />and no matter how long is the argument, keep one in each line.</p><h3 id="multi-line-string"><a class="markdownIt-Anchor" href="#multi-line-string"></a> Multi-line String</h3><p>I don’t like using triple quotes because the formatting looks weird when having indentation,</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">string = <span class="string">&quot;&quot;&quot; this is a very</span></span><br><span class="line"><span class="string">             long string if I had the</span></span><br><span class="line"><span class="string">             energy to type more and more ...&quot;&quot;&quot;</span>  </span><br><span class="line">        </span><br><span class="line"><span class="comment"># this will print out:</span></span><br><span class="line"><span class="comment">#---------------------</span></span><br><span class="line"><span class="comment">#this is a very</span></span><br><span class="line"><span class="comment">#            long string if I had the</span></span><br><span class="line"><span class="comment">#            energy to type more and more ...</span></span><br></pre></td></tr></table></figure><p>I am not a fan of <code>\</code>, instead I prefer:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string = (</span><br><span class="line">    <span class="string">&quot;this is a very&quot;</span></span><br><span class="line">    <span class="string">&quot; long string too&quot;</span></span><br><span class="line">    <span class="string">&quot; for sure ...&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>Be aware that you need to add spaces and return manually (put spaces in the front and line break at the end)</p><h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3><p><a href="https://stackoverflow.com/questions/6609956/python-function-argument-list-formatting">https://stackoverflow.com/questions/6609956/python-function-argument-list-formatting</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;functions-with-long-arguments&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#functions-with-long-arguments&quot;&gt;&lt;/a&gt; Functions with long arguments</summary>
+      
+    
+    
+    
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
+    
+    
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
+    
+    <category term="style" scheme="https://www.xingyulei.com/tags/style/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Qt QMessageBox Template</title>
     <link href="https://www.xingyulei.com/post/qt-messagebox/"/>
     <id>https://www.xingyulei.com/post/qt-messagebox/</id>
@@ -508,33 +534,6 @@ and shared across Views&lt;/p&gt;
     <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
     <category term="style" scheme="https://www.xingyulei.com/tags/style/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Learning Git</title>
-    <link href="https://www.xingyulei.com/post/git-learning/"/>
-    <id>https://www.xingyulei.com/post/git-learning/</id>
-    <published>2020-12-22T05:00:00.000Z</published>
-    <updated>2021-09-28T02:27:54.299Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="dvcs-vs-cvcs"><a class="markdownIt-Anchor" href="#dvcs-vs-cvcs"></a> DVCS vs. CVCS</h3><p>DVCS (distributed version control system), for example: Git. Each developer are getting a complete copy of the entire history of that project. This allows developer works offline without connecting to the master repo. Git has an additional staging phase which allows you to break down changes into seperate commits with its own comments.</p><p>CVCS (centralized version control system), for example: SVN. One central repository, gives manager more top down approach to control, security permission. No staging phase means one less step.</p><p>Note: today, more teams are using a <strong>Centralized Git Model</strong>, where changes intended to be a part of a project are submitted as pull or merge request to the master branch.</p><h3 id="github-vs-gitlab"><a class="markdownIt-Anchor" href="#github-vs-gitlab"></a> GitHub vs. GitLab</h3><p>They are completely different web-based Git repositories. On the surface, it looks like GitHub is really community friendly, hosting the largest version control platform, while GitLab offers great deal for enterprise professional use (equally, or better features like tracking, project import, with cheaper prices)</p><h3 id="git-ssh-protocol"><a class="markdownIt-Anchor" href="#git-ssh-protocol"></a> Git SSH protocol</h3><h3 id="git-key-commands"><a class="markdownIt-Anchor" href="#git-key-commands"></a> Git Key Commands</h3><ul><li><p><code>git init</code> vs. <code>git clone</code></p><p><code>git init</code> is a setup process where you initialize a bare local repo<br /><code>git clone</code> obtain a local development clone repo from an already setup central repository, which can be treated as combining <code>git init</code> and <code>git remote add</code></p></li><li><p><code>git pull</code> (or <code>git push</code>) vs. <code>pull request</code> (or <code>push request</code>)</p><p><code>git pull</code> pull the changes from the remote repo to your local repo, which is effectively a <code>git fetch</code> followed by a <code>git merge</code></p><p><code>pull request</code> is you requesting another repo to pull your change (more or less asking them to <code>git pull</code> from your repo). A <code>push request</code> is the other way around, where the target repo ask you to <code>git push</code> your changes</p></li><li><p><code>git config</code></p><p>this command allows you to configure your Git configuration on a global or local project level, some common usage includes setting up name and email, configure text color or editor choice. There are three configuration level: <code>--local</code>, <code>--global</code>, <code>--system</code></p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example</span></span><br><span class="line">git --global user.name <span class="string">&quot;John Doh&quot;</span></span><br><span class="line">git --system core.editor vim</span><br></pre></td></tr></table></figure><p>Note: most config only need to be set once, email is an exception where you will want to use personal email for personal project and professional email for work-related project</p></li></ul><h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3><p><a href="https://blog.hackbrightacademy.com/blog/svn-vs-git/">HackBright Academy - SVN Vs Git: Which One Is Best For Your Needs?</a></p><p><a href="https://www.atlassian.com/git/tutorials/what-is-git">Bitbucket - What is Git</a></p><p><a href="https://www.perforce.com/blog/vcs/git-vs-perforce-how-choose-and-when-use-both">Perforce - Git vs. Perforce: How to Choose (and When to Use Both)</a></p><p><a href="https://usersnap.com/blog/gitlab-github/">Usersnap - GitLab vs GitHub: Key differences &amp; similarities</a></p><p><a href="https://stackoverflow.com/questions/22585407/git-pull-vs-pull-request">Stack Overflow - Git Pull vs. Pull Request</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;dvcs-vs-cvcs&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#dvcs-vs-cvcs&quot;&gt;&lt;/a&gt; DVCS vs. CVCS&lt;/h3&gt;
-&lt;p&gt;DVCS (distributed version control system)</summary>
-      
-    
-    
-    
-    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
-    
-    
-    <category term="git" scheme="https://www.xingyulei.com/tags/git/"/>
-    
-    <category term="version control" scheme="https://www.xingyulei.com/tags/version-control/"/>
     
   </entry>
   
