@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2021-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
+    <lastmod>2021-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template/</loc>
+    <lastmod>2021-10-11</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/py-multi-line/</loc>
     <lastmod>2021-09-28</lastmod>
   </url>
@@ -37,7 +49,7 @@
     <lastmod>2021-09-03</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-context-menu/</loc>
+    <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
     <lastmod>2021-09-02</lastmod>
   </url>
   <url>
@@ -77,7 +89,7 @@
     <lastmod>2021-09-01</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-messagebox/</loc>
+    <loc>https://www.xingyulei.com/post/qt-template-messagebox/</loc>
     <lastmod>2021-09-01</lastmod>
   </url>
   <url>
@@ -109,19 +121,7 @@
     <lastmod>2021-09-01</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-template/</loc>
-    <lastmod>2021-09-01</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-dialog-template/</loc>
-    <lastmod>2021-09-01</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/py-dunder/</loc>
-    <lastmod>2021-09-01</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-widget-template/</loc>
     <lastmod>2021-09-01</lastmod>
   </url>
   <url>

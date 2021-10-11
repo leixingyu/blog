@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Three Ways to Find PID and End Process in Python (WIP) | Tech Art Learning</title>
+  <meta name="description" content="Intro Interacting with Windows shell to end process is very common, there are many ways to do so, like through the traditional batch script but to gain more flexibility, using python is probably a be">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Three Ways to Find PID and End Process in Python (WIP)">
+<meta property="og:url" content="https://www.xingyulei.com/post/py-end-process/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Intro Interacting with Windows shell to end process is very common, there are many ways to do so, like through the traditional batch script but to gain more flexibility, using python is probably a be">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-10T04:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-11T02:28:19.805Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/py-end-process/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/c/" style="font-size: 13.4px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.6px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a> <a href="/tags/version-control/" style="font-size: 13px;">version control</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-py-end-process" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Three Ways to Find PID and End Process in Python (WIP)
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/py-end-process/" class="article-date">
+	  <time datetime="2021-10-10T04:00:00.000Z" itemprop="datePublished">2021-10-10</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/py-end-process/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="intro"><a class="markdownIt-Anchor" href="#intro"></a> Intro</h3>
+<p>Interacting with Windows shell to end process is very common,<br />
+there are many ways to do so, like through the traditional batch script</p>
+<p>but to gain more flexibility, using python is probably a better idea.</p>
+<ul>
+<li><code>os.system</code> is not the most elegant way to use, and it is meant to be replaced by <code>subprocess</code></li>
+<li><code>subprocess</code> comes with Python standard library and allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes</li>
+<li><code>psutil</code> (python system and process utilities) is a <strong>cross-platform</strong> library for retrieving information on running processes and system utilization.<br />
+However, it is a third-party library</li>
+</ul>
+<h3 id="bare-minimum"><a class="markdownIt-Anchor" href="#bare-minimum"></a> Bare Minimum:</h3>
+<p>the bare minimum command to kill process utilizes window’s <code>taskkill</code>;<br />
+which doesn’t matter if you use <code>os.system</code> or <code>subprocess</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">PROCESS = <span class="string">&#x27;notepad.exe&#x27;</span></span><br><span class="line">STATUS = <span class="string">&#x27;running&#x27;</span>  <span class="comment"># running or not responding</span></span><br><span class="line">CMD = <span class="string">r&#x27;taskkill /fi &quot;IMAGENAME eq &#123;&#125;&quot; /fi &quot;STATUS eq &#123;&#125;&quot; &#x27;</span>.<span class="built_in">format</span>(PROCESS, STATUS)</span><br><span class="line"></span><br><span class="line">os.system(CMD)</span><br></pre></td></tr></table></figure>
+<h3 id="using-ossystem"><a class="markdownIt-Anchor" href="#using-ossystem"></a> Using <code>os.system</code></h3>
+<p>Now consider a more flexible case where you want to gather information about the processes like its PID,<br />
+and then proceed on ending the process. One of the downside of window shell command is that the output<br />
+can’t be passed on to other command, the output is just text. Therefore, we<br />
+output the text to a csv file which we will later process.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> signal</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">PROCESS = <span class="string">&#x27;notepad.exe&#x27;</span></span><br><span class="line">STATUS = <span class="string">&#x27;running&#x27;</span>  <span class="comment"># running or not responding</span></span><br><span class="line">TMP = <span class="string">r&#x27;&#123;&#125;/Desktop/tmp.txt&#x27;</span>.<span class="built_in">format</span>(os.environ[<span class="string">&#x27;userprofile&#x27;</span>])</span><br><span class="line">CMD = <span class="string">r&#x27;tasklist /fi &quot;IMAGENAME eq &#123;&#125;&quot; /fi &quot;STATUS eq &#123;&#125;&quot; /fo &quot;csv&quot; &gt; &quot;&#123;&#125;&quot;&#x27;</span>.<span class="built_in">format</span>(PROCESS, STATUS, TMP)</span><br><span class="line"></span><br><span class="line"><span class="comment"># output as csv format</span></span><br><span class="line">os.system(CMD)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(TMP, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> temp:</span><br><span class="line">	reader = csv.reader(temp)</span><br><span class="line">	header = <span class="built_in">next</span>(reader)</span><br><span class="line">	pids = [<span class="built_in">int</span>(row[<span class="number">1</span>]) <span class="keyword">for</span> row <span class="keyword">in</span> reader]</span><br><span class="line"></span><br><span class="line"><span class="comment"># kill process</span></span><br><span class="line"><span class="keyword">for</span> pid <span class="keyword">in</span> pids:</span><br><span class="line">	os.kill(pid, signal.SIGTERM) <span class="comment"># or signal.SIGKILL </span></span><br><span class="line">	print(<span class="string">&#x27;killed process with pid: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pid))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> os.path.exists(TMP):</span><br><span class="line">  os.remove(TMP)</span><br></pre></td></tr></table></figure>
+<h3 id="using-subprocess"><a class="markdownIt-Anchor" href="#using-subprocess"></a> Using <code>subprocess</code></h3>
+<p>With <code>subprocess</code>, we no longer need to create a temp file to store the output.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> signal</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">PROCESS = <span class="string">&#x27;notepad.exe&#x27;</span></span><br><span class="line">STATUS = <span class="string">&#x27;running&#x27;</span>  <span class="comment"># running or not responding</span></span><br><span class="line">CMD = <span class="string">r&#x27;tasklist /fi &quot;IMAGENAME eq &#123;&#125;&quot; /fi &quot;STATUS eq &#123;&#125;&quot; /fo &quot;csv&quot;&#x27;</span>.<span class="built_in">format</span>(PROCESS, STATUS)</span><br><span class="line"></span><br><span class="line"><span class="comment"># output as csv format</span></span><br><span class="line">proc = subprocess.Popen(CMD, stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line"></span><br><span class="line"><span class="comment"># get pids of the process in selected status</span></span><br><span class="line">reader = csv.reader(proc.stdout)</span><br><span class="line">header = <span class="built_in">next</span>(reader)</span><br><span class="line">pids = [<span class="built_in">int</span>(row[<span class="number">1</span>]) <span class="keyword">for</span> row <span class="keyword">in</span> reader]</span><br><span class="line"></span><br><span class="line"><span class="comment"># kill process</span></span><br><span class="line"><span class="keyword">for</span> pid <span class="keyword">in</span> pids:</span><br><span class="line">	os.kill(pid, signal.SIGTERM) <span class="comment"># or signal.SIGKILL </span></span><br><span class="line">	print(<span class="string">&#x27;killed process with pid: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pid))</span><br><span class="line"></span><br><span class="line">proc.wait()</span><br></pre></td></tr></table></figure>
+<h3 id="using-psutil"><a class="markdownIt-Anchor" href="#using-psutil"></a> Using <code>psutil</code></h3>
+<h3 id="finding-main-window-title"><a class="markdownIt-Anchor" href="#finding-main-window-title"></a> Finding Main Window Title</h3>
+<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://thispointer.com/python-check-if-a-process-is-running-by-name-and-find-its-process-id-pid/">https://thispointer.com/python-check-if-a-process-is-running-by-name-and-find-its-process-id-pid/</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/py-end-process/" title="Three Ways to Find PID and End Process in Python (WIP)" target="_blank" rel="external">https://www.xingyulei.com/post/py-end-process/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/unity-api-statemachine/" title="State Machine in Unity Scripting API"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
