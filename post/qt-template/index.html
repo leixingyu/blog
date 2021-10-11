@@ -19,16 +19,16 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Using Qt Template | Tech Art Learning</title>
-  <meta name="description" content="Import Qt Module You could be using PyQt&#x2F;PySide or a custom binding, but the import is similar 12from Qt import QtCore, QtGui, QtWidgetsfrom Qt import _loadUi  System App Template Launch as system ap">
+  <title>Maya Qt Template | Tech Art Learning</title>
+  <meta name="description" content="Import Qt Module Either using PyQt&#x2F;PySide or a custom binding, but the import is similar 12from Qt import QtCore, QtGui, QtWidgetsfrom Qt import _loadUi  System App Template Launch as system applicat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Using Qt Template">
+<meta property="og:title" content="Maya Qt Template">
 <meta property="og:url" content="https://www.xingyulei.com/post/qt-template/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Import Qt Module You could be using PyQt&#x2F;PySide or a custom binding, but the import is similar 12from Qt import QtCore, QtGui, QtWidgetsfrom Qt import _loadUi  System App Template Launch as system ap">
+<meta property="og:description" content="Import Qt Module Either using PyQt&#x2F;PySide or a custom binding, but the import is similar 12from Qt import QtCore, QtGui, QtWidgetsfrom Qt import _loadUi  System App Template Launch as system applicat">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-01-16T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-11T02:24:40.737Z">
+<meta property="article:modified_time" content="2021-10-11T03:46:07.414Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta property="article:tag" content="template">
@@ -191,7 +191,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Using Qt Template
+      Maya Qt Template
     </h1>
   
 
@@ -225,7 +225,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h3 id="import-qt-module"><a class="markdownIt-Anchor" href="#import-qt-module"></a> Import Qt Module</h3>
-<p>You could be using PyQt/PySide or a custom binding, but the import is similar</p>
+<p>Either using PyQt/PySide or a custom binding, but the import is similar</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> _loadUi</span><br></pre></td></tr></table></figure>
 <h3 id="system-app-template"><a class="markdownIt-Anchor" href="#system-app-template"></a> System App Template</h3>
 <p>Launch as system application</p>
@@ -240,7 +240,7 @@
 <p>When the UI has no parent (Maya main window), it will get instantly destroyed by the<br />
 garbage collector, unless you keep an instance:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in the show function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>():</span></span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    window.show()</span><br><span class="line">    <span class="keyword">return</span> window</span><br><span class="line"></span><br><span class="line"><span class="comment"># in maya script editor</span></span><br><span class="line">win = moduleName.show()</span><br></pre></td></tr></table></figure>
-<h3 id="dockable-maya-template"><a class="markdownIt-Anchor" href="#dockable-maya-template"></a> Dockable Maya Template</h3>
+<h3 id="make-window-dockable"><a class="markdownIt-Anchor" href="#make-window-dockable"></a> Make Window Dockable</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> maya.app.general.mayaMixin <span class="keyword">import</span> MayaQWidgetBaseMixin</span><br><span class="line"></span><br><span class="line">WORKSPACE_CTRL_NAME = <span class="string">&#x27;CustomWidgetWorkspaceControl&#x27;</span></span><br><span class="line">WIDGET_OBJECT_NAME = <span class="string">&#x27;CustomWidget&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DockableUI</span>(<span class="params">MayaQWidgetDockableMixin, QtWidgets.QMainWindow</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=get_maya_main_window(<span class="params"></span>)</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(DockableUI, self).__init__(parent)</span><br><span class="line">        _loadUi(UI_PATH, self)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deleteInstances</span>():</span></span><br><span class="line">    <span class="keyword">for</span> ctrlName <span class="keyword">in</span> [WIDGET_OBJECT_NAME, WORKSPACE_CTRL_NAME]:</span><br><span class="line">        ctrl = OpenMayaUI.MQtUtil.findControl(ctrlName)</span><br><span class="line">        <span class="keyword">if</span> ctrl:</span><br><span class="line">            widget = shiboken2.wrapInstance(<span class="built_in">int</span>(ctrl), QtWidgets.QWidget)</span><br><span class="line">            widget.close()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        cmds.deleteUI(WORKSPACE_CTRL_NAME)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>():</span></span><br><span class="line">    deleteInstances()</span><br><span class="line">    <span class="keyword">global</span> _DOCKWIDGET</span><br><span class="line">    _DOCKWIDGET = DockableUI()</span><br><span class="line">    _DOCKWIDGET.setObjectName(WIDGET_OBJECT_NAME)</span><br><span class="line">    _DOCKWIDGET.show(dockable=<span class="literal">True</span>, dup=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># this auto docks the widget</span></span><br><span class="line">    <span class="comment">#cmds.workspaceControl(WORKSPACE_CTRL_NAME, e=True, dockToMainWindow=[&quot;right&quot;, 1], wp=&quot;preferred&quot;, retain=False)</span></span><br></pre></td></tr></table></figure>
 <h3 id="error-in-pycharm"><a class="markdownIt-Anchor" href="#error-in-pycharm"></a> Error in PyCharm</h3>
 <p>When this error occurs, it is due to MayaDevKit environment<br />
@@ -259,7 +259,7 @@ MayaDevKit allows maya python command auto-completion, remove it from PyCharm</p
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/qt-template/" title="Using Qt Template" target="_blank" rel="external">https://www.xingyulei.com/post/qt-template/</a>
+      <a href="https://www.xingyulei.com/post/qt-template/" title="Maya Qt Template" target="_blank" rel="external">https://www.xingyulei.com/post/qt-template/</a>
     </li>
     
 	
