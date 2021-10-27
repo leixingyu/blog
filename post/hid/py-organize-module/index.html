@@ -19,20 +19,22 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Lighting Techniques (Light Map, Light Probe and Ray Tracing) | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Lighting Techniques (Light Map, Light Probe and Ray Tracing)">
-<meta property="og:url" content="https://www.xingyulei.com/post/wip/graphics-lighting-tech/index.html">
+  <title>How to Organize Custom Python Library | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="I saw this post on stack overflow and thought it is something worth summarizing How should we organize our own library?  Method One Stack everything inside one root package, each module contains many">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Organize Custom Python Library">
+<meta property="og:url" content="https://www.xingyulei.com/post/hid/py-organize-module/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="I saw this post on stack overflow and thought it is something worth summarizing How should we organize our own library?  Method One Stack everything inside one root package, each module contains many">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-16T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-19T14:38:45.984Z">
+<meta property="article:published_time" content="2021-08-14T04:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-27T02:45:48.633Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="graphic programming">
-<meta property="article:tag" content="lighting">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="style">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/wip/graphics-lighting-tech/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/hid/py-organize-module/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -160,7 +162,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -170,7 +172,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.5px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/git/" style="font-size: 13px;">git</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.67px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.83px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.67px;">style</a> <a href="/tags/template/" style="font-size: 13.33px;">template</a> <a href="/tags/unity/" style="font-size: 13.17px;">unity</a> <a href="/tags/version-control/" style="font-size: 13px;">version control</a>
+      <a href="/tags/c/" style="font-size: 13.5px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.67px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.83px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.33px;">style</a> <a href="/tags/template/" style="font-size: 13.33px;">template</a> <a href="/tags/unity/" style="font-size: 13.17px;">unity</a>
     </div>
   </div>
 
@@ -182,14 +184,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-wip/graphics-lighting-tech" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-hid/py-organize-module" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Lighting Techniques (Light Map, Light Probe and Ray Tracing)
+      How to Organize Custom Python Library
     </h1>
   
 
@@ -197,8 +199,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/wip/graphics-lighting-tech/" class="article-date">
-	  <time datetime="2020-09-16T04:00:00.000Z" itemprop="datePublished">2020-09-16</time>
+	<a href="/post/hid/py-organize-module/" class="article-date">
+	  <time datetime="2021-08-14T04:00:00.000Z" itemprop="datePublished">2021-08-14</time>
 	</a>
 </span>
         
@@ -210,19 +212,39 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/graphic-programming/" rel="tag">graphic programming</a>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/style/" rel="tag">style</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/wip/graphics-lighting-tech/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/hid/py-organize-module/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <!-- flag of hidden posts -->
+        <p>I saw this post on stack overflow and thought it is something worth summarizing</p>
+<p>How should we organize our own library?</p>
+<h3 id="method-one"><a class="markdownIt-Anchor" href="#method-one"></a> Method One</h3>
+<p>Stack everything inside one root package, each module contains many functions, one utility module containing<br />
+all the generic functions</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root (package)</span><br><span class="line">    animation.py  (module)</span><br><span class="line">    audio.py      (module)</span><br><span class="line">    modelling.py  (module)</span><br><span class="line">    rigging.py    (module)</span><br><span class="line">    library.py    (module)</span><br><span class="line">    util.py       (module)</span><br></pre></td></tr></table></figure>
+<h3 id="method-two"><a class="markdownIt-Anchor" href="#method-two"></a> Method Two</h3>
+<p>Have multiple separated packages, and split the code into smaller modules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root (package)</span><br><span class="line">    animation (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        bar.py       (module)</span><br><span class="line"></span><br><span class="line">    audio (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        foo.py       (module)</span><br><span class="line"></span><br><span class="line">   rigging (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        foo.py       (module)</span><br><span class="line"></span><br><span class="line">   etc</span><br></pre></td></tr></table></figure>
+<p>The <code>__init__.py</code> inside of each package would import all the necessary functions</p>
+<h3 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h3>
+<p>Either are okay, but there are certain rules/recommendation to follow:</p>
+<ol>
+<li>Functions in the same module are closely connected</li>
+<li>Having fewer but bigger modules could be difficult to navigate</li>
+<li>Try to make each module standalone</li>
+<li>Having many separated modules makes import efficient, but the module should not be too small</li>
+</ol>
+<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/52082078/best-way-to-keep-python-modules-organised">https://stackoverflow.com/questions/52082078/best-way-to-keep-python-modules-organised</a></p>
+<!-- flag of hidden posts -->
       
     </div>
     <div class="article-footer">
@@ -232,7 +254,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/wip/graphics-lighting-tech/" title="Lighting Techniques (Light Map, Light Probe and Ray Tracing)" target="_blank" rel="external">https://www.xingyulei.com/post/wip/graphics-lighting-tech/</a>
+      <a href="https://www.xingyulei.com/post/hid/py-organize-module/" title="How to Organize Custom Python Library" target="_blank" rel="external">https://www.xingyulei.com/post/hid/py-organize-module/</a>
     </li>
     
 	
