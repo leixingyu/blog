@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2021-10-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
+    <lastmod>2021-10-18</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/qt-template/</loc>
     <lastmod>2021-10-14</lastmod>
   </url>
@@ -29,10 +37,6 @@
     <lastmod>2021-10-12</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
-    <lastmod>2021-10-11</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/qt-signal-in-for-loop/</loc>
     <lastmod>2021-10-11</lastmod>
   </url>
@@ -46,10 +50,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/py-import/</loc>
-    <lastmod>2021-10-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
     <lastmod>2021-10-11</lastmod>
   </url>
   <url>
