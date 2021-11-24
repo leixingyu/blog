@@ -19,21 +19,21 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Qt Using Role to Embed Data | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta name="description" content="Example from Cerina. Different Data Role has different usage, for some widget items, it is possible to display one information, while embedding different information. The example below shows that you">
+  <title>Qt Model View Intro | Tech Art Learning</title>
+  <meta name="description" content="The following example demonstrated how same data is accessed through a Model and shared across Views 1234567891011121314151617181920from Qt import QtGui, QtCore, QtWidgetsimport sysif __name__ &#x3D;&#x3D; &amp;#x2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt Using Role to Embed Data">
-<meta property="og:url" content="https://www.xingyulei.com/post/hid/qt-data-role/index.html">
+<meta property="og:title" content="Qt Model View Intro">
+<meta property="og:url" content="https://www.xingyulei.com/post/hid/qt-mv-intro/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Example from Cerina. Different Data Role has different usage, for some widget items, it is possible to display one information, while embedding different information. The example below shows that you">
+<meta property="og:description" content="The following example demonstrated how same data is accessed through a Model and shared across Views 1234567891011121314151617181920from Qt import QtGui, QtCore, QtWidgetsimport sysif __name__ &#x3D;&#x3D; &amp;#x2">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-04T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-01T22:57:54.441Z">
+<meta property="article:published_time" content="2021-02-06T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-11-24T03:45:45.318Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/hid/qt-data-role/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/hid/qt-mv-intro/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -183,14 +183,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-hid/qt-data-role" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-hid/qt-mv-intro" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Qt Using Role to Embed Data
+      Qt Model View Intro
     </h1>
   
 
@@ -198,14 +198,14 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/hid/qt-data-role/" class="article-date">
-	  <time datetime="2021-05-04T04:00:00.000Z" itemprop="datePublished">2021-05-04</time>
+	<a href="/post/hid/qt-mv-intro/" class="article-date">
+	  <time datetime="2021-02-06T05:00:00.000Z" itemprop="datePublished">2021-02-06</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
+    <a class="article-category-link" href="/categories/model-view-programming/">model view programming</a>
   </span>
 
         
@@ -217,21 +217,21 @@
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/hid/qt-data-role/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/hid/qt-mv-intro/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>Example from Cerina.</p>
-<p>Different Data Role has different usage, for some widget items, it is possible to<br />
-display one information, while embedding different information.</p>
-<p>The example below shows that you can set <code>UserRole</code> to a <code>QTreeWidgetItem</code> that never<br />
-gets displayed, but the data (one or more) can be retrieved anytime.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtCore</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QApplication, QWidget, QVBoxLayout, QTreeWidgetItem, QTreeWidget</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UI</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(UI, self).__init__(<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        layout = QVBoxLayout()</span><br><span class="line"></span><br><span class="line">        treeWidget = QTreeWidget()</span><br><span class="line">        treeWidget.setHeaderLabels([<span class="string">&quot;Files&quot;</span>])</span><br><span class="line">        layout.addWidget(treeWidget)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">            filename = <span class="string">&#x27;maya_scene_%02d.ma&#x27;</span> % i</span><br><span class="line">            item = QTreeWidgetItem([filename])</span><br><span class="line">            item.setCheckState(<span class="number">0</span>, QtCore.Qt.Checked)</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># I want to store the full path as meta data on the tree widget</span></span><br><span class="line">            <span class="comment"># item. This way it&#x27;s easier to read the information displayed</span></span><br><span class="line">            <span class="comment"># in the UI.</span></span><br><span class="line">            item.setData(<span class="number">0</span>, QtCore.Qt.UserRole, os.path.join(<span class="string">r&#x27;C:\users&#x27;</span>, filename))</span><br><span class="line">            item.setData(<span class="number">1</span>, QtCore.Qt.UserRole, &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;apple&#x27;</span>&#125;)</span><br><span class="line">            treeWidget.addTopLevelItem(item)</span><br><span class="line"></span><br><span class="line">        treeWidget.currentItemChanged.connect(self.displayFullPath)</span><br><span class="line">        self.setLayout(layout)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">displayFullPath</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        print(item.text(<span class="number">0</span>))</span><br><span class="line">        d = item.data(<span class="number">1</span>, QtCore.Qt.UserRole)</span><br><span class="line">        print(<span class="string">&#x27;key&#x27;</span>, d[<span class="string">&#x27;key&#x27;</span>])</span><br><span class="line">        print(item.data(<span class="number">0</span>, QtCore.Qt.UserRole))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ui = UI()</span><br><span class="line">    ui.show()</span><br><span class="line">    app.exec_()</span><br></pre></td></tr></table></figure>
-<p>Reference:</p>
-<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qt.html#ItemDataRole-enum">https://doc.qt.io/qt-5/qt.html#ItemDataRole-enum</a></p>
-<!-- flag of hidden posts -->
+        <p>The following example demonstrated how same data is accessed through a Model<br />
+and shared across Views</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> QtGui, QtCore, QtWidgets</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># no QString needed in Qt5, use python string instead</span></span><br><span class="line">    data = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    listView = QtWidgets.QListView()</span><br><span class="line">    listView.show()</span><br><span class="line"></span><br><span class="line">    model = QtCore.QStringListModel(data)</span><br><span class="line">    listView.setModel(model)</span><br><span class="line"></span><br><span class="line">    combobox = QtWidgets.QComboBox()</span><br><span class="line">    combobox.setModel(model)</span><br><span class="line">    combobox.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>In Qt 5, the <code>QtCore.QStringList()</code> is replaced by python’s built-in <code>string</code> type</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># qt 4</span></span><br><span class="line">data = QtCore.QStringList()</span><br><span class="line">data &lt;&lt; <span class="string">&quot;one&quot;</span> &lt;&lt; <span class="string">&quot;two&quot;</span> &lt;&lt; <span class="string">&quot;three&quot;</span> &lt;&lt; <span class="string">&quot;four&quot;</span> &lt;&lt; <span class="string">&quot;five&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># qt 5</span></span><br><span class="line">data = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>, <span class="string">&#x27;four&#x27;</span>, <span class="string">&#x27;five&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="source"><a class="markdownIt-Anchor" href="#source"></a> Source</h3>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mCHVI8OXDxw&amp;list=PLG4y4w32mF3qmweFe59P_8INlVNOm_IHo">https://www.youtube.com/watch?v=mCHVI8OXDxw&amp;list=PLG4y4w32mF3qmweFe59P_8INlVNOm_IHo</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27757678/importerror-cannot-import-name-qstringlist-in-pyqt5">https://stackoverflow.com/questions/27757678/importerror-cannot-import-name-qstringlist-in-pyqt5</a></p>
+
       
     </div>
     <div class="article-footer">
@@ -241,7 +241,7 @@ gets displayed, but the data (one or more) can be retrieved anytime.</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/hid/qt-data-role/" title="Qt Using Role to Embed Data" target="_blank" rel="external">https://www.xingyulei.com/post/hid/qt-data-role/</a>
+      <a href="https://www.xingyulei.com/post/hid/qt-mv-intro/" title="Qt Model View Intro" target="_blank" rel="external">https://www.xingyulei.com/post/hid/qt-mv-intro/</a>
     </li>
     
 	
@@ -285,6 +285,20 @@ gets displayed, but the data (one or more) can be retrieved anytime.</p>
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/hid/qt-mv-list/" title="Qt Model View List Model"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/qt-template-context-menu/" title="Qt Context Menu Template (Menu, Submenu and Action)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
   
   

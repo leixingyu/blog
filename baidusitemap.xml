@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-pixmap-scale/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/hid/qt-mv-intro/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-error-handle/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/conditional-expression/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
+    <lastmod>2021-11-24</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/py-constant/</loc>
     <lastmod>2021-10-27</lastmod>
   </url>
@@ -9,24 +45,8 @@
     <lastmod>2021-10-26</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
-    <lastmod>2021-10-18</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template/</loc>
-    <lastmod>2021-10-14</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
-    <lastmod>2021-10-14</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/structure-class/</loc>
     <lastmod>2021-10-14</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-error-handle/</loc>
-    <lastmod>2021-10-12</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/py-dunder/</loc>
@@ -69,10 +89,6 @@
     <lastmod>2021-09-20</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/conditional-expression/</loc>
-    <lastmod>2021-09-19</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/maya-api-intro/</loc>
     <lastmod>2021-09-03</lastmod>
   </url>
@@ -89,23 +105,7 @@
     <lastmod>2021-09-01</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-mv-intro/</loc>
-    <lastmod>2021-09-01</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-mv-list/</loc>
-    <lastmod>2021-09-01</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-pixmap-scale/</loc>
-    <lastmod>2021-09-01</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
-    <lastmod>2021-09-01</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
+    <loc>https://www.xingyulei.com/post/hid/qt-mv-list/</loc>
     <lastmod>2021-09-01</lastmod>
   </url>
 </urlset> 

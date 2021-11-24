@@ -28,7 +28,7 @@
 <meta property="og:description" content="UI Module without .ui file There is a different between inheriting from QWidget class vs QMainWindow Inheriting from QWidget: 12345678910111213141516class InheritQWidget(QtWidgets.QWidget):    def __">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-11T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-18T22:25:23.463Z">
+<meta property="article:modified_time" content="2021-11-24T03:39:47.029Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta property="article:tag" content="template">
@@ -262,6 +262,12 @@ after main window is closed, because default close only hides window objects</p>
 <p><code>self.customWidget.show()</code> is the core command to call it to display</p>
 </li>
 </ol>
+<h3 id="custom-qmessagebox"><a class="markdownIt-Anchor" href="#custom-qmessagebox"></a> Custom <code>QMessageBox</code></h3>
+<p>add custom buttons to the <code>QMessageBox</code> layout</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dialog = QtWidgets.QMessageBox()</span><br><span class="line">dialog.setText(<span class="string">&quot;Overwrite?&quot;</span>)</span><br><span class="line">dialog.setIcon(QtWidgets.QMessageBox.Critical)</span><br><span class="line"></span><br><span class="line">yes_btn = dialog.addButton(<span class="string">&quot;Yes!&quot;</span>, QtWidgets.QMessageBox.YesRole)</span><br><span class="line">no_btn = dialog.addButton(<span class="string">&quot;No&quot;</span>, QtWidgets.QMessageBox.NoRole)</span><br><span class="line">abort_btn = dialog.addButton(<span class="string">&quot;Abort&quot;</span>, QtWidgets.QMessageBox.RejectRole)</span><br><span class="line">dialog.exec_()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> dialog.clickedButton() == yes_btn:</span><br><span class="line">    print(<span class="string">&quot;yes&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> dialog.clickedButton() == no_btn:</span><br><span class="line">    print(<span class="string">&quot;no&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> dialog.clickedButton() == abort_btn:</span><br><span class="line">    print(<span class="string">&quot;abort&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>Don’t use the return value of <code>QMessageBox::exec</code>, as it only makes sense<br />
+for standard buttons. Also don’t rely on <code>buttonRole</code><br />
+as multiple buttons could be sharing the same role.</p>
 <h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
 <p><a target="_blank" rel="noopener" href="https://www.programiz.com/python-programming/methods/built-in/getattr">Programiz - Python getattr()</a></p>
 <p><a target="_blank" rel="noopener" href="https://forum.learnpyqt.com/t/are-there-any-built-in-qicons/185/2">GUIS - Q&amp;A: Are there any built-in QIcons?</a></p>
@@ -328,7 +334,7 @@ after main window is closed, because default close only hides window objects</p>
     
     
     <li class="next">
-      <a href="/post/qt-mv-list/" title="Qt Model View List Model"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/post/hid/qt-mv-list/" title="Qt Model View List Model"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
