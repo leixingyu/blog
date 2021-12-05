@@ -26,6 +26,11 @@
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+@font-face {
+  font-family: customFont;
+  src: url(Poppins-Regular.ttf);
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -3255,8 +3260,9 @@ body {
 
 body {
   padding-right: 0 !important;
-  font-family: "PingHei","PingFang SC",Helvetica Neue,"Work Sans","Hiragino Sans GB","Microsoft YaHei",SimSun,sans-serif;
-  font-size: 14px;
+  font-family: customFont, Arial, Helvetica, sans-serif;
+  /*"PingHei","PingFang SC",Helvetica Neue,"Work Sans","Hiragino Sans GB","Microsoft YaHei",SimSun,sans-serif;*/
+  font-size: 15px;
   line-height: 1.57143;
   color: #333333;
   background-color: #fff;
@@ -5533,7 +5539,7 @@ pre,
   overflow: auto;
   font-size: 13px;
   color: #4d4d4c;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .highlight .gutter pre,
@@ -5559,10 +5565,13 @@ pre code {
 
 .highlight {
   position: relative;
-  padding: 32px 10px 0 10px;
+  padding: 0px 10px 0 10px;
   border-radius: 4px;
 }
 
+/* this hides the window-like title at the top of codeblock*/
+
+/*
 .highlight:before {
   display: block;
   content: ' ';
@@ -5577,6 +5586,7 @@ pre code {
   border-top-right-radius: 4px;
 }
 
+
 .highlight:after {
   content: " ";
   position: absolute;
@@ -5590,6 +5600,7 @@ pre code {
   -webkit-box-shadow: 20px 0 #fdbc40,40px 0 #35cd4b;
   box-shadow: 20px 0 #fdbc40,40px 0 #35cd4b;
 }
+*/
 
 .highlight pre {
   border: none;
