@@ -19,16 +19,16 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Qt Enum vs QFlags | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253def test():    &quot;&quot;&quot;    TODO: how to get qt namespace value instead of namespace object? u">
+  <title>QEnum vs. QFlags | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="Introduction I often take Qt namespace for granted, it became a natural habit of setting a Qt parameter using Qt namespace, for instance: setting alignment for a QStandardItem 123item &#x3D; QtGui.QStanda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt Enum vs QFlags">
+<meta property="og:title" content="QEnum vs. QFlags">
 <meta property="og:url" content="https://www.xingyulei.com/post/wip/qt-enum-flag/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253def test():    &quot;&quot;&quot;    TODO: how to get qt namespace value instead of namespace object? u">
+<meta property="og:description" content="Introduction I often take Qt namespace for granted, it became a natural habit of setting a Qt parameter using Qt namespace, for instance: setting alignment for a QStandardItem 123item &#x3D; QtGui.QStanda">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-12-01T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-02T03:39:54.971Z">
+<meta property="article:published_time" content="2021-12-06T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-08T03:57:59.603Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
@@ -190,7 +190,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Qt Enum vs QFlags
+      QEnum vs. QFlags
     </h1>
   
 
@@ -199,7 +199,7 @@
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/post/wip/qt-enum-flag/" class="article-date">
-	  <time datetime="2021-12-01T05:00:00.000Z" itemprop="datePublished">2021-12-01</time>
+	  <time datetime="2021-12-06T05:00:00.000Z" itemprop="datePublished">2021-12-06</time>
 	</a>
 </span>
         
@@ -223,7 +223,44 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    TODO: how to get qt namespace value instead of namespace object? using QFlags?</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    https://het.as.utexas.edu/HET/Software/html/qflags.html</span></span><br><span class="line"><span class="string">    https://doc.qt.io/qtforpython-5/PySide2/QtCore/QEnum.html</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Qt.AlignmentFlag is QEnum type; AlignmentFlag being the enum name</span></span><br><span class="line"><span class="string">    Qt.Alignment is QFlags type; Alignment being the type name</span></span><br><span class="line"><span class="string">    Non-flag enums have the same type and enum name</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    the return value is QFlags type</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    QFlags is used to store combinations of Enum, QFlags to provide type checking safety.</span></span><br><span class="line"><span class="string">    Qt::Alignment type is simply a typedef for QFlags&lt;Qt::AlignmentFlag&gt;.</span></span><br><span class="line"><span class="string">    QLabel::setAlignment() takes a Qt.Alignment parameter, which means that any combination of Qt.AlignmentFlag values,or 0, is legal</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    pathItem = QtGui.QStandardItem(<span class="string">&#x27;gugu&#x27;</span>)</span><br><span class="line">    <span class="comment"># &lt;class &#x27;PyQt5.QtCore.AlignmentFlag&#x27;&gt;</span></span><br><span class="line">    t = QtCore.Qt.AlignRight</span><br><span class="line">    <span class="built_in">print</span> t</span><br><span class="line"></span><br><span class="line">    arg = <span class="number">2</span></span><br><span class="line">    arg = QtCore.Qt.AlignRight</span><br><span class="line">    a = QtCore.Qt.Alignment(arg)</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">int</span>(a)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Alignment type is compatible with either int or AlignmentFlag(Enum)</span></span><br><span class="line">    pathItem.setTextAlignment(QtCore.Qt.AlignRight)</span><br><span class="line">    pathItem.setTextAlignment(a)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># &lt;class &#x27;PyQt5.QtCore.Alignment&#x27;&gt;</span></span><br><span class="line">    align = pathItem.textAlignment()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># object needs to converted to int to get the value</span></span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">int</span>(align)</span><br><span class="line"></span><br><span class="line"><span class="comment"># https://github.com/qutebrowser/qutebrowser/blob/v1.0.3/qutebrowser/utils/debug.py#L95-L131</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">enum_mapping</span>(<span class="params">cls, enum</span>):</span></span><br><span class="line">    mapping = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> <span class="built_in">dir</span>(cls):</span><br><span class="line">        value = <span class="built_in">getattr</span>(cls, key)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(value, enum):</span><br><span class="line">            mapping[key] = value</span><br><span class="line">            <span class="comment">#mapping[value] = key</span></span><br><span class="line">    <span class="keyword">return</span> mapping</span><br><span class="line"></span><br><span class="line">enum = enum_mapping(QtCore.Qt, QtCore.Qt.AlignmentFlag)</span><br><span class="line"><span class="comment">#enum = enum_mapping(QtWidgets, QtWidgets.QStyle)</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">sorted</span>(enum.items(), key=<span class="built_in">str</span>):</span><br><span class="line">    print(<span class="string">&#x27;%s = %s&#x27;</span> % item)</span><br></pre></td></tr></table></figure><!-- flag of hidden posts -->
+        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
+<p>I often take Qt <a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qt.html">namespace</a> for granted, it became<br />
+a natural habit of setting a Qt parameter using Qt namespace, for instance:<br />
+setting alignment for a <code>QStandardItem</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">item = QtGui.QStandardItem(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">item.setTextAlignment(QtCore.Qt.AlignRight)</span><br><span class="line"><span class="built_in">type</span>(QtCore.Qt.AlignRight)</span><br></pre></td></tr></table></figure>
+<p>Here, the <code>Qt.AlignRight</code> is an <code>AlignmentFlag</code> Enum type object which has a<br />
+value of <code>0x0002</code> or <code>2</code>, which creates the behavior of aligning with the right edge.</p>
+<p>Now, let’s try parsing the alignment of the <code>QStandardItem</code> again, using:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">align = item.textAlignment()</span><br><span class="line"><span class="built_in">type</span>(align)</span><br></pre></td></tr></table></figure>
+<p>this returns a <code>&lt;class 'PyQt5.QtCore.Alignment'&gt;</code> object, which we don’t really<br />
+know the value of. And also note that it is not a <code>AlignmentFlag</code> object like<br />
+previously.</p>
+<p>So, What’s the difference between these two, and how should I retrieve the namespace<br />
+value?</p>
+<h3 id="qenum-and-qflags"><a class="markdownIt-Anchor" href="#qenum-and-qflags"></a> QEnum and QFlags</h3>
+<p>QFlags is used to store combinations of Enum, QFlags to provide type checking safety.<br />
+thus, <code>Qt::Alignment</code> QFlags type is simply a typedef for <code>Qt::AlignmentFlag</code> QEnum.</p>
+<ul>
+<li><code>Qt.AlignmentFlag</code> is QEnum type; <code>AlignmentFlag</code> being the enum name</li>
+<li><code>Qt.Alignment</code> is QFlags type; <code>Alignment</code> being the type name</li>
+<li>there’s also non-flag enums, which have the same type and enum name</li>
+</ul>
+<h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h3>
+<p>declaration</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &lt;class &#x27;PyQt5.QtCore.AlignmentFlag&#x27;&gt;</span></span><br><span class="line">align_flag = QtCore.Qt.AlignRight</span><br><span class="line">align_flag_value = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;class &#x27;PyQt5.QtCore.Alignment&#x27;&gt;</span></span><br><span class="line">align = QtCore.Qt.Alignment(align_flag)</span><br><span class="line"><span class="comment"># or &lt;class &#x27;int&#x27;&gt;</span></span><br><span class="line">align = QtCore.Qt.Alignment(align_flag_value)</span><br></pre></td></tr></table></figure>
+<p><code>setAlignment()</code> takes a <code>Qt.Alignment parameter</code>, which means that any<br />
+combination of <code>Qt.AlignmentFlag</code> values,or <code>int</code>, is legal</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">item = QtGui.QStandardItem(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Alignment type is compatible with either int or AlignmentFlag(Enum)</span></span><br><span class="line"><span class="comment"># &lt;class &#x27;PyQt5.QtCore.AlignmentFlag&#x27;&gt;</span></span><br><span class="line">item.setTextAlignment(QtCore.Qt.AlignRight)</span><br><span class="line"><span class="comment"># or &lt;class &#x27;PyQt5.QtCore.Alignment&#x27;&gt;</span></span><br><span class="line">item.setTextAlignment(align)</span><br><span class="line"><span class="comment"># or &lt;class &#x27;int&#x27;&gt;</span></span><br><span class="line">item.setTextAlignment(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>the return value is QFlags type</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &lt;class &#x27;PyQt5.QtCore.Alignment&#x27;&gt;</span></span><br><span class="line">align = pathItem.textAlignment()</span><br><span class="line"></span><br><span class="line"><span class="comment"># to get the Alignment value, convert the QFlags to int</span></span><br><span class="line"><span class="built_in">int</span>(align)</span><br></pre></td></tr></table></figure>
+<h3 id="parse-namespace-and-value-mapping"><a class="markdownIt-Anchor" href="#parse-namespace-and-value-mapping"></a> Parse Namespace and Value Mapping</h3>
+<p>print out a mapping of the namespace and its corresponding value</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">enum_mapping</span>(<span class="params">cls, enum</span>):</span></span><br><span class="line">    mapping = <span class="built_in">dict</span>()</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> <span class="built_in">dir</span>(cls):</span><br><span class="line">        value = <span class="built_in">getattr</span>(cls, key)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(value, enum):</span><br><span class="line">            mapping[key] = value</span><br><span class="line">    <span class="keyword">return</span> mapping</span><br><span class="line"></span><br><span class="line">enum = enum_mapping(QtCore.Qt, QtCore.Qt.AlignmentFlag)</span><br><span class="line"><span class="comment"># enum = enum_mapping(QtWidgets, QtWidgets.QStyle)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">sorted</span>(enum.items(), key=<span class="built_in">str</span>):</span><br><span class="line">    print(<span class="string">&#x27;%s: %s&#x27;</span> % item)</span><br></pre></td></tr></table></figure>
+<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/qutebrowser/qutebrowser/blob/v1.0.3/qutebrowser/utils/debug.py#L95-L131">GitHub - qutebrowser</a></p>
+<p><a target="_blank" rel="noopener" href="https://het.as.utexas.edu/HET/Software/html/qflags.html">Qt Doc - QFlags Class Reference</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qtforpython-5/PySide2/QtCore/QEnum.html">Qt Doc - QEnum/QFlag</a></p>
+<!-- flag of hidden posts -->
       
     </div>
     <div class="article-footer">
@@ -233,7 +270,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/wip/qt-enum-flag/" title="Qt Enum vs QFlags" target="_blank" rel="external">https://www.xingyulei.com/post/wip/qt-enum-flag/</a>
+      <a href="https://www.xingyulei.com/post/wip/qt-enum-flag/" title="QEnum vs. QFlags" target="_blank" rel="external">https://www.xingyulei.com/post/wip/qt-enum-flag/</a>
     </li>
     
 	
