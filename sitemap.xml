@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xingyulei.com/post/wip/qt-enum-flag/</loc>
+    
+    <lastmod>2021-12-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
     
     <lastmod>2021-12-07</lastmod>
@@ -205,14 +212,14 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/categories/index.html</loc>
+    <loc>https://www.xingyulei.com/books/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/books/index.html</loc>
+    <loc>https://www.xingyulei.com/categories/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
@@ -242,13 +249,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/graphic-programming/</loc>
-    <lastmod>2021-12-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/c/</loc>
     <lastmod>2021-12-08</lastmod>
     <changefreq>daily</changefreq>
@@ -263,14 +263,21 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/maya/</loc>
+    <loc>https://www.xingyulei.com/tags/style/</loc>
     <lastmod>2021-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/style/</loc>
+    <loc>https://www.xingyulei.com/tags/graphic-programming/</loc>
+    <lastmod>2021-12-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/maya/</loc>
     <lastmod>2021-12-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
