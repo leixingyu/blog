@@ -19,21 +19,22 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Structure and Class in C# | Tech Art Learning</title>
-  <meta name="description" content="Struct 12345678public struct Coord&amp;#123;	    public Coord(float x, float y)&amp;#123;        X &#x3D; x;        Y &#x3D; y;    &amp;#125;    public float X &amp;#123; get; &amp;#125;    public float Y &amp;#123; get; &amp;#125;&amp;#125;">
+  <title>Difference between Field and Property | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="Example In C#: 1234567891011121314public class Person&amp;#123;   private string _name;	&#x2F;&#x2F; this is a field   public string Name		&#x2F;&#x2F; this is a property   &amp;#123;      get&amp;#123;         return _name;      &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Structure and Class in C#">
-<meta property="og:url" content="https://www.xingyulei.com/post/structure-class/index.html">
+<meta property="og:title" content="Difference between Field and Property">
+<meta property="og:url" content="https://www.xingyulei.com/post/hid/field-property/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Struct 12345678public struct Coord&amp;#123;	    public Coord(float x, float y)&amp;#123;        X &#x3D; x;        Y &#x3D; y;    &amp;#125;    public float X &amp;#123; get; &amp;#125;    public float Y &amp;#123; get; &amp;#125;&amp;#125;">
+<meta property="og:description" content="Example In C#: 1234567891011121314public class Person&amp;#123;   private string _name;	&#x2F;&#x2F; this is a field   public string Name		&#x2F;&#x2F; this is a property   &amp;#123;      get&amp;#123;         return _name;      &amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-20T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-14T01:44:19.530Z">
+<meta property="article:modified_time" content="2021-12-11T02:37:30.931Z">
 <meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="python">
 <meta property="article:tag" content="c#">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/structure-class/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/hid/field-property/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -161,7 +162,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -171,7 +172,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.5px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.67px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.83px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.33px;">style</a> <a href="/tags/template/" style="font-size: 13.33px;">template</a> <a href="/tags/unity/" style="font-size: 13.17px;">unity</a>
+      <a href="/tags/c/" style="font-size: 13.25px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pyqt/" style="font-size: 14px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/unity/" style="font-size: 13.25px;">unity</a>
     </div>
   </div>
 
@@ -183,14 +184,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-structure-class" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-hid/field-property" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Structure and Class in C#
+      Difference between Field and Property
     </h1>
   
 
@@ -198,7 +199,7 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/structure-class/" class="article-date">
+	<a href="/post/hid/field-property/" class="article-date">
 	  <time datetime="2020-12-20T05:00:00.000Z" itemprop="datePublished">2020-12-20</time>
 	</a>
 </span>
@@ -211,29 +212,34 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/c/" rel="tag">c#</a>
+	<a class="article-tag-link-link" href="/tags/c/" rel="tag">c#</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/structure-class/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/hid/field-property/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="struct"><a class="markdownIt-Anchor" href="#struct"></a> Struct</h3>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> Coord&#123;	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Coord</span>(<span class="params"><span class="built_in">float</span> x, <span class="built_in">float</span> y</span>)</span>&#123;</span><br><span class="line">        X = x;</span><br><span class="line">        Y = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> X &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> Y &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="class"><a class="markdownIt-Anchor" href="#class"></a> Class</h3>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span>&#123;	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span>(<span class="params"><span class="built_in">string</span> name, <span class="built_in">int</span> age</span>)</span>&#123;</span><br><span class="line">        Name = name;</span><br><span class="line">        Age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Structure</strong> types have value semantics. That is, a variable of a structure type contains an instance of the type. By default, variable values are copied on assignment, passing an argument to a method, and returning a method result. In the case of a structure-type variable, an instance of the type is copied Because structure type have value semantics, it is recommended using “readonly” to declare structure type as immutable.</p>
-<p><strong>Class</strong> types have reference semantics. That is, a variable of a class type contains a reference to an instance of the type, not the instance itself. Therefore, the following example shows the different use cases.</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Person Jack = <span class="keyword">new</span> Person(<span class="string">&quot;Jack&quot;</span>, <span class="number">28</span>);</span><br><span class="line">Jack.Name = <span class="string">&quot;Jackson&quot;</span>;</span><br><span class="line">Console.WriteLine(Jack.Name);</span><br><span class="line"></span><br><span class="line">Coord origin = <span class="keyword">new</span> Coord(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">Console.WriteLine(origin.X);</span><br><span class="line"></span><br><span class="line"><span class="comment">// error! the return value X is not a variable</span></span><br><span class="line"><span class="comment">// it is actrually the copy of the instance</span></span><br><span class="line">origin.X = <span class="number">5</span>;  </span><br><span class="line"></span><br><span class="line"><span class="comment">// clear! can only set new X this way   </span></span><br><span class="line">origin = <span class="keyword">new</span> Coord(<span class="number">5</span>, <span class="number">0</span>);  </span><br></pre></td></tr></table></figure>
+        <h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h3>
+<p>In C#:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="built_in">string</span> _name;	<span class="comment">// this is a field</span></span><br><span class="line">   <span class="keyword">public</span> <span class="built_in">string</span> Name		<span class="comment">// this is a property</span></span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">get</span>&#123;</span><br><span class="line">         <span class="keyword">return</span> _name;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">set</span>&#123;</span><br><span class="line">         _name = <span class="keyword">value</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="built_in">int</span> Age&#123; <span class="keyword">get</span>;<span class="keyword">set</span>; &#125; <span class="comment">// AutoProperty generates private field for us</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In Python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Celsius</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, temperature=<span class="number">0</span></span>):</span></span><br><span class="line">        self._temperature = temperature  <span class="comment"># this is a protected field</span></span><br><span class="line">        </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">temperature</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&quot;Getting value...&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> self._temperature</span><br><span class="line"></span><br><span class="line"><span class="meta">    @temperature.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">temperature</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        print(<span class="string">&quot;Setting value...&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> value &lt; -<span class="number">273.15</span>:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&quot;Temperature below -273 is not possible&quot;</span>)</span><br><span class="line">        self._temperature = value</span><br><span class="line"></span><br><span class="line"><span class="comment"># in this case, access the protected temperature value</span></span><br><span class="line">human = Celsius(<span class="number">37</span>)</span><br><span class="line"><span class="comment"># get</span></span><br><span class="line">temperature = human.temperature  <span class="comment"># note that this is not calling a method</span></span><br><span class="line"><span class="comment"># set/modify</span></span><br><span class="line">human.temperature = <span class="number">36.5</span></span><br></pre></td></tr></table></figure>
+<h3 id="summary"><a class="markdownIt-Anchor" href="#summary"></a> Summary</h3>
+<p><strong>Field</strong> which stores the internal data should almost always be private.</p>
+<p><strong>Property</strong> gives access to field (or exposed field).</p>
+<p>Above provides an example of field and property as well as a short-hand for get &amp; set, and AutoProperty in C#.</p>
+<p>The python example, use the decorator <code>@property</code> for getting value, use <code>@name.setter</code>: name is the property name.<br />
+In this case: <code>@temperature.setter</code>. There is also a deleter.</p>
 <h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1747654/error-cannot-modify-the-return-value-c-sharp">Stack Overflow - Error: “Cannot modify the return value” c#</a></p>
-<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct">Microsoft - Structure types (C# reference)</a></p>
-
+<p><a target="_blank" rel="noopener" href="https://www.w3schools.com/cs/cs_properties.asp">W3Schools - C# Properties</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/omarelgabrys-blog/properties-vs-fields-in-c-6cec86c59dc9">Medium - Properties vs, Fields in C#</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/python-property-decorator/">FreeCodeCamp - The @property Decorator in Python: Its Use Cases, Advantages, and Syntax</a></p>
+<!-- flag of hidden posts -->
       
     </div>
     <div class="article-footer">
@@ -243,7 +249,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/structure-class/" title="Structure and Class in C#" target="_blank" rel="external">https://www.xingyulei.com/post/structure-class/</a>
+      <a href="https://www.xingyulei.com/post/hid/field-property/" title="Difference between Field and Property" target="_blank" rel="external">https://www.xingyulei.com/post/hid/field-property/</a>
     </li>
     
 	
@@ -287,20 +293,6 @@
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/post/field-property/" title="Difference between Field and Property"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/post/verlet-integration/" title="Verlet Integration in Unity"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
   
   
   
