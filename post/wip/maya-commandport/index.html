@@ -19,22 +19,24 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Qt Template for Maya | Tech Art Learning</title>
-  <meta name="description" content="Import Qt Module Either using PyQt&#x2F;PySide or a custom binding, but the import is similar 12from Qt import QtCore, QtGui, QtWidgetsfrom Qt import _loadUi  Parented to Maya main window by default Qt wi">
+  <title>Communicate with Maya (1. Command Port) | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="Introduction  If you are already familiar with maya command port and socket programming, skip to Part 2 for Maya output streaming.  Although there are a lot of tools that can run internally in Maya w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt Template for Maya">
-<meta property="og:url" content="https://www.xingyulei.com/post/qt-template/index.html">
+<meta property="og:title" content="Communicate with Maya (1. Command Port)">
+<meta property="og:url" content="https://www.xingyulei.com/post/wip/maya-commandport/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Import Qt Module Either using PyQt&#x2F;PySide or a custom binding, but the import is similar 12from Qt import QtCore, QtGui, QtWidgetsfrom Qt import _loadUi  Parented to Maya main window by default Qt wi">
+<meta property="og:description" content="Introduction  If you are already familiar with maya command port and socket programming, skip to Part 2 for Maya output streaming.  Although there are a lot of tools that can run internally in Maya w">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-01-16T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-18T18:39:09.322Z">
+<meta property="article:published_time" content="2021-12-17T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-18T18:57:06.613Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="pyqt">
-<meta property="article:tag" content="template">
+<meta property="article:tag" content="maya">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="socket">
+<meta property="article:tag" content="command port">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/qt-template/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/wip/maya-commandport/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -184,14 +186,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-qt-template" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-wip/maya-commandport" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Qt Template for Maya
+      Communicate with Maya (1. Command Port)
     </h1>
   
 
@@ -199,60 +201,104 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/qt-template/" class="article-date">
-	  <time datetime="2019-01-16T05:00:00.000Z" itemprop="datePublished">2019-01-16</time>
+	<a href="/post/wip/maya-commandport/" class="article-date">
+	  <time datetime="2021-12-17T05:00:00.000Z" itemprop="datePublished">2021-12-17</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
+    
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>, <a class="article-tag-link-link" href="/tags/template/" rel="tag">template</a>
+	<a class="article-tag-link-link" href="/tags/maya/" rel="tag">maya</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/qt-template/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/wip/maya-commandport/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="import-qt-module"><a class="markdownIt-Anchor" href="#import-qt-module"></a> Import Qt Module</h3>
-<p>Either using PyQt/PySide or a custom binding, but the import is similar</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> _loadUi</span><br></pre></td></tr></table></figure>
-<h3 id="parented-to-maya-main-window"><a class="markdownIt-Anchor" href="#parented-to-maya-main-window"></a> Parented to Maya main window</h3>
-<p>by default Qt window is <strong>not</strong> parented to Maya application</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> shiboken2 <span class="keyword">import</span> wrapInstance</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_maya_main_window</span>():</span></span><br><span class="line">    <span class="keyword">import</span> maya.OpenMayaUI</span><br><span class="line">    main_window_ptr = maya.OpenMayaUI.MQtUtil.mainWindow()</span><br><span class="line">    <span class="keyword">return</span> wrapInstance(long(main_window_ptr), QtWidgets.QMainWindow)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModuleUI</span>(<span class="params">QtWidgets.QDialog</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=get_maya_main_window(<span class="params"></span>)</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(ModuleUI, self).__init__(parent)</span><br><span class="line">        _loadUi(UI_PATH, self)</span><br><span class="line">        self.setWindowFlags(QtCore.Qt.Window)</span><br></pre></td></tr></table></figure>
-<h3 id="using-qapplication"><a class="markdownIt-Anchor" href="#using-qapplication"></a> Using QApplication</h3>
-<p>Launch as standalone application using QApplication, or if a QApplication<br />
-exist, there’s no need to instantiate it. use <code>QtWidgets.QApplication.instance()</code> to check</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> sys</span><br><span class="line">    <span class="keyword">if</span> QtWidgets.QApplication.instance():</span><br><span class="line">        window = ConfigEditor()</span><br><span class="line">        window.show()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">        window = ConfigEditor()</span><br><span class="line">        window.show()</span><br><span class="line">        sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
-<h3 id="make-window-dockable"><a class="markdownIt-Anchor" href="#make-window-dockable"></a> Make Window Dockable</h3>
-<script src="https://gist.github.com/leixingyu/8fb523cfd38b47c9cb1476b5c41eafd7.js"></script>
-<h3 id="instantiate-widget"><a class="markdownIt-Anchor" href="#instantiate-widget"></a> Instantiate Widget</h3>
-<p>When the UI has no parent (Maya main window), it will get instantly destroyed by the<br />
-garbage collector, unless you keep an instance:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in the show function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>():</span></span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    window.show()</span><br><span class="line">    <span class="keyword">return</span> window</span><br><span class="line"></span><br><span class="line"><span class="comment"># in maya script editor</span></span><br><span class="line">win = moduleName.show()</span><br></pre></td></tr></table></figure>
-<p>or using global variable to store the instance</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>():</span></span><br><span class="line">    <span class="keyword">global</span> window</span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># in maya script editor</span></span><br><span class="line">moduleName.show()</span><br></pre></td></tr></table></figure>
-<h3 id="default-close-widget"><a class="markdownIt-Anchor" href="#default-close-widget"></a> Default Close Widget</h3>
-<p>by default, closing the widget is hiding it not destroying the object</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>():</span></span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        window.close()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    window.setAttribute(QtCore.Qt.WA_DeleteOnClose)</span><br><span class="line">    window.show()</span><br></pre></td></tr></table></figure>
-<h3 id="error-in-pycharm"><a class="markdownIt-Anchor" href="#error-in-pycharm"></a> Error in PyCharm</h3>
-<p>When this error occurs, it is due to MayaDevKit environment<br />
-MayaDevKit allows maya python command auto-completion, remove it from PyCharm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app &#x3D; QtWidgets.QApplication(sys.argv)</span><br><span class="line">TypeError: &#39;NoneType&#39; object is not callable</span><br></pre></td></tr></table></figure>
+        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
+<blockquote>
+<p>If you are already familiar with maya command port and socket programming, skip to<br />
+<a href="https://www.xingyulei.com/post/maya-streaming/">Part 2</a> for Maya output streaming.</p>
+</blockquote>
+<p>Although there are a lot of tools that can run internally in Maya which facilitate<br />
+the pipeline. The capability of communicating (monitor and control) Maya externally is very handy.</p>
+<p>Why? we sometime don’t need to interact with Maya GUI directly or have way too<br />
+many maya instances to manage. examples are:</p>
+<ul>
+<li>sending cross-application remote command to active maya sessions or syncing between different maya sessions</li>
+<li>batch processing on either maya standalone sessions or active maya sessions</li>
+</ul>
+<p>This requires two components which I will be covering:</p>
+<ol>
+<li>command port: sending commands to maya to execute</li>
+<li>output streaming: actively listening/receiving maya outputs</li>
+</ol>
+<p>These two parts can work independently, but are powerful as a whole. Also, for references<br />
+in creating <a href="https://www.xingyulei.com/post/maya-batch-mode/">maya standalone sessions</a></p>
+<h3 id="using-cmdscommandport"><a class="markdownIt-Anchor" href="#using-cmdscommandport"></a> Using <code>cmds.commandPort()</code></h3>
+<p><a target="_blank" rel="noopener" href="https://help.autodesk.com/cloudhelp/2018/ENU/Maya-Tech-Docs/CommandsPython/">Official Docs: cmds.commandPort()</a></p>
+<blockquote>
+<p>The command port comprises a socket to which a client program may connect</p>
+</blockquote>
+<p>Traditional socket connection provides the basic communication between<br />
+client and server.<br />
+But Maya’s built-in command port provides us a very convenient way of sending command for maya<br />
+to execute.</p>
+<ol>
+<li>The port needs to be opened on Maya’s (server) end first in order for client<br />
+to send command; ideally this would be achieved by adding a <code>cmds.commandPort()</code> open<br />
+during Maya startup.</li>
+<li>The command sent can be either <code>MEL</code> or <code>Python</code> command which must be specified during<br />
+the opening the port determined by <code>sourceType</code> flag</li>
+</ol>
+<h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h3>
+<p>First, open the command port inside Maya</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> maya.cmds <span class="keyword">as</span> cmds</span><br><span class="line">port = <span class="number">5050</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> cmds.commandPort(<span class="string">&quot;:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(port), query=<span class="literal">True</span>):</span><br><span class="line">    cmds.commandPort(name=<span class="string">&quot;:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(port))</span><br></pre></td></tr></table></figure>
+<p>Launch a python external application</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the local host</span></span><br><span class="line">HOST = <span class="string">&#x27;127.0.0.1&#x27;</span> </span><br><span class="line">PORT = <span class="number">5050</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sendCommand</span>():</span></span><br><span class="line">    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    client.connect(ADDR)</span><br><span class="line">    command = <span class="string">&#x27;polyCube()&#x27;</span></span><br><span class="line">    client.send(command)</span><br><span class="line">    client.close()</span><br></pre></td></tr></table></figure>
+<h4 id="tcp-return-message"><a class="markdownIt-Anchor" href="#tcp-return-message"></a> TCP Return Message</h4>
+<p>We are using <strong>TCP</strong> for our communication protocol to guarantee command being sent<br />
+when the connection is established successfully.</p>
+<blockquote>
+<p><strong>Important:</strong><br />
+At this point, we are not attempting to use <code>client.recv(1024)</code> for data returning<br />
+from Maya, unless it’s a super simple single statement.</p>
+</blockquote>
+<p>Trying to use <code>client.recv(1024)</code> will result in either <code>None</code> data returned or single<br />
+return as it is the behaviour of <strong>TCP</strong>. <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/10434525/c-socket-programming-only-receiving-one-line-at-a-time">See here</a></p>
+<p>Also sending command line by line is not reliable as there are no context between<br />
+lines for maya to understand. <a target="_blank" rel="noopener" href="https://forums.cgsociety.org/t/telnet-or-socket-no-result-back-from-maya/1730817/2">Unless it’s super simple series of commands</a></p>
+<p>In order to receive output, we need a custom listening server to do that which is included in <a href="https://www.xingyulei.com/post/maya-streaming">Part 2</a>.</p>
+<h4 id="sourcetype"><a class="markdownIt-Anchor" href="#sourcetype"></a> SourceType</h4>
+<p>Here we are opening default command port which takes <code>MEL</code> input,<br />
+we don’t need to specify <code>Python</code>, as we can just use <code>python(&quot;[insert command here]&quot;)</code><br />
+to wrap it into <code>MEL</code>, this can be blocks of independent codes or importing<br />
+and executing python files.</p>
+<h3 id="socket-programming-introduction"><a class="markdownIt-Anchor" href="#socket-programming-introduction"></a> Socket Programming Introduction</h3>
+<p>It is also very important to know the basics of socket programming in Python<br />
+to better understand how server and client communicates, and the difference<br />
+between TCP and UDP, which will be used in the next part.</p>
+<p>This <a target="_blank" rel="noopener" href="https://youtu.be/3QiPPX-KeSc">tutorial</a> is very handy, and the following<br />
+are a basic template for setting up client and server using <code>socket</code> and <code>thread</code></p>
+<script src="https://gist.github.com/leixingyu/f4b4d6ca7b84cf01af5311857219295e.js"></script>
+<script src="https://gist.github.com/leixingyu/5e55f23113c0280ab5ab16595bda900d.js"></script>
 <h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
-<p><a target="_blank" rel="noopener" href="https://www.reddit.com/r/learnpython/comments/jyw8z1/pyqt5_why_do_i_get_an_empty_window/">Reddit - PyQt5 - Why do I get an Empty Window?</a></p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58925453/pycharm-use-pyside2-typeerror-nonetype-object-is-not-callable">Stack Overflow - pycharm use pyside2 TypeError: ‘NoneType’ object is not callable</a></p>
-
+<p><a target="_blank" rel="noopener" href="https://groups.google.com/g/python_inside_maya/c/7AgWlldtvbE/m/zUTQlAcjBgAJ?pli=1">Google Group - Receiving data from commandPort</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/10434525/c-socket-programming-only-receiving-one-line-at-a-time">Stack Overflow - c socket programming, only receiving one line at a time</a></p>
+<p><a target="_blank" rel="noopener" href="https://forums.cgsociety.org/t/telnet-or-socket-no-result-back-from-maya/1730817/2">CG Talk - Telnet or Socket: no result back from Maya</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/3QiPPX-KeSc">Youtube - Python Socket Programming Tutorial</a></p>
+<!-- flag of hidden posts -->
       
     </div>
     <div class="article-footer">
@@ -262,7 +308,7 @@ MayaDevKit allows maya python command auto-completion, remove it from PyCharm</p
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/qt-template/" title="Qt Template for Maya" target="_blank" rel="external">https://www.xingyulei.com/post/qt-template/</a>
+      <a href="https://www.xingyulei.com/post/wip/maya-commandport/" title="Communicate with Maya (1. Command Port)" target="_blank" rel="external">https://www.xingyulei.com/post/wip/maya-commandport/</a>
     </li>
     
 	
@@ -306,16 +352,6 @@ MayaDevKit allows maya python command auto-completion, remove it from PyCharm</p
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/post/maya-batch-mode/" title="Tutorial - Run Maya in Batch Mode"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
-    
-    
-  </ul>
   
   
   

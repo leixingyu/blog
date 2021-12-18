@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/qt-template/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-api-node/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-batch-mode/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
     <lastmod>2021-12-17</lastmod>
   </url>
@@ -42,18 +54,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/maya-api-deformer/</loc>
-    <lastmod>2021-12-05</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-api-node/</loc>
-    <lastmod>2021-12-05</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-batch-mode/</loc>
-    <lastmod>2021-12-05</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template/</loc>
     <lastmod>2021-12-05</lastmod>
   </url>
   <url>
