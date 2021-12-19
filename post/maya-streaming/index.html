@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Communicate with Maya (2. Streaming Output) | Tech Art Learning</title>
+  <meta name="description" content="Introduction  Make sure to see Part 1 for more context in socket programming and maya command port  Like mentioned in the previous blog, this chapter is independent for enabling output streaming, but">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Communicate with Maya (2. Streaming Output)">
+<meta property="og:url" content="https://www.xingyulei.com/post/maya-streaming/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Introduction  Make sure to see Part 1 for more context in socket programming and maya command port  Like mentioned in the previous blog, this chapter is independent for enabling output streaming, but">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/SaDOkMS.png">
+<meta property="article:published_time" content="2021-12-18T05:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-19T00:08:34.080Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="maya">
+<meta property="article:tag" content="socket">
+<meta property="article:tag" content="threading">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/SaDOkMS.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/maya-streaming/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-maya-streaming" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Communicate with Maya (2. Streaming Output)
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/maya-streaming/" class="article-date">
+	  <time datetime="2021-12-18T05:00:00.000Z" itemprop="datePublished">2021-12-18</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/maya-communication/">maya communication</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/maya/" rel="tag">maya</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/socket/" rel="tag">socket</a>, <a class="article-tag-link-link" href="/tags/threading/" rel="tag">threading</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/post/maya-streaming/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
+<blockquote>
+<p>Make sure to see <a href="https://www.xingyulei.com/post/maya-commandport/">Part 1</a> for more context in socket programming and maya command port</p>
+</blockquote>
+<p>Like mentioned in the previous blog, this chapter is independent for enabling<br />
+output streaming, but would work even better with command port to send command and get active<br />
+response from Maya.</p>
+<p>This kind of log streaming feature can be helpful not only for monitoring<br />
+but for catching errors like when Maya crashes, or to connect with an IDE similar to<br />
+PyCharm’s plugin <a target="_blank" rel="noopener" href="https://github.com/cmcpasserby/MayaCharm">MayaCharm</a> and Sublime’s plugin<br />
+<a target="_blank" rel="noopener" href="https://github.com/justinfx/MayaSublime/">MayaSublime</a></p>
+<h3 id="listening-server-separation"><a class="markdownIt-Anchor" href="#listening-server-separation"></a> Listening Server Separation</h3>
+<p>I’ve been looking at Maya’s command port to see if the return message would be<br />
+sufficient for debugging log, as command port already is a server.</p>
+<p>But it turns out that this approach is not recommended by many, as there’s little<br />
+control on the return message as the TCP communication returns one message per<br />
+command, more explained in the previous blog.</p>
+<p>The correct way suggested, and widely used is to stream Maya script output back<br />
+to the external application.</p>
+<p><img src="https://i.imgur.com/SaDOkMS.png" alt="connection graph" /></p>
+<p>As shown in the graph, two separate communications are established instead of utilizing<br />
+just the command port.</p>
+<ol>
+<li>external application (client) send command to Maya’s command port (server) where Maya<br />
+would process normally. This is achieved through TCP to ensure no loss in sending command.</li>
+<li>Maya’s <code>MCommandMessage</code> callback triggers (client) send the latest output result to external application’s listening<br />
+port (server). This is achieved through UDP to keep the connection fast and easy, but may<br />
+result in lost in feedbacks (which isn’t that important)</li>
+</ol>
+<h3 id="procedures"><a class="markdownIt-Anchor" href="#procedures"></a> Procedures</h3>
+<p>to establish listening server, need to use a different port number than the command port number<br />
+if we are also connecting to it.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SERVER = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">PORT = <span class="number">5051</span></span><br><span class="line">ADDR = (SERVER, PORT)</span><br><span class="line"></span><br><span class="line">server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line">server.bind(ADDR)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    data = server.recvfrom(<span class="number">1024</span>)</span><br><span class="line">    message = data[<span class="number">0</span>]</span><br><span class="line">    address = data[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    print(message)</span><br></pre></td></tr></table></figure>
+<p>On the maya client side, there are two parts:</p>
+<ol>
+<li>setup <code>MCommendMessage</code> callback</li>
+<li>stream the data to the listening server</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> errno</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">from</span> cStringIO <span class="keyword">import</span> StringIO</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> maya.OpenMaya <span class="keyword">as</span> om</span><br><span class="line"></span><br><span class="line">SERVER = <span class="string">&#x27;127.0.0.1&#x27;</span></span><br><span class="line">PORT = <span class="number">5051</span></span><br><span class="line"></span><br><span class="line">client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">&#x27;STREAM_CALLBACK&#x27;</span> <span class="keyword">in</span> <span class="built_in">globals</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        om.MMessage.removeCallback(STREAM_CALLBACK)</span><br><span class="line">    <span class="keyword">except</span> RuntimeError:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">STREAM_CALLBACK = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">openStream</span>(<span class="params">addr=(<span class="params">SERVER, PORT</span>)</span>):</span></span><br><span class="line">    <span class="keyword">global</span> STREAM_CALLBACK</span><br><span class="line">    print(<span class="string">&quot;Enable Streaming ScriptEditor at (&#123;&#125;:&#123;&#125;)\n&quot;</span>.<span class="built_in">format</span>(addr[<span class="number">0</span>], addr[<span class="number">1</span>]))</span><br><span class="line">    STREAM_CALLBACK = om.MCommandMessage.addCommandOutputCallback(streamToConsole, addr)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">closeStream</span>():</span></span><br><span class="line">    <span class="keyword">global</span> STREAM_CALLBACK</span><br><span class="line">    print(<span class="string">&quot;Disable Streaming ScriptEditor\n&quot;</span>)</span><br><span class="line">    om.MMessage.removeCallback(STREAM_CALLBACK)</span><br><span class="line">    STREAM_CALLBACK = <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+<p>borrowed some code from MayaSublime for stringIO</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">streamToConsole</span>(<span class="params">msg, mtype, addr</span>):</span></span><br><span class="line">    buf = StringIO()</span><br><span class="line">    buf.seek(<span class="number">0</span>)</span><br><span class="line">    buf.truncate()</span><br><span class="line">    buf.write(msg)</span><br><span class="line">    buf.seek(<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># start with trying to send 8kb packets</span></span><br><span class="line">    bufsize = <span class="number">8</span>*<span class="number">1024</span></span><br><span class="line">    <span class="comment"># loop until the buffer is empty</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">while</span> bufsize &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># save our position in case we error and need to roll back</span></span><br><span class="line">            pos = buf.tell()</span><br><span class="line"></span><br><span class="line">            part = buf.read(bufsize)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> part:</span><br><span class="line">                <span class="comment"># buffer is empty. Nothing else to send</span></span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                client.sendto(part, addr)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">if</span> e.errno == errno.EMSGSIZE:</span><br><span class="line">                    <span class="comment"># we have hit a message size limit. </span></span><br><span class="line">                    <span class="comment"># scale down and try the packet again</span></span><br><span class="line">                    bufsize /= <span class="number">2</span></span><br><span class="line">                    buf.seek(pos)</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># some other error</span></span><br><span class="line">                <span class="keyword">raise</span></span><br><span class="line">            <span class="comment"># message sent without error</span></span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h3 id="result"><a class="markdownIt-Anchor" href="#result"></a> Result</h3>
+<p>I’ve combined the two parts together and created the <a href="">Maya Connector</a> tool.</p>
+<p>The tool will first utilize command port to send Maya command to open streaming<br />
+port, which enables the callback. Now we have the streaming successfully setup.</p>
+<p>What if we let our tool (server) to send a confirmation message back to Maya (client)?<br />
+Don’t do that, it will (you guessed it), create a infinite feedback loop.</p>
+<h4 id="gui"><a class="markdownIt-Anchor" href="#gui"></a> GUI</h4>
+<p>Like a logger, instead of sending output string to standard output, I created<br />
+a <code>QTextEdit</code> and use <code>insertPlainText(string)</code> to display it.<br />
+We opened a thread to receive data, so that we still have control over the main tool, and<br />
+can send command to maya if wanted.</p>
+<h4 id="clean-up"><a class="markdownIt-Anchor" href="#clean-up"></a> Clean up</h4>
+<p>During application close, we need to do the following clean up:</p>
+<ol>
+<li>send command to Maya to remove the callback</li>
+<li>close the tool’s UDP listening server</li>
+<li>end the thread to the listening server</li>
+</ol>
+<h3 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h3>
+<p><a target="_blank" rel="noopener" href="https://help.autodesk.com/view/MAYAUL/2016/ENU/?guid=__py_ref_class_open_maya_1_1_m_command_message_html">Maya Help - OpenMaya.MCommandMessage Class Reference</a></p>
+<p><a target="_blank" rel="noopener" href="https://groups.google.com/g/python_inside_maya/c/pp_E7rCs7d0">Google Groups - Extracting data from Output Window</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cmcpasserby/MayaCharm">Github - MayaCharm</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/justinfx/MayaSublime/">Github - MayaSublime</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/maya-streaming/" title="Communicate with Maya (2. Streaming Output)" target="_blank" rel="external">https://www.xingyulei.com/post/maya-streaming/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/maya-commandport/" title="Communicate with Maya (1. Command Port)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>

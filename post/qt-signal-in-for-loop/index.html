@@ -20,15 +20,15 @@
   
   
   <title>Qt Connect Signal in For Loop | Tech Art Learning</title>
-  <meta name="description" content="Introduction We often needs to create ui elements on the fly, sometimes we do it in something like a for loop. An example would be creating a series of QPushButton and connect them to a function thro">
+  <meta name="description" content="Introduction We often need to create ui elements on the fly, sometimes we do it in something like a for loop. An example would be creating a series of QPushButton and connect them to a function throu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt Connect Signal in For Loop">
 <meta property="og:url" content="https://www.xingyulei.com/post/qt-signal-in-for-loop/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Introduction We often needs to create ui elements on the fly, sometimes we do it in something like a for loop. An example would be creating a series of QPushButton and connect them to a function thro">
+<meta property="og:description" content="Introduction We often need to create ui elements on the fly, sometimes we do it in something like a for loop. An example would be creating a series of QPushButton and connect them to a function throu">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-17T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-11T13:35:11.141Z">
+<meta property="article:modified_time" content="2021-12-18T20:52:59.652Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
@@ -161,7 +161,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -171,7 +171,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.25px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pyqt/" style="font-size: 14px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/unity/" style="font-size: 13.25px;">unity</a>
+      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a>
     </div>
   </div>
 
@@ -224,9 +224,9 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
-<p>We often needs to create ui elements on the fly, sometimes we do it in something like a for loop.<br />
+<p>We often need to create ui elements on the fly, sometimes we do it in something like a for loop.<br />
 An example would be creating a series of <code>QPushButton</code> and connect them to a function through<br />
-different argument values. A example is shown below:</p>
+different argument values. An example is shown below:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>(<span class="params">QtWidgets.QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Demo, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># initialization object</span></span><br><span class="line">        layout = QtWidgets.QVBoxLayout()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">            pushbutton = QtWidgets.QPushButton(<span class="string">&#x27;button &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(index))</span><br><span class="line">            pushbutton.clicked.connect(<span class="keyword">lambda</span>: self.trigger(index))</span><br><span class="line">            layout.addWidget(pushbutton)</span><br><span class="line"></span><br><span class="line">        self.setLayout(layout)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">trigger</span>(<span class="params">index</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;button &#123;&#125; clicked&#x27;</span>.<span class="built_in">format</span>(index))</span><br></pre></td></tr></table></figure>
 <p>Here I created six <code>QPushButton</code> and when I click them it should output which button is being clicked. But if you<br />
 run this script and try to click each button it will always output “button 5 clicked” (aka, the last button).<br />
@@ -314,7 +314,7 @@ it gets called with <code>False</code>.</p>
     
     
     <li class="next">
-      <a href="/post/qt-template-no-ui/" title="Qt Template without UI file"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/post/qt-template-no-ui/" title="Qt Custom Widget, Dialog, MessageBox (no .ui file)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

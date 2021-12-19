@@ -28,7 +28,7 @@
 <meta property="og:description" content="Me and CFX Dynamic simulation is such a cool thing, you place some geo in the scene, put in some parameters, and the machine will handle the rest. When I started learning dynamics, my first thought w">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-05T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-20T03:44:59.944Z">
+<meta property="article:modified_time" content="2021-12-18T20:40:53.321Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="cfx">
 <meta name="twitter:card" content="summary">
@@ -161,7 +161,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -171,7 +171,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.25px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pyqt/" style="font-size: 14px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/unity/" style="font-size: 13.25px;">unity</a>
+      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/cfx/" style="font-size: 13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a>
     </div>
   </div>
 
@@ -356,7 +356,7 @@ and begins to settle on the character as gravity kick in.</p>
 <h4 id="sim-evaluation-adjust-and-re-sim"><a class="markdownIt-Anchor" href="#sim-evaluation-adjust-and-re-sim"></a> Sim, Evaluation; Adjust and Re-sim</h4>
 <p>Depending on the sim file step up, frame range, complexity of the cloth rig, the quality of the sim setting, the sim time may vary.<br />
 Usually it is acceptable to have 30 minutes of sim time for 1000 frames.</p>
-<p>The first thing to do no matter what is to let the sim run once, the sim cache is loaded when finished so you can playblast and evaluate in real-time.<br />
+<p>The first thing to do no matter what is to let the sim run once, the sim cache is loaded when finished, so you can playblast and evaluate in real-time.<br />
 This first playblast is out of the box sim result, which will give you a general idea of the sequence.<br />
 When the result is not ideal, it is always worth making adjustments and do a re-sim, rather than cleaning it up.<br />
 If some sim takes exceptionally long and the result is still unusable no matter what, it could be issues related to master cloth rig<br />
@@ -373,24 +373,24 @@ not for body intersecting, but due to the space between them aren’t enough for
 <h4 id="clean-up"><a class="markdownIt-Anchor" href="#clean-up"></a> Clean-up</h4>
 <p>The acceptable result sim cache gets exported to this stage, where a cloth rig reads the cache and the original full rez<br />
 costume is wrapped onto this cloth.<br />
-The wrapping is important as it’s served as upscaling the resolution. The algorithm is essential<br />
-as wrapping evaluation happens everyframe on high poly objects, which can greatly impact playback speed.</p>
+The wrapping is important as it’s served as up-scaling the resolution. The algorithm is essential<br />
+as wrapping evaluation happens every frame on high poly objects, which can greatly impact playback speed.</p>
 <p>Clean up tools mostly are related to deformer that could affect the shape of the cloth,<br />
 for example: when small penetration happens, cloth can be pull out, or skin can be pushed down; there could<br />
 be unwanted hard edges or creases, which can be smoothed.</p>
-<p>One of the tool that proves to be very helpful is when dealing cloth jittering and unstabled in a static scene,<br />
+<p>One of the tool that proves to be very helpful is when dealing cloth jittering and unstable in a static scene,<br />
 the tool would pick a frame and lock the cloth sim result, then wrap that result onto the body, which affects to all other frames.</p>
 <p>There’s always an option to blend back to animation cloth,<br />
 as the origin costume is weight painted and animated.<br />
 This is useful to tone down crazy movement, or blend back to animation cloth shape.</p>
-<p>Next would be submit and review, needless to say, proper lighting is important as it could expose/hide certain areas.<br />
-Also camera focal point, effects can also play a huge role in the review.</p>
+<p>Next would be submitting and reviewing, needless to say, proper lighting is important as it could expose/hide certain areas.<br />
+Also, camera focal point, effects can also play a huge role in the review.</p>
 <hr />
 <h3 id="more-pipeline-ideas"><a class="markdownIt-Anchor" href="#more-pipeline-ideas"></a> More Pipeline Ideas</h3>
-<p>The above pipeline can be divided into three stages, with three seperate maya file/session<br />
+<p>The above pipeline can be divided into three stages, with three separate maya file/session<br />
 handling each stage. Making each one of them cleaner, faster and easier to work with.<br />
 The pre-sim stage deals with pre-processing and T-pose transition; The sim stage only are<br />
-meant for siming and adjusting sim settings; The post-sim stage is for dealing with clean-up<br />
+meant for simming and adjusting sim settings; The post-sim stage is for dealing with clean-up<br />
 and export. One of the legacy workflow bundles all three stages into one file, and the<br />
 sim process was really slow, this is due to multiple layers to the cloth rig, mainly the wrapping<br />
 causing the evaluation to significantly slow down.</p>

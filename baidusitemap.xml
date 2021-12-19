@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/maya-streaming/</loc>
+    <lastmod>2021-12-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/verlet-integration/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/unity-api-statemachine/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/qt-template/</loc>
     <lastmod>2021-12-18</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/maya-api-node/</loc>
+    <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-signal-in-for-loop/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-pixmap-scale/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-enum-flag/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-import/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-dunder/</loc>
     <lastmod>2021-12-18</lastmod>
   </url>
   <url>
@@ -13,79 +65,35 @@
     <lastmod>2021-12-18</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
-    <lastmod>2021-12-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-import/</loc>
-    <lastmod>2021-12-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
-    <lastmod>2021-12-08</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-enum-flag/</loc>
-    <lastmod>2021-12-08</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
-    <lastmod>2021-12-07</lastmod>
+    <loc>https://www.xingyulei.com/post/maya-api-node/</loc>
+    <lastmod>2021-12-18</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/maya-api-intro/</loc>
-    <lastmod>2021-12-05</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-api-command/</loc>
-    <lastmod>2021-12-05</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
-    <lastmod>2021-12-05</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
-    <lastmod>2021-12-05</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
-    <lastmod>2021-12-05</lastmod>
+    <lastmod>2021-12-18</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/maya-api-deformer/</loc>
-    <lastmod>2021-12-05</lastmod>
+    <lastmod>2021-12-18</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/conditional-expression/</loc>
-    <lastmod>2021-12-05</lastmod>
+    <loc>https://www.xingyulei.com/post/maya-api-command/</loc>
+    <lastmod>2021-12-18</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/graphics-learning/</loc>
-    <lastmod>2021-12-05</lastmod>
+    <lastmod>2021-12-18</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-pixmap-scale/</loc>
-    <lastmod>2021-11-24</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-dunder/</loc>
-    <lastmod>2021-10-12</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-signal-in-for-loop/</loc>
-    <lastmod>2021-10-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/verlet-integration/</loc>
-    <lastmod>2021-10-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/unity-api-statemachine/</loc>
-    <lastmod>2021-09-28</lastmod>
+    <loc>https://www.xingyulei.com/post/conditional-expression/</loc>
+    <lastmod>2021-12-18</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/cfx-pipeline/</loc>
-    <lastmod>2021-09-20</lastmod>
+    <lastmod>2021-12-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-commandport/</loc>
+    <lastmod>2021-12-18</lastmod>
   </url>
 </urlset> 
