@@ -28,7 +28,7 @@
 <meta property="og:description" content="Introduction When simulating a particle movement, we naturally think of Euler integration, where the position of the particle can be expressed as such: (free falling motion) x&#x3D;0.5∗g∗t2x &#x3D; 0.5*g*t^2 x">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-19T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-18T20:56:06.286Z">
+<meta property="article:modified_time" content="2022-01-23T03:13:43.945Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="unity">
 <meta property="article:tag" content="c#">
@@ -164,7 +164,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -174,7 +174,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a>
+      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a>
     </div>
   </div>
 
@@ -249,6 +249,7 @@ X~current~ = X~current~+velocity
 <p>Penalty based system or projection collision reaction</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example for bounding box collision</span></span><br><span class="line">Vector2 velocity = posNow - posOld;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (posNow.x &gt; screenWidth)&#123;</span><br><span class="line">    posNow.x = screenWidth;</span><br><span class="line">    posOld.x = posNow.x + velocity.x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (posNow.x &lt; <span class="number">0</span>)&#123;</span><br><span class="line">    posNow.x = <span class="number">0</span>;</span><br><span class="line">    posOld.x = posNow.x + velocity.x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (posNow.y &gt; screenWidth)&#123;</span><br><span class="line">    posNow.y = screenWidth;</span><br><span class="line">    posOld.y = posNow.y + velocity.y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (posNow.y &lt; <span class="number">0</span>)&#123;</span><br><span class="line">    posNow.y = <span class="number">0</span>;</span><br><span class="line">    posOld.y = posNow.y + velocity.y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="resources"><a class="markdownIt-Anchor" href="#resources"></a> Resources</h3>
+<p><a target="_blank" rel="noopener" href="https://www.gamedev.net/articles/programming/math-and-physics/a-verlet-based-approach-for-2d-game-physics-r2714/">Gamedev.net - A Verlet based approach for 2D game physics</a></p>
 <p><a target="_blank" rel="noopener" href="https://youtu.be/3HjO_RGIjCU">Youtube - Coding Math: Episode 36 - Verlet Integration Part I</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=FcnvwtyxLds">Youtube - 2D Rope Tutorial - Make Swinging Rope in Unity (Verlet Integration)</a></p>
 <p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Verlet_integration#Velocity_Verlet">Wikipedia - Velocity Verlet</a></p>
