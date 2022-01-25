@@ -19,16 +19,16 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>The use of namedtuple() | Tech Art Learning</title>
+  <title>Using namedtuple | Tech Art Learning</title>
   <meta name="description" content="I recently got side-tracked into exploring the basics of namedtuple() as I got a glimpse of its usage in our engineering codebase. Here’s my summary:  Mutable and Hashable To understand the behavior o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The use of namedtuple()">
+<meta property="og:title" content="Using namedtuple">
 <meta property="og:url" content="https://www.xingyulei.com/post/py-named-tuple/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
 <meta property="og:description" content="I recently got side-tracked into exploring the basics of namedtuple() as I got a glimpse of its usage in our engineering codebase. Here’s my summary:  Mutable and Hashable To understand the behavior o">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-23T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-25T03:38:33.095Z">
+<meta property="article:published_time" content="2022-01-23T05:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-25T03:48:53.578Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="style">
@@ -191,7 +191,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      The use of namedtuple()
+      Using namedtuple
     </h1>
   
 
@@ -200,7 +200,7 @@
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/post/py-named-tuple/" class="article-date">
-	  <time datetime="2021-01-23T05:00:00.000Z" itemprop="datePublished">2021-01-23</time>
+	  <time datetime="2022-01-23T05:00:00.000Z" itemprop="datePublished">2022-01-23</time>
 	</a>
 </span>
         
@@ -230,8 +230,7 @@ I got a glimpse of its usage in our engineering codebase. Here’s my summary:</
 <p>To understand the behavior of <code>namedtuple()</code>, it is best to also visit the<br />
 concept of Python object’s mutability and hashability. These two concepts are<br />
 closely linked.</p>
-<p><strong>Hashability</strong>: an object’s hash value is never changed during its lifetime<br />
-is hashable.</p>
+<p><strong>Hashability</strong>: an object’s is hashable when its hash value never changed during its lifetime</p>
 <blockquote>
 <p>Most of Python’s immutable built-in objects are hashable;<br />
 mutable containers (such as lists or dictionaries) are not;<br />
@@ -318,7 +317,7 @@ a <code>list</code>.</p>
 thus, we can set value to a <code>@dataclass</code> attribute.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass</span><br><span class="line"></span><br><span class="line"><span class="meta">@dataclass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line">    age: <span class="built_in">int</span></span><br><span class="line">    country: <span class="built_in">str</span> = <span class="string">&quot;Canada&quot;</span></span><br><span class="line"></span><br><span class="line">jane = Person(<span class="string">&quot;Jane&quot;</span>, <span class="number">25</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt; jane.name = <span class="string">&quot;Jane Doe&quot;</span></span><br><span class="line">&gt;&gt; jane.name</span><br><span class="line"><span class="string">&#x27;Jane Doe&#x27;</span></span><br></pre></td></tr></table></figure>
 <h3 id="forzen-attribute"><a class="markdownIt-Anchor" href="#forzen-attribute"></a> forzen attribute</h3>
-<p>if we want <code>@dataclass</code> to behave like <code>namedtuple</code> with a “protected” attribute,<br />
+<p>if we want <code>@dataclass</code> to behave like <code>namedtuple</code> with an un-editable “protected” attribute,<br />
 just use <code>@dataclass(frozen=True)</code>.</p>
 <h3 id="override-__iter__"><a class="markdownIt-Anchor" href="#override-__iter__"></a> override <code>__iter__()</code></h3>
 <p><code>@dataclass</code> are also not iterable by default, unlike <code>namedtuple</code>. We can achieve<br />
@@ -343,6 +342,8 @@ A <strong>dynamic</strong> dictionary:</p>
 <p>Because <code>namedtuple</code> makes immutable instances that are lightweight,<br />
 we need to prevent the creation of <code>__dict__</code> to get the benefit while subclassing<br />
 by setting <code>__slots__</code> as empty tuple.</p>
+<p>In a more general note, please consider using <code>__slots__</code> when creating<br />
+tons of objects, this saves memory and time when instancing.</p>
 <h4 id="comparison-__dict__-vs-__slots__"><a class="markdownIt-Anchor" href="#comparison-__dict__-vs-__slots__"></a> Comparison <code>__dict__</code> vs. <code>__slots__</code></h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">      self.name = name</span><br><span class="line">      self.age = age</span><br><span class="line"></span><br><span class="line">john = Person(<span class="string">&#x27;john&#x27;</span>, <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt; john.__dict__</span><br><span class="line"><span class="comment"># &#123;&#x27;age&#x27;: 15, &#x27;name&#x27;: &#x27;john&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    __slots__ = [<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;age&#x27;</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">john = Person(<span class="string">&#x27;john&#x27;</span>, <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt; john.__slots__</span><br><span class="line"><span class="comment"># [&#x27;name&#x27;, &#x27;age&#x27;]</span></span><br><span class="line">&gt;&gt; john.__dict__</span><br><span class="line"><span class="comment"># AttributeError: &#x27;Person&#x27; object has no attribute &#x27;__dict__&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -366,7 +367,7 @@ by setting <code>__slots__</code> as empty tuple.</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/py-named-tuple/" title="The use of namedtuple()" target="_blank" rel="external">https://www.xingyulei.com/post/py-named-tuple/</a>
+      <a href="https://www.xingyulei.com/post/py-named-tuple/" title="Using namedtuple" target="_blank" rel="external">https://www.xingyulei.com/post/py-named-tuple/</a>
     </li>
     
 	
@@ -413,13 +414,9 @@ by setting <code>__slots__</code> as empty tuple.</p>
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/post/py-dunder/" title="How to Underscore in Python"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/post/qt-sorting/" title="Qt Custom Sorting"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/post/maya-streaming/" title="Communicate with Maya (2. Streaming Output)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
