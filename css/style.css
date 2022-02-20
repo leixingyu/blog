@@ -26,6 +26,19 @@
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+/* my custom css class */
+
+.indent {
+  padding-left: 20px;
+}
+
+.about-img {
+  background-position: center;
+  /* Make the background image cover the area of the <div>, and clip the excess */
+  background-size: cover;
+}
+
+
 @font-face {
   font-family: customFont;
   src: url(Poppins-Regular.ttf);

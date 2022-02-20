@@ -2,15 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.xingyulei.com/post/py-named-tuple/</loc>
-    <lastmod>2022-01-25</lastmod>
+    <lastmod>2022-02-17</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template/</loc>
+    <lastmod>2022-02-17</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
+    <lastmod>2022-02-13</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/py-import/</loc>
     <lastmod>2022-01-25</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template/</loc>
-    <lastmod>2022-01-24</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
@@ -18,10 +22,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-signal-in-for-loop/</loc>
-    <lastmod>2022-01-24</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
     <lastmod>2022-01-24</lastmod>
   </url>
   <url>
