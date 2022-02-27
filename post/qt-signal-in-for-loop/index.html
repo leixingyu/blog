@@ -361,25 +361,25 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
-<p>We often need to create ui elements on the fly, sometimes we do it in something like a for loop.<br />
-An example would be creating a series of <code>QPushButton</code> and connect them to a function through<br />
+<p>We often need to create ui elements on the fly, sometimes we do it in something like a for loop.
+An example would be creating a series of <code>QPushButton</code> and connect them to a function through
 different argument values. An example is shown below:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span>(<span class="params">QtWidgets.QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Demo, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># initialization object</span></span><br><span class="line">        layout = QtWidgets.QVBoxLayout()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">            pushbutton = QtWidgets.QPushButton(<span class="string">&#x27;button &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(index))</span><br><span class="line">            pushbutton.clicked.connect(<span class="keyword">lambda</span>: self.trigger(index))</span><br><span class="line">            layout.addWidget(pushbutton)</span><br><span class="line"></span><br><span class="line">        self.setLayout(layout)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">trigger</span>(<span class="params">index</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;button &#123;&#125; clicked&#x27;</span>.<span class="built_in">format</span>(index))</span><br></pre></td></tr></table></figure>
-<p>Here I created six <code>QPushButton</code> and when I click them it should output which button is being clicked. But if you<br />
-run this script and try to click each button it will always output “button 5 clicked” (aka, the last button).<br />
+<p>Here I created six <code>QPushButton</code> and when I click them it should output which button is being clicked. But if you
+run this script and try to click each button it will always output “button 5 clicked” (aka, the last button).
 It is safely to assume that the argument passed during the for loop always result in the last index.</p>
 <h3 id="explanation"><a class="markdownIt-Anchor" href="#explanation"></a> Explanation</h3>
-<p>Based on a kind response from stackoverflow: lambdas do <strong>not</strong> store the value of button when it is defined.<br />
-The code describing the lambda function is parsed and compiled but not executed until you actually<br />
+<p>Based on a kind response from stackoverflow: lambdas do <strong>not</strong> store the value of button when it is defined.
+The code describing the lambda function is parsed and compiled but not executed until you actually
 call the lambda. Therefore, when a button is clicked, the current value of that variable is used (the last index).</p>
 <p>What’s the solution?</p>
 <h3 id="lambda-with-solid-variable"><a class="markdownIt-Anchor" href="#lambda-with-solid-variable"></a> Lambda with solid variable</h3>
 <p>Passing solid variable to the lambda</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pushbutton.clicked.connect(<span class="keyword">lambda</span> _, i=index: self.trigger(index=i))</span><br></pre></td></tr></table></figure>
-<p>Note that we created another temporary variable before index as<br />
-the first argument passed in the lambda will always return as <code>False</code>.<br />
-Because Qt defines the signal <code>QAbstractButton.clicked</code> to take a single<br />
-argument with a default value of <code>False</code>. Since your lambda is handling that signal,<br />
+<p>Note that we created another temporary variable before index as
+the first argument passed in the lambda will always return as <code>False</code>.
+Because Qt defines the signal <code>QAbstractButton.clicked</code> to take a single
+argument with a default value of <code>False</code>. Since your lambda is handling that signal,
 it gets called with <code>False</code>.</p>
 <h3 id="partial-approach"><a class="markdownIt-Anchor" href="#partial-approach"></a> Partial approach</h3>
 <p>Use <code>functools.partial</code> also works</p>

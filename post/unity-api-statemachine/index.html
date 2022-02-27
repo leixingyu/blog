@@ -367,29 +367,29 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
-<p>This post is not about state machine basic, rather how we would setup/access state machine parameters.<br />
-There is a higher level <code>Animator</code> class to access a part of the animator features, but we need to use<br />
+<p>This post is not about state machine basic, rather how we would setup/access state machine parameters.
+There is a higher level <code>Animator</code> class to access a part of the animator features, but we need to use
 Unity’s <code>Animations</code> package in order to dive deeper.</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEditor.Animations;</span><br></pre></td></tr></table></figure>
-<p>There’s a lot of parts composing Unity’s Animator: Layer, Parameter, State machine (and everything inside it<br />
+<p>There’s a lot of parts composing Unity’s Animator: Layer, Parameter, State machine (and everything inside it
 including states of different kind, transition between states), there are of course multiple parameters inside a single state.</p>
 <p>The examples in this post is only about accessing states and state machines, as the rest is translatable.</p>
-<p>We start from the root: Base layer, if you think about it, a layer is essentially a state machine.<br />
+<p>We start from the root: Base layer, if you think about it, a layer is essentially a state machine.
 Inside this root state machine are sets of states (including blend tree/state/sub-state machine)</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// getting the base layer state machine</span></span><br><span class="line">AnimatorStateMachine rootStateMachine = controller.layers[<span class="number">0</span>].stateMachine;</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/HuSyYGs.png" alt="base layer state machine" /></p>
 <p>(Base Layer)</p>
-<p>Next up, a very confusing part of the scripting process are the definition of<br />
-<code>AnimatorStateMachine</code> vs. <code>ChildAnimatorStateMachine</code> and <code>AnimatorState</code> vs. <code>ChildAnimatorState</code>.<br />
+<p>Next up, a very confusing part of the scripting process are the definition of
+<code>AnimatorStateMachine</code> vs. <code>ChildAnimatorStateMachine</code> and <code>AnimatorState</code> vs. <code>ChildAnimatorState</code>.
 I really wish Unity provides internal ways to cast these to each other.</p>
 <p>To summarize:</p>
 <ul>
 <li>
-<p><code>ChildAnimatorStateMachine[]</code> and <code>ChildAnimatorState[]</code> is used in conjunction with Arrays as <code>AnimatorStateMachine.states</code> and<br />
+<p><code>ChildAnimatorStateMachine[]</code> and <code>ChildAnimatorState[]</code> is used in conjunction with Arrays as <code>AnimatorStateMachine.states</code> and
 <code>AnimatorStateMachine.stateMachines</code> will return the previous mentioned type.</p>
 </li>
 <li>
-<p>Instead of casting, they have an internal property <code>ChildAnimatorStateMachine.stateMachine</code> and <code>ChildAnimatorState.state</code> which<br />
+<p>Instead of casting, they have an internal property <code>ChildAnimatorStateMachine.stateMachine</code> and <code>ChildAnimatorState.state</code> which
 respectively returns <code>AnimatorStateMachine</code> and <code>AnimatorState</code> type object</p>
 </li>
 </ul>

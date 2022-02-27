@@ -361,22 +361,22 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h3 id="me-and-cfx"><a class="markdownIt-Anchor" href="#me-and-cfx"></a> Me and CFX</h3>
-<p>Dynamic simulation is such a cool thing, you place some geo in the scene, put in some parameters, and<br />
-the machine will handle the rest. When I started learning dynamics, my first thought was: why do we even<br />
+<p>Dynamic simulation is such a cool thing, you place some geo in the scene, put in some parameters, and
+the machine will handle the rest. When I started learning dynamics, my first thought was: why do we even
 need artist? the algorithm seems to handle everything nicely.</p>
-<p>After some basic training with nCloth and Qualoth in Maya, I felt more comfortable but also more confused.<br />
-I felt lack of control. The result out-of-the-box was very convincing for me at that time,<br />
-and I struggled to figure out how to improve the look. Moreover, I had little idea on how anyone would spend<br />
+<p>After some basic training with nCloth and Qualoth in Maya, I felt more comfortable but also more confused.
+I felt lack of control. The result out-of-the-box was very convincing for me at that time,
+and I struggled to figure out how to improve the look. Moreover, I had little idea on how anyone would spend
 their entire career on something that is pre-determined and so reliable on algorithms.</p>
-<p>My logic was that it’s difficult to have artistic control by adjusting physical parameters in the solver/cloth setting.<br />
+<p>My logic was that it’s difficult to have artistic control by adjusting physical parameters in the solver/cloth setting.
 And after each adjustment, you would wait for the solve which takes up a long time.</p>
-<p>Next, I started to mess around with Marvelous Designer, creating and stitching patterns to make virtual<br />
-clothes. They even have real-time simulation. Later on, I found out that grooming or designing cloth is mostly done by<br />
+<p>Next, I started to mess around with Marvelous Designer, creating and stitching patterns to make virtual
+clothes. They even have real-time simulation. Later on, I found out that grooming or designing cloth is mostly done by
 modelers in character art/design department. Lesser work for cfx.</p>
 <p>Finally, I began my professional cfx career, stayed a lot of overtime to meet delivery deadlines, the experience was quite insane.</p>
 <hr />
 <h3 id="overview"><a class="markdownIt-Anchor" href="#overview"></a> Overview</h3>
-<p>Below, I summarized what I learned on the overview of cfx pipeline, based off limited experience in the<br />
+<p>Below, I summarized what I learned on the overview of cfx pipeline, based off limited experience in the
 industry.</p>
 <h4 id="pre-cfx-stage"><a class="markdownIt-Anchor" href="#pre-cfx-stage"></a> Pre CFX Stage</h4>
 <ol>
@@ -402,23 +402,23 @@ industry.</p>
 <h4 id="post-cfx-stage"><a class="markdownIt-Anchor" href="#post-cfx-stage"></a> Post CFX Stage</h4>
 <p>Everything is sent to Scene Assembly department, including:</p>
 <ul>
-<li>Final body mesh is exported as cache<br />
+<li>Final body mesh is exported as cache
 (Note: body mesh under cloth can be modified from animation to avoid penetration to cloth)</li>
 <li>Clothes final cache</li>
 </ul>
 <hr />
 <h3 id="cloth-rig-building"><a class="markdownIt-Anchor" href="#cloth-rig-building"></a> Cloth Rig Building</h3>
-<p>Each character has its own set of costumes, in different scenes and sequences. Sim is performed on<br />
-a sequence level (need to pay extra attention to keep cloth continuity), same as animation. And cfx artists would bring in the<br />
+<p>Each character has its own set of costumes, in different scenes and sequences. Sim is performed on
+a sequence level (need to pay extra attention to keep cloth continuity), same as animation. And cfx artists would bring in the
 corresponding cloth rig over and over, so the rig building part is very important.</p>
-<p>As the upstream dependency for cloth sim, the better cloth rig created, the easier<br />
+<p>As the upstream dependency for cloth sim, the better cloth rig created, the easier
 down the line for other cfx artists to sim.</p>
 <p>The rig building contains the following part:</p>
 <h4 id="set-up-lods"><a class="markdownIt-Anchor" href="#set-up-lods"></a> Set Up LODs</h4>
-<p>The full resolution geo that character team contains millions vertices/faces which is used for rendering.<br />
-It is generally not a good idea to sim the full rez geo as the sim would take forever. Ideally,<br />
+<p>The full resolution geo that character team contains millions vertices/faces which is used for rendering.
+It is generally not a good idea to sim the full rez geo as the sim would take forever. Ideally,
 we want higher resolution geo, as the crease is more detail and collisions are more accurate.</p>
-<p>The first step is for cfx artist to create low/mid/high rez three levels of LODs to represent the original clothes.<br />
+<p>The first step is for cfx artist to create low/mid/high rez three levels of LODs to represent the original clothes.
 The same goes for character mesh, low/mid/high rez LODs for setting up collision purpose.</p>
 <p>Common techniques:</p>
 <ul>
@@ -433,31 +433,31 @@ The same goes for character mesh, low/mid/high rez LODs for setting up collision
 </li>
 </ul>
 <h4 id="set-up-parameters"><a class="markdownIt-Anchor" href="#set-up-parameters"></a> Set Up Parameters</h4>
-<p>The rig is being built up by setting cloth attributes such as density, compress/stretch, drag and so on.<br />
-solver settings (as solver will get imported to separate sequences) such as max iteration and sub steps.<br />
-These parameters are not fixed, they are roughly decided based on the material and complexity of the costume.<br />
+<p>The rig is being built up by setting cloth attributes such as density, compress/stretch, drag and so on.
+solver settings (as solver will get imported to separate sequences) such as max iteration and sub steps.
+These parameters are not fixed, they are roughly decided based on the material and complexity of the costume.
 There are also constraints, collider attribute and more, later version may include dynamics, more advance usage like wind or turbulence.</p>
 <p>Common technique:</p>
 <ul>
 <li>based on the material, parameters can be re-used</li>
 </ul>
 <h4 id="test-and-iterate"><a class="markdownIt-Anchor" href="#test-and-iterate"></a> Test and Iterate</h4>
-<p>After the master cloth rig is set up for the costume for the character.<br />
-Animation will provide the walk cycle to test the cloth sim result.<br />
-Lead and sups will make feedbacks and artists will adjust the parameters. The testing<br />
-and iterating master cloth rig is an ongoing process:<br />
-as later on during production, the rig will be exposed to real action, and other artist will call out certain<br />
+<p>After the master cloth rig is set up for the costume for the character.
+Animation will provide the walk cycle to test the cloth sim result.
+Lead and sups will make feedbacks and artists will adjust the parameters. The testing
+and iterating master cloth rig is an ongoing process:
+as later on during production, the rig will be exposed to real action, and other artist will call out certain
 for more improvements.</p>
 <hr />
 <h3 id="cloth-simulation"><a class="markdownIt-Anchor" href="#cloth-simulation"></a> Cloth Simulation</h3>
 <p><a name="cfx-stage"></a></p>
 <h4 id="pre-processing-animation"><a class="markdownIt-Anchor" href="#pre-processing-animation"></a> Pre-processing Animation</h4>
-<p>Before starting the sim, character animation needs to be pre-process to start from T-pose and blend to the start of the sequence,<br />
+<p>Before starting the sim, character animation needs to be pre-process to start from T-pose and blend to the start of the sequence,
 the reason for this is character in T-pose or neutral pose have no intersecting body part, thus giving the most stabled start point.</p>
 <p>Pre-processing animation:</p>
 <ol>
 <li>
-<p>the character will transition from T-pose to the start of the sequence animation using joint blending, there will be a transition<br />
+<p>the character will transition from T-pose to the start of the sequence animation using joint blending, there will be a transition
 time as a parameter</p>
 </li>
 <li>
@@ -468,21 +468,21 @@ time as a parameter</p>
 </li>
 </ol>
 <p>All the previous parts are stitched into one go and export as cache (pc2 or alembic)</p>
-<p>Also need to be mindful if body intersection is happening during the T-pose blending, since this<br />
-is an automated transition.<br />
-Body intersection may still happen during maya animation since not all parts are exposed to the camera angle.<br />
+<p>Also need to be mindful if body intersection is happening during the T-pose blending, since this
+is an automated transition.
+Body intersection may still happen during maya animation since not all parts are exposed to the camera angle.
 Areas that needs special attention: arm pit, arm and leg.</p>
 <h4 id="t-pose-transition"><a class="markdownIt-Anchor" href="#t-pose-transition"></a> T-Pose Transition</h4>
-<p>The pre-processed animation cache, and the cloth rig both get imported during this stage, the file contains<br />
-all the necessary cloth setup (cloth, collider, constraint, dynamics etc) which is the latest from the<br />
-master cloth rig.<br />
+<p>The pre-processed animation cache, and the cloth rig both get imported during this stage, the file contains
+all the necessary cloth setup (cloth, collider, constraint, dynamics etc) which is the latest from the
+master cloth rig.
 The steps below would match the pre-processed animation in its order:</p>
 <ol>
 <li>
 <p>the cloth rig is imported in the scene onto the character in relaxed T-pose.</p>
 </li>
 <li>
-<p>the cloth sim starts as the character transition (T-pose to animation) begins, cloth will slowly move along<br />
+<p>the cloth sim starts as the character transition (T-pose to animation) begins, cloth will slowly move along
 and begins to settle on the character as gravity kick in.</p>
 </li>
 <li>
@@ -491,52 +491,52 @@ and begins to settle on the character as gravity kick in.</p>
 </ol>
 <p>Then begins the actual sim, as all the steps mentioned above aren’t in the animation frame range.</p>
 <h4 id="sim-evaluation-adjust-and-re-sim"><a class="markdownIt-Anchor" href="#sim-evaluation-adjust-and-re-sim"></a> Sim, Evaluation; Adjust and Re-sim</h4>
-<p>Depending on the sim file step up, frame range, complexity of the cloth rig, the quality of the sim setting, the sim time may vary.<br />
+<p>Depending on the sim file step up, frame range, complexity of the cloth rig, the quality of the sim setting, the sim time may vary.
 Usually it is acceptable to have 30 minutes of sim time for 1000 frames.</p>
-<p>The first thing to do no matter what is to let the sim run once, the sim cache is loaded when finished, so you can playblast and evaluate in real-time.<br />
-This first playblast is out of the box sim result, which will give you a general idea of the sequence.<br />
-When the result is not ideal, it is always worth making adjustments and do a re-sim, rather than cleaning it up.<br />
-If some sim takes exceptionally long and the result is still unusable no matter what, it could be issues related to master cloth rig<br />
+<p>The first thing to do no matter what is to let the sim run once, the sim cache is loaded when finished, so you can playblast and evaluate in real-time.
+This first playblast is out of the box sim result, which will give you a general idea of the sequence.
+When the result is not ideal, it is always worth making adjustments and do a re-sim, rather than cleaning it up.
+If some sim takes exceptionally long and the result is still unusable no matter what, it could be issues related to master cloth rig
 not setup well.</p>
-<p>The rule of thumb is: consider which would cost less effort: change parameter and re-sim or use the current result<br />
+<p>The rule of thumb is: consider which would cost less effort: change parameter and re-sim or use the current result
 and make clean up. Also need to consider how easy it is to implement changes after reviews.</p>
 <p>General Techniques:</p>
 <ul>
-<li>Even though body animation is adjusted prior to this stage, body and cloth penetration may still occur<br />
+<li>Even though body animation is adjusted prior to this stage, body and cloth penetration may still occur
 not for body intersecting, but due to the space between them aren’t enough for cloth to settle down.</li>
 <li>There could be cases where painting value maps are necessary.</li>
 <li>Adding scene specific constraint could help.</li>
 </ul>
 <h4 id="clean-up"><a class="markdownIt-Anchor" href="#clean-up"></a> Clean-up</h4>
-<p>The acceptable result sim cache gets exported to this stage, where a cloth rig reads the cache and the original full rez<br />
-costume is wrapped onto this cloth.<br />
-The wrapping is important as it’s served as up-scaling the resolution. The algorithm is essential<br />
+<p>The acceptable result sim cache gets exported to this stage, where a cloth rig reads the cache and the original full rez
+costume is wrapped onto this cloth.
+The wrapping is important as it’s served as up-scaling the resolution. The algorithm is essential
 as wrapping evaluation happens every frame on high poly objects, which can greatly impact playback speed.</p>
-<p>Clean up tools mostly are related to deformer that could affect the shape of the cloth,<br />
-for example: when small penetration happens, cloth can be pull out, or skin can be pushed down; there could<br />
+<p>Clean up tools mostly are related to deformer that could affect the shape of the cloth,
+for example: when small penetration happens, cloth can be pull out, or skin can be pushed down; there could
 be unwanted hard edges or creases, which can be smoothed.</p>
-<p>One of the tool that proves to be very helpful is when dealing cloth jittering and unstable in a static scene,<br />
+<p>One of the tool that proves to be very helpful is when dealing cloth jittering and unstable in a static scene,
 the tool would pick a frame and lock the cloth sim result, then wrap that result onto the body, which affects to all other frames.</p>
-<p>There’s always an option to blend back to animation cloth,<br />
-as the origin costume is weight painted and animated.<br />
+<p>There’s always an option to blend back to animation cloth,
+as the origin costume is weight painted and animated.
 This is useful to tone down crazy movement, or blend back to animation cloth shape.</p>
-<p>Next would be submitting and reviewing, needless to say, proper lighting is important as it could expose/hide certain areas.<br />
+<p>Next would be submitting and reviewing, needless to say, proper lighting is important as it could expose/hide certain areas.
 Also, camera focal point, effects can also play a huge role in the review.</p>
 <hr />
 <h3 id="more-pipeline-ideas"><a class="markdownIt-Anchor" href="#more-pipeline-ideas"></a> More Pipeline Ideas</h3>
-<p>The above pipeline can be divided into three stages, with three separate maya file/session<br />
-handling each stage. Making each one of them cleaner, faster and easier to work with.<br />
-The pre-sim stage deals with pre-processing and T-pose transition; The sim stage only are<br />
-meant for simming and adjusting sim settings; The post-sim stage is for dealing with clean-up<br />
-and export. One of the legacy workflow bundles all three stages into one file, and the<br />
-sim process was really slow, this is due to multiple layers to the cloth rig, mainly the wrapping<br />
+<p>The above pipeline can be divided into three stages, with three separate maya file/session
+handling each stage. Making each one of them cleaner, faster and easier to work with.
+The pre-sim stage deals with pre-processing and T-pose transition; The sim stage only are
+meant for simming and adjusting sim settings; The post-sim stage is for dealing with clean-up
+and export. One of the legacy workflow bundles all three stages into one file, and the
+sim process was really slow, this is due to multiple layers to the cloth rig, mainly the wrapping
 causing the evaluation to significantly slow down.</p>
-<p>Sim in batch mode: since we generally don’t care what happens during the sim,<br />
-and care only the result after the sim went through, running the simulation without having<br />
-the gui open makes sense and speed up the process. To record the sim output result, remember to add a snapshot function<br />
+<p>Sim in batch mode: since we generally don’t care what happens during the sim,
+and care only the result after the sim went through, running the simulation without having
+the gui open makes sense and speed up the process. To record the sim output result, remember to add a snapshot function
 in the batch script to capture every frame.</p>
-<p>Cloth setting import/exporter: use for keep record of settings that worked well with scenes, this could be<br />
-shared to other cfx artist, it can also be useful just for inspection all the parameters from leads and not having to open<br />
+<p>Cloth setting import/exporter: use for keep record of settings that worked well with scenes, this could be
+shared to other cfx artist, it can also be useful just for inspection all the parameters from leads and not having to open
 your chunky maya file and find all the nodes.</p>
 <!-- flag of hidden posts -->
       

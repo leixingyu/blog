@@ -30,8 +30,8 @@
 <meta property="article:published_time" content="2019-11-10T05:00:00.000Z">
 <meta property="article:modified_time" content="2021-12-18T20:48:53.264Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="maya">
 <meta property="article:tag" content="python">
+<meta property="article:tag" content="maya">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.xingyulei.com/post/maya-api-node/index.html">
@@ -371,36 +371,36 @@
 <p>The plug is also provided in the <code>compute()</code> function</p>
 <h3 id="data-handle-mdatahandle"><a class="markdownIt-Anchor" href="#data-handle-mdatahandle"></a> Data handle (MDataHandle)</h3>
 <p>Data handle usually stores an attribute’s value.</p>
-<p>We can set a value to an attribute using <code>MDataHandle.setType(value)</code>,<br />
+<p>We can set a value to an attribute using <code>MDataHandle.setType(value)</code>,
 and get an attribute’s value using <code>**</code>value = MDataHandle.asType()<code>**</code>.</p>
 <h2 id="procedure"><a class="markdownIt-Anchor" href="#procedure"></a> Procedure</h2>
 <h3 id="step-1-declare-attributes-mobject-in-the-class"><a class="markdownIt-Anchor" href="#step-1-declare-attributes-mobject-in-the-class"></a> Step 1: Declare attributes (MObject) in the class</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyNode</span>(<span class="params">om.MPxNode</span>):</span></span><br><span class="line">    inAttr = om.MObject()</span><br><span class="line">    outAttr = om.MObject()</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">		om.MPxNode.__init__(self)</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">compute</span>(<span class="params">self, plug, dataBlock</span>):</span></span><br><span class="line">		<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <p><code>inAttr</code> refers to the input attribute that we are creating,</p>
 <p><code>outAttr</code> refers to the output attribute that we are creating.</p>
-<p>Both are declared as <code>MObject()</code> type.<br />
+<p>Both are declared as <code>MObject()</code> type.
 We will later access them using <code>MyNode.inAttr</code> and <code>MyNode.outAttr</code>.</p>
 <h3 id="step-2-initialize-node"><a class="markdownIt-Anchor" href="#step-2-initialize-node"></a> Step 2: Initialize Node</h3>
 <p><strong>Node Creator</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nodeCreator</span>():</span></span><br><span class="line">    <span class="keyword">return</span> MyNode()</span><br></pre></td></tr></table></figure>
-<p>Node Creator in API 2.0 directly returns an instance to the class,<br />
+<p>Node Creator in API 2.0 directly returns an instance to the class,
 API 1.0 uses a pointer like in command plugin.</p>
 <p><strong>Node Initializer</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nodeInitializer</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;1: create reference to attribute function set such as numericAttribute&#x27;&#x27;&#x27;</span></span><br><span class="line">    numericAttrFn = om.MFnNumericAttribute()</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; 2: create attribute using the function set&#x27;&#x27;&#x27;</span></span><br><span class="line">    MyNode.inAttr = numericAttrFn.create(<span class="string">&#x27;in&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, om.MFnNumericData.kFloat, <span class="number">1.0</span>)</span><br><span class="line">    numericAttrFn.readable = <span class="literal">True</span></span><br><span class="line">    numericAttrFn.writable = <span class="literal">True</span></span><br><span class="line">    MyNode.outAttr = numericAttrFn.create(<span class="string">&#x27;out&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, om.MFnNumericData.kFloat)</span><br><span class="line">    numericAttrFn.readable = <span class="literal">True</span></span><br><span class="line">    numericAttrFn.writable = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; 3: attach attribute&#x27;&#x27;&#x27;</span></span><br><span class="line">    MyNode.addAttribute(MyNode.inAttr)</span><br><span class="line">    MyNode.addAttribute(MyNode.outAttr)</span><br><span class="line"></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; 4: add circuit (relationship in-&gt;out)&#x27;&#x27;&#x27;</span></span><br><span class="line">    MyNode.attributeAffects(MyNode.inAttr, MyNode.outAttr)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><code>MFnNumericAttribute</code> provides the function sets to create an attribute for numeric type attribute.<br />
+<li><code>MFnNumericAttribute</code> provides the function sets to create an attribute for numeric type attribute.
 There’s also <code>MFnMatrixAttribute</code> to create matrix type attribute and so on.</li>
-<li>Using the function set’s <code>create()</code> function, we add parameters for attribute’s<br />
+<li>Using the function set’s <code>create()</code> function, we add parameters for attribute’s
 <strong>long name, short name, data type, and default value (optional)</strong>.
 <ul>
 <li>This returns a <code>MObject</code> type attribute which is attached to the function set. We store it in the attribute declared earlier in the class.</li>
-<li>Set the attribute’s property using function set,<br />
-such as <strong>readable, writable, hidden, storable, connectable</strong><br />
+<li>Set the attribute’s property using function set,
+such as <strong>readable, writable, hidden, storable, connectable</strong>
 (In API1.0, use like this <code>numericAttrFn.setReadable(True)</code>)</li>
 </ul>
 </li>
 <li>Using the <code>MyNode.addAttribute(MyNode.inAttr)</code> to attach an attribute to the node</li>
-<li>Using the <code>MyNode.attributeAffects(MyNode.inAttr, MyNode.outAttr)</code> to design the affect relationship between attributes,<br />
+<li>Using the <code>MyNode.attributeAffects(MyNode.inAttr, MyNode.outAttr)</code> to design the affect relationship between attributes,
 in this case, change of <code>inAttr</code> will affect `outAttr.</li>
 </ul>
 <p><strong>RegisterNode</strong></p>
@@ -417,12 +417,12 @@ in this case, change of <code>inAttr</code> will affect `outAttr.</li>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyNode</span>(<span class="params">om.MPxNode</span>):</span></span><br><span class="line">    inAttr = om.MObject()</span><br><span class="line">    outAttr = om.MObject()</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">		om.MPxNode.__init__(self)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">compute</span>(<span class="params">self, plug, dataBlock</span>):</span></span><br><span class="line">        <span class="keyword">if</span> plug == MyNode.outAttr:</span><br><span class="line">            <span class="comment"># 1: get datablock handle (inputValue returns MDataHandle type object)</span></span><br><span class="line">            inHandle = dataBlock.inputValue(MyNode.inAttr)</span><br><span class="line">            outHandle = dataBlock.outputValue(MyNode.outAttr)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 2: extract input value from the handle</span></span><br><span class="line">            inValue = inHandle.asFloat()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 3: create logic and set output value</span></span><br><span class="line">            outValue = inValue * <span class="number">2</span></span><br><span class="line">            outHandle.setFloat(outValue)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 4: mark output plug as clean</span></span><br><span class="line">            outHandle.setClean()</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> om.kUnknownParameter</span><br></pre></td></tr></table></figure>
 <ol>
 <li>
-<p>When <code>MyNode.outAttr</code> is dirty (meaning it needs to recompute),<br />
-we use <code>if plug == MyNode.outAttr:</code> to identify this certain plug.<br />
+<p>When <code>MyNode.outAttr</code> is dirty (meaning it needs to recompute),
+we use <code>if plug == MyNode.outAttr:</code> to identify this certain plug.
 (this if statement will work, even if <code>plug</code> is <code>MPlug</code> type and <code>MyNode.outAttr</code> is <code>MObject</code> type)</p>
 </li>
 <li>
-<p>We have already identified what input attribute is affecting this plug, in order to retrieve the value of this input, we need to attach a data handle on the data block specifying this certain input attribute we want to retrive.<br />
+<p>We have already identified what input attribute is affecting this plug, in order to retrieve the value of this input, we need to attach a data handle on the data block specifying this certain input attribute we want to retrive.
 Therefore, we have <code>handle = dataBlock.input/outputValue(MyNode.attr)</code></p>
 </li>
 <li>

@@ -393,13 +393,13 @@
 <h3 id="what-does-__init__py-do"><a class="markdownIt-Anchor" href="#what-does-__init__py-do"></a> What does <code>__init__.py</code> do?</h3>
 <ol>
 <li>
-<p><code>__init__.py</code> is used to specify a package, when import is trying to find the modules,<br />
-But it is not required: meaning a package without <code>__init__.py</code>,<br />
-The system can still find the modules after configuring appropriate <code>PYTHONPATH</code> using<br />
+<p><code>__init__.py</code> is used to specify a package, when import is trying to find the modules,
+But it is not required: meaning a package without <code>__init__.py</code>,
+The system can still find the modules after configuring appropriate <code>PYTHONPATH</code> using
 <code>sys.path.append</code>.</p>
 </li>
 <li>
-<p><code>__init__.py</code> is executed after importing the package, I’ve seen<br />
+<p><code>__init__.py</code> is executed after importing the package, I’ve seen
 sub-directory being imported by appending as environment variable within <code>__init__.py</code></p>
 </li>
 </ol>
@@ -411,16 +411,16 @@ sub-directory being imported by appending as environment variable within <code>_
 <p>so with this file structure, you can just do <code>import project</code></p>
 <p>they could even add the import statement for you in the <code>__init__.py</code>, although it is not transparent.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">project&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    foo&#x2F;</span><br><span class="line">        bar&#x2F;</span><br><span class="line">            b.py</span><br></pre></td></tr></table></figure>
-<p>Note: Whatever gets appended last overrides the previous<br />
+<p>Note: Whatever gets appended last overrides the previous
 env variable, so import to the same name module will find the latest append</p>
 <h3 id="dot-notation-in-import"><a class="markdownIt-Anchor" href="#dot-notation-in-import"></a> Dot Notation (<code>.</code>) in Import</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">parent&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    file.py</span><br><span class="line">    one&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        anotherfile.py</span><br><span class="line">    two&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">    three&#x2F;</span><br><span class="line">        __init__.py</span><br></pre></td></tr></table></figure>
-<p>Each dot in your import will refer to something inside the package, could be another package<br />
+<p>Each dot in your import will refer to something inside the package, could be another package
 or a module. But it can’t be a class.</p>
-<p>Import python modules could look like:<br />
+<p>Import python modules could look like:
 <code>import parent.file</code> or <code>import parent.one.anotherfile</code></p>
-<p>From … import classes or functions look like this:<br />
-<code>from parent.file import class</code><br />
+<p>From … import classes or functions look like this:
+<code>from parent.file import class</code>
 which gives you direct access to the class namespace, but not the example above.</p>
 <h3 id="import-order"><a class="markdownIt-Anchor" href="#import-order"></a> Import Order</h3>
 <p>Based on PEP8, imports should be grouped by the following order:</p>
@@ -430,37 +430,37 @@ which gives you direct access to the class namespace, but not the example above.
 <li>Local application/library specific import</li>
 </ol>
 <p><strong>What is Standard Library Imports?</strong></p>
-<p>Standard library are installed automatically by Python installer, full documentation link<br />
+<p>Standard library are installed automatically by Python installer, full documentation link
 is here: <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/">https://docs.python.org/3/library/</a></p>
 <p><strong>What is the order after grouping?</strong></p>
-<p>There is no specific rules, but based on common preferences, use alphabetical order, with<br />
+<p>There is no specific rules, but based on common preferences, use alphabetical order, with
 import first and from … import after</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> abc</span><br><span class="line"><span class="keyword">import</span> <span class="function"><span class="keyword">def</span></span></span><br><span class="line"><span class="function"><span class="title">import</span> <span class="title">x</span></span></span><br><span class="line"><span class="function"><span class="title">from</span> <span class="title">g</span> <span class="title">import</span> <span class="title">gg</span></span></span><br><span class="line"><span class="function"><span class="title">from</span> <span class="title">x</span> <span class="title">import</span> <span class="title">xx</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="intra-package"><a class="markdownIt-Anchor" href="#intra-package"></a> Intra-package</h3>
-<p>In a structure like this, how would you do import from another directory?<br />
+<p>In a structure like this, how would you do import from another directory?
 say from <code>module-x.py</code> import <code>module-a</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">top-package&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    sub-package-a&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        module-x.py</span><br><span class="line">        module-y.py</span><br><span class="line">    sub-package-b&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        module-a.py</span><br><span class="line">        module-b.py</span><br></pre></td></tr></table></figure>
 <p>Here’s some examples doing relative imports in <code>module-x</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module-y</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> module-y</span><br><span class="line"><span class="keyword">from</span> .module-y <span class="keyword">import</span> classA</span><br><span class="line"><span class="keyword">from</span> .. <span class="keyword">import</span> sub-package-b</span><br><span class="line"><span class="keyword">from</span> ..subpackage-b <span class="keyword">import</span> module-a</span><br><span class="line"><span class="keyword">from</span> ..subpackage-b.module-a <span class="keyword">import</span> classB</span><br></pre></td></tr></table></figure>
 <h3 id="import-an-import"><a class="markdownIt-Anchor" href="#import-an-import"></a> Import an import</h3>
-<p>It is a common practice in <code>C#</code> to use import module or static class to stores all the global variables<br />
-used for settings, or even all the modules. In Python it would be something like:<br />
+<p>It is a common practice in <code>C#</code> to use import module or static class to stores all the global variables
+used for settings, or even all the modules. In Python it would be something like:
 <code>constant.py</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module_a</span><br><span class="line"><span class="keyword">import</span> module_b</span><br><span class="line"><span class="keyword">import</span> module_c</span><br><span class="line"></span><br><span class="line">GLOBAL_VAR_MAX = <span class="number">50</span></span><br><span class="line">GLOBAL_VAR_MIN = <span class="number">10</span></span><br><span class="line">GLOBAL_VAR_TIMEOUT = <span class="number">2000</span></span><br><span class="line"></span><br><span class="line">GLOBAL_NAME = <span class="string">r&#x27;random name&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># or even</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Constant</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    gravity = <span class="number">9.8</span></span><br><span class="line">    is_true = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<p>With this setup, all the module in the same project would just import the <code>constant</code> module and have access to<br />
-all the imports and variable. I thought this was a neat way to make code cleaner by getting rid of all the duplicated imports<br />
+<p>With this setup, all the module in the same project would just import the <code>constant</code> module and have access to
+all the imports and variable. I thought this was a neat way to make code cleaner by getting rid of all the duplicated imports
 that might happen.</p>
 <p>there are also some voices against it:</p>
 <ul>
 <li>based on the style guide: Constants are usually defined on a <em>module</em> level</li>
 <li>also, suggestions have mentioned to refrain from using <em>class</em> as it could be instantiated which makes no sense.</li>
-<li>unless there’s a valid reason for all those modules to be collected under a common name. If not, then they should<br />
-be kept separately. This is due to documentation, as other people open your file, they don’t get information on<br />
+<li>unless there’s a valid reason for all those modules to be collected under a common name. If not, then they should
+be kept separately. This is due to documentation, as other people open your file, they don’t get information on
 what is getting imported (what is needed)</li>
 </ul>
 <h4 id="same-module-import-multiple-times"><a class="markdownIt-Anchor" href="#same-module-import-multiple-times"></a> Same module import multiple times</h4>
 <p>So if multiple files are importing the same module separately, does python optimize the import?</p>
-<p>Yes, python modules are considered as singletons, no matter how many times you import them they get initialized only once.<br />
+<p>Yes, python modules are considered as singletons, no matter how many times you import them they get initialized only once.
 unless reload is being called</p>
 <h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5027400">Stack Overflow - constants in Python: at the root of the module or in a namespace inside the module?</a></p>

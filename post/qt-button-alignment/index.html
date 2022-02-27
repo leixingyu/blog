@@ -364,32 +364,32 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
-<p>I recently needed to display a series of buttons for my shelf tool, the problem I’m having with this is that<br />
-although every button has an icon and text label, they are displayed as different width. Using <code>center-align</code><br />
+<p>I recently needed to display a series of buttons for my shelf tool, the problem I’m having with this is that
+although every button has an icon and text label, they are displayed as different width. Using <code>center-align</code>
 made it look not uniform.</p>
-<p>Should I go with <code>left-align</code>? Well, there are buttons with relatively longer label and some with shorter ones,<br />
+<p>Should I go with <code>left-align</code>? Well, there are buttons with relatively longer label and some with shorter ones,
 so it doesn’t look nice either with empty spaces on the right side.</p>
-<p>So the solution is obvious, separate the alignment of the icon and the label: the icon stays <code>left-align</code> to<br />
+<p>So the solution is obvious, separate the alignment of the icon and the label: the icon stays <code>left-align</code> to
 give a clear sign of broader, and the label would be <code>center-align</code> to make the width look uniform.</p>
-<p><img src="https://i.imgur.com/dMOZpkH.jpg" alt="three-alignment-side-by-side" /><br />
+<p><img src="https://i.imgur.com/dMOZpkH.jpg" alt="three-alignment-side-by-side" />
 (Left: default center align, Center: left align, Right: custom align)</p>
 <p>In the following section, I will demonstrate three methods of achieving this custom alignment effect:</p>
 <p><img src="https://imgur.com/3G6fmVN.png" alt="push-button-alignment" /></p>
 <h3 id="overriding-qpushbutton-paintevent"><a class="markdownIt-Anchor" href="#overriding-qpushbutton-paintevent"></a> Overriding QPushButton <code>paintEvent()</code></h3>
-<p>This method subclass from <code>QPushButton</code> and override the <code>paintEvent()</code> and <code>sizeHint()</code><br />
+<p>This method subclass from <code>QPushButton</code> and override the <code>paintEvent()</code> and <code>sizeHint()</code>
 to extend how a button is drawn;</p>
-<p>The alignment of content of the button is default to <code>center-aligned</code>, but<br />
+<p>The alignment of content of the button is default to <code>center-aligned</code>, but
 we make the pixmap to be drawn on the left-side (5px margin against the left border)</p>
-<p>With this method, we no longer use <code>QIcon</code>, we use <code>QPixmap</code> instead; that is why<br />
-we created a custom <code>setPixmap()</code> method to our <code>MyButton</code> to give user access<br />
+<p>With this method, we no longer use <code>QIcon</code>, we use <code>QPixmap</code> instead; that is why
+we created a custom <code>setPixmap()</code> method to our <code>MyButton</code> to give user access
 to the pixmap being drawn.</p>
 <script src="https://gist.github.com/leixingyu/009a594f3d94643d39b9eee5ac6cf118.js"></script>
 <h3 id="custom-layout-inside-pushbutton"><a class="markdownIt-Anchor" href="#custom-layout-inside-pushbutton"></a> Custom layout inside pushbutton</h3>
-<p>Here is another interesting approach:<br />
+<p>Here is another interesting approach:
 this method defaults its style to <code>left-aligned</code>, but it only contains the icon.</p>
 <p>What about the push button label(text)?</p>
-<p>It is actually a <code>QLabel</code> placed in the <code>QPushButton</code> layout, and being vertically<br />
-<code>center-aligned</code>; To modify the push button text, use <code>setText()</code> to the label<br />
+<p>It is actually a <code>QLabel</code> placed in the <code>QPushButton</code> layout, and being vertically
+<code>center-aligned</code>; To modify the push button text, use <code>setText()</code> to the label
 inside the button layout, instead of the button.</p>
 <script src="https://gist.github.com/leixingyu/78b83e758e74cb56f9da5f076e5c4d9d.js"></script>
 <h3 id="use-qproxystyle"><a class="markdownIt-Anchor" href="#use-qproxystyle"></a> Use <code>QProxyStyle</code></h3>

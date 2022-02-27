@@ -361,24 +361,24 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h2 id="rendering-software"><a class="markdownIt-Anchor" href="#rendering-software"></a> Rendering Software</h2>
-<p>The rendering software/engine (or renderer) is the module/application<br />
-that is reasonable for generating the graphical output.<br />
-Basically the job of a rendering engine is to convert the applications<br />
-internal model into a series of pixel brightness’s that can be displayed<br />
+<p>The rendering software/engine (or renderer) is the module/application
+that is reasonable for generating the graphical output.
+Basically the job of a rendering engine is to convert the applications
+internal model into a series of pixel brightness’s that can be displayed
 by a monitor.</p>
 <h3 id="photorealistic-offline-rendering"><a class="markdownIt-Anchor" href="#photorealistic-offline-rendering"></a> Photorealistic offline rendering</h3>
-<p>Renderer (such as Arnold, V-ray, RenderMan)<br />
-that uses ray tracing to achieve realistic rendering;<br />
+<p>Renderer (such as Arnold, V-ray, RenderMan)
+that uses ray tracing to achieve realistic rendering;
 frames are rendered to image format and displayed later.</p>
 <h3 id="real-time-hardware-assisted-rendering"><a class="markdownIt-Anchor" href="#real-time-hardware-assisted-rendering"></a> real-time hardware-assisted rendering</h3>
-<p>Renderer using a traditional rendering pipeline<br />
-(APIs such as OpenGL or DirectX) with rasterization,<br />
+<p>Renderer using a traditional rendering pipeline
+(APIs such as OpenGL or DirectX) with rasterization,
 not designed to perform raytracing.</p>
 <h2 id="rendering-apis"><a class="markdownIt-Anchor" href="#rendering-apis"></a> Rendering APIs</h2>
-<p>Application programming interface or libraries are designed to handle complex math,<br />
-drawing operation and talks to 3D graphics hardware for video games and<br />
-3D real-time viewport in varies dcc application.<br />
-It is typically used to interact with GPU to achieve <strong>hardware-accelerated</strong><br />
+<p>Application programming interface or libraries are designed to handle complex math,
+drawing operation and talks to 3D graphics hardware for video games and
+3D real-time viewport in varies dcc application.
+It is typically used to interact with GPU to achieve <strong>hardware-accelerated</strong>
 rendering.</p>
 <ul>
 <li>
@@ -389,27 +389,27 @@ rendering.</p>
 </li>
 </ul>
 <h3 id="video-game"><a class="markdownIt-Anchor" href="#video-game"></a> Video game</h3>
-<p>A lot of game engines have a ‘graphics middleware’ layer that can make calls<br />
+<p>A lot of game engines have a ‘graphics middleware’ layer that can make calls
 to OpenGL or Direct 3D functions depending on what platform you’re on.</p>
 <h3 id="viewport"><a class="markdownIt-Anchor" href="#viewport"></a> Viewport</h3>
-<p>3D Viewport render allows for quick preview (lighting, shadows, material,<br />
+<p>3D Viewport render allows for quick preview (lighting, shadows, material,
 animation…) as opposed to final render.</p>
-<p>Viewport render are fast but not guarantee to playback in real-time<br />
+<p>Viewport render are fast but not guarantee to playback in real-time
 if the scene is too complex, thus the need of using playblast.</p>
 <hr />
-<p><strong>Hardware acceleration</strong>: is the use of computer hardware designed to<br />
-perform specific functions more efficiently when compared to software<br />
-running on a general-purpose central processing unit (CPU).<br />
-Any transformation of data that can be calculated in software running on a<br />
+<p><strong>Hardware acceleration</strong>: is the use of computer hardware designed to
+perform specific functions more efficiently when compared to software
+running on a general-purpose central processing unit (CPU).
+Any transformation of data that can be calculated in software running on a
 generic CPU can also be calculated in custom-made hardware, or in some mix of both.</p>
-<p><strong>General Purpose GPU rendering</strong>: As NVIDIA started making<br />
-the GPU’s more programmable, it found that it could use the massive<br />
-computational power in GPU’s to do general purpose computing.<br />
-This led to the development of CUDA (Compute Unified Device Architecture).<br />
-This enables programmers to write software that can run on the GPU<br />
-instead of the CPU. The benefit of doing this is in parallelization.<br />
-A modern GPU might have 480 cores while a CPU has 8. So if you can<br />
-make your program more parallel, you’ll potentially get quite good<br />
+<p><strong>General Purpose GPU rendering</strong>: As NVIDIA started making
+the GPU’s more programmable, it found that it could use the massive
+computational power in GPU’s to do general purpose computing.
+This led to the development of CUDA (Compute Unified Device Architecture).
+This enables programmers to write software that can run on the GPU
+instead of the CPU. The benefit of doing this is in parallelization.
+A modern GPU might have 480 cores while a CPU has 8. So if you can
+make your program more parallel, you’ll potentially get quite good
 speed out of using a GPU.</p>
 <h2 id="rendering-architecture"><a class="markdownIt-Anchor" href="#rendering-architecture"></a> Rendering Architecture</h2>
 <h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>

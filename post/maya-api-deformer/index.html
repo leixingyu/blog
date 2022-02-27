@@ -30,8 +30,8 @@
 <meta property="article:published_time" content="2019-11-11T05:00:00.000Z">
 <meta property="article:modified_time" content="2021-12-18T20:48:17.267Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="maya">
 <meta property="article:tag" content="python">
+<meta property="article:tag" content="maya">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.xingyulei.com/post/maya-api-deformer/index.html">
@@ -365,25 +365,25 @@
 <script src="https://gist.github.com/leixingyu/78352732cb52c6e797244755ade0bbfe.js"></script>
 <p>Note: <code>MPxDeformerNode</code> is only available in API 2.0</p>
 <p><strong>Custom Attribute vs. Built-in Attribute</strong></p>
-<p>In the last chapter, we know how to create custom numeric type attribute using <code>MFnNumericAttribute</code>.<br />
-Sometimes in our node, we want to access existing built-in attribute.<br />
-We do so by using <code>OpenMayaMPx.cvar.MPxDeformerNode_(attributeName)</code> before Maya 2016,<br />
+<p>In the last chapter, we know how to create custom numeric type attribute using <code>MFnNumericAttribute</code>.
+Sometimes in our node, we want to access existing built-in attribute.
+We do so by using <code>OpenMayaMPx.cvar.MPxDeformerNode_(attributeName)</code> before Maya 2016,
 we use <code>OpenMayaMPx.cvar.MPxGeometryFilter_(attributeName)</code> after 2016.</p>
 <p><strong>Obtain Input Geometry</strong></p>
-<p>In the sample code, we define our custom function <code>getDeformerInputGeom(self, dataBlock, geomIndex)</code><br />
+<p>In the sample code, we define our custom function <code>getDeformerInputGeom(self, dataBlock, geomIndex)</code>
 to obtain the input mesh to the deformer node. We will discuss this later.</p>
 <p><strong>Accessory Node</strong></p>
 <p>Accessory node acts like a secondary driver node connected to our deformer so they can influence the deformation. In the sample code, our accessory node is a locator which when we connects its world matrix, it will change our mesh’s deformation when translating.</p>
 <p><strong>Custom Dependency Node vs. Custom Deformer Node</strong></p>
-<p><strong>Registration:</strong><br />
-In our previous chapter, we register our node using <code>registerNode()</code> with<br />
-node type: <code>omMPx.MPxNode.kDependNode</code>,<br />
+<p><strong>Registration:</strong>
+In our previous chapter, we register our node using <code>registerNode()</code> with
+node type: <code>omMPx.MPxNode.kDependNode</code>,
 in deformer node, we use <code>omMPx.MPxNode.kDeformerNode</code> as our node type.</p>
-<p><strong>Inheritance:</strong><br />
-We now inherit our class from <code>omMPx.MPxDeformerNode</code> instead of <code>omMPxNode</code><br />
-there’s still <code>compute()</code> in <code>MPxDeformerNode</code> class,<br />
+<p><strong>Inheritance:</strong>
+We now inherit our class from <code>omMPx.MPxDeformerNode</code> instead of <code>omMPxNode</code>
+there’s still <code>compute()</code> in <code>MPxDeformerNode</code> class,
 but we want to write our deformation algorithm in <code>deform()</code>.</p>
-<p><strong>Accessory Node:</strong><br />
+<p><strong>Accessory Node:</strong>
 <code>accessoryNodeSetup(self, dagModifier)</code> and <code>accessoryAttribute(self)</code> is override to allow us to control accessory node along with our deformer.</p>
 <h2 id="procedure"><a class="markdownIt-Anchor" href="#procedure"></a> Procedure</h2>
 <h3 id="step-1-declare-attributes-same-as-last-chapter"><a class="markdownIt-Anchor" href="#step-1-declare-attributes-same-as-last-chapter"></a> Step 1: Declare attributes (Same as last chapter)</h3>
@@ -421,21 +421,21 @@ but we want to write our deformation algorithm in <code>deform()</code>.</p>
 </ul>
 </li>
 <li>
-<p>To get normal for individual vertices on our input mesh,<br />
-we first need to obtain our input mesh using our own function:<br />
-<code>getDeformerInputGeom(self, dataBlock, geomIndex)</code>.<br />
-And using mesh function set MeshFn’s <code>getVertexNormals()</code> we store the<br />
+<p>To get normal for individual vertices on our input mesh,
+we first need to obtain our input mesh using our own function:
+<code>getDeformerInputGeom(self, dataBlock, geomIndex)</code>.
+And using mesh function set MeshFn’s <code>getVertexNormals()</code> we store the
 normal vector in <code>om.MFloatVectorArray()</code> type array.</p>
 </li>
 <li>
-<p>To deform our mesh: we use the geometry iterator to perform iteration on<br />
-each mesh vertex and re-calculate its position.<br />
-We combine the use of <code>geoIterator.position()</code> and<br />
+<p>To deform our mesh: we use the geometry iterator to perform iteration on
+each mesh vertex and re-calculate its position.
+We combine the use of <code>geoIterator.position()</code> and
 <code>geomIterator.setPosition(point)</code> or <code>geomIterator.setAllPositions(pointArray)</code>.</p>
 </li>
 <li>
-<p>To access weight value on each vertex, we use built-in<br />
-function <code>weightValue(dataBlock, geomIndex, vertexIndex)</code>.<br />
+<p>To access weight value on each vertex, we use built-in
+function <code>weightValue(dataBlock, geomIndex, vertexIndex)</code>.
 In which, <code>geomIndex</code> is provided in <code>deform()</code> and <code>vertexIndex</code> is from <code>geomIterator</code>.</p>
 </li>
 </ul>
@@ -444,17 +444,17 @@ In which, <code>geomIndex</code> is provided in <code>deform()</code> and <code>
 <p>At this point, I can’t fully interpret the meaning of this segment.</p>
 <h3 id="step-4-accessory-node"><a class="markdownIt-Anchor" href="#step-4-accessory-node"></a> Step 4: Accessory Node</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">accessoryNodeSetup</span>(<span class="params">self, dagModifier</span>):</span></span><br><span class="line">    <span class="comment"># step1: create the accessory node using the supplied dagModifier</span></span><br><span class="line">    locator = dagModifier.createNode(<span class="string">&#x27;locator&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># step2: access accessory node&#x27;s attribute(can&#x27;t use mplug type, has to be mobject type)</span></span><br><span class="line">    <span class="comment"># access dependency node function set</span></span><br><span class="line">    dependNodeFn = om.MFnDependencyNode(locator)</span><br><span class="line">    matrixPlug = dependNodeFn.findPlug(<span class="string">&#x27;worldMatrix&#x27;</span>)  <span class="comment"># this returns mplug type attribute, we need mobject type attribute</span></span><br><span class="line">    matrixAttr = matrixPlug.attribute()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># step3: connect mobject type(required) together</span></span><br><span class="line">    <span class="comment"># param: accessory node(mobject), accessory attr(mobject), deformer node(mobject: using self.thisMObject()), deformer attr(mobject)</span></span><br><span class="line">    mConnectStatus = dagModifier.connect(locator, matrixAttr, self.thisMObject(), MyDeformer.inMatAttr)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># now the accessory node&#x27;s worldMatrix is driving to the custom in-matrix of the deformer node</span></span><br><span class="line">    <span class="keyword">return</span> mConnectStatus</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">accessoryAttribute</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="comment"># returns the deformer node attribute connected</span></span><br><span class="line">    <span class="keyword">return</span> MyDeformer.inMatAttr</span><br></pre></td></tr></table></figure>
-<p>The <code>dagModifer</code> is supplied in the accessory node. We use dagModifier’s connect function to<br />
-connect the accessory node’s attribute to our deformer node’s attribute.<br />
-In this case, we have accessory’s attribute: <code>worldMatrix</code><br />
-(a built-in attribute obtained from <code>MFnDependencyNode.findPlug())</code><br />
+<p>The <code>dagModifer</code> is supplied in the accessory node. We use dagModifier’s connect function to
+connect the accessory node’s attribute to our deformer node’s attribute.
+In this case, we have accessory’s attribute: <code>worldMatrix</code>
+(a built-in attribute obtained from <code>MFnDependencyNode.findPlug())</code>
 and our custom defined <code>MyDeformer.inMatAttr</code>.</p>
-<p>One thing to note is that, the <code>.connect()</code> only takes MObject which we cannot supply <code>MPlug</code> type<br />
-object <code>matrixPlug = ...findPlug('attributeName')</code>, we perform an additional step<br />
+<p>One thing to note is that, the <code>.connect()</code> only takes MObject which we cannot supply <code>MPlug</code> type
+object <code>matrixPlug = ...findPlug('attributeName')</code>, we perform an additional step
 <code>matrixAttr = matrixPlug.attribute()</code> to get the MObject type attribute.</p>
-<p>Now we supply <code>.connect()</code> with parameters: an accessory node (MObject type),<br />
-accessory node’s attribute (MObject type), deformer node (MObject type)<br />
-and deformer node’s attribute (MObject type) as follows:<br />
+<p>Now we supply <code>.connect()</code> with parameters: an accessory node (MObject type),
+accessory node’s attribute (MObject type), deformer node (MObject type)
+and deformer node’s attribute (MObject type) as follows:
 <code>mConnectStatus = dagModifier.connect(locator, matrixAttr, self.thisMObject(), MyDeformer.inMatAttr)</code></p>
 <h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
 <p><a target="_blank" rel="noopener" href="https://www.chadvernon.com/maya-api-programming/">Chad Vernon - Maya API Programming</a></p>
