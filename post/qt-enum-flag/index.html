@@ -28,7 +28,7 @@
 <meta property="og:description" content="Introduction I often take Qt namespace for granted, it became a natural habit of setting a Qt parameter using Qt namespace, for instance: setting alignment for a QStandardItem 123item &#x3D; QtGui.QStanda">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-06T05:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-18T20:52:08.100Z">
+<meta property="article:modified_time" content="2022-02-21T22:28:46.269Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
@@ -161,7 +161,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -182,6 +182,31 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled ">
         
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/maya-ik-fk-match/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/maya-ik-fk-match/" class="title">IK FK Matching in Maya</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-27T05:00:00.000Z" itemprop="datePublished">2022-02-27</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-thumb">
@@ -282,31 +307,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/post/py-end-process/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
-              </p>
-              <p class="item-title">
-                <a href="/post/py-end-process/" class="title">Find PID and End Process in Python (Windows)</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-10-25T04:00:00.000Z" itemprop="datePublished">2021-10-25</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -374,7 +374,7 @@ know the value of. And also note that it is not a <code>AlignmentFlag</code> obj
 previously.</p>
 <p>So, What’s the difference between these two, and how should I retrieve the namespace<br />
 value?</p>
-<h3 id="qenum-and-qflags"><a class="markdownIt-Anchor" href="#qenum-and-qflags"></a> QEnum and QFlags</h3>
+<h3 id="qenum-and-qflags"><a class="markdownIt-Anchor" href="#qenum-and-qflags"></a> <code>QEnum</code> and <code>QFlags</code></h3>
 <p>QFlags is used to store combinations of Enum, which provides type checking safety.<br />
 thus, <code>Alignment</code> QFlags type is simply a typedef for <code>AlignmentFlag</code> QEnum.</p>
 <ul>

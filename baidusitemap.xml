@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
+    <lastmod>2022-02-27</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-import/</loc>
+    <lastmod>2022-02-21</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/py-named-tuple/</loc>
-    <lastmod>2022-02-17</lastmod>
+    <lastmod>2022-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2022-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-enum-flag/</loc>
+    <lastmod>2022-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
+    <lastmod>2022-02-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
+    <lastmod>2022-02-21</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-template/</loc>
@@ -13,27 +37,11 @@
     <lastmod>2022-02-13</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/py-import/</loc>
-    <lastmod>2022-01-25</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
     <lastmod>2022-01-24</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-signal-in-for-loop/</loc>
-    <lastmod>2022-01-24</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
-    <lastmod>2022-01-24</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
-    <lastmod>2022-01-24</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
     <lastmod>2022-01-24</lastmod>
   </url>
   <url>
@@ -66,10 +74,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-pixmap-scale/</loc>
-    <lastmod>2021-12-18</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-enum-flag/</loc>
     <lastmod>2021-12-18</lastmod>
   </url>
   <url>

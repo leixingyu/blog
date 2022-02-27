@@ -20,15 +20,15 @@
   
   
   <title>Using namedtuple | Tech Art Learning</title>
-  <meta name="description" content="I recently got side-tracked into exploring the basics of namedtuple() as I got a glimpse of its usage in our engineering codebase. Here’s my summary:  Mutable and Hashable To understand the behavior o">
+  <meta name="description" content="Table of Contents  Mutable and Hashable  hash() and id() Why hash? Example   NamedTuple  Initialization Access and Edit Value Using _asdict()   @dataclass  Frozen Attribute Override __iter__()   Subc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using namedtuple">
 <meta property="og:url" content="https://www.xingyulei.com/post/py-named-tuple/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="I recently got side-tracked into exploring the basics of namedtuple() as I got a glimpse of its usage in our engineering codebase. Here’s my summary:  Mutable and Hashable To understand the behavior o">
+<meta property="og:description" content="Table of Contents  Mutable and Hashable  hash() and id() Why hash? Example   NamedTuple  Initialization Access and Edit Value Using _asdict()   @dataclass  Frozen Attribute Override __iter__()   Subc">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-17T03:21:31.760Z">
+<meta property="article:modified_time" content="2022-02-21T22:32:26.358Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="style">
@@ -162,7 +162,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -183,6 +183,31 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled ">
         
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/maya-ik-fk-match/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/maya-ik-fk-match/" class="title">IK FK Matching in Maya</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-27T05:00:00.000Z" itemprop="datePublished">2022-02-27</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-thumb">
@@ -283,31 +308,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/post/py-end-process/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
-              </p>
-              <p class="item-title">
-                <a href="/post/py-end-process/" class="title">Find PID and End Process in Python (Windows)</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-10-25T04:00:00.000Z" itemprop="datePublished">2021-10-25</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -361,7 +361,41 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>I recently got side-tracked into exploring the basics of <code>namedtuple()</code> as<br />
+        <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h2>
+<ul>
+<li><a href="#mutable-and-hashable">Mutable and Hashable</a>
+<ul>
+<li><a href="#hash-and-id"><em>hash()</em> and <em>id()</em></a></li>
+<li><a href="#why-hash">Why hash?</a></li>
+<li><a href="#hash-example">Example</a></li>
+</ul>
+</li>
+<li><a href="#namedtuple">NamedTuple</a>
+<ul>
+<li><a href="#initialization">Initialization</a></li>
+<li><a href="#access-and-edit-value">Access and Edit Value</a></li>
+<li><a href="#using-_asdict">Using <em>_asdict()</em></a></li>
+</ul>
+</li>
+<li><a href="#dataclass"><em>@dataclass</em></a>
+<ul>
+<li><a href="#frozen-attribute">Frozen Attribute</a></li>
+<li><a href="#override-__iter__">Override <em>__iter__()</em></a></li>
+</ul>
+</li>
+<li><a href="#subclassing-namedtuple">Subclassing <em>namedtuple</em></a>
+<ul>
+<li><a href="#__new__-constructor"><em>__new__()</em> Constructor</a></li>
+<li><a href="#__slots__">_<em><em>slots</em>_</em></a>
+<ul>
+<li><a href="#comparison-__dict__-vs-__slots__">Comparison between _<em><em>dict</em>_</em> and _<em><em>slots</em>_</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>I recently got side-tracked into exploring the basics of <code>namedtuple()</code> as<br />
 I got a glimpse of its usage in our engineering codebase. Here’s my summary:</p>
 <h2 id="mutable-and-hashable"><a class="markdownIt-Anchor" href="#mutable-and-hashable"></a> Mutable and Hashable</h2>
 <p>To understand the behavior of <code>namedtuple()</code>, it is best to also visit the<br />
@@ -408,6 +442,7 @@ look that up in an internal structure and find elements that have the same hash 
 </ul>
 <p>It also means you can have non-hashable objects in a <code>list</code>,<br />
 but not in a <code>set</code> or as <strong>keys</strong> in a <code>dict</code>.</p>
+<p><a name='hash-example'></a></p>
 <h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example:</h3>
 <p>There is no way to change an <code>int</code> object’s value without re-assigning (copy) it<br />
 to a different object.</p>
@@ -438,7 +473,7 @@ and the dot notation instead of unclear integer indices.</p>
 </ol>
 <p>Example:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line">Point = namedtuple(<span class="string">&quot;Point&quot;</span>, [<span class="string">&quot;x&quot;</span>, <span class="string">&quot;y&quot;</span>])</span><br><span class="line"></span><br><span class="line">&gt;&gt; Point</span><br><span class="line"><span class="comment"># &lt;class &#x27;__main__.Point&#x27;&gt;</span></span><br><span class="line">&gt;&gt; Point(<span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment"># Point(x=2, y=4)</span></span><br></pre></td></tr></table></figure>
-<h3 id="access-and-edit-value"><a class="markdownIt-Anchor" href="#access-and-edit-value"></a> Access and Edit value</h3>
+<h3 id="access-and-edit-value"><a class="markdownIt-Anchor" href="#access-and-edit-value"></a> Access and Edit Value</h3>
 <p>It is very straight-forward to access a tuple’s attribute value using dot notation</p>
 <p>this gives <code>namedtuple</code> a great edge against <code>dict</code> or <code>tuple</code>.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person = namedtuple(<span class="string">&#x27;Person&#x27;</span>, <span class="string">&#x27;name children&#x27;</span>)</span><br><span class="line">jj = Person(<span class="string">&#x27;Johnny J&#x27;</span>, [<span class="string">&#x27;Tobby&#x27;</span>])</span><br><span class="line"></span><br><span class="line">&gt;&gt; jj.children</span><br><span class="line"><span class="comment"># [&#x27;Tobby&#x27;]</span></span><br></pre></td></tr></table></figure>
@@ -554,6 +589,10 @@ tons of objects, this saves memory and time when instancing.</p>
   <div class="bar-inner">
   
   <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/maya-ik-fk-match/" title="IK FK Matching in Maya"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
     
     
     <li class="next">

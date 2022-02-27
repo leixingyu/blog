@@ -20,15 +20,15 @@
   
   
   <title>Understanding Python Imports | Tech Art Learning</title>
-  <meta name="description" content="from ... import vs. import Always avoid wildcard imports like such: 1from my_module import *  # don&amp;#x27;t use this Instead, use regular import like: 1import my_module  # use this Why?  using wildcar">
+  <meta name="description" content="Table of Contents  from import vs. import What does __init__.py do?  Example   Dot Notation in Import Import Order Intra-package Import an import  Import Same Module Multiple Times      from ... impo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Understanding Python Imports">
 <meta property="og:url" content="https://www.xingyulei.com/post/py-import/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="from ... import vs. import Always avoid wildcard imports like such: 1from my_module import *  # don&amp;#x27;t use this Instead, use regular import like: 1import my_module  # use this Why?  using wildcar">
+<meta property="og:description" content="Table of Contents  from import vs. import What does __init__.py do?  Example   Dot Notation in Import Import Order Intra-package Import an import  Import Same Module Multiple Times      from ... impo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-16T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-25T03:40:24.920Z">
+<meta property="article:modified_time" content="2022-02-21T22:33:09.790Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="style">
@@ -162,7 +162,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -183,6 +183,31 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled ">
         
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/maya-ik-fk-match/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/maya-ik-fk-match/" class="title">IK FK Matching in Maya</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-27T05:00:00.000Z" itemprop="datePublished">2022-02-27</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-thumb">
@@ -283,31 +308,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/post/py-end-process/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
-              </p>
-              <p class="item-title">
-                <a href="/post/py-end-process/" class="title">Find PID and End Process in Python (Windows)</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-10-25T04:00:00.000Z" itemprop="datePublished">2021-10-25</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -361,7 +361,25 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="from-import-vs-import"><a class="markdownIt-Anchor" href="#from-import-vs-import"></a> <code>from ... import</code> vs. <code>import</code></h3>
+        <h3 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h3>
+<ul>
+<li><a href="#from--import-vs-import">from import vs. import</a></li>
+<li><a href="#what-does-__init__py-do">What does __<em>init__.py</em> do?</a>
+<ul>
+<li><a href="#init-example">Example</a></li>
+</ul>
+</li>
+<li><a href="#dot-notation--in-import">Dot Notation in Import</a></li>
+<li><a href="#import-order">Import Order</a></li>
+<li><a href="#intra-package">Intra-package</a></li>
+<li><a href="#import-an-import">Import an import</a>
+<ul>
+<li><a href="#same-module-import-multiple-times">Import Same Module Multiple Times</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="from-import-vs-import"><a class="markdownIt-Anchor" href="#from-import-vs-import"></a> <code>from ... import</code> vs. <code>import</code></h3>
 <p>Always avoid wildcard imports like such:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> my_module <span class="keyword">import</span> *  <span class="comment"># don&#x27;t use this</span></span><br></pre></td></tr></table></figure>
 <p>Instead, use regular import like:</p>
@@ -385,6 +403,7 @@ The system can still find the modules after configuring appropriate <code>PYTHON
 sub-directory being imported by appending as environment variable within <code>__init__.py</code></p>
 </li>
 </ol>
+<p><a name='init-example'></a></p>
 <h4 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example:</h4>
 <p>so instead of using <code>import project.foo.bar</code> for the following structure:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">project&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    foo&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        bar&#x2F;</span><br><span class="line">            b.py</span><br></pre></td></tr></table></figure>
@@ -394,7 +413,7 @@ sub-directory being imported by appending as environment variable within <code>_
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">project&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    foo&#x2F;</span><br><span class="line">        bar&#x2F;</span><br><span class="line">            b.py</span><br></pre></td></tr></table></figure>
 <p>Note: Whatever gets appended last overrides the previous<br />
 env variable, so import to the same name module will find the latest append</p>
-<h3 id="dot-notation-in-import"><a class="markdownIt-Anchor" href="#dot-notation-in-import"></a> Dot notation (<code>.</code>) in Import</h3>
+<h3 id="dot-notation-in-import"><a class="markdownIt-Anchor" href="#dot-notation-in-import"></a> Dot Notation (<code>.</code>) in Import</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">parent&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    file.py</span><br><span class="line">    one&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        anotherfile.py</span><br><span class="line">    two&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">    three&#x2F;</span><br><span class="line">        __init__.py</span><br></pre></td></tr></table></figure>
 <p>Each dot in your import will refer to something inside the package, could be another package<br />
 or a module. But it can’t be a class.</p>
@@ -417,7 +436,7 @@ is here: <a target="_blank" rel="noopener" href="https://docs.python.org/3/libra
 <p>There is no specific rules, but based on common preferences, use alphabetical order, with<br />
 import first and from … import after</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> abc</span><br><span class="line"><span class="keyword">import</span> <span class="function"><span class="keyword">def</span></span></span><br><span class="line"><span class="function"><span class="title">import</span> <span class="title">x</span></span></span><br><span class="line"><span class="function"><span class="title">from</span> <span class="title">g</span> <span class="title">import</span> <span class="title">gg</span></span></span><br><span class="line"><span class="function"><span class="title">from</span> <span class="title">x</span> <span class="title">import</span> <span class="title">xx</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="intra-package"><a class="markdownIt-Anchor" href="#intra-package"></a> Intra-Package</h3>
+<h3 id="intra-package"><a class="markdownIt-Anchor" href="#intra-package"></a> Intra-package</h3>
 <p>In a structure like this, how would you do import from another directory?<br />
 say from <code>module-x.py</code> import <code>module-a</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">top-package&#x2F;</span><br><span class="line">    __init__.py</span><br><span class="line">    sub-package-a&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        module-x.py</span><br><span class="line">        module-y.py</span><br><span class="line">    sub-package-b&#x2F;</span><br><span class="line">        __init__.py</span><br><span class="line">        module-a.py</span><br><span class="line">        module-b.py</span><br></pre></td></tr></table></figure>

@@ -20,15 +20,15 @@
   
   
   <title>Find PID and End Process in Python (Windows) | Tech Art Learning</title>
-  <meta name="description" content="Introduction Interacting with Windows shell to end process is very common, there are many ways to do so, like through the traditional batch script but to gain more flexibility, using python is probab">
+  <meta name="description" content="Table of Contents  Introduction Main Body  Bare Minimum Using os.system Using subprocess Using psutil   Bonus  Find Open Port Find Window Title      Introduction Interacting with Windows shell to end">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Find PID and End Process in Python (Windows)">
 <meta property="og:url" content="https://www.xingyulei.com/post/py-end-process/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Introduction Interacting with Windows shell to end process is very common, there are many ways to do so, like through the traditional batch script but to gain more flexibility, using python is probab">
+<meta property="og:description" content="Table of Contents  Introduction Main Body  Bare Minimum Using os.system Using subprocess Using psutil   Bonus  Find Open Port Find Window Title      Introduction Interacting with Windows shell to end">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-25T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-24T03:58:57.914Z">
+<meta property="article:modified_time" content="2022-02-21T22:29:23.654Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -161,7 +161,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">12</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -182,6 +182,31 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled ">
         
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/maya-ik-fk-match/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/maya-ik-fk-match/" class="title">IK FK Matching in Maya</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-27T05:00:00.000Z" itemprop="datePublished">2022-02-27</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-thumb">
@@ -282,31 +307,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/post/py-end-process/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
-              </p>
-              <p class="item-title">
-                <a href="/post/py-end-process/" class="title">Find PID and End Process in Python (Windows)</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-10-25T04:00:00.000Z" itemprop="datePublished">2021-10-25</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -360,7 +360,26 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
+        <h3 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h3>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li>Main Body
+<ul>
+<li><a href="#bare-minimum">Bare Minimum</a></li>
+<li><a href="#using-ossystem">Using <em>os.system</em></a></li>
+<li><a href="#using-subprocess">Using <em>subprocess</em></a></li>
+<li><a href="#using-psutil">Using <em>psutil</em></a></li>
+</ul>
+</li>
+<li>Bonus
+<ul>
+<li><a href="#find-open-port">Find Open Port</a></li>
+<li><a href="#find-win-title">Find Window Title</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
 <p>Interacting with Windows shell to end process is very common,<br />
 there are many ways to do so, like through the traditional batch script</p>
 <p>but to gain more flexibility, using python is probably a better idea.</p>
@@ -391,9 +410,11 @@ output the text to a csv file which we will later process.</p>
 <p>to kill process, either <code>kill()</code> or <code>terminate()</code> will work<br />
 respectfully, <code>SIGKILL</code> or <code>SIGTERM</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = psutil.Process(PID)</span><br><span class="line">p.terminate()</span><br><span class="line">p.kill()</span><br><span class="line">p.wait</span><br></pre></td></tr></table></figure>
+<p><a name="find-open-port"></a></p>
 <h3 id="bonus-find-open-port-for-socket-connection"><a class="markdownIt-Anchor" href="#bonus-find-open-port-for-socket-connection"></a> Bonus: Find Open Port (for socket connection)</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">process = psutil.Process(pid=PID)</span><br><span class="line"></span><br><span class="line">connections = process.connections(kind=<span class="string">&#x27;tcp4&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> connections <span class="keyword">if</span> x.status == psutil.CONN_LISTEN]:</span><br><span class="line">    <span class="comment"># gets the port number</span></span><br><span class="line">    print(<span class="string">&#x27;port opened: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(c.laddr[-<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
-<h3 id="bonus-finding-main-window-title"><a class="markdownIt-Anchor" href="#bonus-finding-main-window-title"></a> Bonus: Finding Main Window Title</h3>
+<p><a name="find-win-title"></a></p>
+<h3 id="bonus-find-main-window-title"><a class="markdownIt-Anchor" href="#bonus-find-main-window-title"></a> Bonus: Find Main Window Title</h3>
 <p><code>ctypes</code> is a foreign function library for python, resulting a not-pythonic function</p>
 <script src="https://gist.github.com/leixingyu/7d85c0c1439b0cf9b423ba5c0d5ef184.js"></script>
 <h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
