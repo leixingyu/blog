@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://imgur.com/8KiYjlW.png">
 <meta property="og:image" content="https://imgur.com/TIjyqkm.png">
 <meta property="article:published_time" content="2021-08-22T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-18T20:52:27.500Z">
+<meta property="article:modified_time" content="2022-03-05T02:16:36.024Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
@@ -374,8 +374,8 @@ jagged looking (even if with low resolution).</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">low_rez = QtCore.QSize(<span class="number">40</span>, <span class="number">40</span>)</span><br><span class="line">high_rez = QtCore.QSize(<span class="number">400</span>, <span class="number">400</span>)</span><br><span class="line">pixmap = QtGui.QPixmap(path)</span><br><span class="line"></span><br><span class="line">pixmap = pixmap.scaled(low_rez)</span><br></pre></td></tr></table></figure>
 <p>I then increase the resolution back to normal. The default scale uses <code>FastTransformation</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pixmap = pixmap.scaled(high_rez)</span><br></pre></td></tr></table></figure>
-<p>This is the result:
-<img src="https://imgur.com/8KiYjlW.png" alt="pixmap-not-smooth" /></p>
+<p>This is the result:</p>
+<p><img src="https://imgur.com/8KiYjlW.png" alt="pixmap-not-smooth" /></p>
 <h3 id="the-solution"><a class="markdownIt-Anchor" href="#the-solution"></a> The Solution</h3>
 <p>I’ve searched many forums and people were all saying: enable the <code>SmoothTransformation</code>, I tried but didn’t work.</p>
 <p>Later on I found out that the Qt translation to Python has a mis-match keyword argument:
