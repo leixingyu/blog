@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/maya-commandport/</loc>
+    <lastmod>2022-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-streaming/</loc>
+    <lastmod>2022-03-06</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
-    <lastmod>2022-03-05</lastmod>
+    <lastmod>2022-03-06</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-pixmap-scale/</loc>
@@ -49,10 +57,6 @@
     <lastmod>2022-01-24</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/maya-commandport/</loc>
-    <lastmod>2022-01-24</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/graphics-learning/</loc>
     <lastmod>2022-01-24</lastmod>
   </url>
@@ -63,10 +67,6 @@
   <url>
     <loc>https://www.xingyulei.com/post/verlet-integration/</loc>
     <lastmod>2022-01-23</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-streaming/</loc>
-    <lastmod>2022-01-10</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/unity-api-statemachine/</loc>
