@@ -19,19 +19,23 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Qt QPushButton Detect Double Click | Tech Art Learning</title>
-  <meta name="description" content="Built-in Double Click Hey, I thought this would be easy, since Qt offers a built-in event QEvent.MouseButtonDblClick. But the issue is it couldn’t distinguish a single click vs. a double click. Which">
+  <title>Qt Detect Double-Click and Hover Effect | Tech Art Learning</title>
+  <meta name="description" content="Introduction I want to showcase some examples that I used to create push button with custom behaviours.  (Double click button)  (Button hover effect)  Double Click  Problem with MouseButtonDblClick H">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt QPushButton Detect Double Click">
+<meta property="og:title" content="Qt Detect Double-Click and Hover Effect">
 <meta property="og:url" content="https://www.xingyulei.com/post/qt-detect-click/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Built-in Double Click Hey, I thought this would be easy, since Qt offers a built-in event QEvent.MouseButtonDblClick. But the issue is it couldn’t distinguish a single click vs. a double click. Which">
+<meta property="og:description" content="Introduction I want to showcase some examples that I used to create push button with custom behaviours.  (Double click button)  (Button hover effect)  Double Click  Problem with MouseButtonDblClick H">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/e2LbhNJ.gif">
+<meta property="og:image" content="https://i.imgur.com/FCzg1MQ.gif">
 <meta property="article:published_time" content="2021-08-08T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-21T22:28:28.212Z">
+<meta property="article:modified_time" content="2022-03-13T16:13:16.599Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
+<meta property="article:tag" content="template">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/e2LbhNJ.gif">
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.xingyulei.com/post/qt-detect-click/index.html">
   
@@ -327,7 +331,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Qt QPushButton Detect Double Click
+      Qt Detect Double-Click and Hover Effect
     </h1>
   
 
@@ -348,7 +352,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>
+	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>, <a class="article-tag-link-link" href="/tags/template/" rel="tag">template</a>
   </span>
 
 
@@ -360,14 +364,54 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="built-in-double-click"><a class="markdownIt-Anchor" href="#built-in-double-click"></a> Built-in Double Click</h3>
-<p>Hey, I thought this would be easy, since Qt offers a built-in event <code>QEvent.MouseButtonDblClick</code>.
-But the issue is it couldn’t distinguish a single click vs. a double click.</p>
-<p>Which means, a single click event will also be called if double clicked.</p>
-<p>Solution?</p>
-<h3 id="custom-click-detection-with-timeout"><a class="markdownIt-Anchor" href="#custom-click-detection-with-timeout"></a> Custom click detection with <code>timeout</code></h3>
-<p>Subclass QPushButton and override <code>eventFilter()</code></p>
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>I want to showcase some examples that I used to create push button with
+custom behaviours.</p>
+<p><img src="https://i.imgur.com/e2LbhNJ.gif" alt="double" /></p>
+<p>(Double click button)</p>
+<p><img src="https://i.imgur.com/FCzg1MQ.gif" alt="hover" /></p>
+<p>(Button hover effect)</p>
+<h2 id="double-click"><a class="markdownIt-Anchor" href="#double-click"></a> Double Click</h2>
+<h3 id="problem-with-mousebuttondblclick"><a class="markdownIt-Anchor" href="#problem-with-mousebuttondblclick"></a> Problem with <code>MouseButtonDblClick</code></h3>
+<p>Hey, I thought this would be easy, since Qt offers a built-in event
+type: <code>QEvent.MouseButtonDblClick</code>.
+But the issue is it couldn’t distinguish a single click vs. a double click.
+Which means, the single click event will also be invoked when double-clicked.</p>
+<h3 id="solution-using-timeout"><a class="markdownIt-Anchor" href="#solution-using-timeout"></a> Solution using timeout</h3>
+<p>Subclass <code>QPushButton</code> and override <code>eventFilter()</code></p>
 <script src="https://gist.github.com/leixingyu/0a38a3d77a848f51cfb3588a3ac19627.js"></script>
+<h3 id="using-eventfilter"><a class="markdownIt-Anchor" href="#using-eventfilter"></a> Using <code>eventFilter()</code></h3>
+<p><code>eventFilter()</code> takes three argument, a <code>QObject</code> that the filter is installed
+on, a <code>QObject</code> that is being watched, and a reference to a <code>QEvent</code> type object
+to be filtered.</p>
+<p>Be sure to add <code>self.installEventFilter(self)</code> so to override event filtering.
+Now it’s only the matter of adding condition logic to filter out different
+event types such as <code>QEvent.MouseButtonPress</code> and <code>QEvent.MouseButtonDblClick</code>
+with <code>event.type()</code></p>
+<p>We can also filter which button is being used using <code>event.button()</code>.</p>
+<h3 id="timeout"><a class="markdownIt-Anchor" href="#timeout"></a> timeout</h3>
+<p>Using a built-in timer from Qt <code>QTimer()</code>, we are able to fire off timer
+events between our clicks.</p>
+<p>A <code>timeout</code> signal is fired after a certain interval we defined using <code>setInterval()</code>.
+the <code>timeout()</code> method is then used to determine what custom signal to emit.</p>
+<h3 id="custom-signal"><a class="markdownIt-Anchor" href="#custom-signal"></a> Custom Signal</h3>
+<p>Note that I created three custom signals for three different clicking type
+I want to register.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">right_clicked = QtCore.Signal()</span><br><span class="line">left_clicked = QtCore.Signal()</span><br><span class="line">double_clicked = QtCore.Signal()</span><br></pre></td></tr></table></figure>
+<p>This enhanced the usability of the click behaviour, meaning that this extended
+<code>QPushbutton</code> can tell whether the user did a single left or right click or a
+double click.</p>
+<p>In my example above, I wrapped all the click events in the class itself.
+But in the main application, we can also instantiate <code>MyButton</code> and connect click event
+to method of our choice.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn = MyButton(<span class="string">&#x27;Button1&#x27;</span>)</span><br><span class="line">btn.doubled_clicked.connect(func1)</span><br><span class="line">btn.right_clicked.connect(func2)</span><br></pre></td></tr></table></figure>
+<h2 id="hover-effect"><a class="markdownIt-Anchor" href="#hover-effect"></a> Hover Effect</h2>
+<p>As a bonus, I want to include a “Button” with custom hover effect, but it is
+technically a <code>QLabel</code> object with extended functionality, which is being used
+in my <a target="_blank" rel="noopener" href="https://github.com/leixingyu/snapTool">SnapTool</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HoverBtn</span>(<span class="params">QtWidgets.QLabel</span>):</span></span><br><span class="line"></span><br><span class="line">    clicked = QtCore.Signal(QtCore.QObject)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(HoverBtn, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        style = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        QFrame&#123;</span></span><br><span class="line"><span class="string">            border-radius: 25px;</span></span><br><span class="line"><span class="string">            border-width: 2px;</span></span><br><span class="line"><span class="string">            border-style: solid;</span></span><br><span class="line"><span class="string">            border-color: rgb(20, 20, 20);</span></span><br><span class="line"><span class="string">            background-color: rgb(170, 170, 170);</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.installEventFilter(self)</span><br><span class="line">        self.setStyleSheet(style)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eventFilter</span>(<span class="params">self, obj, event</span>):</span></span><br><span class="line">        <span class="keyword">if</span> event.<span class="built_in">type</span>() == QtCore.QEvent.Enter:</span><br><span class="line">            self.set_outline(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> event.<span class="built_in">type</span>() == QtCore.QEvent.Leave:</span><br><span class="line">            self.set_outline(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> event.<span class="built_in">type</span>() == QtCore.QEvent.MouseButtonPress \</span><br><span class="line">                <span class="keyword">and</span> event.button() == QtCore.Qt.LeftButton:</span><br><span class="line">            self.clicked.emit(self)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_outline</span>(<span class="params">self, status</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Update widget stylesheet when highlight</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        style = self.styleSheet()</span><br><span class="line"></span><br><span class="line">        border_pattern = <span class="string">r&#x27;border-color\: rgb\(\d+, \d+, \d+\)&#x27;</span></span><br><span class="line">        dark = <span class="string">&#x27;border-color: rgb(20, 20, 20)&#x27;</span></span><br><span class="line">        light = <span class="string">&#x27;border-color: rgb(21, 255, 9)&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> status == <span class="number">1</span>:</span><br><span class="line">            style = re.sub(border_pattern, light, style)</span><br><span class="line">        <span class="keyword">elif</span> status == <span class="number">0</span>:</span><br><span class="line">            style = re.sub(border_pattern, dark, style)</span><br><span class="line"></span><br><span class="line">        self.setStyleSheet(style)</span><br></pre></td></tr></table></figure>
+<p>The hover effect is achieved by swapping stylesheet properties, and the rest
+of the event filtering is very similar to the previous double click button.</p>
 <h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
 <p><a target="_blank" rel="noopener" href="https://www.qtcentre.org/threads/7858-Double-Click-Capturing">Qt Centre - Double Click Capturing</a></p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19247436">Stack Overflow - Pyqt Mouse MouseButtonDblClick event</a></p>
@@ -381,7 +425,7 @@ But the issue is it couldn’t distinguish a single click vs. a double click.</p
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/qt-detect-click/" title="Qt QPushButton Detect Double Click" target="_blank" rel="external">https://www.xingyulei.com/post/qt-detect-click/</a>
+      <a href="https://www.xingyulei.com/post/qt-detect-click/" title="Qt Detect Double-Click and Hover Effect" target="_blank" rel="external">https://www.xingyulei.com/post/qt-detect-click/</a>
     </li>
     
 	

@@ -20,12 +20,12 @@
   
   
   <title>IK FK Matching in Maya | Tech Art Learning</title>
-  <meta name="description" content="Table of Contents  Introduction The Basics FK Matching  Script Maya Operation   IK Matching  Script Maya Operation Pole Vector: One Step Further   Further Reading  Transformation Matrix Translation O">
+  <meta name="description" content="Table of Contents  Introduction FK Matching  Script Maya Operation   IK Matching  Script Maya Operation Pole Vector: One Step Further   Further Reading  Transformation Matrix Translation Offset Rotat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IK FK Matching in Maya">
 <meta property="og:url" content="https://www.xingyulei.com/post/maya-ik-fk-match/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Table of Contents  Introduction The Basics FK Matching  Script Maya Operation   IK Matching  Script Maya Operation Pole Vector: One Step Further   Further Reading  Transformation Matrix Translation O">
+<meta property="og:description" content="Table of Contents  Introduction FK Matching  Script Maya Operation   IK Matching  Script Maya Operation Pole Vector: One Step Further   Further Reading  Transformation Matrix Translation Offset Rotat">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/q9kcckN.gif">
 <meta property="og:image" content="https://i.imgur.com/iJIrrML.gif">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://i.imgur.com/qgvTH55.gif">
 <meta property="og:image" content="https://i.imgur.com/czn3XY1.gif">
 <meta property="article:published_time" content="2022-02-27T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-06T16:44:26.838Z">
+<meta property="article:modified_time" content="2022-03-12T16:36:36.536Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -371,7 +371,6 @@
         <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h2>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#the-basics">The Basics</a></li>
 <li><a href="#fk-matching">FK Matching</a>
 <ul>
 <li><a href="#fk-script">Script</a></li>
@@ -419,14 +418,16 @@ vice versa. But how does it work?</p>
 One of them is math-based, and the other being Maya operational-based,
 which utilizes Maya’s built-in constraint nodes,
 this is more straight-forward and easy as it does the calculation for you.</p>
-<h2 id="the-basics"><a class="markdownIt-Anchor" href="#the-basics"></a> The Basics</h2>
 <p>Since we use controllers to drive joint movement in rigs,
 the general idea of a IK/FK matching is to reverse this process,
 and find the transformation of a controller based off the joint’s transformation.</p>
-<p>Note: due to operations like parenting, orienting joint and freezing transformation,
-there’s usually offsets between joint and controller in world space transform.
-These are the more complex scenarios that I’ll cover in a later
-section <a href="#further-reading">here</a>.</p>
+<blockquote>
+<p>Note:
+There’s no one easy way to deal with all custom rig setups, this is
+due to operations like parenting, orienting joint and freezing transformation.
+Transformation offsets occurs between joint and controller, even in world space.
+I’ll cover these more complex scenarios as references <a href="#further-reading">here</a>.</p>
+</blockquote>
 <h2 id="fk-matching"><a class="markdownIt-Anchor" href="#fk-matching"></a> FK Matching</h2>
 <img src="https://i.imgur.com/q9kcckN.gif" alt="fk-match" width="800px">
 <p>FK is all about matching rotation, given that FK controller
