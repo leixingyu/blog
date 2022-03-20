@@ -19,17 +19,23 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Command Prompt and Powershell Admin Guide (Python) | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Command Prompt and Powershell Admin Guide (Python)">
+  <title>Run Command Prompt and Powershell as Admin (Python) | Tech Art Learning</title>
+  <meta name="description" content="Table of Contents  Introduction  User Account Control(UAC) Using subprocess   Using ShellExecute Using runas in Command Prompt Using PowerShell -Verb Runas  Redirect Output   Run Python as Admin Refe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Run Command Prompt and Powershell as Admin (Python)">
 <meta property="og:url" content="https://www.xingyulei.com/post/py-admin/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Table of Contents  Introduction  User Account Control(UAC) Using subprocess   Using ShellExecute Using runas in Command Prompt Using PowerShell -Verb Runas  Redirect Output   Run Python as Admin Refe">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-13T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-13T16:13:49.564Z">
+<meta property="og:image" content="https://img.raymond.cc/blog/wp-content/uploads/2007/03/user_account_control_prompt.png">
+<meta property="og:image" content="https://docs.microsoft.com/answers/storage/attachments/25037-image.png">
+<meta property="article:published_time" content="2022-03-19T04:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-20T19:26:07.465Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
+<meta property="article:tag" content="windows">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.raymond.cc/blog/wp-content/uploads/2007/03/user_account_control_prompt.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.xingyulei.com/post/py-admin/index.html">
   
@@ -159,7 +165,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">13</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">14</span></li></ul>
     </div>
   </div>
 
@@ -169,7 +175,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a>
+      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a> <a href="/tags/windows/" style="font-size: 13.2px;">windows</a>
     </div>
   </div>
 
@@ -180,6 +186,31 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled ">
         
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/py-admin/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/py-admin/" class="title">Run Command Prompt and Powershell as Admin (Python)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-19T04:00:00.000Z" itemprop="datePublished">2022-03-19</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-thumb">
@@ -280,31 +311,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/post/qt-enum-flag/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/learning-log/">learning log</a>
-              </p>
-              <p class="item-title">
-                <a href="/post/qt-enum-flag/" class="title">QEnum vs. QFlags</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-12-06T05:00:00.000Z" itemprop="datePublished">2021-12-06</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -325,7 +331,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Command Prompt and Powershell Admin Guide (Python)
+      Run Command Prompt and Powershell as Admin (Python)
     </h1>
   
 
@@ -334,7 +340,7 @@
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/post/py-admin/" class="article-date">
-	  <time datetime="2022-03-13T05:00:00.000Z" itemprop="datePublished">2022-03-13</time>
+	  <time datetime="2022-03-19T04:00:00.000Z" itemprop="datePublished">2022-03-19</time>
 	</a>
 </span>
         
@@ -346,7 +352,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/windows/" rel="tag">windows</a>
   </span>
 
 
@@ -358,7 +364,133 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <!-- flag of hidden posts -->
+        <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#user-account-control-uac">User Account Control(UAC)</a></li>
+<li><a href="#using-subprocess">Using <em>subprocess</em></a></li>
+</ul>
+</li>
+<li><a href="#using-shellexecute-runas">Using <em>ShellExecute</em></a></li>
+<li><a href="#using-runas-in-command-prompt">Using <em>runas</em> in Command Prompt</a></li>
+<li><a href="#using-powershell--verb-runas">Using PowerShell <em>-Verb Runas</em></a>
+<ul>
+<li><a href="#redirect-output">Redirect Output</a></li>
+</ul>
+</li>
+<li><a href="#run-python-as-admin">Run Python as Admin</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>We often find ourselves needing to automate tasks on Windows machine,
+Although there are many Python libraries out there that supports some
+common Windows operations and even cross-platforms.
+It is really hard to substitute Window’s Command Prompt and PowerShell,
+as they are extremely useful in cases where we need to access different
+Windows components, configure settings and troubleshooting.</p>
+<h3 id="user-account-control-uac"><a class="markdownIt-Anchor" href="#user-account-control-uac"></a> User Account Control (UAC)</h3>
+<p>Standard user accounts are for day-to-day activities with less permission,
+while the administrator account has elevated access for all features.</p>
+<p>For my personal machine, I’m operating on admin
+account all time (as the sole user). But Windows, for security reasons,
+still treats most of my actions as standard account.
+It only elevates to admin privilege when my operations want to make internal changes
+to Windows settings and my machine.</p>
+<p>The UAC feature when enabled, prompts the
+user when such action occurred and request for admin access. Additionally, for standard user,
+it means they need to ask for administrator account login.</p>
+<table style="width: 70%">
+    <tr>
+        <td>
+            <img src="https://img.raymond.cc/blog/wp-content/uploads/2007/03/user_account_control_prompt.png" alt="admin" width="500px">
+            <br/>When the sign in is an <b>administrator type</b> account<br/>
+        </td>
+        <td>
+            <img src="https://docs.microsoft.com/answers/storage/attachments/25037-image.png" alt="std" width="500px">
+            <br/>When the sign in is a <b>standard type</b> account<br/>
+        </td>
+    </tr>
+</table>
+<p>Now, in terms of task automation in Python, we’ll also want to
+figure out how to run certain operations with Admin privilege.</p>
+<h3 id="using-subprocess"><a class="markdownIt-Anchor" href="#using-subprocess"></a> Using <code>subprocess</code></h3>
+<p>Like most of us, I have been using <code>subprocess</code> to evoke <code>cmd.exe</code> or <code>powershell.exe</code> as desired
+by passing arguments as list into the function.</p>
+<ul>
+<li>Command Prompt: <code>command = ['cmd.exe', '/c', &lt;argument&gt;]</code></li>
+<li>PowerShell: <code>command = ['powershell.exe', '-command', &lt;argument&gt;]</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">runCmd</span>(<span class="params">*args</span>):</span></span><br><span class="line">    p = subprocess.Popen(</span><br><span class="line">        *args,</span><br><span class="line">        stdout=subprocess.PIPE,</span><br><span class="line">        stderr=subprocess.STDOUT</span><br><span class="line">    )</span><br><span class="line">    out, error = p.communicate()</span><br><span class="line">    <span class="keyword">return</span> out, error</span><br></pre></td></tr></table></figure>
+<p>But this doesn’t grant the process with admin privilege, and won’t notify us with UAC.</p>
+<p>How to achieve this? here are some ways to do it.</p>
+<h2 id="using-shellexecute-runas"><a class="markdownIt-Anchor" href="#using-shellexecute-runas"></a> Using ShellExecute <code>runas</code></h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line">commands = <span class="string">u&#x27;/k echo hi&#x27;</span></span><br><span class="line">ctypes.windll.shell32.ShellExecuteW(</span><br><span class="line">        <span class="literal">None</span>,</span><br><span class="line">        <span class="string">u&quot;runas&quot;</span>,</span><br><span class="line">        <span class="string">u&quot;cmd.exe&quot;</span>,</span><br><span class="line">        commands,</span><br><span class="line">        <span class="literal">None</span>,</span><br><span class="line">        <span class="number">1</span></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p><code>runas</code> from the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-shellexecutew">Windows API</a>
+launches an application as Administrator.
+User Account Control (UAC) will prompt the user for consent to run the application
+elevated or enter the credentials of an administrator account used to run the application.</p>
+<p>What about a more pythonic approach?</p>
+<h2 id="using-runas-in-command-prompt"><a class="markdownIt-Anchor" href="#using-runas-in-command-prompt"></a> Using <code>runas</code> in Command Prompt</h2>
+<p><code>runas</code> application runs command
+as a different user; it is most commonly used but not limited to perform operation
+with administrator account for granting admin access.</p>
+<blockquote>
+<p>Note: the password is handled outside UAC, which may not
+be the desired behavior</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">command = [<span class="string">&#x27;cmd.exe&#x27;</span>, <span class="string">&#x27;/c&#x27;</span>, <span class="string">&#x27;runas&#x27;</span>, <span class="string">&#x27;/user:administrator&#x27;</span>, <span class="string">&#x27;regedit&#x27;</span>]</span><br><span class="line">p = subprocess.Popen(command, stdin=subprocess.PIPE)</span><br><span class="line">p.stdin.write(<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">p.communicate()</span><br></pre></td></tr></table></figure>
+<h2 id="using-powershell-verb-runas"><a class="markdownIt-Anchor" href="#using-powershell-verb-runas"></a> Using PowerShell <code>-Verb Runas</code></h2>
+<p>This is my preferred method, since it is most flexible and also
+evokes UAC for admin access.</p>
+<ul>
+<li>
+<p><strong>Start-Process</strong></p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start-Process &lt;executable&gt; -argumentlist &lt;arugments&gt; -Verb Runas</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Call operator (&amp;)</strong></p>
+<p>with call operator, we are able to run commands not limited in the environment path,
+also not need to worry about spaces in our path.</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; &#123;Start-Process &lt;executable&gt; -argumentlist &lt;arugments&gt; -Verb Runas&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>-ExecutionPolicy Bypass</strong></p>
+<p>Sometimes, a security setting will prevent PowerShell running a <em>.ps1</em> file,
+and we’ll need to bypass execution policy:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start-Process &lt;executable&gt; -ExecutionPolicy Bypass -File &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>It is very obvious from the above example,
+we can basically use PowerShell to wrap around
+anything, including Command Prompt.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start-Process cmd.exe -argumentlist &#x27;/k &quot;dir&quot;&#x27; -Verb Runas</span><br></pre></td></tr></table></figure>
+<p>To bundle everything together, a working example would look like this in Python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps_command = <span class="string">&quot;&amp; &#123;&#123;Start-Process cmd.exe -argumentlist &#x27;/k \&quot;dir\&quot;&#x27; -Verb Runas&#125;&#125;&quot;</span></span><br><span class="line">command = [<span class="string">&#x27;powershell.exe&#x27;</span>, <span class="string">&#x27;-command&#x27;</span>, ps_command]</span><br><span class="line">runCmd(command)</span><br></pre></td></tr></table></figure>
+<p>essentially using <code>subprocess</code> to run PowerShell in admin using <code>-Verb Runas</code>
+to execute command <code>/k dir</code> in Command Prompt (which also has elevated access).</p>
+<h3 id="redirect-output"><a class="markdownIt-Anchor" href="#redirect-output"></a> Redirect Output</h3>
+<p>By doing the above, we are running an executable within a process.
+the sacrifice is that it is difficult to pass the output,
+but here’s a few workarounds:</p>
+<p><strong>Output results to a file</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start-Process cmd.exe -argumentlist &#x27;/c &quot;dir&quot;&#x27; -redirectStandardOutput &quot;C:\Users\xlei\Desktop\temp.txt&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>Output result to the console</strong></p>
+<p>Just the exit code:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">output = Start-Process cmd.exe -argumentlist <span class="string">&#x27;/c &quot;dir&quot;&#x27;</span> -PassThru -Wait</span></span><br><span class="line"><span class="meta">$</span><span class="bash">output.ExitCode</span></span><br></pre></td></tr></table></figure>
+<p>A neat function I found <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/52629677/15214802">here</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">function Start-ProcessWithOutput</span><br><span class="line">&#123;</span><br><span class="line">    param ([string]$Path,[string[]]$ArgumentList)</span><br><span class="line">    $Output = New-Object -TypeName System.Text.StringBuilder</span><br><span class="line">    $Error = New-Object -TypeName System.Text.StringBuilder</span><br><span class="line">    $psi = New-object System.Diagnostics.ProcessStartInfo </span><br><span class="line">    $psi.CreateNoWindow = $true </span><br><span class="line">    $psi.UseShellExecute = $false </span><br><span class="line">    $psi.RedirectStandardOutput = $true </span><br><span class="line">    $psi.RedirectStandardError = $true </span><br><span class="line">    $psi.FileName = $Path</span><br><span class="line">    if ($ArgumentList.Count -gt 0)</span><br><span class="line">    &#123;</span><br><span class="line">        $psi.Arguments = $ArgumentList</span><br><span class="line">    &#125;</span><br><span class="line">    $process = New-Object System.Diagnostics.Process </span><br><span class="line">    $process.StartInfo = $psi </span><br><span class="line">    [void]$process.Start()</span><br><span class="line">    do</span><br><span class="line">    &#123;</span><br><span class="line">       if (!$process.StandardOutput.EndOfStream)</span><br><span class="line">       &#123;</span><br><span class="line">           [void]$Output.AppendLine($process.StandardOutput.ReadLine())</span><br><span class="line">       &#125;</span><br><span class="line">       if (!$process.StandardError.EndOfStream)</span><br><span class="line">       &#123;</span><br><span class="line">           [void]$Error.AppendLine($process.StandardError.ReadLine())</span><br><span class="line">       &#125;</span><br><span class="line">       Start-Sleep -Milliseconds 10</span><br><span class="line">    &#125; while (!$process.HasExited)</span><br><span class="line"></span><br><span class="line">    #read remainder</span><br><span class="line">    while (!$process.StandardOutput.EndOfStream)</span><br><span class="line">    &#123;</span><br><span class="line">        #write-verbose &#x27;read remaining output&#x27;</span><br><span class="line">        [void]$Output.AppendLine($process.StandardOutput.ReadLine())</span><br><span class="line">    &#125;</span><br><span class="line">    while (!$process.StandardError.EndOfStream)</span><br><span class="line">    &#123;</span><br><span class="line">        #write-verbose &#x27;read remaining error&#x27;</span><br><span class="line">        [void]$Error.AppendLine($process.StandardError.ReadLine())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return @&#123;ExitCode = $process.ExitCode; Output = $Output.ToString(); Error = $Error.ToString(); ExitTime=$process.ExitTime&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash">p = Start-ProcessWithOutput cmd.exe -argumentlist <span class="string">&#x27;/c &quot;dir&quot;&#x27;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">p.ExitCode</span></span><br><span class="line"><span class="meta">$</span><span class="bash">p.Output</span></span><br><span class="line"><span class="meta">$</span><span class="bash">p.Error</span></span><br></pre></td></tr></table></figure>
+<h2 id="run-python-as-admin"><a class="markdownIt-Anchor" href="#run-python-as-admin"></a> Run Python as Admin</h2>
+<p>Running the whole python script in Admin, meaning that the subsequent processes
+will have admin access, if this is the behaviour you prefer.</p>
+<script src="https://gist.github.com/leixingyu/a2cc64cec76638d2367cd4c2fc1b94ec.js"></script>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p><a target="_blank" rel="noopener" href="https://superuser.com/questions/615654">Stack Exchange - Run .exe file via Python as Administrator</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8097354/">Stack Overflow - How do I capture the output into a variable from an external process in PowerShell?</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8925323/">Stack Overflow - Redirection of standard and error output appending to the same log file</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/11531068/">Stack Overflow - Powershell: Capturing standard out and error with Process object</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.windows-commandline.com/windows-runas-command-prompt/">Windows Commandline - Windows runas command syntax and examples</a></p>
+
       
     </div>
     <div class="article-footer">
@@ -368,7 +500,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/py-admin/" title="Command Prompt and Powershell Admin Guide (Python)" target="_blank" rel="external">https://www.xingyulei.com/post/py-admin/</a>
+      <a href="https://www.xingyulei.com/post/py-admin/" title="Run Command Prompt and Powershell as Admin (Python)" target="_blank" rel="external">https://www.xingyulei.com/post/py-admin/</a>
     </li>
     
 	
@@ -412,6 +544,16 @@
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/maya-ik-fk-match/" title="IK FK Matching in Maya"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
   
   
