@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Work in Progress - Making Pie Charts in Qt (Python) | Tech Art Learning</title>
+  <meta name="description" content="Table of Contents     Introduction It’s time to learn new stuff again. This time, I want to implement data visualization component in my tool: pie charts. I had some experience with matplotlib before">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Work in Progress - Making Pie Charts in Qt (Python)">
+<meta property="og:url" content="https://www.xingyulei.com/post/qt-pie-chart/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Table of Contents     Introduction It’s time to learn new stuff again. This time, I want to implement data visualization component in my tool: pie charts. I had some experience with matplotlib before">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/Gz2ykTF.png">
+<meta property="og:image" content="https://i.imgur.com/fR6H2PO.gif">
+<meta property="article:published_time" content="2022-04-24T04:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-25T04:09:29.419Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="pyqt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/Gz2ykTF.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/qt-pie-chart/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail</span> </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a> <a href="/tags/windows/" style="font-size: 13.2px;">windows</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/qt-pie-chart/" class="title">Work in Progress - Making Pie Charts in Qt (Python)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-24T04:00:00.000Z" itemprop="datePublished">2022-04-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/py-admin/" class="title">Run Command Prompt and Powershell as Admin (Python)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-19T04:00:00.000Z" itemprop="datePublished">2022-03-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/maya-ik-fk-match/" class="title">IK FK Matching in Maya</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-02-27T05:00:00.000Z" itemprop="datePublished">2022-02-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/learning-log/">learning log</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/py-named-tuple/" class="title">Using namedtuple</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-23T05:00:00.000Z" itemprop="datePublished">2022-01-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/maya-communication/">maya communication</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/maya-streaming/" class="title">Communicate with Maya (2. Streaming Output)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-01-09T05:00:00.000Z" itemprop="datePublished">2022-01-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-qt-pie-chart" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Work in Progress - Making Pie Charts in Qt (Python)
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/qt-pie-chart/" class="article-date">
+	  <time datetime="2022-04-24T04:00:00.000Z" itemprop="datePublished">2022-04-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h2>
+<ul>
+<li><a href=""></a></li>
+</ul>
+<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>It’s time to learn new stuff again. This time, I want to implement
+data visualization component in my tool: pie charts. I had some experience
+with <code>matplotlib</code> before, but I’m super excited to find out that Qt
+also has add-on modules <code>QtCharts</code> that can integrate with Qt application.</p>
+<p>Here are my progress: on the left side, a static and simplistic design
+and on the right side, a slightly more flashy, animated design.</p>
+<p>In this blog, I will break down how they are created. They are also available
+in my <a href="">guiUtil</a> with example code.</p>
+<table style="width: 70%">
+    <tr>
+        <td>
+            <img src="https://i.imgur.com/Gz2ykTF.png" alt="static" width="500px">
+        </td>
+        <td>
+            <img src="https://i.imgur.com/fR6H2PO.gif" alt="animate" width="500px">
+        </td>
+    </tr>
+</table>
+<h2 id="installing-qtcharts"><a class="markdownIt-Anchor" href="#installing-qtcharts"></a> Installing <code>QtCharts</code></h2>
+<p><code>QtCharts</code> is first introduced as an add-on module in Qt in version 5.7.</p>
+<ol>
+<li>
+<p>check your PySide2 or PyQt5 version:<code>QtCore.qVersion()</code>. (I’m using PyQt5 version 5.15.2)</p>
+</li>
+<li>
+<p>install the corresponding version of <a target="_blank" rel="noopener" href="https://pypi.org/project/PyQtChart/">PyQtChart</a> using</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install PyQtChart</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>test import <code>from PyQt5 import QtCharts</code></p>
+</li>
+</ol>
+<p>Note:</p>
+<ul>
+<li><a href="">Qt.py</a> for Python Qt binding doesn’t support <code>QtCharts</code> since it isn’t available
+in PyQt and PySide.</li>
+<li>For user using MayaPy, Maya 2018 is using Qt version 5.6 and 2022 is using 5.15.2 (PySide2).</li>
+</ul>
+<h2 id="basics"><a class="markdownIt-Anchor" href="#basics"></a> Basics</h2>
+<h3 id="classes"><a class="markdownIt-Anchor" href="#classes"></a> Classes</h3>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qchart.html">QChart</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qpieseries.html">QPieSeries</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qpieslice.html">QPieSlice</a></p>
+<h3 id="components"><a class="markdownIt-Anchor" href="#components"></a> Components</h3>
+<h2 id="example-1-break-down"><a class="markdownIt-Anchor" href="#example-1-break-down"></a> Example 1: break-down</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySimpleChart</span>(<span class="params">QtChart.QChart</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, datas, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(MySimpleChart, self).__init__(parent)</span><br><span class="line">        self._datas = datas</span><br><span class="line"></span><br><span class="line">        self.legend().setAlignment(QtCore.Qt.AlignRight)</span><br><span class="line">        self.legend().setMarkerShape(QtChart.QLegend.MarkerShapeCircle)</span><br><span class="line"></span><br><span class="line">        self.outer = QtChart.QPieSeries()</span><br><span class="line">        self.set_outer_series()</span><br><span class="line">        self.addSeries(self.outer)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_outer_series</span>(<span class="params">self</span>):</span></span><br><span class="line">        slices = <span class="built_in">list</span>()</span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> self._datas:</span><br><span class="line">            slice_ = QtChart.QPieSlice(data.name, data.value)</span><br><span class="line">            slice_.setLabelVisible()</span><br><span class="line">            slice_.setColor(data.primary_color)</span><br><span class="line">            slice_.setLabelBrush(data.primary_color)</span><br><span class="line"></span><br><span class="line">            slices.append(slice_)</span><br><span class="line">            self.outer.append(slice_)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># label styling</span></span><br><span class="line">        <span class="keyword">for</span> slice_ <span class="keyword">in</span> slices:</span><br><span class="line">            label = <span class="string">&quot;&lt;p align=&#x27;center&#x27; style=&#x27;color:&#123;&#125;&#x27;&gt;&#123;&#125;%&lt;/p&gt;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(slice_.percentage()*<span class="number">100</span>, <span class="number">2</span>))</span><br><span class="line">            slice_.setLabel(label)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="legend-and-marker"><a class="markdownIt-Anchor" href="#legend-and-marker"></a> legend and marker</h3>
+<p>separate legend &amp; slice title (may be bad being order dependent)</p>
+<p>for index, marker in enumerate(self.legend().markers()):
+marker.setLabel(self._datas[index].name)</p>
+<h3 id="label"><a class="markdownIt-Anchor" href="#label"></a> label</h3>
+<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
+<p>Adding randomness</p>
+<p>self.outer.setPieStartAngle(40)
+self.outer.setPieEndAngle(40+360)</p>
+<p>Add spacing</p>
+<p>slice_.setLabelArmLengthFactor(0.3)</p>
+<h2 id="example-2-break-down"><a class="markdownIt-Anchor" href="#example-2-break-down"></a> Example 2: break-down</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyChart</span>(<span class="params">QtChart.QChart</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, datas, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(MyChart, self).__init__(parent)</span><br><span class="line">        self._datas = datas</span><br><span class="line"></span><br><span class="line">        self.legend().hide()</span><br><span class="line">        self.setAnimationOptions(QtChart.QChart.SeriesAnimations)</span><br><span class="line"></span><br><span class="line">        self.outer = QtChart.QPieSeries()</span><br><span class="line">        self.inner = QtChart.QPieSeries()</span><br><span class="line">        self.outer.setHoleSize(<span class="number">0.35</span>)</span><br><span class="line">        self.inner.setPieSize(<span class="number">0.35</span>)</span><br><span class="line">        self.inner.setHoleSize(<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line">        self.set_outer_series()</span><br><span class="line">        self.set_inner_series()</span><br><span class="line"></span><br><span class="line">        self.addSeries(self.outer)</span><br><span class="line">        self.addSeries(self.inner)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_outer_series</span>(<span class="params">self</span>):</span></span><br><span class="line">        slices = <span class="built_in">list</span>()</span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> self._datas:</span><br><span class="line">            slice_ = QtChart.QPieSlice(data.name, data.value)</span><br><span class="line">            slice_.setLabelVisible()</span><br><span class="line">            slice_.setColor(data.primary_color)</span><br><span class="line">            slice_.setLabelBrush(data.primary_color)</span><br><span class="line"></span><br><span class="line">            slices.append(slice_)</span><br><span class="line">            self.outer.append(slice_)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># label styling</span></span><br><span class="line">        <span class="keyword">for</span> slice_ <span class="keyword">in</span> slices:</span><br><span class="line">            color = <span class="string">&#x27;black&#x27;</span></span><br><span class="line">            <span class="keyword">if</span> slice_.percentage() &gt; <span class="number">0.1</span>:</span><br><span class="line">                slice_.setLabelPosition(QtChart.QPieSlice.LabelInsideHorizontal)</span><br><span class="line">                color = <span class="string">&#x27;white&#x27;</span></span><br><span class="line"></span><br><span class="line">            label = <span class="string">&quot;&lt;p align=&#x27;center&#x27; style=&#x27;color:&#123;&#125;&#x27;&gt;&#123;&#125;&lt;br&gt;&#123;&#125;%&lt;/p&gt;&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">                color,</span><br><span class="line">                slice_.label(),</span><br><span class="line">                <span class="built_in">round</span>(slice_.percentage()*<span class="number">100</span>, <span class="number">2</span>)</span><br><span class="line">                )</span><br><span class="line">            slice_.setLabel(label)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_inner_series</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> self._datas:</span><br><span class="line">            slice_ = self.inner.append(data.name, data.value)</span><br><span class="line">            slice_.setColor(data.secondary_color)</span><br><span class="line">            slice_.setBorderColor(data.secondary_color)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="inner-and-outer-series"><a class="markdownIt-Anchor" href="#inner-and-outer-series"></a> inner and outer series</h3>
+<h3 id="explode-animation"><a class="markdownIt-Anchor" href="#explode-animation"></a> explode animation</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_outer_series</span>(<span class="params">self</span>):</span></span><br><span class="line">   ...</span><br><span class="line">   slice_.hovered.connect(partial(self.explode, slice_))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">explode</span>(<span class="params">self, slice_, is_hovered</span>):</span></span><br><span class="line">    <span class="keyword">if</span> is_hovered:</span><br><span class="line">        start = slice_.startAngle()</span><br><span class="line">        end = slice_.startAngle()+slice_.angleSpan()</span><br><span class="line">        self.inner.setPieStartAngle(end)</span><br><span class="line">        self.inner.setPieEndAngle(start+<span class="number">360</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        self.inner.setPieStartAngle(<span class="number">0</span>)</span><br><span class="line">        self.inner.setPieEndAngle(<span class="number">360</span>)</span><br><span class="line"></span><br><span class="line">    slice_.setExplodeDistanceFactor(<span class="number">0.1</span>)</span><br><span class="line">    slice_.setExploded(is_hovered)</span><br></pre></td></tr></table></figure>
+<h2 id="bonus"><a class="markdownIt-Anchor" href="#bonus"></a> Bonus:</h2>
+<h3 id="custom-data-class"><a class="markdownIt-Anchor" href="#custom-data-class"></a> Custom data class</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line">Data = namedtuple(<span class="string">&#x27;Data&#x27;</span>, [<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;value&#x27;</span>, <span class="string">&#x27;primary_color&#x27;</span>, <span class="string">&#x27;secondary_color&#x27;</span>])</span><br><span class="line"></span><br><span class="line">node = Data(<span class="string">&#x27;Node&#x27;</span>, <span class="number">333</span>, QtGui.QColor(<span class="string">&quot;#82d3e5&quot;</span>), QtGui.QColor(<span class="string">&quot;#cfeef5&quot;</span>))</span><br><span class="line">connection = Data(<span class="string">&#x27;Connection&#x27;</span>, <span class="number">105</span>, QtGui.QColor(<span class="string">&quot;#fd635c&quot;</span>), QtGui.QColor(<span class="string">&quot;#fdc4c1&quot;</span>))</span><br><span class="line">other = Data(<span class="string">&#x27;Other&#x27;</span>, <span class="number">20</span>, QtGui.QColor(<span class="string">&quot;#feb543&quot;</span>), QtGui.QColor(<span class="string">&quot;#ffe3b8&quot;</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="color-palette"><a class="markdownIt-Anchor" href="#color-palette"></a> Color Palette</h3>
+<h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChartView</span>(<span class="params">QtWidgets.QMainWindow</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>(ChartView, self).__init__(parent)</span><br><span class="line">        self.setFixedSize(QtCore.QSize(<span class="number">700</span>, <span class="number">400</span>))</span><br><span class="line"></span><br><span class="line">        datas = [node, connection, other]</span><br><span class="line">        chart = MySimpleChart(datas)</span><br><span class="line"></span><br><span class="line">        chart_view = QtChart.QChartView(chart)</span><br><span class="line">        chart_view.setRenderHint(QtGui.QPainter.Antialiasing)</span><br><span class="line">        self.setCentralWidget(chart_view)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">global</span> win</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">    win = ChartView()</span><br><span class="line">    win.show()</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qtcharts-nesteddonuts-example.html">Qt Doc - Nested Donut Example</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qlegend.html">Qt Doc - QLegend</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qchart.html">Qt Doc - QChart</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qpieseries.html">Qt Doc - QPieSeries</a></p>
+<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/qpieslice.html">Qt Doc - QPieSlice</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/56727499">Stack Overflow - Attach colors of my choosing to each slice of QPieSeries</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/qt-pie-chart/" title="Work in Progress - Making Pie Charts in Qt (Python)" target="_blank" rel="external">https://www.xingyulei.com/post/qt-pie-chart/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/py-admin/" title="Run Command Prompt and Powershell as Admin (Python)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2022 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
