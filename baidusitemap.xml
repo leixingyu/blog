@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.xingyulei.com/post/qt-pie-chart/</loc>
-    <lastmod>2022-04-27</lastmod>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2022-05-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-named-tuple/</loc>
+    <lastmod>2022-05-14</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/py-admin/</loc>
-    <lastmod>2022-03-20</lastmod>
+    <lastmod>2022-05-14</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
-    <lastmod>2022-03-20</lastmod>
+    <loc>https://www.xingyulei.com/post/qt-pie-chart/</loc>
+    <lastmod>2022-05-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
+    <lastmod>2022-05-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
+    <lastmod>2022-05-14</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
@@ -19,10 +31,6 @@
   <url>
     <loc>https://www.xingyulei.com/post/qt-template/</loc>
     <lastmod>2022-03-13</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
-    <lastmod>2022-03-12</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/maya-commandport/</loc>
@@ -37,15 +45,7 @@
     <lastmod>2022-03-05</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
-    <lastmod>2022-03-05</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/py-import/</loc>
-    <lastmod>2022-02-21</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-named-tuple/</loc>
     <lastmod>2022-02-21</lastmod>
   </url>
   <url>

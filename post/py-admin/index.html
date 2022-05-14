@@ -20,17 +20,17 @@
   
   
   <title>Run Command Prompt and Powershell as Admin (Python) | Tech Art Learning</title>
-  <meta name="description" content="Table of Contents  Introduction  User Account Control(UAC) Using subprocess   Using ShellExecute Using runas in Command Prompt Using PowerShell -Verb Runas  Redirect Output   Run Python as Admin Refe">
+  <meta name="description" content="Introduction We often find ourselves needing to automate tasks on Windows machine, Although there are many Python libraries out there that supports some common Windows operations and even cross-platf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Run Command Prompt and Powershell as Admin (Python)">
 <meta property="og:url" content="https://www.xingyulei.com/post/py-admin/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Table of Contents  Introduction  User Account Control(UAC) Using subprocess   Using ShellExecute Using runas in Command Prompt Using PowerShell -Verb Runas  Redirect Output   Run Python as Admin Refe">
+<meta property="og:description" content="Introduction We often find ourselves needing to automate tasks on Windows machine, Although there are many Python libraries out there that supports some common Windows operations and even cross-platf">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img.raymond.cc/blog/wp-content/uploads/2007/03/user_account_control_prompt.png">
 <meta property="og:image" content="https://docs.microsoft.com/answers/storage/attachments/25037-image.png">
 <meta property="article:published_time" content="2022-03-19T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-20T19:26:07.465Z">
+<meta property="article:modified_time" content="2022-05-14T19:25:57.142Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="windows">
@@ -102,7 +102,7 @@
       </button>
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
         
         <li class="menu-item menu-item-home">
@@ -166,7 +166,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail</span> </p>
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail.com</span> </p>
             </div>
         </div>
     </div>
@@ -284,6 +284,15 @@
 
   
   
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user-account-control-uac"><span class="toc-text"> User Account Control (UAC)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-subprocess"><span class="toc-text"> Using subprocess</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-shellexecute-runas"><span class="toc-text"> Using ShellExecute runas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-runas-in-command-prompt"><span class="toc-text"> Using runas in Command Prompt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-powershell-verb-runas"><span class="toc-text"> Using PowerShell -Verb Runas</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redirect-output"><span class="toc-text"> Redirect Output</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#run-python-as-admin"><span class="toc-text"> Run Python as Admin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-text"> References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-py-admin" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -325,25 +334,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h2>
-<ul>
-<li><a href="#introduction">Introduction</a>
-<ul>
-<li><a href="#user-account-control-uac">User Account Control(UAC)</a></li>
-<li><a href="#using-subprocess">Using <em>subprocess</em></a></li>
-</ul>
-</li>
-<li><a href="#using-shellexecute-runas">Using <em>ShellExecute</em></a></li>
-<li><a href="#using-runas-in-command-prompt">Using <em>runas</em> in Command Prompt</a></li>
-<li><a href="#using-powershell--verb-runas">Using PowerShell <em>-Verb Runas</em></a>
-<ul>
-<li><a href="#redirect-output">Redirect Output</a></li>
-</ul>
-</li>
-<li><a href="#run-python-as-admin">Run Python as Admin</a></li>
-<li><a href="#references">References</a></li>
-</ul>
-<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
 <p>We often find ourselves needing to automate tasks on Windows machine,
 Although there are many Python libraries out there that supports some
 common Windows operations and even cross-platforms.
@@ -509,6 +500,15 @@ will have admin access, if this is the behaviour you prefer.</p>
       <a href="/post/maya-ik-fk-match/" title="IK FK Matching in Maya"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   

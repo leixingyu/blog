@@ -105,7 +105,7 @@
       </button>
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
         
         <li class="menu-item menu-item-home">
@@ -169,7 +169,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail</span> </p>
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail.com</span> </p>
             </div>
         </div>
     </div>
@@ -287,6 +287,15 @@
 
   
   
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#glossary"><span class="toc-text"> Glossary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vertex-lighting-vs-per-pixel-lighting"><span class="toc-text"> Vertex lighting vs. Per-pixel lighting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vertex-lighting"><span class="toc-text"> Vertex Lighting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#per-pixel-lighting"><span class="toc-text"> Per-Pixel Lighting</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example-of-a-per-pixel-lighting-shader"><span class="toc-text"> Example of a per-pixel lighting shader</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vertex-shader"><span class="toc-text"> Vertex Shader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fragment-shader"><span class="toc-text"> Fragment Shader</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#forward-vs-deferred-rendering"><span class="toc-text"> Forward vs. Deferred Rendering</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#forward-rendering"><span class="toc-text"> Forward Rendering</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#deferred-rendering"><span class="toc-text"> Deferred Rendering</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#discussion"><span class="toc-text"> Discussion</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rasterization-vs-ray-tracing"><span class="toc-text"> Rasterization vs. Ray tracing</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rasterization"><span class="toc-text"> Rasterization</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ray-tracing"><span class="toc-text"> Ray tracing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#discussion-2"><span class="toc-text"> Discussion</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-graphics-learning" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -502,6 +511,15 @@ such as more render passes, baked light map, cubemap reflection, but ray tracing
       <a href="/post/maya-api-deformer/" title="Maya API (3. Custom Deformer)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   

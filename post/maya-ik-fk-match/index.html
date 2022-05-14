@@ -20,12 +20,12 @@
   
   
   <title>IK FK Matching in Maya | Tech Art Learning</title>
-  <meta name="description" content="Table of Contents  Introduction FK Matching  Script Maya Operation   IK Matching  Script Maya Operation Pole Vector: One Step Further   Further Reading  Transformation Matrix Translation Offset Rotat">
+  <meta name="description" content="Introduction IK&#x2F;FK matching refers to the ability to match any IK pose to FK pose and vice versa. But how does it work? I’m going to summarize the basic approaches I learned along the way. One of the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IK FK Matching in Maya">
 <meta property="og:url" content="https://www.xingyulei.com/post/maya-ik-fk-match/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Table of Contents  Introduction FK Matching  Script Maya Operation   IK Matching  Script Maya Operation Pole Vector: One Step Further   Further Reading  Transformation Matrix Translation Offset Rotat">
+<meta property="og:description" content="Introduction IK&#x2F;FK matching refers to the ability to match any IK pose to FK pose and vice versa. But how does it work? I’m going to summarize the basic approaches I learned along the way. One of the">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/q9kcckN.gif">
 <meta property="og:image" content="https://i.imgur.com/iJIrrML.gif">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://i.imgur.com/qgvTH55.gif">
 <meta property="og:image" content="https://i.imgur.com/czn3XY1.gif">
 <meta property="article:published_time" content="2022-02-27T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-12T16:36:36.536Z">
+<meta property="article:modified_time" content="2022-05-14T17:29:27.999Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -106,7 +106,7 @@
       </button>
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
         
         <li class="menu-item menu-item-home">
@@ -170,7 +170,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail</span> </p>
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail.com</span> </p>
             </div>
         </div>
     </div>
@@ -288,6 +288,15 @@
 
   
   
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fk-matching"><span class="toc-text"> FK Matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#script"><span class="toc-text"> Script</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maya-operation"><span class="toc-text"> Maya Operation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ik-matching"><span class="toc-text"> IK Matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#script-2"><span class="toc-text"> Script</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maya-operation-2"><span class="toc-text"> Maya Operation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pole-vector-one-step-further"><span class="toc-text"> Pole Vector: One Step Further</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#further-reading"><span class="toc-text"> Further Reading</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transformation-matrix"><span class="toc-text"> Transformation Matrix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#translation-offset"><span class="toc-text"> Translation Offset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rotation-offset"><span class="toc-text"> Rotation Offset</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pre-multiplying-matrix"><span class="toc-text"> Pre-multiplying Matrix</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#implementation"><span class="toc-text"> Implementation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#model-matrix"><span class="toc-text"> Model Matrix</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#post-multiplying-matrix"><span class="toc-text"> Post-multiplying Matrix</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#decomposing-matrix"><span class="toc-text"> Decomposing Matrix</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#translation"><span class="toc-text"> Translation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#scale"><span class="toc-text"> Scale</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rotation"><span class="toc-text"> Rotation</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-text"> References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-maya-ik-fk-match" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -329,50 +338,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h2>
-<ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#fk-matching">FK Matching</a>
-<ul>
-<li><a href="#fk-script">Script</a></li>
-<li><a href="#fk-operation">Maya Operation</a></li>
-</ul>
-</li>
-<li><a href="#ik-matching">IK Matching</a>
-<ul>
-<li><a href="#ik-script">Script</a></li>
-<li><a href="#ik-operation">Maya Operation</a></li>
-<li><a href="#pole-vector-one-step-further">Pole Vector: One Step Further</a></li>
-</ul>
-</li>
-<li><a href="#further-reading">Further Reading</a>
-<ul>
-<li><a href="#transformation-matrix">Transformation Matrix</a></li>
-<li><a href="#translation-offset">Translation Offset</a></li>
-<li><a href="#rotation-offset">Rotation Offset</a>
-<ul>
-<li><a href="#pre-multiplying-matrix">Pre-multiplying Matrix</a></li>
-<li><a href="#implementation">Implementation</a></li>
-</ul>
-</li>
-<li><a href="#model-matrix">Model Matrix</a>
-<ul>
-<li><a href="#post-multiplying-matrix">Post-multiplying Matrix</a></li>
-</ul>
-</li>
-<li><a href="#decomposing-matrix">Decomposing Matrix</a>
-<ul>
-<li><a href="#translation">Translation</a></li>
-<li><a href="#scale">Scale</a></li>
-<li><a href="#rotation">Rotation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#references">References</a></li>
-</ul>
-<hr />
-<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
 <p>IK/FK matching refers to the ability to match any IK pose to FK pose and
 vice versa. But how does it work?</p>
 <p>I’m going to summarize the basic approaches I learned along the way.
@@ -643,6 +609,15 @@ in world space depending on the input transformation matrix.</p>
       <a href="/post/py-named-tuple/" title="Using namedtuple"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   

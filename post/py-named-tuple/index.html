@@ -20,15 +20,15 @@
   
   
   <title>Using namedtuple | Tech Art Learning</title>
-  <meta name="description" content="Table of Contents  Mutable and Hashable  hash() and id() Why hash? Example   NamedTuple  Initialization Access and Edit Value Using _asdict()   @dataclass  Frozen Attribute Override __iter__()   Subc">
+  <meta name="description" content="I recently got side-tracked into exploring the basics of namedtuple() as I got a glimpse of its usage in our engineering codebase. Here’s my summary:  Mutable and Hashable To understand the behavior o">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using namedtuple">
 <meta property="og:url" content="https://www.xingyulei.com/post/py-named-tuple/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Table of Contents  Mutable and Hashable  hash() and id() Why hash? Example   NamedTuple  Initialization Access and Edit Value Using _asdict()   @dataclass  Frozen Attribute Override __iter__()   Subc">
+<meta property="og:description" content="I recently got side-tracked into exploring the basics of namedtuple() as I got a glimpse of its usage in our engineering codebase. Here’s my summary:  Mutable and Hashable To understand the behavior o">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-21T22:32:26.358Z">
+<meta property="article:modified_time" content="2022-05-14T19:26:33.662Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="style">
@@ -99,7 +99,7 @@
       </button>
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
         
         <li class="menu-item menu-item-home">
@@ -163,7 +163,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail</span> </p>
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail.com</span> </p>
             </div>
         </div>
     </div>
@@ -281,6 +281,15 @@
 
   
   
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mutable-and-hashable"><span class="toc-text"> Mutable and Hashable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hash-and-id"><span class="toc-text"> hash() and id()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#why-hash"><span class="toc-text"> Why Hash?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text"> Example:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#namedtuple"><span class="toc-text"> NamedTuple</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#initialization"><span class="toc-text"> Initialization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#access-and-edit-value"><span class="toc-text"> Access and Edit Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-_asdict"><span class="toc-text"> Using ._asdict()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dataclass"><span class="toc-text"> @dataclass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#frozen-attribute"><span class="toc-text"> frozen attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#override-__iter__"><span class="toc-text"> override __iter__()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#subclassing-namedtuple"><span class="toc-text"> Subclassing namedtuple</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#__new__-constructor"><span class="toc-text"> __new__() constructor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#__slots__"><span class="toc-text"> __slots__</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#comparison-__dict__-vs-__slots__"><span class="toc-text"> Comparison __dict__ vs. __slots__</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-py-named-tuple" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -322,41 +331,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h2>
-<ul>
-<li><a href="#mutable-and-hashable">Mutable and Hashable</a>
-<ul>
-<li><a href="#hash-and-id"><em>hash()</em> and <em>id()</em></a></li>
-<li><a href="#why-hash">Why hash?</a></li>
-<li><a href="#hash-example">Example</a></li>
-</ul>
-</li>
-<li><a href="#namedtuple">NamedTuple</a>
-<ul>
-<li><a href="#initialization">Initialization</a></li>
-<li><a href="#access-and-edit-value">Access and Edit Value</a></li>
-<li><a href="#using-_asdict">Using <em>_asdict()</em></a></li>
-</ul>
-</li>
-<li><a href="#dataclass"><em>@dataclass</em></a>
-<ul>
-<li><a href="#frozen-attribute">Frozen Attribute</a></li>
-<li><a href="#override-__iter__">Override <em>__iter__()</em></a></li>
-</ul>
-</li>
-<li><a href="#subclassing-namedtuple">Subclassing <em>namedtuple</em></a>
-<ul>
-<li><a href="#__new__-constructor"><em>__new__()</em> Constructor</a></li>
-<li><a href="#__slots__">_<em><em>slots</em>_</em></a>
-<ul>
-<li><a href="#comparison-__dict__-vs-__slots__">Comparison between _<em><em>dict</em>_</em> and _<em><em>slots</em>_</em></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p>I recently got side-tracked into exploring the basics of <code>namedtuple()</code> as
+        <p>I recently got side-tracked into exploring the basics of <code>namedtuple()</code> as
 I got a glimpse of its usage in our engineering codebase. Here’s my summary:</p>
 <h2 id="mutable-and-hashable"><a class="markdownIt-Anchor" href="#mutable-and-hashable"></a> Mutable and Hashable</h2>
 <p>To understand the behavior of <code>namedtuple()</code>, it is best to also visit the
@@ -552,6 +527,15 @@ tons of objects, this saves memory and time when instancing.</p>
       <a href="/post/maya-streaming/" title="Communicate with Maya (2. Streaming Output)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   

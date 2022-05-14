@@ -20,20 +20,21 @@
   
   
   <title>Making Pie Charts in Qt (Python) | Tech Art Learning</title>
-  <meta name="description" content="Table of Contents  Introduction Installing QtChart The Basics  Classes Components   Example #1  Labels and Legend Other   Example #2  Inner and Outer Series Exploding Animation   Bonus  Custom Data C">
+  <meta name="description" content="Introduction It’s time to learn new stuff again. This time, I want to implement a data visualization component in my tool: pie charts. I had some experience with matplotlib before, but I’m excited to">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Making Pie Charts in Qt (Python)">
 <meta property="og:url" content="https://www.xingyulei.com/post/qt-pie-chart/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Table of Contents  Introduction Installing QtChart The Basics  Classes Components   Example #1  Labels and Legend Other   Example #2  Inner and Outer Series Exploding Animation   Bonus  Custom Data C">
+<meta property="og:description" content="Introduction It’s time to learn new stuff again. This time, I want to implement a data visualization component in my tool: pie charts. I had some experience with matplotlib before, but I’m excited to">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/Gz2ykTF.png">
 <meta property="og:image" content="https://i.imgur.com/fR6H2PO.gif">
 <meta property="og:image" content="https://i.imgur.com/vxQHPEz.jpg">
 <meta property="article:published_time" content="2022-04-27T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-27T13:52:12.070Z">
+<meta property="article:modified_time" content="2022-05-14T17:29:47.017Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
+<meta property="article:tag" content="template">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/Gz2ykTF.png">
   <!-- Canonical links -->
@@ -102,7 +103,7 @@
       </button>
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav ">
+      <ul class="nav navbar-nav main-nav menu-highlight">
         
         
         <li class="menu-item menu-item-home">
@@ -166,7 +167,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail</span> </p>
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4> <p> Feel free to contact me via <span style="color:blue">techartlei@gmail.com</span> </p>
             </div>
         </div>
     </div>
@@ -284,6 +285,15 @@
 
   
   
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#installing-qtcharts"><span class="toc-text"> Installing QtCharts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-basics"><span class="toc-text"> The Basics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#classes"><span class="toc-text"> Classes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#components"><span class="toc-text"> Components</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example-1"><span class="toc-text"> Example 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#labels-and-legend"><span class="toc-text"> Labels and Legend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#other"><span class="toc-text"> Other</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example-2"><span class="toc-text"> Example 2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#inner-and-outer-series"><span class="toc-text"> Inner and Outer Series</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exploding-animation"><span class="toc-text"> Exploding Animation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bonus"><span class="toc-text"> Bonus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#custom-data-class"><span class="toc-text"> Custom Data Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#putting-it-together"><span class="toc-text"> Putting it Together</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-qt-pie-chart" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -314,7 +324,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>
+	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>, <a class="article-tag-link-link" href="/tags/template/" rel="tag">template</a>
   </span>
 
 
@@ -325,36 +335,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="table-of-contents"><a class="markdownIt-Anchor" href="#table-of-contents"></a> Table of Contents</h2>
-<ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#installing-qtcharts">Installing QtChart</a></li>
-<li><a href="#the-basics">The Basics</a>
-<ul>
-<li><a href="#classes">Classes</a></li>
-<li><a href="#components">Components</a></li>
-</ul>
-</li>
-<li><a href="#example-1">Example #1</a>
-<ul>
-<li><a href="#labels-and-legend">Labels and Legend</a></li>
-<li><a href="#other">Other</a></li>
-</ul>
-</li>
-<li><a href="#example-2">Example #2</a>
-<ul>
-<li><a href="#inner-and-outer-series">Inner and Outer Series</a></li>
-<li><a href="#exploding-animation">Exploding Animation</a></li>
-</ul>
-</li>
-<li><a href="#bonus">Bonus</a>
-<ul>
-<li><a href="#custom-data-class">Custom Data Class</a></li>
-<li><a href="#putting-it-together">Putting it Together</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
 <p>It’s time to learn new stuff again. This time, I want to implement a
 data visualization component in my tool: pie charts. I had some experience
 with <code>matplotlib</code> before, but I’m excited to find out that Qt
@@ -533,6 +514,15 @@ instantiate a pie chart with some random data. We do this using a <code>QChartVi
       <a href="/post/py-admin/" title="Run Command Prompt and Powershell as Admin (Python)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   
