@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xingyulei.com/about/index.html</loc>
+    
+    <lastmod>2022-05-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-pie-chart/</loc>
+    
+    <lastmod>2022-05-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xingyulei.com/post/py-end-process/</loc>
     
     <lastmod>2022-05-14</lastmod>
@@ -23,13 +37,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/post/qt-pie-chart/</loc>
-    
-    <lastmod>2022-05-14</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
     
     <lastmod>2022-05-14</lastmod>
@@ -38,13 +45,6 @@
   
   <url>
     <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
-    
-    <lastmod>2022-05-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/about/index.html</loc>
     
     <lastmod>2022-05-14</lastmod>
     
@@ -242,13 +242,6 @@
 
   
   <url>
-    <loc>https://www.xingyulei.com/tags/graphic-programming/</loc>
-    <lastmod>2022-05-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/python/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>daily</changefreq>
@@ -257,6 +250,13 @@
   
   <url>
     <loc>https://www.xingyulei.com/tags/style/</loc>
+    <lastmod>2022-05-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/graphic-programming/</loc>
     <lastmod>2022-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
