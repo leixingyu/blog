@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.xingyulei.com/post/qt-template/</loc>
-    <lastmod>2022-07-10</lastmod>
+    <lastmod>2022-07-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
+    <lastmod>2022-07-16</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
@@ -82,10 +86,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/unity-api-statemachine/</loc>
-    <lastmod>2021-12-18</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
     <lastmod>2021-12-18</lastmod>
   </url>
   <url>
