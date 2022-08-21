@@ -19,21 +19,22 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Qt Custom Sorting | Tech Art Learning</title>
-  <meta name="description" content="Sorting Overview Sorting happens a lot in qt viewports like list, table and tree. Using convenience class such as item-based widget provides limited sorting options. One common thing may occur when y">
+  <title>UE5 Cinematic Guide (Part.2 FBX transfer) | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="Introduction This is the second entry of the series on how to build cinematic in Unreal. Last blog, I’ve introduced the different components that builds up a cinematic, as well as the fundamental too">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt Custom Sorting">
-<meta property="og:url" content="https://www.xingyulei.com/post/qt-sorting/index.html">
+<meta property="og:title" content="UE5 Cinematic Guide (Part.2 FBX transfer)">
+<meta property="og:url" content="https://www.xingyulei.com/post/ue-cinematic-fbx/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Sorting Overview Sorting happens a lot in qt viewports like list, table and tree. Using convenience class such as item-based widget provides limited sorting options. One common thing may occur when y">
+<meta property="og:description" content="Introduction This is the second entry of the series on how to build cinematic in Unreal. Last blog, I’ve introduced the different components that builds up a cinematic, as well as the fundamental too">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-23T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-10T19:40:14.741Z">
+<meta property="article:published_time" content="2022-08-13T04:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-10T00:50:27.674Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="pyqt">
+<meta property="article:tag" content="unreal">
+<meta property="article:tag" content="pipeline">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/qt-sorting/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/ue-cinematic-fbx/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -285,21 +286,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#sorting-overview"><span class="toc-text"> Sorting Overview</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#custom-sorting-operator-override"><span class="toc-text"> Custom Sorting (Operator override)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#custom-sorting-qsortfilterproxymodel-class"><span class="toc-text"> Custom Sorting (QSortFilterProxyModel Class)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#general"><span class="toc-text"> General</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static-mesh"><span class="toc-text"> Static Mesh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transform-animation"><span class="toc-text"> Transform Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#camera-animation"><span class="toc-text"> Camera Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skeletal-mesh"><span class="toc-text"> Skeletal Mesh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skeletal-animation"><span class="toc-text"> Skeletal Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-text"> References</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-qt-sorting" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-ue-cinematic-fbx" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Qt Custom Sorting
+      UE5 Cinematic Guide (Part.2 FBX transfer)
     </h1>
   
 
@@ -307,20 +308,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/qt-sorting/" class="article-date">
-	  <time datetime="2021-01-23T05:00:00.000Z" itemprop="datePublished">2021-01-23</time>
+	<a href="/post/ue-cinematic-fbx/" class="article-date">
+	  <time datetime="2022-08-13T04:00:00.000Z" itemprop="datePublished">2022-08-13</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
+    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>
+	<a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
   </span>
 
 
@@ -331,34 +332,84 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="sorting-overview"><a class="markdownIt-Anchor" href="#sorting-overview"></a> Sorting Overview</h3>
-<p>Sorting happens a lot in qt viewports like list, table and tree. Using
-convenience class such as item-based widget provides limited sorting options.</p>
-<p>One common thing may occur when you are sorting items is the widget treats their
-value as <em>string</em> instead of <em>int</em>, which will result incorrect ordering</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&quot;3&quot;</span>, <span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;20&quot;</span>, <span class="string">&quot;92&quot;</span>, <span class="string">&quot;89&quot;</span>, <span class="string">&quot;40&quot;</span>, <span class="string">&quot;10&quot;</span>, <span class="string">&quot;11&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">    mywidget = QtWidgets.QTableWidget()</span><br><span class="line">    mywidget.insertColumn(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(<span class="built_in">list</span>)):</span><br><span class="line">        mywidget.insertRow(index)</span><br><span class="line">        value = <span class="built_in">list</span>[index]</span><br><span class="line">        item = QtWidgets.QTableWidgetItem(value)</span><br><span class="line">        mywidget.setItem(index, <span class="number">0</span>, item)</span><br><span class="line"></span><br><span class="line">    mywidget.sortItems(<span class="number">0</span>, QtCore.Qt.AscendingOrder)</span><br><span class="line">    mywidget.show()</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
-<p>This will sort the list of items based on their string, so the order will be:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 1</span><br><span class="line">- 10</span><br><span class="line">- 11</span><br><span class="line">- 2</span><br></pre></td></tr></table></figure>
-<p>instead of</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 1</span><br><span class="line">- 2</span><br><span class="line">- ...</span><br></pre></td></tr></table></figure>
-<p>So naturally, you would need to specify the item value as integer type,
-but you cannot instantiate item with integer, but <code>setData()</code> will work</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># intead of </span></span><br><span class="line">item = QtWidgets.QTableWidgetItem(<span class="built_in">int</span>(value))</span><br><span class="line"><span class="comment"># do this</span></span><br><span class="line">item.setData(QtCore.Qt.ItemDataRole, <span class="built_in">int</span>(value))</span><br></pre></td></tr></table></figure>
-<p>Now everything will sort by numeric order</p>
-<h3 id="custom-sorting-operator-override"><a class="markdownIt-Anchor" href="#custom-sorting-operator-override"></a> Custom Sorting (Operator override)</h3>
-<p>What if you need more than numeric value for your data, for example, when displaying frame number, you would like to include frame range
-too. Like frame 1, frame 2, frame 3-7, frame 8, frame 9-14. It looks like using string
-is the only option.</p>
-<p>This time you need to override value compare operator for these value, that is making
-your own item class like the following example</p>
-<script src="https://gist.github.com/leixingyu/0eea1cb8e325a8d52cc3a64953faf467.js"></script>
-<p>the <code>__lt__</code> is the less than operator (<code>&lt;</code>)</p>
-<p>Everything should behave correctly</p>
-<h3 id="custom-sorting-qsortfilterproxymodel-class"><a class="markdownIt-Anchor" href="#custom-sorting-qsortfilterproxymodel-class"></a> Custom Sorting (QSortFilterProxyModel Class)</h3>
-<p><a target="_blank" rel="noopener" href="https://doc-snapshots.qt.io/qtforpython-5.15/PySide2/QtCore/QSortFilterProxyModel.html">https://doc-snapshots.qt.io/qtforpython-5.15/PySide2/QtCore/QSortFilterProxyModel.html</a></p>
-<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/363200">Stack Overflow - Is it possible to sort numbers in a QTreeWidget column?</a></p>
-
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>This is the second entry of the series on how to build cinematic in Unreal.
+Last blog, I’ve introduced the different components that builds up a cinematic,
+as well as the fundamental tool in Unreal that creates those component -
+Level Sequence.</p>
+<p>Now, how do we transfer cinematic data to Unreal? Until .usd becomes the industry
+standard, we’ll still stick to .fbx for transferring animation data. Now for each
+component of a cinematic, we want to set it up nicely so the data can be
+correctly presented in Unreal.</p>
+<p>Current blogs in the series:</p>
+<ol>
+<li><a href="https://www.xingyulei.com/post/ue-cinematic-sequencer/">Sequencer Introduction</a></li>
+<li><a href="">FBX Options</a></li>
+</ol>
+<h2 id="general"><a class="markdownIt-Anchor" href="#general"></a> General</h2>
+<p>Consistency is King</p>
+<ol>
+<li>Identifying unit</li>
+</ol>
+<p>rig unit: fbx exported from mixamo, unit is meter</p>
+<p>maya scene unit: default is centimeter, convert to meter</p>
+<p>unreal: default is also centimeter, convert to meter</p>
+<p>if the unit doesn’t match, we can check ‘convert unit’ during import fbx ui</p>
+<h2 id="static-mesh"><a class="markdownIt-Anchor" href="#static-mesh"></a> Static Mesh</h2>
+<h2 id="transform-animation"><a class="markdownIt-Anchor" href="#transform-animation"></a> Transform Animation</h2>
+<h2 id="camera-animation"><a class="markdownIt-Anchor" href="#camera-animation"></a> Camera Animation</h2>
+<p>the camera node has to be on the scene root, with no transform node on top.
+Otherwise, the animation won’t be imported</p>
+<h2 id="skeletal-mesh"><a class="markdownIt-Anchor" href="#skeletal-mesh"></a> Skeletal Mesh</h2>
+<p>cleaning the rig (skeletal mesh) from Mixamo, get rid of namespace and doing grouping
+so it’s easier to handle multiple characters ins a scene</p>
+<p>before:</p>
+<p>after:</p>
+<p>export the cleaned rig, select everything including the mesh</p>
+<h2 id="skeletal-animation"><a class="markdownIt-Anchor" href="#skeletal-animation"></a> Skeletal Animation</h2>
+<p>select the joint hierarchy and export, it will automatically export parent
+groups, but we don’t want meshes.</p>
+<p>Character animation:</p>
+<p><strong>Whatever the character skeleton rig hierarchy in the .fbx looks like,
+the exported animation should match that structure 1-to-1</strong>.
+Otherwise, there will be a weird transform offset.
+Also, the root of the rig/skeleton, whether it’s a transform group or a
+root joint, should not have animation/keyed data on it,
+this is because it is used to offset world transform
+(and keyed transform can’t do that)</p>
+<p>for example: the character rig hierarchy could look like</p>
+<ul>
+<li>parent transform [no key]
+<ul>
+<li>offset transform [no key]
+<ul>
+<li>hip joint
+<ul>
+<li>right leg joint</li>
+<li>left leg joint</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>or as simple as</p>
+<ul>
+<li>root joint [no key]
+<ul>
+<li>hip joint
+<ul>
+<li>left leg joint</li>
+<li>right leg joint</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>as long as the hierarchy in the animation being exported looks the same</p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<!-- flag of hidden posts -->
       
     </div>
     <div class="article-footer">
@@ -368,7 +419,7 @@ your own item class like the following example</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/qt-sorting/" title="Qt Custom Sorting" target="_blank" rel="external">https://www.xingyulei.com/post/qt-sorting/</a>
+      <a href="https://www.xingyulei.com/post/ue-cinematic-fbx/" title="UE5 Cinematic Guide (Part.2 FBX transfer)" target="_blank" rel="external">https://www.xingyulei.com/post/ue-cinematic-fbx/</a>
     </li>
     
 	
@@ -404,29 +455,6 @@ your own item class like the following example</p>
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/post/qt-template-context-menu/" title="Qt Context Menu Template (Menu, Submenu and Action)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/post/py-import/" title="Understanding Python Imports"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-    <li class="toggle-toc">
-      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
-        <span>[&nbsp;</span><span>Table of Contents</span>
-        <i class="text-collapsed icon icon-anchor"></i>
-        <i class="text-in icon icon-close"></i>
-        <span>]</span>
-      </a>
-    </li>
-    
-  </ul>
   
   
   

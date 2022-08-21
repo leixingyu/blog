@@ -28,7 +28,7 @@
 <meta property="og:description" content="I recently got side-tracked into exploring the basics of namedtuple() as I got a glimpse of its usage in our engineering codebase. Here’s my summary:  Mutable and Hashable To understand the behavior o">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-14T19:26:33.662Z">
+<meta property="article:modified_time" content="2022-08-10T00:49:30.721Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="style">
@@ -175,7 +175,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">16</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">16</span></li></ul>
     </div>
   </div>
 
@@ -185,7 +185,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.25px;">c#</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/maya/" style="font-size: 13.5px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.25px;">socket</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.25px;">threading</a> <a href="/tags/unity/" style="font-size: 13.25px;">unity</a> <a href="/tags/unreal/" style="font-size: 13px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.25px;">windows</a>
+      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/math/" style="font-size: 13.2px;">math</a> <a href="/tags/maya/" style="font-size: 13.6px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.4px;">template</a> <a href="/tags/threading/" style="font-size: 13.2px;">threading</a> <a href="/tags/unity/" style="font-size: 13.2px;">unity</a> <a href="/tags/unreal/" style="font-size: 13px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.2px;">windows</a>
     </div>
   </div>
 
@@ -421,6 +421,8 @@ a <code>list</code>.</p>
 <h3 id="using-_asdict"><a class="markdownIt-Anchor" href="#using-_asdict"></a> Using <code>._asdict()</code></h3>
 <p>The built-in function <code>._asdict()</code> converts <code>namedtuple</code> into a dictionary.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person = namedtuple(<span class="string">&quot;Person&quot;</span>, <span class="string">&quot;name age height&quot;</span>)</span><br><span class="line">jane = Person(<span class="string">&quot;Jane&quot;</span>, <span class="number">25</span>, <span class="number">1.75</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt; jane._asdict()</span><br><span class="line"><span class="comment"># &#123;&#x27;name&#x27;: &#x27;Jane&#x27;, &#x27;age&#x27;: 25, &#x27;height&#x27;: 1.75&#125;</span></span><br></pre></td></tr></table></figure>
+<p>and to generate a namedtuple object from dictionary</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;</span><br><span class="line">   <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Jane&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span>,</span><br><span class="line">   <span class="string">&#x27;height&#x27;</span>: <span class="number">1.75</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jane = Person(**d)</span><br></pre></td></tr></table></figure>
 <h2 id="dataclass"><a class="markdownIt-Anchor" href="#dataclass"></a> <code>@dataclass</code></h2>
 <p><code>@dataclass</code> came out after Python 3.7, which is similar to <code>namedtuple</code>, but they are mutable.
 thus, we can set value to a <code>@dataclass</code> attribute.</p>
