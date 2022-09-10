@@ -20,17 +20,17 @@
   
   
   <title>How to Resize QPixmap | Tech Art Learning</title>
-  <meta name="description" content="Intro During my attempts to create custom alignment push buttons, I encountered an issue with icon having jagged looking (even if with low resolution). I use a custom paintEvent() drawing QPixmap, an">
+  <meta name="description" content="Introduction During my attempts to create custom alignment push buttons, I encountered an issue with icon having jagged looking (even if with low resolution). I use a custom paintEvent() drawing QPix">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Resize QPixmap">
 <meta property="og:url" content="https://www.xingyulei.com/post/qt-pixmap-scale/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Intro During my attempts to create custom alignment push buttons, I encountered an issue with icon having jagged looking (even if with low resolution). I use a custom paintEvent() drawing QPixmap, an">
+<meta property="og:description" content="Introduction During my attempts to create custom alignment push buttons, I encountered an issue with icon having jagged looking (even if with low resolution). I use a custom paintEvent() drawing QPix">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://imgur.com/8KiYjlW.png">
 <meta property="og:image" content="https://imgur.com/TIjyqkm.png">
 <meta property="article:published_time" content="2021-08-22T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-05T02:16:36.024Z">
+<meta property="article:modified_time" content="2022-09-10T13:50:16.144Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,7 @@
               <a href="/post/general-tech-note/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://cdn.tutsplus.com/cdn-cgi/image/width=600/gamedev/uploads/2013/11/deferred-v2.png)" alt="My Personal Technical Notes" class="thumb-image"></span>
     
 </a>
 
@@ -229,7 +229,7 @@
               <a href="/post/ue-cinematic-fbx/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/Ez1x8Zv.png)" alt="UE5 Cinematic FBX Workflow" class="thumb-image"></span>
     
 </a>
 
@@ -254,7 +254,7 @@
               <a href="/post/ue-cinematic-sequencer/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/exrhTgo.png)" alt="UE5 Cinematic Sequencer Introduction" class="thumb-image"></span>
     
 </a>
 
@@ -279,7 +279,7 @@
               <a href="/post/qt-threading/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/ru7UWl1.gif)" alt="Qt Prevent GUI freezing with Multithreading" class="thumb-image"></span>
     
 </a>
 
@@ -304,7 +304,7 @@
               <a href="/post/qt-pie-chart/" class="thumb">
     
     
-        <span style="background-image:url(https://i.imgur.com/Gz2ykTF.png)" alt="Making Pie Charts in Qt (Python)" class="thumb-image"></span>
+        <span style="background-image:url(https://i.imgur.com/fR6H2PO.gif)" alt="Making Pie Charts in Qt (Python)" class="thumb-image"></span>
     
 </a>
 
@@ -338,7 +338,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#intro"><span class="toc-text"> Intro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-test"><span class="toc-text"> The Test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-solution"><span class="toc-text"> The Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extra"><span class="toc-text"> Extra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text"> Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-solution"><span class="toc-text"> The Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extra"><span class="toc-text"> Extra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -384,13 +384,13 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="intro"><a class="markdownIt-Anchor" href="#intro"></a> Intro</h3>
+        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
 <p>During my attempts to create custom alignment push buttons, I encountered an issue with icon having
 jagged looking (even if with low resolution).</p>
 <p>I use a custom <code>paintEvent()</code> drawing <code>QPixmap</code>, and this happens when I use <code>scaled()</code> to resize my pixmap.</p>
 <p>I noticed the icon does not have the jagged look with the built-in <code>setIcon()</code> and <code>setIconSize</code> in
 <code>QPushButton</code>. So I know there’s some wrong with my approach.</p>
-<h3 id="the-test"><a class="markdownIt-Anchor" href="#the-test"></a> The Test</h3>
+<h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h3>
 <p>To really show out the difference, I first reduce the resolution of my image.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">low_rez = QtCore.QSize(<span class="number">40</span>, <span class="number">40</span>)</span><br><span class="line">high_rez = QtCore.QSize(<span class="number">400</span>, <span class="number">400</span>)</span><br><span class="line">pixmap = QtGui.QPixmap(path)</span><br><span class="line"></span><br><span class="line">pixmap = pixmap.scaled(low_rez)</span><br></pre></td></tr></table></figure>
 <p>I then increase the resolution back to normal. The default scale uses <code>FastTransformation</code></p>

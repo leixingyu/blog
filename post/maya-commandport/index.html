@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/89SJibG.gif">
 <meta property="article:published_time" content="2021-12-17T05:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-06T16:46:27.196Z">
+<meta property="article:modified_time" content="2022-09-10T13:53:07.062Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="maya">
 <meta property="article:tag" content="python">
@@ -206,7 +206,7 @@
               <a href="/post/general-tech-note/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://cdn.tutsplus.com/cdn-cgi/image/width=600/gamedev/uploads/2013/11/deferred-v2.png)" alt="My Personal Technical Notes" class="thumb-image"></span>
     
 </a>
 
@@ -231,7 +231,7 @@
               <a href="/post/ue-cinematic-fbx/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/Ez1x8Zv.png)" alt="UE5 Cinematic FBX Workflow" class="thumb-image"></span>
     
 </a>
 
@@ -256,7 +256,7 @@
               <a href="/post/ue-cinematic-sequencer/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/exrhTgo.png)" alt="UE5 Cinematic Sequencer Introduction" class="thumb-image"></span>
     
 </a>
 
@@ -281,7 +281,7 @@
               <a href="/post/qt-threading/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/ru7UWl1.gif)" alt="Qt Prevent GUI freezing with Multithreading" class="thumb-image"></span>
     
 </a>
 
@@ -306,7 +306,7 @@
               <a href="/post/qt-pie-chart/" class="thumb">
     
     
-        <span style="background-image:url(https://i.imgur.com/Gz2ykTF.png)" alt="Making Pie Charts in Qt (Python)" class="thumb-image"></span>
+        <span style="background-image:url(https://i.imgur.com/fR6H2PO.gif)" alt="Making Pie Charts in Qt (Python)" class="thumb-image"></span>
     
 </a>
 
@@ -340,7 +340,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#maya-connector"><span class="toc-text"> Maya Connector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-cmdscommandport"><span class="toc-text"> Using cmds.commandPort()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#procedures"><span class="toc-text"> Procedures</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tcp-return-message"><span class="toc-text"> TCP Return Message</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sourcetype"><span class="toc-text"> SourceType</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mixed-quotation-symbol"><span class="toc-text"> Mixed Quotation symbol</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket-programming-introduction"><span class="toc-text"> Socket Programming Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#maya-connector"><span class="toc-text"> Maya Connector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-cmdscommandport"><span class="toc-text"> Using cmds.commandPort()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#procedures"><span class="toc-text"> Procedures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-return-message"><span class="toc-text"> TCP Return Message</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sourcetype"><span class="toc-text"> SourceType</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mixed-quotation-symbol"><span class="toc-text"> Mixed Quotation symbol</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#socket-programming-introduction"><span class="toc-text"> Socket Programming Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -386,12 +386,12 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="maya-connector"><a class="markdownIt-Anchor" href="#maya-connector"></a> Maya Connector</h3>
+        <h2 id="maya-connector"><a class="markdownIt-Anchor" href="#maya-connector"></a> Maya Connector</h2>
 <p>The end result of this two-part blog is the <a target="_blank" rel="noopener" href="https://github.com/leixingyu/mayaConnector">Maya Connector</a> tool.</p>
 <p>This external standalone tool is able to send command to maya and receive
 real-time feedback from maya’s script editor output.</p>
 <p><img src="https://i.imgur.com/89SJibG.gif" alt="maya-connector" /></p>
-<h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
+<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
 <blockquote>
 <p>If you are already familiar with maya command port and socket programming, skip to
 <a href="https://www.xingyulei.com/post/maya-streaming/">Part 2</a> for Maya output streaming.</p>
@@ -411,7 +411,7 @@ many maya instances to manage. examples are:</p>
 </ol>
 <p>These two parts can work independently, but are powerful as a whole. Also, references
 in creating <a href="https://www.xingyulei.com/post/maya-batch-mode/">maya standalone sessions</a></p>
-<h3 id="using-cmdscommandport"><a class="markdownIt-Anchor" href="#using-cmdscommandport"></a> Using <code>cmds.commandPort()</code></h3>
+<h2 id="using-cmdscommandport"><a class="markdownIt-Anchor" href="#using-cmdscommandport"></a> Using <code>cmds.commandPort()</code></h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://help.autodesk.com/cloudhelp/2018/ENU/Maya-Tech-Docs/CommandsPython/">cmds.commandPort()</a>:
 The command port comprises a socket to which a client program may connect</p>
@@ -420,7 +420,7 @@ The command port comprises a socket to which a client program may connect</p>
 client and server.
 But Maya’s built-in command port provides us a very convenient way of sending command for maya
 to execute.</p>
-<h3 id="procedures"><a class="markdownIt-Anchor" href="#procedures"></a> Procedures</h3>
+<h2 id="procedures"><a class="markdownIt-Anchor" href="#procedures"></a> Procedures</h2>
 <ol>
 <li>Open command port</li>
 </ol>
@@ -434,7 +434,7 @@ during Maya startup.</p>
 <p>the command sent can be either <code>MEL</code> or <code>Python</code> command which must be specified during
 the opening the port determined by <code>sourceType</code> flag</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the local host</span></span><br><span class="line">HOST = <span class="string">&#x27;127.0.0.1&#x27;</span> </span><br><span class="line">PORT = <span class="number">5050</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sendCommand</span>():</span></span><br><span class="line">    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    client.connect(ADDR)</span><br><span class="line">    command = <span class="string">&#x27;polyCube()&#x27;</span></span><br><span class="line">    client.send(command)</span><br><span class="line">    client.close()</span><br></pre></td></tr></table></figure>
-<h4 id="tcp-return-message"><a class="markdownIt-Anchor" href="#tcp-return-message"></a> TCP Return Message</h4>
+<h3 id="tcp-return-message"><a class="markdownIt-Anchor" href="#tcp-return-message"></a> TCP Return Message</h3>
 <p>We are using <strong>TCP</strong> for our communication protocol to guarantee command being sent
 when the connection is established successfully.</p>
 <blockquote>
@@ -447,17 +447,17 @@ return as it is the behaviour of <strong>TCP</strong>. <a target="_blank" rel="n
 <p>Also sending command line by line is not reliable as there are no context between
 lines for Maya server to understand. <a target="_blank" rel="noopener" href="https://forums.cgsociety.org/t/telnet-or-socket-no-result-back-from-maya/1730817/2">Unless it’s super simple series of commands</a></p>
 <p>In order to receive output, we need a custom listening server to do that which is explained in <a href="https://www.xingyulei.com/post/maya-streaming">Part 2</a>.</p>
-<h4 id="sourcetype"><a class="markdownIt-Anchor" href="#sourcetype"></a> SourceType</h4>
+<h3 id="sourcetype"><a class="markdownIt-Anchor" href="#sourcetype"></a> SourceType</h3>
 <p>We are opening a default command port which takes <code>MEL</code> input,
 we don’t need to specify <code>Python</code> as source type, as we can just use <code>python(&quot;[insert command here]&quot;)</code>
 to wrap it into <code>MEL</code>, this can be blocks of independent codes or importing
 and executing python files.</p>
-<h4 id="mixed-quotation-symbol"><a class="markdownIt-Anchor" href="#mixed-quotation-symbol"></a> Mixed Quotation symbol</h4>
+<h3 id="mixed-quotation-symbol"><a class="markdownIt-Anchor" href="#mixed-quotation-symbol"></a> Mixed Quotation symbol</h3>
 <p>Note that when doing a source type conversion with a string type command
 , quotation symbol may cause conflicts.</p>
 <p>the solution is to replace it with backslash before quotation symbol.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command = <span class="string">&#x27;python(&quot;&#x27;</span> + command.replace(<span class="string">r&#x27;&quot;&#x27;</span>, <span class="string">r&#x27;\&quot;&#x27;</span>) + <span class="string">&#x27;&quot;)&#x27;</span></span><br></pre></td></tr></table></figure>
-<h3 id="socket-programming-introduction"><a class="markdownIt-Anchor" href="#socket-programming-introduction"></a> Socket Programming Introduction</h3>
+<h2 id="socket-programming-introduction"><a class="markdownIt-Anchor" href="#socket-programming-introduction"></a> Socket Programming Introduction</h2>
 <p>It is also very helpful to know the basics of socket programming in Python
 to better understand how server and client communicates, and the difference
 between TCP and UDP, which will be used in the next part.</p>
@@ -465,7 +465,7 @@ between TCP and UDP, which will be used in the next part.</p>
 are a basic template for setting up client and server using <code>socket</code> and <code>thread</code></p>
 <script src="https://gist.github.com/leixingyu/f4b4d6ca7b84cf01af5311857219295e.js"></script>
 <script src="https://gist.github.com/leixingyu/5e55f23113c0280ab5ab16595bda900d.js"></script>
-<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
 <p><a target="_blank" rel="noopener" href="https://groups.google.com/g/python_inside_maya/c/7AgWlldtvbE/m/zUTQlAcjBgAJ?pli=1">Google Group - Receiving data from commandPort</a></p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/10434525">Stack Overflow - c socket programming, only receiving one line at a time</a></p>
 <p><a target="_blank" rel="noopener" href="https://forums.cgsociety.org/t/telnet-or-socket-no-result-back-from-maya/1730817/2">CG Talk - Telnet or Socket: no result back from Maya</a></p>

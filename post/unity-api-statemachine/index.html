@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://i.imgur.com/vQMjJ5z.png">
 <meta property="og:image" content="https://i.imgur.com/j6IoXLr.png">
 <meta property="article:published_time" content="2021-08-29T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-18T20:55:45.530Z">
+<meta property="article:modified_time" content="2022-09-10T13:48:33.993Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="unity">
 <meta property="article:tag" content="c#">
@@ -207,7 +207,7 @@
               <a href="/post/general-tech-note/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://cdn.tutsplus.com/cdn-cgi/image/width=600/gamedev/uploads/2013/11/deferred-v2.png)" alt="My Personal Technical Notes" class="thumb-image"></span>
     
 </a>
 
@@ -232,7 +232,7 @@
               <a href="/post/ue-cinematic-fbx/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/Ez1x8Zv.png)" alt="UE5 Cinematic FBX Workflow" class="thumb-image"></span>
     
 </a>
 
@@ -257,7 +257,7 @@
               <a href="/post/ue-cinematic-sequencer/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/exrhTgo.png)" alt="UE5 Cinematic Sequencer Introduction" class="thumb-image"></span>
     
 </a>
 
@@ -282,7 +282,7 @@
               <a href="/post/qt-threading/" class="thumb">
     
     
-        <span class="thumb-image thumb-none"></span>
+        <span style="background-image:url(https://i.imgur.com/ru7UWl1.gif)" alt="Qt Prevent GUI freezing with Multithreading" class="thumb-image"></span>
     
 </a>
 
@@ -307,7 +307,7 @@
               <a href="/post/qt-pie-chart/" class="thumb">
     
     
-        <span style="background-image:url(https://i.imgur.com/Gz2ykTF.png)" alt="Making Pie Charts in Qt (Python)" class="thumb-image"></span>
+        <span style="background-image:url(https://i.imgur.com/fR6H2PO.gif)" alt="Making Pie Charts in Qt (Python)" class="thumb-image"></span>
     
 </a>
 
@@ -341,7 +341,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#states"><span class="toc-text"> States</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sub-state-machine"><span class="toc-text"> Sub-state machine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#states"><span class="toc-text"> States</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sub-state-machine"><span class="toc-text"> Sub-state Machine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -387,7 +387,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
 <p>This post is not about state machine basic, rather how we would setup/access state machine parameters.
 There is a higher level <code>Animator</code> class to access a part of the animator features, but we need to use
 Unity’s <code>Animations</code> package in order to dive deeper.</p>
@@ -414,18 +414,18 @@ I really wish Unity provides internal ways to cast these to each other.</p>
 respectively returns <code>AnimatorStateMachine</code> and <code>AnimatorState</code> type object</p>
 </li>
 </ul>
-<h3 id="states"><a class="markdownIt-Anchor" href="#states"></a> States</h3>
+<h2 id="states"><a class="markdownIt-Anchor" href="#states"></a> States</h2>
 <p>All states (state or. state with blendtree inside)</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ChildAnimatorState[] childStates = rootStateMachine.states;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> childState <span class="keyword">in</span> childStates)</span><br><span class="line">&#123;</span><br><span class="line">    AnimatorState state = childState.state;</span><br><span class="line">    print(state.name);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// state with blendtree</span></span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> blendTree = (BlendTree)state.motion;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> child <span class="keyword">in</span> blendTree.children)</span><br><span class="line">        &#123;</span><br><span class="line">            print(<span class="string">&quot;\t&quot;</span> + child.motion.name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// simple state</span></span><br><span class="line">    catch</span><br><span class="line">    &#123;</span><br><span class="line">        print(<span class="string">&quot;\t&quot;</span> + state.motion.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/QbLtx2O.png" alt="simple state" /></p>
 <p>(Simple state only contains a single clip)</p>
 <p><img src="https://i.imgur.com/vQMjJ5z.png" alt="state with blendtree" /></p>
 <p>(BlendTree nested in a state)</p>
-<h3 id="sub-state-machine"><a class="markdownIt-Anchor" href="#sub-state-machine"></a> Sub-state machine</h3>
+<h2 id="sub-state-machine"><a class="markdownIt-Anchor" href="#sub-state-machine"></a> Sub-state Machine</h2>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ChildAnimatorStateMachine[] childSubStateMachines = rootStateMachine.stateMachines;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">var</span> childSubStateMachine <span class="keyword">in</span> childSubStateMachines)&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Convert `ChildAnimatorStateMachine` to `AnimatorStateMachine`</span></span><br><span class="line">    AnimatorStateMachine subStateMachine = childSubStateMachine.stateMachine;</span><br><span class="line">    print(subStateMachine.name);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// all states in idle sub state machine</span></span><br><span class="line">    ChildAnimatorState[] states = subStateMachine.states;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> childState <span class="keyword">in</span> states)</span><br><span class="line">    &#123;</span><br><span class="line">        print(<span class="string">&quot;\t&quot;</span> + childState.state.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/j6IoXLr.png" alt="sub state machine" /></p>
 <p>(Essentially, another sub layer of state machine)</p>
-<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
 <p><a target="_blank" rel="noopener" href="https://docs.unity3d.com/Manual/StateMachineBasics.html">Unity Manual - State Machine Basics</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.unity3d.com/ScriptReference/Animations.AnimatorStateMachine.html">Unity Scripting API - AnimatorStateMachine</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.unity3d.com/ScriptReference/Animator.Play.html">Unity Scripting API - Animator.Play</a></p>
