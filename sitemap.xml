@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.xingyulei.com/post/wip/math-euler-gimbal/</loc>
+    <loc>https://www.xingyulei.com/post/math-euler-gimbal/</loc>
     
     <lastmod>2022-09-20</lastmod>
     
@@ -277,13 +277,6 @@
 
   
   <url>
-    <loc>https://www.xingyulei.com/tags/general/</loc>
-    <lastmod>2022-09-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/c/</loc>
     <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
@@ -298,7 +291,21 @@
   </url>
   
   <url>
+    <loc>https://www.xingyulei.com/tags/general/</loc>
+    <lastmod>2022-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.xingyulei.com/tags/maya/</loc>
+    <lastmod>2022-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/math/</loc>
     <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -320,13 +327,6 @@
   
   <url>
     <loc>https://www.xingyulei.com/tags/command-port/</loc>
-    <lastmod>2022-09-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/tags/math/</loc>
     <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -368,20 +368,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/unity/</loc>
-    <lastmod>2022-09-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/tags/c/</loc>
-    <lastmod>2022-09-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/unreal/</loc>
     <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
@@ -395,17 +381,31 @@
     <priority>0.6</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://www.xingyulei.com/categories/tech-summary/</loc>
+    <loc>https://www.xingyulei.com/tags/unity/</loc>
     <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
+    <loc>https://www.xingyulei.com/tags/c/</loc>
+    <lastmod>2022-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+  <url>
     <loc>https://www.xingyulei.com/categories/learning-log/</loc>
+    <lastmod>2022-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/categories/tech-summary/</loc>
     <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
