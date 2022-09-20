@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xingyulei.com/post/wip/math-euler-gimbal/</loc>
+    
+    <lastmod>2022-09-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/post/ue-cinematic-fbx/</loc>
+    
+    <lastmod>2022-09-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xingyulei.com/post/cpp-reference-pointer/</loc>
     
     <lastmod>2022-09-10</lastmod>
@@ -177,14 +191,7 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/post/graphics-learning/</loc>
-    
-    <lastmod>2022-09-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/post/ue-cinematic-fbx/</loc>
+    <loc>https://www.xingyulei.com/post/graphics-shading-basics/</loc>
     
     <lastmod>2022-09-10</lastmod>
     
@@ -263,127 +270,127 @@
 
   <url>
     <loc>https://www.xingyulei.com/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>https://www.xingyulei.com/tags/general/</loc>
+    <lastmod>2022-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.xingyulei.com/tags/c/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/graphic-programming/</loc>
-    <lastmod>2022-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/tags/general/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/maya/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/python/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/socket/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/command-port/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/math/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/threading/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/windows/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/style/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/pyqt/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/template/</loc>
-    <lastmod>2022-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/tags/unreal/</loc>
-    <lastmod>2022-09-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/tags/pipeline/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/unity/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/c/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/unreal/</loc>
+    <lastmod>2022-09-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/pipeline/</loc>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -391,36 +398,36 @@
 
   
   <url>
-    <loc>https://www.xingyulei.com/categories/learning-log/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <loc>https://www.xingyulei.com/categories/tech-summary/</loc>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/categories/tech-summary/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <loc>https://www.xingyulei.com/categories/learning-log/</loc>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/maya-python-api/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/maya-communication/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/cinematic-workflow/</loc>
-    <lastmod>2022-09-10</lastmod>
+    <lastmod>2022-09-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
