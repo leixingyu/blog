@@ -19,10 +19,10 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Euler Angles and Gimbal Lock | Tech Art Learning</title>
+  <title>Euler Angles and Gimbal Lock Problem | Tech Art Learning</title>
   <meta name="description" content="Introduction When talking about rotation, most of us would picture gimbal movement: an object rotate about a set of three axes. This is the same principle of the Euler angles presentation of rotation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Euler Angles and Gimbal Lock">
+<meta property="og:title" content="Euler Angles and Gimbal Lock Problem">
 <meta property="og:url" content="https://www.xingyulei.com/post/math-euler-gimbal/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
 <meta property="og:description" content="Introduction When talking about rotation, most of us would picture gimbal movement: an object rotate about a set of three axes. This is the same principle of the Euler angles presentation of rotation">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://i.imgur.com/jiUWIWa.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/fbc97c759b134aa3b87b1d3fa6bbc567.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBASGVyZW5lXw==,size_20,color_FFFFFF,t_70,g_se,x_16">
 <meta property="article:published_time" content="2022-09-17T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-20T00:16:08.933Z">
+<meta property="article:modified_time" content="2022-09-21T02:04:43.335Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="maya">
 <meta property="article:tag" content="math">
@@ -185,7 +185,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cinematic-workflow/">cinematic workflow</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">17</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cinematic-workflow/">cinematic workflow</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">17</span></li></ul>
     </div>
   </div>
 
@@ -212,7 +212,7 @@
               <a href="/post/math-euler-gimbal/" class="thumb">
     
     
-        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gyroscope_operation.gif/220px-Gyroscope_operation.gif)" alt="Euler Angles and Gimbal Lock" class="thumb-image"></span>
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gyroscope_operation.gif/220px-Gyroscope_operation.gif)" alt="Euler Angles and Gimbal Lock Problem" class="thumb-image"></span>
     
 </a>
 
@@ -220,10 +220,10 @@
             
             <div class="item-inner">
               <p class="item-category">
-                <a class="category-link" href="/categories/learning-log/">learning log</a>
+                <a class="category-link" href="/categories/3d-math/">3d math</a>
               </p>
               <p class="item-title">
-                <a href="/post/math-euler-gimbal/" class="title">Euler Angles and Gimbal Lock</a>
+                <a href="/post/math-euler-gimbal/" class="title">Euler Angles and Gimbal Lock Problem</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-09-17T04:00:00.000Z" itemprop="datePublished">2022-09-17</time>
@@ -346,7 +346,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rotation-order"><span class="toc-text"> Rotation Order</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ambiguity"><span class="toc-text"> Ambiguity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gimbal-problem"><span class="toc-text"> Gimbal Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test-in-maya"><span class="toc-text"> Test in Maya</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quaternion"><span class="toc-text"> Quaternion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rotation-type"><span class="toc-text"> Rotation Type</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#intrinsic-and-extrinsic-rotations"><span class="toc-text"> Intrinsic and Extrinsic Rotations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conversion"><span class="toc-text"> Conversion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rotation-order"><span class="toc-text"> Rotation Order</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ambiguity"><span class="toc-text"> Ambiguity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gimbal-problem"><span class="toc-text"> Gimbal Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test-in-maya"><span class="toc-text"> Test in Maya</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quaternion"><span class="toc-text"> Quaternion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rotation-type"><span class="toc-text"> Rotation Type</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#intrinsic-and-extrinsic-rotations"><span class="toc-text"> Intrinsic and Extrinsic Rotations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-text"> Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conversion"><span class="toc-text"> Conversion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -360,7 +360,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Euler Angles and Gimbal Lock
+      Euler Angles and Gimbal Lock Problem
     </h1>
   
 
@@ -375,7 +375,7 @@
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+    <a class="article-category-link" href="/categories/3d-math/">3d math</a>
   </span>
 
         
@@ -482,6 +482,23 @@ about the axes of the fixed coordinate system xyz. (i.e. rotation about axis
 in the original coordinate, like world space)</p>
 <p><img src="https://img-blog.csdnimg.cn/fbc97c759b134aa3b87b1d3fa6bbc567.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBASGVyZW5lXw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="intrinsic-vs-extrinsic-rotation" /></p>
 <p>(Fig.1: Intrinsic rotations; Fig.2: Extrinsic rotations)</p>
+<h2 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h2>
+<p>Rotation calculation usually happens along with other transform type using matrix.
+Here I made a matrix composition and decomposition function in Python, utilizing
+a third party math library <a target="_blank" rel="noopener" href="http://matthew-brett.github.io/transforms3d/index.html">transforms3d</a>.</p>
+<p>As you can see, since the rotation matrix varies depending on rotation order and type,
+this is reflected as one of the argument.</p>
+<script src="https://gist.github.com/leixingyu/7496f9981c699a61ccf605c672898f9d.js"></script>
+<blockquote>
+<p>The first character is ‘r’ (rotating == intrinsic),
+or ‘s’ (static == extrinsic).</p>
+<p>The next three characters give the axis (‘x’, ‘y’ or ‘z’)
+about which to perform the rotation,
+in the order in which the rotations will be performed.</p>
+<p>For example the string ‘szyx’ specifies that the angles should be interpreted
+relative to extrinsic (static) coordinate axes, and be performed in the order:
+rotation about z axis; rotation about y axis; rotation about x axis.</p>
+</blockquote>
 <h2 id="conversion"><a class="markdownIt-Anchor" href="#conversion"></a> Conversion</h2>
 <p>Any extrinsic rotation can be represented in intrinsic rotation with the same
 angle values but inverted order or elemental rotation.</p>
@@ -504,7 +521,7 @@ the same angle with intrinsic <strong>xyz</strong> order.</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/math-euler-gimbal/" title="Euler Angles and Gimbal Lock" target="_blank" rel="external">https://www.xingyulei.com/post/math-euler-gimbal/</a>
+      <a href="https://www.xingyulei.com/post/math-euler-gimbal/" title="Euler Angles and Gimbal Lock Problem" target="_blank" rel="external">https://www.xingyulei.com/post/math-euler-gimbal/</a>
     </li>
     
 	
