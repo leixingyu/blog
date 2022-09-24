@@ -19,19 +19,22 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Change of Basis Matrix | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta name="description" content="Change of Basis Change of basis matrix transforms a vector lies in one coordinate system to another.  Axis Direction   (Image from: Techart Hub)      Up Direction: For Unreal, positive Z is considere">
+  <title>Change of Basis Matrix | Tech Art Learning</title>
+  <meta name="description" content="Introduction Different DCCs uses coordinate systems with different axis directions. For example, Maya by default uses a Y-up right-handed system; Unity uses a Y-up left-handed system; and Unreal uses">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Change of Basis Matrix">
 <meta property="og:url" content="https://www.xingyulei.com/post/wip/math-change-of-basis/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Change of Basis Change of basis matrix transforms a vector lies in one coordinate system to another.  Axis Direction   (Image from: Techart Hub)      Up Direction: For Unreal, positive Z is considere">
+<meta property="og:description" content="Introduction Different DCCs uses coordinate systems with different axis directions. For example, Maya by default uses a Y-up right-handed system; Unity uses a Y-up left-handed system; and Unreal uses">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.techarthub.com/wp-content/uploads/coordinate-comparison-chart-full.jpg">
-<meta property="article:published_time" content="2022-10-02T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-19T00:16:21.535Z">
+<meta property="article:published_time" content="2022-09-25T04:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-24T03:21:59.765Z">
 <meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="maya">
 <meta property="article:tag" content="math">
+<meta property="article:tag" content="unreal">
+<meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.techarthub.com/wp-content/uploads/coordinate-comparison-chart-full.jpg">
   <!-- Canonical links -->
@@ -180,7 +183,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cinematic-workflow/">cinematic workflow</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">17</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -190,7 +193,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/c/" style="font-size: 13.17px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/graphic-programming/" style="font-size: 13px;">graphic programming</a> <a href="/tags/math/" style="font-size: 13.33px;">math</a> <a href="/tags/maya/" style="font-size: 13.67px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.17px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.83px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/socket/" style="font-size: 13.17px;">socket</a> <a href="/tags/style/" style="font-size: 13.17px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.17px;">threading</a> <a href="/tags/unity/" style="font-size: 13.17px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.17px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.17px;">windows</a>
+      <a href="/tags/c/" style="font-size: 13.2px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.2px;">math</a> <a href="/tags/maya/" style="font-size: 13.8px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.2px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.8px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13px;">rendering</a> <a href="/tags/socket/" style="font-size: 13.2px;">socket</a> <a href="/tags/style/" style="font-size: 13.2px;">style</a> <a href="/tags/template/" style="font-size: 13.6px;">template</a> <a href="/tags/threading/" style="font-size: 13.2px;">threading</a> <a href="/tags/unity/" style="font-size: 13.4px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.4px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.2px;">windows</a>
     </div>
   </div>
 
@@ -201,6 +204,31 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled ">
         
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/wip/math-change-of-basis/" class="thumb">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/3d_basis_transformation.svg/1200px-3d_basis_transformation.svg.png)" alt="Change of Basis Matrix" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/3d-math/">3d math</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/wip/math-change-of-basis/" class="title">Change of Basis Matrix</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-09-25T04:00:00.000Z" itemprop="datePublished">2022-09-25</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-thumb">
@@ -265,7 +293,7 @@
             
             <div class="item-inner">
               <p class="item-category">
-                <a class="category-link" href="/categories/cinematic-workflow/">cinematic workflow</a>
+                <a class="category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
               </p>
               <p class="item-title">
                 <a href="/post/ue-cinematic-fbx/" class="title">UE5 Cinematic FBX Workflow</a>
@@ -290,38 +318,13 @@
             
             <div class="item-inner">
               <p class="item-category">
-                <a class="category-link" href="/categories/cinematic-workflow/">cinematic workflow</a>
+                <a class="category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
               </p>
               <p class="item-title">
                 <a href="/post/ue-cinematic-sequencer/" class="title">UE5 Cinematic Sequencer Introduction</a>
               </p>
               <p class="item-date">
                 <time datetime="2022-07-16T04:00:00.000Z" itemprop="datePublished">2022-07-16</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/post/qt-threading/" class="thumb">
-    
-    
-        <span style="background-image:url(https://i.imgur.com/ru7UWl1.gif)" alt="Qt Prevent GUI freezing with Multithreading" class="thumb-image"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/tech-summary/">tech summary</a>
-              </p>
-              <p class="item-title">
-                <a href="/post/qt-threading/" class="title">Qt Prevent GUI freezing with Multithreading</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2022-05-15T04:00:00.000Z" itemprop="datePublished">2022-05-15</time>
               </p>
             </div>
           </li>
@@ -341,7 +344,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#change-of-basis"><span class="toc-text"> Change of Basis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#axis-direction"><span class="toc-text"> Axis Direction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#basis-vectors"><span class="toc-text"> Basis Vectors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#transformation"><span class="toc-text"> Transformation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#conclusion"><span class="toc-text"> Conclusion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-text"> Example</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#maya-to-unreal"><span class="toc-text"> Maya to Unreal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maya-to-unity"><span class="toc-text"> Maya to Unity</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#basis-vectors"><span class="toc-text"> Basis Vectors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transformation"><span class="toc-text"> Transformation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-text"> Conclusion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#example"><span class="toc-text"> Example</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#maya-to-unreal"><span class="toc-text"> Maya to Unreal</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maya-to-unity"><span class="toc-text"> Maya to Unity</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -364,19 +367,19 @@
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/post/wip/math-change-of-basis/" class="article-date">
-	  <time datetime="2022-10-02T04:00:00.000Z" itemprop="datePublished">2022-10-02</time>
+	  <time datetime="2022-09-25T04:00:00.000Z" itemprop="datePublished">2022-09-25</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+    <a class="article-category-link" href="/categories/3d-math/">3d math</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/math/" rel="tag">math</a>
+	<a class="article-tag-link-link" href="/tags/math/" rel="tag">math</a>, <a class="article-tag-link-link" href="/tags/maya/" rel="tag">maya</a>, <a class="article-tag-link-link" href="/tags/unity/" rel="tag">unity</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
   </span>
 
 
@@ -387,29 +390,32 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="change-of-basis"><a class="markdownIt-Anchor" href="#change-of-basis"></a> Change of Basis</h2>
-<p>Change of basis matrix transforms a vector lies in one coordinate system to
-another.</p>
-<h2 id="axis-direction"><a class="markdownIt-Anchor" href="#axis-direction"></a> Axis Direction</h2>
+        <h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1>
+<p>Different DCCs uses coordinate systems with different axis directions. For example,
+Maya by default uses a Y-up right-handed system; Unity uses a Y-up left-handed system;
+and Unreal uses a Z-up left-handed system.</p>
 <figure>
 <img src="https://www.techarthub.com/wp-content/uploads/coordinate-comparison-chart-full.jpg" alt="dcc-coord" width="600px" >
 <figcaption>(Image from: Techart Hub)</figcaption>
 </figure>
 <br>
-<br>
 <ul>
 <li>
-<p><strong>Up Direction</strong>: For Unreal, positive <em>Z</em> is considered as the world up
-direction, instead of positive <em>Y</em> in Maya and Unity.</p>
+<p><strong>Up Direction</strong>: is what consider to be the up direction of the world. Moving
+an object up translating in direction of positive <em>Y</em> in Maya and Unity, but for
+Unreal, it’s translating in the direction of positive <em>Z</em>.</p>
 </li>
 <li>
-<p><strong>Handed System</strong>: dictate what direction of rotation; for left-handed system,
+<p><strong>Handed System</strong>: not only affects the forward/front direction of the world,
+it also dictates the direction of rotation; for left-handed system,
 positive rotation about the axis is <strong>clockwise</strong>, and for right-handed system, it’s
-<strong>counter-clockwise</strong> (same way as how your hand would curl, hence the name)</p>
+<strong>counter-clockwise</strong> (same way as how your hand would curl, hence the name).</p>
 </li>
 </ul>
-<p>These will affect how we compute the change of basis matrix describe later in the blog.</p>
-<h3 id="basis-vectors"><a class="markdownIt-Anchor" href="#basis-vectors"></a> Basis Vectors</h3>
+<p>The nature of the coordinate system affects how an object’s transformation is calculated.</p>
+<p>The <strong>Change of Basis</strong> matrix transforms a vector lies in one coordinate system to
+another.</p>
+<h2 id="basis-vectors"><a class="markdownIt-Anchor" href="#basis-vectors"></a> Basis Vectors</h2>
 <p>In the world of 2D, the basis vectors <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> of one coordinate system A,
 corresponds to
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">
@@ -458,7 +464,7 @@ where the first column is the basis vector <span class="katex"><span class="kate
 basis vector <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>.</p>
 <p>And alternatively, to translate any vector in system A to system B, we pre-multiply
 by the inverse of this change of basis matrix: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><msub><mi>M</mi><mrow><mi>c</mi><mi>o</mi><mi>b</mi></mrow></msub><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">{M_{cob}}^{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0373379999999999em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.887338em;"><span style="top:-3.1362300000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
-<h3 id="transformation"><a class="markdownIt-Anchor" href="#transformation"></a> Transformation</h3>
+<h2 id="transformation"><a class="markdownIt-Anchor" href="#transformation"></a> Transformation</h2>
 <p>Now we know how to convert vectors between coordinate systems, how do we do it for transformation?
 Here are some simple step to understand:</p>
 <ol>
@@ -477,13 +483,15 @@ of the change of basis matrix:</p>
 </li>
 </ol>
 <br/>
-<h3 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h3>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h2>
 <p>The frontal part <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><msub><mi>M</mi><mrow><mi>c</mi><mi>o</mi><mi>b</mi></mrow></msub><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>∗</mo><msub><mi>M</mi><mrow><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>A</mi></mrow></msub><mo>∗</mo><msub><mi>M</mi><mrow><mi>c</mi><mi>o</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">{M_{cob}}^{-1} * M_{transformA} * M_{cob}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0373379999999999em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.887338em;"><span style="top:-3.1362300000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> represents the
 same transformation but in system B: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mrow><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">M_{transformB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>.</p>
 <p>Alternatively, any transformation in system B: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mrow><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">M_{transformB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> can be represented
 as <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mrow><mi>c</mi><mi>o</mi><mi>b</mi></mrow></msub><mo>∗</mo><msub><mi>M</mi><mrow><mi>t</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>s</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>B</mi></mrow></msub><mo>∗</mo><msup><msub><mi>M</mi><mrow><mi>c</mi><mi>o</mi><mi>b</mi></mrow></msub><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">M_{cob} * M_{transformB} * {M_{cob}}^{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.0373379999999999em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.887338em;"><span style="top:-3.1362300000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span> in system A.</p>
-<h2 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h2>
-<h3 id="maya-to-unreal"><a class="markdownIt-Anchor" href="#maya-to-unreal"></a> Maya to Unreal</h3>
+<p>Here’s the function I’ve written Python:</p>
+<script src="https://gist.github.com/leixingyu/f8849105d509bd52723f3e94a35cab67.js"></script>
+<h1 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h1>
+<h2 id="maya-to-unreal"><a class="markdownIt-Anchor" href="#maya-to-unreal"></a> Maya to Unreal</h2>
 <p>The first thing to identify is the change of basis from Maya to Unreal,
 as illustrated before, Maya is a Y-up left-hand system and Unreal is a Z-up
 right-hand system.</p>
@@ -522,7 +530,7 @@ M_{cob} =
 \end{bmatrix}
 $</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MAYA_TO_UNREAL = np.array([</span><br><span class="line">    [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">], dtype=<span class="built_in">int</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="maya-to-unity"><a class="markdownIt-Anchor" href="#maya-to-unity"></a> Maya to Unity</h3>
+<h2 id="maya-to-unity"><a class="markdownIt-Anchor" href="#maya-to-unity"></a> Maya to Unity</h2>
 <p>Same thing for Maya to Unity conversion, a Y-up left-hand system to a Y-up right-hand
 system; the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span></span> are respectively inverted between the two systems, therefore:</p>
 <table style="width: 500px">
@@ -560,11 +568,11 @@ M_{cob} =
 \end{bmatrix}
 $</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MAYA_TO_UNITY = np.array([</span><br><span class="line">    [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">], dtype=<span class="built_in">int</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
 <p><a target="_blank" rel="noopener" href="https://youtu.be/P2LTAUO1TdA">YouTube - Change of basis | Chapter 13, Essence of linear algebra</a></p>
 <p><a target="_blank" rel="noopener" href="https://forums.unrealengine.com/t/forward-in-unreal-engine-which-is-it/93115">Unreal Engine Forum - “Forward” in unreal engine, Which is it?</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.dariomazzanti.com/uncategorized/change-of-basis/">Dario Mazzanti - Change of Basis</a></p>
-<!-- flag of hidden posts -->
+
       
     </div>
     <div class="article-footer">
@@ -610,6 +618,25 @@ $</p>
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/math-euler-gimbal/" title="Euler Angles and Gimbal Lock Problem"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
   
   
   

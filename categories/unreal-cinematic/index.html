@@ -19,22 +19,16 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>How to Organize Custom Python Library | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta name="description" content="I saw this post on stack overflow and thought it is something worth summarizing How should we organize our own library?  Method One Stack everything inside one root package, each module contains many">
-<meta property="og:type" content="article">
-<meta property="og:title" content="How to Organize Custom Python Library">
-<meta property="og:url" content="https://www.xingyulei.com/post/wip/py-organize-module/index.html">
+  <title>Category: unreal cinematic | Tech Art Learning</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Tech Art Learning">
+<meta property="og:url" content="https://www.xingyulei.com/categories/unreal-cinematic/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="I saw this post on stack overflow and thought it is something worth summarizing How should we organize our own library?  Method One Stack everything inside one root package, each module contains many">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-08-14T04:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-27T02:45:48.633Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="style">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/wip/py-organize-module/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/categories/unreal-cinematic/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -333,134 +327,71 @@
 </aside>
 
   
-  
-<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    <nav id="toc" class="article-toc">
-      <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#method-one"><span class="toc-text"> Method One</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#method-two"><span class="toc-text"> Method Two</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#conclusion"><span class="toc-text"> Conclusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol>
-    </nav>
-  </div>
-</aside>
-
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-wip/py-organize-module" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      
-        
-  
-    <h1 class="article-title" itemprop="name">
-      How to Organize Custom Python Library
-    </h1>
-  
-
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/post/wip/py-organize-module/" class="article-date">
-	  <time datetime="2021-08-14T04:00:00.000Z" itemprop="datePublished">2021-08-14</time>
-	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
-  </span>
-
-        
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/style/" rel="tag">style</a>
-  </span>
-
-
-        
-
-        
-      </div>
+  <main class="main" role="main">
+  <article class="content article article-categories article-type-list" itemscope="">
+    <header class="article-header">
+      <h1 itemprop="name" class="hidden-xs">Category: unreal cinematic</h1>
+      <p class="hidden-xs">Total 2 articles</p>
+      <nav role="navigation" id="nav-main" class="okayNav">
+        <ul>
+          <li><a href="/categories">All</a></li>
+          
+          <li><a href="/categories/learning-log/">learning log</a></li>
+          
+          <li><a href="/categories/graphics-programming/">graphics programming</a></li>
+          
+          <li><a href="/categories/3d-math/">3d math</a></li>
+          
+          <li><a href="/categories/tech-summary/">tech summary</a></li>
+          
+          <li><a href="/categories/maya-python-api/">maya python api</a></li>
+          
+          <li><a href="/categories/maya-communication/">maya communication</a></li>
+          
+          <li><a href="/categories/unreal-cinematic/">unreal cinematic</a></li>
+          
+        </ul>
+      </nav>
+    </header>
+    <!-- /header -->
+    <div class="article-body">
+      <div class="panel panel-default b-no">
+    <div class="panel-heading" role="tab">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapseunreal cinematic" aria-expanded="true">
+              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
+              unreal cinematic
+            </a>
+            <small class="text-muted">(Total 2 articles)</small>
+        </h4>
     </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
-        <p>I saw this post on stack overflow and thought it is something worth summarizing</p>
-<p>How should we organize our own library?</p>
-<h3 id="method-one"><a class="markdownIt-Anchor" href="#method-one"></a> Method One</h3>
-<p>Stack everything inside one root package, each module contains many functions, one utility module containing
-all the generic functions</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root (package)</span><br><span class="line">    animation.py  (module)</span><br><span class="line">    audio.py      (module)</span><br><span class="line">    modelling.py  (module)</span><br><span class="line">    rigging.py    (module)</span><br><span class="line">    library.py    (module)</span><br><span class="line">    util.py       (module)</span><br></pre></td></tr></table></figure>
-<h3 id="method-two"><a class="markdownIt-Anchor" href="#method-two"></a> Method Two</h3>
-<p>Have multiple separated packages, and split the code into smaller modules</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root (package)</span><br><span class="line">    animation (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        bar.py       (module)</span><br><span class="line"></span><br><span class="line">    audio (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        foo.py       (module)</span><br><span class="line"></span><br><span class="line">   rigging (package)</span><br><span class="line">        __init__.py  (module)</span><br><span class="line">        core.py      (module)</span><br><span class="line">        utils.py     (module)</span><br><span class="line">        ui.py        (module</span><br><span class="line">        foo.py       (module)</span><br><span class="line"></span><br><span class="line">   etc</span><br></pre></td></tr></table></figure>
-<p>The <code>__init__.py</code> inside of each package would import all the necessary functions</p>
-<h3 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h3>
-<p>Either are okay, but there are certain rules/recommendation to follow:</p>
-<ol>
-<li>Functions in the same module are closely connected</li>
-<li>Having fewer but bigger modules could be difficult to navigate</li>
-<li>Try to make each module standalone</li>
-<li>Having many separated modules makes import efficient, but the module should not be too small</li>
-</ol>
-<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/52082078/best-way-to-keep-python-modules-organised">https://stackoverflow.com/questions/52082078/best-way-to-keep-python-modules-organised</a></p>
-<!-- flag of hidden posts -->
-      
+    <div id="collapseunreal cinematic" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingunreal cinematic">
+        <div class="panel-body">
+            <div class="collection">
+              
+                
+<a href="/post/ue-cinematic-fbx/" class="collection-item" target="_blank" itemprop="url">
+  <time datetime="2022-08-13T04:00:00.000Z" itemprop="datePublished">2022-08-13</time>
+  <span>&nbsp;&nbsp;&nbsp;</span> UE5 Cinematic FBX Workflow
+</a>
+
+
+              
+                
+<a href="/post/ue-cinematic-sequencer/" class="collection-item" target="_blank" itemprop="url">
+  <time datetime="2022-07-16T04:00:00.000Z" itemprop="datePublished">2022-07-16</time>
+  <span>&nbsp;&nbsp;&nbsp;</span> UE5 Cinematic Sequencer Introduction
+</a>
+
+
+              
+            </div>
+        </div>
     </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-  
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/wip/py-organize-module/" title="How to Organize Custom Python Library" target="_blank" rel="external">https://www.xingyulei.com/post/wip/py-organize-module/</a>
-    </li>
-    
-	
-    <li class="post-copyright-license">
-      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
-    </li>
-	
-  </ul>
-</blockquote>
-
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
-        <div>Problem solver; Game and film enthusiast;</div>
-      </div>
-    </figure>
-  </div>
 </div>
-
-
     </div>
   </article>
-</div>
-
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  
-  
-  <div class="bar-right">
-    
-  </div>
-  </div>
-</nav>
-  
-
-
+   
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -519,12 +450,6 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
-   
-
-
-
-
-   
 
 
 
