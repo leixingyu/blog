@@ -18,8 +18,8 @@
   
   <entry>
     <title>Change of Basis Matrix</title>
-    <link href="https://www.xingyulei.com/post/wip/math-change-of-basis/"/>
-    <id>https://www.xingyulei.com/post/wip/math-change-of-basis/</id>
+    <link href="https://www.xingyulei.com/post/math-change-of-basis/"/>
+    <id>https://www.xingyulei.com/post/math-change-of-basis/</id>
     <published>2022-09-25T04:00:00.000Z</published>
     <updated>2022-09-24T03:21:59.765Z</updated>
     
@@ -37,9 +37,9 @@
     <category term="3d math" scheme="https://www.xingyulei.com/categories/3d-math/"/>
     
     
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
-    
     <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
+    
+    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
     
     <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
@@ -68,9 +68,9 @@
     <category term="3d math" scheme="https://www.xingyulei.com/categories/3d-math/"/>
     
     
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
-    
     <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
+    
+    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
     
   </entry>
   
@@ -177,11 +177,11 @@
     <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
     
     
-    <category term="threading" scheme="https://www.xingyulei.com/tags/threading/"/>
-    
     <category term="pyqt" scheme="https://www.xingyulei.com/tags/pyqt/"/>
     
     <category term="template" scheme="https://www.xingyulei.com/tags/template/"/>
+    
+    <category term="threading" scheme="https://www.xingyulei.com/tags/threading/"/>
     
   </entry>
   
