@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/ue-commandline-python/</loc>
+    <lastmod>2022-11-06</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template/</loc>
+    <lastmod>2022-11-06</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-admin/</loc>
+    <lastmod>2022-11-02</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/math-xform-conversion/</loc>
     <lastmod>2022-10-30</lastmod>
   </url>
@@ -73,14 +89,6 @@
     <lastmod>2022-09-10</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/py-admin/</loc>
-    <lastmod>2022-09-10</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
-    <lastmod>2022-09-10</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/py-named-tuple/</loc>
     <lastmod>2022-09-10</lastmod>
   </url>
@@ -102,10 +110,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
-    <lastmod>2022-09-10</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template/</loc>
     <lastmod>2022-09-10</lastmod>
   </url>
   <url>
