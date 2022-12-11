@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/general-tech-note/</loc>
+    <lastmod>2022-12-11</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/qt-template/</loc>
     <lastmod>2022-11-15</lastmod>
   </url>
@@ -19,10 +23,6 @@
   <url>
     <loc>https://www.xingyulei.com/post/math-xform-conversion/</loc>
     <lastmod>2022-10-30</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/general-tech-note/</loc>
-    <lastmod>2022-10-08</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/py-import/</loc>

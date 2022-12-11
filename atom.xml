@@ -6,7 +6,7 @@
   <link href="https://www.xingyulei.com/atom.xml" rel="self"/>
   
   <link href="https://www.xingyulei.com/"/>
-  <updated>2022-11-08T14:47:35.430Z</updated>
+  <updated>2022-12-11T16:13:41.301Z</updated>
   <id>https://www.xingyulei.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>My Personal Technical Notes</title>
+    <link href="https://www.xingyulei.com/post/general-tech-note/"/>
+    <id>https://www.xingyulei.com/post/general-tech-note/</id>
+    <published>2022-12-11T05:00:00.000Z</published>
+    <updated>2022-12-11T16:13:41.301Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1><p>Greetings!</p><p>Here you can find smaller notes I collected over the years that are tooshort to make individual blogs.</p><p>Enjoy!</p><h1 id=""><a class="markdownIt-Anchor" href="#"></a> </h1><blockquote><p><strong>Important:</strong> You may need to wait a couple of seconds for the embedded page to respond</p></blockquote><iframe src="https://v1.embednotion.com/embed/3b7dd7e58e564fa1899c9b7a54ef20ac"></iframe>  <style>  iframe { width: 100%; height: 1000px; border: 2px solid #ccc; border-radius: 10px; padding: none; }  </style>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;introduction&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#introduction&quot;&gt;&lt;/a&gt; Introduction&lt;/h1&gt;
+&lt;p&gt;Greetings!&lt;/p&gt;
+&lt;p&gt;Here you can find smalle</summary>
+      
+    
+    
+    
+    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
+    
+    
+    <category term="general" scheme="https://www.xingyulei.com/tags/general/"/>
+    
+  </entry>
   
   <entry>
     <title>Three ways of using Python Unreal Command Line</title>
@@ -37,9 +63,9 @@
     <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
-    
     <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
+    
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
     <category term="batch" scheme="https://www.xingyulei.com/tags/batch/"/>
     
@@ -66,9 +92,9 @@
     <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
-    
     <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
+    
+    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
     
     <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
@@ -97,9 +123,9 @@
     <category term="3d math" scheme="https://www.xingyulei.com/categories/3d-math/"/>
     
     
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
-    
     <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
+    
+    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
     
     <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
@@ -128,35 +154,9 @@
     <category term="3d math" scheme="https://www.xingyulei.com/categories/3d-math/"/>
     
     
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
-    
     <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
     
-  </entry>
-  
-  <entry>
-    <title>My Personal Technical Notes</title>
-    <link href="https://www.xingyulei.com/post/general-tech-note/"/>
-    <id>https://www.xingyulei.com/post/general-tech-note/</id>
-    <published>2022-09-09T04:00:00.000Z</published>
-    <updated>2022-10-08T02:33:33.898Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1><p>Greetings!</p><p>Here you can find smaller notes I collected over the years that are tooshort to make individual blogs. Each subpage represents a category, and within that category containspieces of “wisdom segment”.</p><p>This blog is updated regularly, if the frame below is broken, then the pagehasn’t been updated for over 30 days (which indicates that I’m pretty busy lately 👷)</p><p>Enjoy!</p><h1 id=""><a class="markdownIt-Anchor" href="#"></a> </h1><blockquote><p>You may need to wait a couple of seconds for the embedded page to respond</p></blockquote><iframe src="https://v1.embednotion.com/embed/3b7dd7e58e564fa1899c9b7a54ef20ac"></iframe>  <style>  iframe { width: 100%; height: 1000px; border: 2px solid #ccc; border-radius: 10px; padding: none; }  </style>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;introduction&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#introduction&quot;&gt;&lt;/a&gt; Introduction&lt;/h1&gt;
-&lt;p&gt;Greetings!&lt;/p&gt;
-&lt;p&gt;Here you can find smalle</summary>
-      
-    
-    
-    
-    <category term="tech summary" scheme="https://www.xingyulei.com/categories/tech-summary/"/>
-    
-    
-    <category term="general" scheme="https://www.xingyulei.com/tags/general/"/>
+    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
     
   </entry>
   
