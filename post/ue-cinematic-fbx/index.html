@@ -19,10 +19,10 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>UE5 Cinematic FBX Workflow | Tech Art Learning</title>
+  <title>Unreal Engine Cinematic FBX Workflow | Tech Art Learning</title>
   <meta name="description" content="Introduction How do we transfer assets and animation to Unreal needed for cinematic? .fbx is the way to go (at least for now). For each component of a cinematic, we want to set it up nicely so the da">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UE5 Cinematic FBX Workflow">
+<meta property="og:title" content="Unreal Engine Cinematic FBX Workflow">
 <meta property="og:url" content="https://www.xingyulei.com/post/ue-cinematic-fbx/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
 <meta property="og:description" content="Introduction How do we transfer assets and animation to Unreal needed for cinematic? .fbx is the way to go (at least for now). For each component of a cinematic, we want to set it up nicely so the da">
@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://i.imgur.com/XOkzVrx.png">
 <meta property="og:image" content="https://i.imgur.com/6WXdVzK.png">
 <meta property="article:published_time" content="2022-08-13T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-24T03:33:39.782Z">
+<meta property="article:modified_time" content="2022-12-16T20:56:44.496Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="maya">
 <meta property="article:tag" content="unreal">
@@ -353,7 +353,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#general"><span class="toc-text"> General</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static-mesh"><span class="toc-text"> Static Mesh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export"><span class="toc-text"> Export:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import"><span class="toc-text"> Import:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-mesh-animation"><span class="toc-text"> Static Mesh Animation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skeletal-mesh-skm"><span class="toc-text"> Skeletal Mesh (SKM)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-2"><span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-2"><span class="toc-text"> Import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skeletal-mesh-animation"><span class="toc-text"> Skeletal Mesh Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-3"><span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#blendshape"><span class="toc-text"> Blendshape</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-as-animation-sequence"><span class="toc-text"> Import (as Animation Sequence)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#camera-animation"><span class="toc-text"> Camera Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-4"><span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-as-keyframes"><span class="toc-text"> Import (as Keyframes)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maya-fbx-export-option-reference"><span class="toc-text"> Maya FBX Export Option Reference</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#general-options"><span class="toc-text"> General Options</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unreal-fbx-import-option-reference"><span class="toc-text"> Unreal FBX Import Option Reference</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#general"><span class="toc-text"> General</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static-mesh"><span class="toc-text"> Static Mesh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export"><span class="toc-text"> Export:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import"><span class="toc-text"> Import:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-mesh-animation"><span class="toc-text"> Static Mesh Animation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skeletal-mesh-skm"><span class="toc-text"> Skeletal Mesh (SKM)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-2"><span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-2"><span class="toc-text"> Import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skeletal-mesh-animation"><span class="toc-text"> Skeletal Mesh Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-3"><span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#blend-shape"><span class="toc-text"> Blend Shape</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-as-animation-sequence"><span class="toc-text"> Import (as Animation Sequence)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#camera-animation"><span class="toc-text"> Camera Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-4"><span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-as-keyframes"><span class="toc-text"> Import (as Keyframes)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maya-fbx-export-option-reference"><span class="toc-text"> Maya FBX Export Option Reference</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#general-options"><span class="toc-text"> General Options</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unreal-fbx-import-option-reference"><span class="toc-text"> Unreal FBX Import Option Reference</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -367,7 +367,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      UE5 Cinematic FBX Workflow
+      Unreal Engine Cinematic FBX Workflow
     </h1>
   
 
@@ -504,14 +504,14 @@ as it is generally used to offset world transform
 and constraints just like what we did during the rig clean up.</p>
 <p>This time, we only need to export the joint hierarchy (no meshes).</p>
 <img src="https://i.imgur.com/yHA3o39.png" alt="maya-anim-outline" height="300px">
-<h3 id="blendshape"><a class="markdownIt-Anchor" href="#blendshape"></a> Blendshape</h3>
-<p>Unreal supports blendshapes, if you need your character has blendshape animation,
+<h3 id="blend-shape"><a class="markdownIt-Anchor" href="#blend-shape"></a> Blend Shape</h3>
+<p>Unreal supports blend shapes, if you need your character has blend shape animation,
 additional steps needs to be done.</p>
 <ol>
-<li>find all meshes with blendshape node attached</li>
-<li>traverse in the node editor and locate the blendshape node</li>
-<li>bake simulation on the blendshape node</li>
-<li>include these meshes during your export (ones with blendshape)</li>
+<li>find all meshes with blend shape node attached</li>
+<li>traverse in the node editor and locate the blend shape node</li>
+<li>bake simulation on the blend shape node</li>
+<li>include these meshes during your export (ones with blend shape)</li>
 </ol>
 <h3 id="import-as-animation-sequence"><a class="markdownIt-Anchor" href="#import-as-animation-sequence"></a> Import (as Animation Sequence)</h3>
 <p>Now during import phase simply select the Skeleton Unreal asset that matches
@@ -539,68 +539,68 @@ hit ‘Import’.</p>
 <h2 id="maya-fbx-export-option-reference"><a class="markdownIt-Anchor" href="#maya-fbx-export-option-reference"></a> Maya FBX Export Option Reference</h2>
 <p><a target="_blank" rel="noopener" href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2022/ENU/Maya-Basics/files/GUID-FE8DBEAA-C2DD-43B3-9933-4BA4CDDEAA89-htm.html">FBX Export options: Full Help</a></p>
 <h3 id="general-options"><a class="markdownIt-Anchor" href="#general-options"></a> General Options</h3>
-<p>Smoothing Group: ✅</p>
-<p>Smooth Group: ✅</p>
-<p>Include Children: ✅</p>
-<p>Input Connections: ✅</p>
-<table>
-  <tr>
-    <th>Static Mesh</th>
-    <th>Skeletal Mesh</th>
-    <th>SKM Animation</th>
-    <th>Camera Animation</th>
-  </tr>
-  <tr>
-    <td>
-        <p>&#9989 Embedded Media</p>
-    </td>
-    <td>
-        <p>&#9989 Embedded Media</p>
-    </td>
-    <td>
-        <p>&#9989 Animation</p>
-    </td>
-    <td>
-        <p>&#9989 Animation</p>
-        <p>&#9989 Camera</p>
-    </td>
-  </tr>
-</table>
+<p>Embed Media:</p>
+<ul>
+<li><strong>Could be checked</strong> during Static Mesh/Skeletal Mesh export based on needs,
+the Unreal import can pick up the texture and materials embedded.</li>
+</ul>
+<p>Smoothing Group:</p>
+<ul>
+<li><strong>Usually needs to be checked</strong> so Unreal can use the smoothing group exported
+from Maya as opposed to perform smoothing calculation on Unreal side.</li>
+</ul>
+<p>Include Children:</p>
+<ul>
+<li>Almost always <strong>keep unchecked</strong>, and explicitly select nodes to export.</li>
+</ul>
+<p>Input Connections:</p>
+<ul>
+<li><strong>Keep unchecked</strong> is usually a good idea to avoid exporting extra data, but
+also depends on different circumstances</li>
+</ul>
+<p>Deformed Models:</p>
+<ul>
+<li>For Skeletal Mesh export which is commonly a rig, check ‘Skins’ to export
+skin deformation like skin clusters, check ‘Blend Shapes’ to export all blend shape
+targets.</li>
+<li>For Skeletal Mesh <strong>Animation</strong> export, uncheck ‘Skins’ and ‘Blend Shapes’.
+Skinning data is embedded within the Skeletal Mesh Asset in Unreal, and for
+blend shapes, as long  as you are following this <a href="#blend-shape">step</a>,
+the imported .fbx would also carry over blend shape animation.</li>
+</ul>
+<p>Bake Animation:</p>
+<ul>
+<li>Leave this <strong>unchecked</strong> and use Maya’s Edit | Keys | Bake Simulation, as it
+offers more flexible solutions and is also generally much faster.</li>
+</ul>
 <h2 id="unreal-fbx-import-option-reference"><a class="markdownIt-Anchor" href="#unreal-fbx-import-option-reference"></a> Unreal FBX Import Option Reference</h2>
 <p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/fbx-import-options-reference-in-unreal-engine/">FBX Import Options Reference: Full Help</a></p>
-<table>
-  <tr>
-    <th>Static Mesh</th>
-    <th>Skeletal Mesh</th>
-    <th>SKM Animation</th>
-    <th>Camera Animation</th>
-  </tr>
-  <tr>
-    <td>
-        <p>Import Mesh &#9989 </p>
-        <p>Create New Materials</p>
-        <p>Import Textures &#9989</p>
-    </td>
-    <td>
-        <p>Skeleton: None</p>
-        <p>Skeletal Mesh &#9989</p>
-        <p>Import Mesh &#9989</p>
-        <p>Create Physics Asset &#9989</p>
-        <p>Create New Materials</p>
-        <p>Import Textures &#9989</p>
-    </td>
-    <td>
-        <p>Skeleton: Existing</p>
-        <p>Import Animations &#9989</p>
-    </td>
-    <td>
-        <p>Matches by Name Only &#11036</p>
-        <p>Create Cameras &#11036</p>
-        <p>Replace Transform Track &#9989</p>
-        <p>Reduce Keys &#11036</p>
-    </td>
-  </tr>
-</table>
+<p>Static Mesh:</p>
+<ul>
+<li>‘Import Mesh’ checked</li>
+<li>‘Create New Materials’ and ‘Import Textures’ as needed</li>
+</ul>
+<p>Skeletal Mesh:</p>
+<ul>
+<li>Leave ‘Skeleton’ blank, so we can create a new skeleton asset</li>
+<li>‘Create Physics Asset’, so we can create a new PA</li>
+<li>‘Skeletal Mesh’ and ‘Import Mesh’ checked to import skinned meshes</li>
+<li>‘Create New Materials’ and ‘Import Textures’ as needed</li>
+</ul>
+<p>Skeletal Animation: (Import as Animation Sequence)</p>
+<ul>
+<li>Choose existing skeleton for ‘Skeleton’</li>
+<li>‘Import Animations’ checked</li>
+<li>‘Import Mesh’ unchecked to avoid importing blend shape source mesh if
+blend shape was exported during Maya export.</li>
+</ul>
+<p>Camera Animation: (Import as keyframes in Sequencer)</p>
+<ul>
+<li>‘Matches by Name Only’ unchecked</li>
+<li>‘Create Cameras’ unchecked</li>
+<li>‘Replace Transform Track’ checked</li>
+<li>‘Reduce Keys’ unchecked</li>
+</ul>
 
       
     </div>
@@ -611,7 +611,7 @@ hit ‘Import’.</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/ue-cinematic-fbx/" title="UE5 Cinematic FBX Workflow" target="_blank" rel="external">https://www.xingyulei.com/post/ue-cinematic-fbx/</a>
+      <a href="https://www.xingyulei.com/post/ue-cinematic-fbx/" title="Unreal Engine Cinematic FBX Workflow" target="_blank" rel="external">https://www.xingyulei.com/post/ue-cinematic-fbx/</a>
     </li>
     
 	
@@ -656,7 +656,7 @@ hit ‘Import’.</p>
     
     
     <li class="next">
-      <a href="/post/ue-cinematic-sequencer/" title="UE5 Cinematic Sequencer Introduction"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/post/ue-cinematic-sequencer/" title="Unreal Engine Cinematic Sequencer Introduction"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
