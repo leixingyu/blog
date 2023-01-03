@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>HTTP Server with REST API in Python | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="HTTP Server Basic  Rest API  Using http.server The server side: 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758import reimport jsonimport l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP Server with REST API in Python">
+<meta property="og:url" content="https://www.xingyulei.com/post/wip/py-http-server/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="HTTP Server Basic  Rest API  Using http.server The server side: 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758import reimport jsonimport l">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/qNFlDFS.jpg">
+<meta property="article:published_time" content="2023-01-07T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-03T23:17:23.858Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="server">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/qNFlDFS.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/wip/py-http-server/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4>
+<p>&#128293 Next blog post working in progress</p> </br> <p> (Feel free to contact me via <span style="color:blue">techartlei@gmail.com</span>) </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.14px;">batch</a> <a href="/tags/c/" style="font-size: 13.14px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.29px;">math</a> <a href="/tags/maya/" style="font-size: 14px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.14px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.86px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13px;">rendering</a> <a href="/tags/socket/" style="font-size: 13.14px;">socket</a> <a href="/tags/style/" style="font-size: 13.14px;">style</a> <a href="/tags/template/" style="font-size: 13.71px;">template</a> <a href="/tags/threading/" style="font-size: 13.14px;">threading</a> <a href="/tags/unity/" style="font-size: 13.43px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.57px;">unreal</a> <a href="/tags/windows/" style="font-size: 13px;">windows</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/ue-commandline-python/" class="thumb">
+    
+    
+        <span style="background-image:url(https://2.bp.blogspot.com/-TAOsVGZBJpY/WYe9le4VJ8I/AAAAAAAAIDY/e1OVOwl1Zq8nFzqDfHRms2rVTl-dDtsmwCLcBGAs/s1600/20170807-picocli-javapCommandLineClassNestedInterpreterOption.PNG)" alt="How to Use Unreal Command Line for Python (3 Ways)" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/learning-log/">learning log</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/ue-commandline-python/" class="title">How to Use Unreal Command Line for Python (3 Ways)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-11-06T04:00:00.000Z" itemprop="datePublished">2022-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-xform-conversion/" class="thumb">
+    
+    
+        <span style="background-image:url(https://hips.hearstapps.com/hmg-prod/images/23-1597850983.jpg)" alt="How Transformation Matrix Conversion Work between DCCs" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/learning-log/">learning log</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-xform-conversion/" class="title">How Transformation Matrix Conversion Work between DCCs</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-10-22T04:00:00.000Z" itemprop="datePublished">2022-10-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-change-of-basis/" class="thumb">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/3d_basis_transformation.svg/1200px-3d_basis_transformation.svg.png)" alt="What is Change of Basis Matrix?" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/3d-math/">3d math</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-change-of-basis/" class="title">What is Change of Basis Matrix?</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-09-25T04:00:00.000Z" itemprop="datePublished">2022-09-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-euler-gimbal/" class="thumb">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gyroscope_operation.gif/220px-Gyroscope_operation.gif)" alt="The Infamous Gimbal Lock Problem with Euler Angles" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/3d-math/">3d math</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-euler-gimbal/" class="title">The Infamous Gimbal Lock Problem with Euler Angles</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-09-17T04:00:00.000Z" itemprop="datePublished">2022-09-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/ue-cinematic-fbx/" class="thumb">
+    
+    
+        <span style="background-image:url(https://i.imgur.com/Ez1x8Zv.png)" alt="Unreal Engine Cinematic FBX Workflow Summary" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/ue-cinematic-fbx/" class="title">Unreal Engine Cinematic FBX Workflow Summary</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-08-13T04:00:00.000Z" itemprop="datePublished">2022-08-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#http-server-basic"><span class="toc-text"> HTTP Server Basic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rest-api"><span class="toc-text"> Rest API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-httpserver"><span class="toc-text"> Using http.server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-flask"><span class="toc-text"> Using flask</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#passing-variables"><span class="toc-text"> Passing variables</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-text"> References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-wip/py-http-server" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTTP Server with REST API in Python
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/wip/py-http-server/" class="article-date">
+	  <time datetime="2023-01-07T05:00:00.000Z" itemprop="datePublished">2023-01-07</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="http-server-basic"><a class="markdownIt-Anchor" href="#http-server-basic"></a> HTTP Server Basic</h2>
+<h2 id="rest-api"><a class="markdownIt-Anchor" href="#rest-api"></a> Rest API</h2>
+<h2 id="using-httpserver"><a class="markdownIt-Anchor" href="#using-httpserver"></a> Using <code>http.server</code></h2>
+<p>The server side:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">from</span> http.server <span class="keyword">import</span> BaseHTTPRequestHandler, HTTPServer</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalData</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    records = &#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HTTPRequestHandler</span>(<span class="params">BaseHTTPRequestHandler</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_POST</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> re.search(<span class="string">&#x27;/api/post/*&#x27;</span>, self.path):</span><br><span class="line">            length = <span class="built_in">int</span>(self.headers.get(<span class="string">&#x27;content-length&#x27;</span>))</span><br><span class="line">            data = self.rfile.read(length).decode(<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">            record_id = self.path.split(<span class="string">&#x27;/&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">            LocalData.records[record_id] = data</span><br><span class="line"></span><br><span class="line">            logging.info(<span class="string">&quot;add record %s: %s&quot;</span>, record_id, data)</span><br><span class="line">            self.send_response(<span class="number">200</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.send_response(<span class="number">403</span>)</span><br><span class="line">        self.end_headers()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_GET</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> re.search(<span class="string">&#x27;/api/get/*&#x27;</span>, self.path):</span><br><span class="line">            record_id = self.path.split(<span class="string">&#x27;/&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">if</span> record_id <span class="keyword">in</span> LocalData.records:</span><br><span class="line">                self.send_response(<span class="number">200</span>)</span><br><span class="line">                self.send_header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json&#x27;</span>)</span><br><span class="line">                self.end_headers()</span><br><span class="line"></span><br><span class="line">                <span class="comment"># Return json, even though it came in as POST URL params</span></span><br><span class="line">                data = json.dumps(LocalData.records[record_id]).encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">                logging.info(<span class="string">&quot;get record %s: %s&quot;</span>, record_id, data)</span><br><span class="line">                self.wfile.write(data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.send_response(<span class="number">404</span>, <span class="string">&#x27;Not Found: record does not exist&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.send_response(<span class="number">403</span>)</span><br><span class="line">        self.end_headers()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    server = HTTPServer((<span class="string">&#x27;localhost&#x27;</span>, <span class="number">8000</span>), HTTPRequestHandler)</span><br><span class="line">    logging.info(<span class="string">&#x27;Starting httpd...\n&#x27;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        server.serve_forever()</span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    server.server_close()</span><br><span class="line">    logging.info(<span class="string">&#x27;Stopping httpd...\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>On the client side:</p>
+<p>Using the “POST” method to access an endpoint to add a dictionary
+type data with an id <code>test</code> : <code>&#123;'key': 'value'&#125;</code>.</p>
+<p>Here I’m sending a HTTP “POST” request to the <a target="_blank" rel="noopener" href="http://localhost:8000/api/post">http://localhost:8000/api/post</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urljoin</span><br><span class="line"></span><br><span class="line"><span class="built_in">id</span> = <span class="string">&#x27;test&#x27;</span></span><br><span class="line">url = urljoin(<span class="string">&#x27;http://localhost:8000&#x27;</span>, <span class="string">&#x27;api/post/&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>))</span><br><span class="line">data = &#123;<span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;value&#x27;</span>&#125;</span><br><span class="line">r = requests.post(url, json=data)</span><br></pre></td></tr></table></figure>
+<p>Then, we can use the “GET” method to retrieve the data added just now
+by accessing another endpoint,
+this can be done either through a browser at url address with the id:
+(<a target="_blank" rel="noopener" href="http://localhost:8000/api/get/test">http://localhost:8000/api/get/test</a>), or by sending an HTTP “GET” request
+as follow:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">id</span> = <span class="string">&#x27;test&#x27;</span></span><br><span class="line">url = urljoin(<span class="string">&#x27;http://localhost:8000&#x27;</span>, <span class="string">&#x27;api/get/&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>))</span><br><span class="line">r = requests.get(url)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+<p>the response output: <code>&#123;'key': 'value'&#125;</code></p>
+<p><img src="https://i.imgur.com/qNFlDFS.jpg" alt="" /></p>
+<h2 id="using-flask"><a class="markdownIt-Anchor" href="#using-flask"></a> Using <code>flask</code></h2>
+<p>I am going to re-created the HTTP server above with <code>flask</code>
+which is much simplier:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalData</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    records = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># POST endpoint</span></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&#x27;/api/post/&lt;id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_entry</span>(<span class="params"><span class="built_in">id</span></span>):</span></span><br><span class="line">    data = request.get_json(force=<span class="literal">True</span>)</span><br><span class="line">    LocalData.records[<span class="built_in">id</span>] = data</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># GET endpoint</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&#x27;/api/get/&lt;id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_record</span>(<span class="params"><span class="built_in">id</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> LocalData.records[<span class="built_in">id</span>]</span><br></pre></td></tr></table></figure>
+<p>To run the server:
+<code>flask --app &lt;appName.py&gt; run</code>
+Add additional <code>--debug</code> flag before <code>run</code> to auto reload the latest script change.</p>
+<h3 id="passing-variables"><a class="markdownIt-Anchor" href="#passing-variables"></a> Passing variables</h3>
+<p>Create the web page and pass in variables:</p>
+<p>requries .html files rest in a folder called “templates”
+<code>render_template('index.html', jsons=data)</code></p>
+<p>referencing variable can then be done as such:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;jsons&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>In javascript, we need to use the jinja2 filter</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="handlebars"><span class="xml">    myfunc( </span><span class="template-variable">&#123;&#123;<span class="name">jsons</span>|tojson|safe&#125;&#125;</span><span class="xml"> );</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>requires .css and .js files rest in a folder called “static”</p>
+<p>linking the files can be done as such:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">&#123;&#123;url_for(</span>&#x27;<span class="attr">static</span>&#x27;, <span class="attr">filename</span>=<span class="string">&quot;myJS.js&quot;</span>)&#125;&#125;&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>= <span class="string">&#123;&#123;url_for(</span>&#x27;<span class="attr">static</span>&#x27;, <span class="attr">filename</span>=<span class="string">&quot;main.css&quot;</span>)&#125;&#125;&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<!-- flag of hidden posts -->
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/wip/py-http-server/" title="HTTP Server with REST API in Python" target="_blank" rel="external">https://www.xingyulei.com/post/wip/py-http-server/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>

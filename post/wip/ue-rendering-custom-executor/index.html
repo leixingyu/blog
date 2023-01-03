@@ -19,16 +19,24 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Category: tech summary | Tech Art Learning</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tech Art Learning">
-<meta property="og:url" content="https://www.xingyulei.com/categories/tech-summary/index.html">
+  <title>Unreal Movie Render Queue (MRQ) Custom Executor | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="This example is an implementation of an “executor,” which is responsible for deciding how a queue is rendered, giving you complete control over the before, during, and after of each render. This clas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unreal Movie Render Queue (MRQ) Custom Executor">
+<meta property="og:url" content="https://www.xingyulei.com/post/wip/ue-rendering-custom-executor/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="This example is an implementation of an “executor,” which is responsible for deciding how a queue is rendered, giving you complete control over the before, during, and after of each render. This clas">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-20T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-03T23:17:43.283Z">
 <meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="rendering">
+<meta property="article:tag" content="unreal">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="pipeline">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/categories/tech-summary/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/wip/ue-rendering-custom-executor/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -327,154 +335,151 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">Category: tech summary</h1>
-      <p class="hidden-xs">Total 10 articles</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/learning-log/">learning log</a></li>
-          
-          <li><a href="/categories/graphics-programming/">graphics programming</a></li>
-          
-          <li><a href="/categories/3d-math/">3d math</a></li>
-          
-          <li><a href="/categories/tech-summary/">tech summary</a></li>
-          
-          <li><a href="/categories/maya-python-api/">maya python api</a></li>
-          
-          <li><a href="/categories/maya-communication/">maya communication</a></li>
-          
-          <li><a href="/categories/unreal-cinematic/">unreal cinematic</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="panel panel-default b-no">
-    <div class="panel-heading" role="tab">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapsetech summary" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              tech summary
-            </a>
-            <small class="text-muted">(Total 10 articles)</small>
-        </h4>
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#see-moviepipelineexampleruntimeexecutorpy-for-an-example-on-how-to-implement-an-executor-class"><span class="toc-text"> See MoviePipelineExampleRuntimeExecutor.py for an example on how to implement an Executor class,</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#though-you-will-need-to-add-the-following-to-the-_post_init-function"><span class="toc-text"> though you will need to add the following to the _post_init function.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#projectsettings-unrealget_default_objectunrealmovierenderpipelineprojectsettings"><span class="toc-text"> projectSettings &#x3D; unreal.get_default_object(unreal.MovieRenderPipelineProjectSettings)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#projectsettingsdefault_remote_executor-selfget_class"><span class="toc-text"> projectSettings.default_remote_executor &#x3D; self.get_class()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this-overrides-the-behavior-of-the-render-remote-to-automatically-instantiate-and-run-your-executor"><span class="toc-text"> This overrides the behavior of the Render (Remote) to automatically instantiate and run your executor</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#as-python-classes-cannot-be-selected-via-the-project-preferences-dropdown-at-this-time"><span class="toc-text"> as Python classes cannot be selected via the Project Preferences dropdown at this time.</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-text"> Reference</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-wip/ue-rendering-custom-executor" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Unreal Movie Render Queue (MRQ) Custom Executor
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/wip/ue-rendering-custom-executor/" class="article-date">
+	  <time datetime="2022-12-20T05:00:00.000Z" itemprop="datePublished">2022-12-20</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/rendering/" rel="tag">rendering</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+  </span>
+
+
+        
+
+        
+      </div>
     </div>
-    <div id="collapsetech summary" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingtech summary">
-        <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/post/qt-threading/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2022-05-15T04:00:00.000Z" itemprop="datePublished">2022-05-15</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Prevent Qt Freezing with Multithreading (with Examples)
-</a>
-
-
-              
-                
-<a href="/post/qt-pie-chart/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2022-04-27T04:00:00.000Z" itemprop="datePublished">2022-04-27</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Learn to Make Modern Pie Charts in Qt (with Examples)
-</a>
-
-
-              
-                
-<a href="/post/py-end-process/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-10-25T04:00:00.000Z" itemprop="datePublished">2021-10-25</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Find PID and End Process in Windows (Python)
-</a>
-
-
-              
-                
-<a href="/post/unity-api-statemachine/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-08-29T04:00:00.000Z" itemprop="datePublished">2021-08-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> State Machine in Unity Scripting API
-</a>
-
-
-              
-                
-<a href="/post/qt-pixmap-scale/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-08-22T04:00:00.000Z" itemprop="datePublished">2021-08-22</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> How to Resize QPixmap
-</a>
-
-
-              
-                
-<a href="/post/qt-button-alignment/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-08-21T04:00:00.000Z" itemprop="datePublished">2021-08-21</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Learn Custom Icon/Text Alignment in Qt (Left-align Icon, Center-align Text)
-</a>
-
-
-              
-                
-<a href="/post/qt-detect-click/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-08-08T04:00:00.000Z" itemprop="datePublished">2021-08-08</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> How to Create Double-Click and Hover Effect in Qt
-</a>
-
-
-              
-                
-<a href="/post/qt-signal-in-for-loop/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-04-17T04:00:00.000Z" itemprop="datePublished">2021-04-17</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Qt Connect Signal in For Loop
-</a>
-
-
-              
-                
-<a href="/post/qt-template-no-ui/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-02-11T05:00:00.000Z" itemprop="datePublished">2021-02-11</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Qt Custom Widget, Dialog, MessageBox (no .ui file)
-</a>
-
-
-              
-                
-<a href="/post/qt-template-context-menu/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-02-05T05:00:00.000Z" itemprop="datePublished">2021-02-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Qt Context Menu Template (Menu, Submenu and Action)
-</a>
-
-
-              
-            </div>
-        </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>This example is an implementation of an “executor,” which is responsible for deciding how a queue
+is rendered, giving you complete control over the before, during, and after of each render.</p>
+<p>This class is an example of how to make an executor which processes a job in a standalone executable
+launched with “-game”. You can follow this example to either do a simple integration
+(read arguments from the command line as suggested here),
+or it can used to implement an advanced plugin which opens a socket
+or makes REST requests to a server to find out what work it should do,
+such as for a render farm implementation.</p>
+<p>We’re building a UClass implementation in Python.
+This allows Python to integrate into the system in a much more intuitive
+way but comes with some restrictions:</p>
+<p>Python classes cannot be serialized. This is okay for executors because
+they are created for each run and are not saved into assets, but means that you cannot
+implement a settings class as those do need to get saved into preset assets.</p>
+<p>All class properties must be UProperties. This means you cannot use native Python sockets.</p>
+<p>This class must inherit from unreal.MoviePipelinePythonHostExecutor.
+This class also provides some basic socket and async HTTP request functionality as a
+workaround for no native Python member variables.</p>
+</blockquote>
+<p>-ExecutorPythonClass=/Engine/PythonTypes.MoviePipelineExampleRuntimeExecutor:
+This is a Python Class Override.  it is optional and would be where you customize
+the script to your environment and goals. This parameter requires using
+MoviePipelinePythonHostExecutor above. The script contains example command line arguments
+and example parsing.  These are located in the Unreal Engine installation folder.</p>
+<p>-MoviePipelineLocalExecutorClass=/Script/MovieRenderPipelineCore.MoviePipelinePythonHostExecutor:
+This is a required parameter and is passed this way for every subsequent render command.
+This parameter defines that we are using the dummy PythonHostExecutor in our MovieRenderPipelineCore,
+intending to override this with our ExecutorPythonClass.</p>
+<h1 id="see-moviepipelineexampleruntimeexecutorpy-for-an-example-on-how-to-implement-an-executor-class"><a class="markdownIt-Anchor" href="#see-moviepipelineexampleruntimeexecutorpy-for-an-example-on-how-to-implement-an-executor-class"></a> See <a target="_blank" rel="noopener" href="http://MoviePipelineExampleRuntimeExecutor.py">MoviePipelineExampleRuntimeExecutor.py</a> for an example on how to implement an Executor class,</h1>
+<h1 id="though-you-will-need-to-add-the-following-to-the-_post_init-function"><a class="markdownIt-Anchor" href="#though-you-will-need-to-add-the-following-to-the-_post_init-function"></a> though you will need to add the following to the _post_init function.</h1>
+<h1 id="projectsettings-unrealget_default_objectunrealmovierenderpipelineprojectsettings"><a class="markdownIt-Anchor" href="#projectsettings-unrealget_default_objectunrealmovierenderpipelineprojectsettings"></a> projectSettings = unreal.get_default_object(unreal.MovieRenderPipelineProjectSettings)</h1>
+<h1 id="projectsettingsdefault_remote_executor-selfget_class"><a class="markdownIt-Anchor" href="#projectsettingsdefault_remote_executor-selfget_class"></a> projectSettings.default_remote_executor = self.get_class()</h1>
+<h1 id="this-overrides-the-behavior-of-the-render-remote-to-automatically-instantiate-and-run-your-executor"><a class="markdownIt-Anchor" href="#this-overrides-the-behavior-of-the-render-remote-to-automatically-instantiate-and-run-your-executor"></a> This overrides the behavior of the Render (Remote) to automatically instantiate and run your executor</h1>
+<h1 id="as-python-classes-cannot-be-selected-via-the-project-preferences-dropdown-at-this-time"><a class="markdownIt-Anchor" href="#as-python-classes-cannot-be-selected-via-the-project-preferences-dropdown-at-this-time"></a> as Python classes cannot be selected via the Project Preferences dropdown at this time.</h1>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<p><a target="_blank" rel="noopener" href="https://dev.epicgames.com/community/learning/tutorials/nZ2e/command-line-rendering-with-unreal-engine-movie-render-queue"></a></p>
+<!-- flag of hidden posts -->
+      
     </div>
-</div>
-    </div>
-  </article>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
   
     
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <div class="pager pull-left">
-            
-				<a class="prev disabled" href="javascript:;">
-					Prev
-				</a>
-            
-            <span class="page-number current">1</span><a class="page-number" href="/categories/tech-summary/page/2/">2</a><a class="extend next" rel="next" href="/categories/tech-summary/page/2/">Next</a>
-            
-        </div>
-        
-		<div class="total-article bar-right">Page 1 of 2</div>
-        </div>
-    </nav>
-	
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/wip/ue-rendering-custom-executor/" title="Unreal Movie Render Queue (MRQ) Custom Executor" target="_blank" rel="external">https://www.xingyulei.com/post/wip/ue-rendering-custom-executor/</a>
+    </li>
     
- 
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -533,6 +538,12 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+   
+
+
+
+
+   
 
 
 

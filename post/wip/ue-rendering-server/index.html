@@ -19,16 +19,25 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Category: tech summary | Tech Art Learning</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tech Art Learning">
-<meta property="og:url" content="https://www.xingyulei.com/categories/tech-summary/index.html">
+  <title>Unreal Distributed Rendering Server Guide (Render Farm Implementation) | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="Introduction  Important: the following blogs are very relevant to this guide, I recommend reading them prior to have a better picture  Unreal Automated Rendering Basics Unreal Customized Rendering Ex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unreal Distributed Rendering Server Guide (Render Farm Implementation)">
+<meta property="og:url" content="https://www.xingyulei.com/post/wip/ue-rendering-server/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Introduction  Important: the following blogs are very relevant to this guide, I recommend reading them prior to have a better picture  Unreal Automated Rendering Basics Unreal Customized Rendering Ex">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/22nFyKR.png">
+<meta property="article:published_time" content="2023-01-08T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-03T23:17:38.762Z">
 <meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="rendering">
+<meta property="article:tag" content="unreal">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/22nFyKR.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/categories/tech-summary/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/wip/ue-rendering-server/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -327,154 +336,178 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">Category: tech summary</h1>
-      <p class="hidden-xs">Total 10 articles</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/learning-log/">learning log</a></li>
-          
-          <li><a href="/categories/graphics-programming/">graphics programming</a></li>
-          
-          <li><a href="/categories/3d-math/">3d math</a></li>
-          
-          <li><a href="/categories/tech-summary/">tech summary</a></li>
-          
-          <li><a href="/categories/maya-python-api/">maya python api</a></li>
-          
-          <li><a href="/categories/maya-communication/">maya communication</a></li>
-          
-          <li><a href="/categories/unreal-cinematic/">unreal cinematic</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="panel panel-default b-no">
-    <div class="panel-heading" role="tab">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapsetech summary" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              tech summary
-            </a>
-            <small class="text-muted">(Total 10 articles)</small>
-        </h4>
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#distributed-rendering-structure"><span class="toc-text"> Distributed Rendering Structure</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#examples"><span class="toc-text"> Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-does-the-servermastercoordinatormanager-send-job-to-the-slaveagentrender-node"><span class="toc-text"> How does the server&#x2F;master&#x2F;coordinator&#x2F;manager send job to the slave&#x2F;agent&#x2F;render node</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-wip/ue-rendering-server" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Unreal Distributed Rendering Server Guide (Render Farm Implementation)
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/wip/ue-rendering-server/" class="article-date">
+	  <time datetime="2023-01-08T05:00:00.000Z" itemprop="datePublished">2023-01-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/rendering/" rel="tag">rendering</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+  </span>
+
+
+        
+
+        
+      </div>
     </div>
-    <div id="collapsetech summary" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingtech summary">
-        <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/post/qt-threading/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2022-05-15T04:00:00.000Z" itemprop="datePublished">2022-05-15</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Prevent Qt Freezing with Multithreading (with Examples)
-</a>
-
-
-              
-                
-<a href="/post/qt-pie-chart/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2022-04-27T04:00:00.000Z" itemprop="datePublished">2022-04-27</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Learn to Make Modern Pie Charts in Qt (with Examples)
-</a>
-
-
-              
-                
-<a href="/post/py-end-process/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-10-25T04:00:00.000Z" itemprop="datePublished">2021-10-25</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Find PID and End Process in Windows (Python)
-</a>
-
-
-              
-                
-<a href="/post/unity-api-statemachine/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-08-29T04:00:00.000Z" itemprop="datePublished">2021-08-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> State Machine in Unity Scripting API
-</a>
-
-
-              
-                
-<a href="/post/qt-pixmap-scale/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-08-22T04:00:00.000Z" itemprop="datePublished">2021-08-22</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> How to Resize QPixmap
-</a>
-
-
-              
-                
-<a href="/post/qt-button-alignment/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-08-21T04:00:00.000Z" itemprop="datePublished">2021-08-21</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Learn Custom Icon/Text Alignment in Qt (Left-align Icon, Center-align Text)
-</a>
-
-
-              
-                
-<a href="/post/qt-detect-click/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-08-08T04:00:00.000Z" itemprop="datePublished">2021-08-08</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> How to Create Double-Click and Hover Effect in Qt
-</a>
-
-
-              
-                
-<a href="/post/qt-signal-in-for-loop/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-04-17T04:00:00.000Z" itemprop="datePublished">2021-04-17</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Qt Connect Signal in For Loop
-</a>
-
-
-              
-                
-<a href="/post/qt-template-no-ui/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-02-11T05:00:00.000Z" itemprop="datePublished">2021-02-11</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Qt Custom Widget, Dialog, MessageBox (no .ui file)
-</a>
-
-
-              
-                
-<a href="/post/qt-template-context-menu/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2021-02-05T05:00:00.000Z" itemprop="datePublished">2021-02-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Qt Context Menu Template (Menu, Submenu and Action)
-</a>
-
-
-              
-            </div>
-        </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
+<blockquote>
+<p>Important: the following blogs are very relevant to this guide, I recommend
+reading them prior to have a better picture</p>
+<ul>
+<li><a href="">Unreal Automated Rendering Basics</a></li>
+<li><a href="">Unreal Customized Rendering Executor</a></li>
+<li><a href="">Building an HTTP Server with REST API in Python</a></li>
+</ul>
+</blockquote>
+<p>See here the <a target="_blank" rel="noopener" href="https://github.com/leixingyu/unrealRenderFarm">complete project code</a></p>
+<h3 id="distributed-rendering-structure"><a class="markdownIt-Anchor" href="#distributed-rendering-structure"></a> Distributed Rendering Structure</h3>
+<p>Network Connection General Rules:</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7664109/broadcasting-ipport-by-socket-server">https://stackoverflow.com/questions/7664109/broadcasting-ipport-by-socket-server</a></p>
+<ul>
+<li>Servers usually listen to requests and send replies</li>
+<li>A server that sends regular “announce” broadcast packets over a WiFi network, for a client that may arrive or not, wastes the network bandwidth, while a client knows exactly when it needs to poll for available servers, and stop once it’s done.</li>
+</ul>
+<p><img src="https://i.imgur.com/22nFyKR.png" alt="" /></p>
+<h2 id="examples"><a class="markdownIt-Anchor" href="#examples"></a> Examples</h2>
+<p><strong>Unreal Swarm Farm:</strong></p>
+<ul>
+<li>Swarm agent: client, initialize connection by pinging coordinator by hostname/ip (which is pre-configured)
+<ul>
+<li>the agent can send lightmap bake requests to the server, and also can process lightmap bake jobs from the server</li>
+</ul>
+</li>
+<li>Swarm coordinator: server
+<ul>
+<li>Observation: the coordinator gets bake requests immediately (which makes sense because it is a request from a client), but also assigns the job to agents <strong>(how does a server send a job without a request? does it broadcast? or does the agent request for job periodically?)</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>Blender Network Rendering (Legacy):</strong></p>
+<ul>
+<li>Client: client, only sends render requests
+<ul>
+<li>Observation: client can request to see connected slaves after connecting to the master, which makes sense; it can send requests to master</li>
+</ul>
+</li>
+<li>Master: server, coordinate (process requests from clients and assign jobs to slaves)
+<ul>
+<li>Observation: master broadcasts address? what does this mean? looking for slaves to assign jobs to?</li>
+<li>it can get requests immediately (which makes sense), same question as before, how does it assign the job to a slave?</li>
+</ul>
+</li>
+<li>Slave: a different client, only used to process render job
+<ul>
+<li>Observation: needs a pre-configured address to connect to the master and waits for jobs</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-does-the-servermastercoordinatormanager-send-job-to-the-slaveagentrender-node"><a class="markdownIt-Anchor" href="#how-does-the-servermastercoordinatormanager-send-job-to-the-slaveagentrender-node"></a> How does the server/master/coordinator/manager send job to the slave/agent/render node</h3>
+<ol>
+<li>broadcast</li>
+<li>the client send request periodically</li>
+<li>a listener server on client side that the server pings to</li>
+</ol>
+<ul>
+<li>ajax</li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/geekculture/asynchronously-updating-a-webpage-in-a-standard-html-css-js-frontend-8496a3388c01">https://medium.com/geekculture/asynchronously-updating-a-webpage-in-a-standard-html-css-js-frontend-8496a3388c01</a></li>
+</ul>
+<p>long polling
+<a target="_blank" rel="noopener" href="https://blog.oddbit.com/post/2013-11-23-long-polling-with-ja/">https://blog.oddbit.com/post/2013-11-23-long-polling-with-ja/</a></p>
+<!-- flag of hidden posts -->
+      
     </div>
-</div>
-    </div>
-  </article>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
   
     
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <div class="pager pull-left">
-            
-				<a class="prev disabled" href="javascript:;">
-					Prev
-				</a>
-            
-            <span class="page-number current">1</span><a class="page-number" href="/categories/tech-summary/page/2/">2</a><a class="extend next" rel="next" href="/categories/tech-summary/page/2/">Next</a>
-            
-        </div>
-        
-		<div class="total-article bar-right">Page 1 of 2</div>
-        </div>
-    </nav>
-	
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/wip/ue-rendering-server/" title="Unreal Distributed Rendering Server Guide (Render Farm Implementation)" target="_blank" rel="external">https://www.xingyulei.com/post/wip/ue-rendering-server/</a>
+    </li>
     
- 
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -533,6 +566,12 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+   
+
+
+
+
+   
 
 
 
