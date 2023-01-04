@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Run Command as Admin Using Python - 4 Ways (with Examples) | Tech Art Learning</title>
+  <meta name="description" content="Introduction We often find ourselves needing to automate tasks on Windows machine, Although there are many Python libraries out there that supports some common Windows operations and even cross-platf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Run Command as Admin Using Python - 4 Ways (with Examples)">
+<meta property="og:url" content="https://www.xingyulei.com/post/py-admin/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Introduction We often find ourselves needing to automate tasks on Windows machine, Although there are many Python libraries out there that supports some common Windows operations and even cross-platf">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img.raymond.cc/blog/wp-content/uploads/2007/03/user_account_control_prompt.png">
+<meta property="og:image" content="https://docs.microsoft.com/answers/storage/attachments/25037-image.png">
+<meta property="article:published_time" content="2022-03-19T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-04T00:28:46.005Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="batch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.raymond.cc/blog/wp-content/uploads/2007/03/user_account_control_prompt.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/py-admin/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4>
+<p></p> </br> <p> (Feel free to contact me via <span style="color:blue">techartlei@gmail.com</span>) </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.88px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.13px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13px;">rendering</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.13px;">style</a> <a href="/tags/template/" style="font-size: 13.63px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.5px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/ue-commandline-python/" class="thumb">
+    
+    
+        <span style="background-image:url(https://2.bp.blogspot.com/-TAOsVGZBJpY/WYe9le4VJ8I/AAAAAAAAIDY/e1OVOwl1Zq8nFzqDfHRms2rVTl-dDtsmwCLcBGAs/s1600/20170807-picocli-javapCommandLineClassNestedInterpreterOption.PNG)" alt="How to Use Unreal Command Line for Python (3 Ways)" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/learning-log/">learning log</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/ue-commandline-python/" class="title">How to Use Unreal Command Line for Python (3 Ways)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-11-06T04:00:00.000Z" itemprop="datePublished">2022-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-xform-conversion/" class="thumb">
+    
+    
+        <span style="background-image:url(https://hips.hearstapps.com/hmg-prod/images/23-1597850983.jpg)" alt="How Transformation Matrix Conversion Works between DCCs" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/learning-log/">learning log</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-xform-conversion/" class="title">How Transformation Matrix Conversion Works between DCCs</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-10-22T04:00:00.000Z" itemprop="datePublished">2022-10-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-change-of-basis/" class="thumb">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/3d_basis_transformation.svg/1200px-3d_basis_transformation.svg.png)" alt="What is Change of Basis Matrix?" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/3d-math/">3d math</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-change-of-basis/" class="title">What is Change of Basis Matrix?</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-09-25T04:00:00.000Z" itemprop="datePublished">2022-09-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-euler-gimbal/" class="thumb">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gyroscope_operation.gif/220px-Gyroscope_operation.gif)" alt="The Infamous Gimbal Lock Problem with Euler Angles" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/3d-math/">3d math</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-euler-gimbal/" class="title">The Infamous Gimbal Lock Problem with Euler Angles</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-09-17T04:00:00.000Z" itemprop="datePublished">2022-09-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/ue-cinematic-fbx/" class="thumb">
+    
+    
+        <span style="background-image:url(https://i.imgur.com/Ez1x8Zv.png)" alt="Unreal Engine Cinematic FBX Workflow Summary" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/ue-cinematic-fbx/" class="title">Unreal Engine Cinematic FBX Workflow Summary</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-08-13T04:00:00.000Z" itemprop="datePublished">2022-08-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user-account-control-uac"><span class="toc-text"> User Account Control (UAC)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-subprocess"><span class="toc-text"> Using subprocess</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-shellexecute-runas"><span class="toc-text"> Using ShellExecute runas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-runas-in-command-prompt"><span class="toc-text"> Using runas in Command Prompt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-powershell-verb-runas"><span class="toc-text"> Using PowerShell -Verb Runas</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redirect-output"><span class="toc-text"> Redirect Output</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#run-python-as-admin"><span class="toc-text"> Run Python as Admin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-text"> References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-py-admin" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Run Command as Admin Using Python - 4 Ways (with Examples)
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/py-admin/" class="article-date">
+	  <time datetime="2022-03-19T04:00:00.000Z" itemprop="datePublished">2022-03-19</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/batch/" rel="tag">batch</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/windows/" rel="tag">windows</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>We often find ourselves needing to automate tasks on Windows machine,
+Although there are many Python libraries out there that supports some
+common Windows operations and even cross-platforms.
+It is really hard to substitute Window’s Command Prompt and PowerShell,
+as they are extremely useful in cases where we need to access different
+Windows components, configure settings and troubleshooting.</p>
+<h3 id="user-account-control-uac"><a class="markdownIt-Anchor" href="#user-account-control-uac"></a> User Account Control (UAC)</h3>
+<p>Standard user accounts are for day-to-day activities with less permission,
+while the administrator account has elevated access for all features.</p>
+<p>For my personal machine, I’m operating on admin
+account all time (as the sole user). But Windows, for security reasons,
+still treats most of my actions as standard account.
+It only elevates to admin privilege when my operations want to make internal changes
+to Windows settings and my machine.</p>
+<p>The UAC feature when enabled, prompts the
+user when such action occurred and request for admin access. Additionally, for standard user,
+it means they need to ask for administrator account login.</p>
+<table style="width: 70%">
+    <tr>
+        <td>
+            <img src="https://img.raymond.cc/blog/wp-content/uploads/2007/03/user_account_control_prompt.png" alt="admin" width="500px">
+            <br/>When the sign in is an <b>administrator type</b> account<br/>
+        </td>
+        <td>
+            <img src="https://docs.microsoft.com/answers/storage/attachments/25037-image.png" alt="std" width="500px">
+            <br/>When the sign in is a <b>standard type</b> account<br/>
+        </td>
+    </tr>
+</table>
+<p>Now, in terms of task automation in Python, we’ll also want to
+figure out how to run certain operations with Admin privilege.</p>
+<h3 id="using-subprocess"><a class="markdownIt-Anchor" href="#using-subprocess"></a> Using <code>subprocess</code></h3>
+<p>Like most of us, I have been using <code>subprocess</code> to evoke <code>cmd.exe</code> or <code>powershell.exe</code> as desired
+by passing arguments as list into the function.</p>
+<ul>
+<li>Command Prompt: <code>command = ['cmd.exe', '/c', &lt;argument&gt;]</code></li>
+<li>PowerShell: <code>command = ['powershell.exe', '-command', &lt;argument&gt;]</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">runCmd</span>(<span class="params">*args</span>):</span></span><br><span class="line">    p = subprocess.Popen(</span><br><span class="line">        *args,</span><br><span class="line">        stdout=subprocess.PIPE,</span><br><span class="line">        stderr=subprocess.STDOUT</span><br><span class="line">    )</span><br><span class="line">    out, error = p.communicate()</span><br><span class="line">    <span class="keyword">return</span> out, error</span><br></pre></td></tr></table></figure>
+<p>But this doesn’t grant the process with admin privilege, and won’t notify us with UAC.</p>
+<p>How to achieve this? here are some ways to do it.</p>
+<h2 id="using-shellexecute-runas"><a class="markdownIt-Anchor" href="#using-shellexecute-runas"></a> Using ShellExecute <code>runas</code></h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line">commands = <span class="string">u&#x27;/k echo hi&#x27;</span></span><br><span class="line">ctypes.windll.shell32.ShellExecuteW(</span><br><span class="line">        <span class="literal">None</span>,</span><br><span class="line">        <span class="string">u&quot;runas&quot;</span>,</span><br><span class="line">        <span class="string">u&quot;cmd.exe&quot;</span>,</span><br><span class="line">        commands,</span><br><span class="line">        <span class="literal">None</span>,</span><br><span class="line">        <span class="number">1</span></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p><code>runas</code> from the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-shellexecutew">Windows API</a>
+launches an application as Administrator.
+User Account Control (UAC) will prompt the user for consent to run the application
+elevated or enter the credentials of an administrator account used to run the application.</p>
+<p>What about a more pythonic approach?</p>
+<h2 id="using-runas-in-command-prompt"><a class="markdownIt-Anchor" href="#using-runas-in-command-prompt"></a> Using <code>runas</code> in Command Prompt</h2>
+<p><code>runas</code> application runs command
+as a different user; it is most commonly used but not limited to perform operation
+with administrator account for granting admin access.</p>
+<blockquote>
+<p>Note: the password is handled outside UAC, which may not
+be the desired behavior</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">command = [<span class="string">&#x27;cmd.exe&#x27;</span>, <span class="string">&#x27;/c&#x27;</span>, <span class="string">&#x27;runas&#x27;</span>, <span class="string">&#x27;/user:administrator&#x27;</span>, <span class="string">&#x27;regedit&#x27;</span>]</span><br><span class="line">p = subprocess.Popen(command, stdin=subprocess.PIPE)</span><br><span class="line">p.stdin.write(<span class="string">&#x27;password&#x27;</span>)</span><br><span class="line">p.communicate()</span><br></pre></td></tr></table></figure>
+<h2 id="using-powershell-verb-runas"><a class="markdownIt-Anchor" href="#using-powershell-verb-runas"></a> Using PowerShell <code>-Verb Runas</code></h2>
+<p>This is my preferred method, since it is most flexible and also
+evokes UAC for admin access.</p>
+<ul>
+<li>
+<p><strong>Start-Process</strong></p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start-Process &lt;executable&gt; -argumentlist &lt;arugments&gt; -Verb Runas</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Call operator (&amp;)</strong></p>
+<p>with call operator, we are able to run commands not limited in the environment path,
+also not need to worry about spaces in our path.</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp; &#123;Start-Process &lt;executable&gt; -argumentlist &lt;arugments&gt; -Verb Runas&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>-ExecutionPolicy Bypass</strong></p>
+<p>Sometimes, a security setting will prevent PowerShell running a <em>.ps1</em> file,
+and we’ll need to bypass execution policy:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start-Process &lt;executable&gt; -ExecutionPolicy Bypass -File &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>It is very obvious from the above example,
+we can basically use PowerShell to wrap around
+anything, including Command Prompt.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start-Process cmd.exe -argumentlist &#x27;/k &quot;dir&quot;&#x27; -Verb Runas</span><br></pre></td></tr></table></figure>
+<p>To bundle everything together, a working example would look like this in Python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps_command = <span class="string">&quot;&amp; &#123;&#123;Start-Process cmd.exe -argumentlist &#x27;/k \&quot;dir\&quot;&#x27; -Verb Runas&#125;&#125;&quot;</span></span><br><span class="line">command = [<span class="string">&#x27;powershell.exe&#x27;</span>, <span class="string">&#x27;-command&#x27;</span>, ps_command]</span><br><span class="line">runCmd(command)</span><br></pre></td></tr></table></figure>
+<p>essentially using <code>subprocess</code> to run PowerShell in admin using <code>-Verb Runas</code>
+to execute command <code>/k dir</code> in Command Prompt (which also has elevated access).</p>
+<h3 id="redirect-output"><a class="markdownIt-Anchor" href="#redirect-output"></a> Redirect Output</h3>
+<p>By doing the above, we are running an executable within a process.
+the sacrifice is that it is difficult to pass the output,
+but here’s a few workarounds:</p>
+<p><strong>Output results to a file</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start-Process cmd.exe -argumentlist &#x27;/c &quot;dir&quot;&#x27; -redirectStandardOutput &quot;C:\Users\xlei\Desktop\temp.txt&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>Output result to the console</strong></p>
+<p>Just the exit code:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">output = Start-Process cmd.exe -argumentlist <span class="string">&#x27;/c &quot;dir&quot;&#x27;</span> -PassThru -Wait</span></span><br><span class="line"><span class="meta">$</span><span class="bash">output.ExitCode</span></span><br></pre></td></tr></table></figure>
+<p>A neat function I found <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/52629677/15214802">here</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">function Start-ProcessWithOutput</span><br><span class="line">&#123;</span><br><span class="line">    param ([string]$Path,[string[]]$ArgumentList)</span><br><span class="line">    $Output = New-Object -TypeName System.Text.StringBuilder</span><br><span class="line">    $Error = New-Object -TypeName System.Text.StringBuilder</span><br><span class="line">    $psi = New-object System.Diagnostics.ProcessStartInfo </span><br><span class="line">    $psi.CreateNoWindow = $true </span><br><span class="line">    $psi.UseShellExecute = $false </span><br><span class="line">    $psi.RedirectStandardOutput = $true </span><br><span class="line">    $psi.RedirectStandardError = $true </span><br><span class="line">    $psi.FileName = $Path</span><br><span class="line">    if ($ArgumentList.Count -gt 0)</span><br><span class="line">    &#123;</span><br><span class="line">        $psi.Arguments = $ArgumentList</span><br><span class="line">    &#125;</span><br><span class="line">    $process = New-Object System.Diagnostics.Process </span><br><span class="line">    $process.StartInfo = $psi </span><br><span class="line">    [void]$process.Start()</span><br><span class="line">    do</span><br><span class="line">    &#123;</span><br><span class="line">       if (!$process.StandardOutput.EndOfStream)</span><br><span class="line">       &#123;</span><br><span class="line">           [void]$Output.AppendLine($process.StandardOutput.ReadLine())</span><br><span class="line">       &#125;</span><br><span class="line">       if (!$process.StandardError.EndOfStream)</span><br><span class="line">       &#123;</span><br><span class="line">           [void]$Error.AppendLine($process.StandardError.ReadLine())</span><br><span class="line">       &#125;</span><br><span class="line">       Start-Sleep -Milliseconds 10</span><br><span class="line">    &#125; while (!$process.HasExited)</span><br><span class="line"></span><br><span class="line">    #read remainder</span><br><span class="line">    while (!$process.StandardOutput.EndOfStream)</span><br><span class="line">    &#123;</span><br><span class="line">        #write-verbose &#x27;read remaining output&#x27;</span><br><span class="line">        [void]$Output.AppendLine($process.StandardOutput.ReadLine())</span><br><span class="line">    &#125;</span><br><span class="line">    while (!$process.StandardError.EndOfStream)</span><br><span class="line">    &#123;</span><br><span class="line">        #write-verbose &#x27;read remaining error&#x27;</span><br><span class="line">        [void]$Error.AppendLine($process.StandardError.ReadLine())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return @&#123;ExitCode = $process.ExitCode; Output = $Output.ToString(); Error = $Error.ToString(); ExitTime=$process.ExitTime&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash">p = Start-ProcessWithOutput cmd.exe -argumentlist <span class="string">&#x27;/c &quot;dir&quot;&#x27;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">p.ExitCode</span></span><br><span class="line"><span class="meta">$</span><span class="bash">p.Output</span></span><br><span class="line"><span class="meta">$</span><span class="bash">p.Error</span></span><br></pre></td></tr></table></figure>
+<h2 id="run-python-as-admin"><a class="markdownIt-Anchor" href="#run-python-as-admin"></a> Run Python as Admin</h2>
+<p>Running the whole python script in Admin, meaning that the subsequent processes
+will have admin access, if this is the behaviour you prefer.</p>
+<script src="https://gist.github.com/leixingyu/a2cc64cec76638d2367cd4c2fc1b94ec.js"></script>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p><a target="_blank" rel="noopener" href="https://superuser.com/questions/615654">Stack Exchange - Run .exe file via Python as Administrator</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8097354/">Stack Overflow - How do I capture the output into a variable from an external process in PowerShell?</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8925323/">Stack Overflow - Redirection of standard and error output appending to the same log file</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/11531068/">Stack Overflow - Powershell: Capturing standard out and error with Process object</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.windows-commandline.com/windows-runas-command-prompt/">Windows Commandline - Windows runas command syntax and examples</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/py-admin/" title="Run Command as Admin Using Python - 4 Ways (with Examples)" target="_blank" rel="external">https://www.xingyulei.com/post/py-admin/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The author assumes no responsibility or liability for any errors or omissions in the content of this site. The information contained in this site is provided on an "as is" basis with no guarantees of completeness, accuracy, usefulness or timeliness.
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/qt-pie-chart/" title="Learn to Make Modern Pie Charts in Qt (with Examples)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/maya-ik-fk-match/" title="How to Automate IK FK Matching in Maya (2 Steps)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
