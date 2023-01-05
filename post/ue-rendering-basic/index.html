@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Learn to Automate Unreal Rendering Using Python | Tech Art Learning</title>
+  <meta name="description" content="Introduction In this post, I’ll cover Python automation using Movie Render Queue (MRQ) and Movie Scene Capture. I’ll go over how to make Python tools to run in the Unreal Editor as well as outside Un">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn to Automate Unreal Rendering Using Python">
+<meta property="og:url" content="https://www.xingyulei.com/post/ue-rendering-basic/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Introduction In this post, I’ll cover Python automation using Movie Render Queue (MRQ) and Movie Scene Capture. I’ll go over how to make Python tools to run in the Unreal Editor as well as outside Un">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://docs.unrealengine.com/4.26/Images/AnimatingObjects/Sequencer/Workflow/RenderAndExport/HighQualityMediaExport/settings2.webp">
+<meta property="og:image" content="https://docs.unrealengine.com/4.27/Images/AnimatingObjects/Sequencer/Overview/RenderMovieSettings/MovieSettingsWindow.webp">
+<meta property="article:published_time" content="2022-12-03T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-05T16:48:14.029Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="rendering">
+<meta property="article:tag" content="unreal">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://docs.unrealengine.com/4.26/Images/AnimatingObjects/Sequencer/Workflow/RenderAndExport/HighQualityMediaExport/settings2.webp">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/ue-rendering-basic/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <img src="https://i.imgur.com/nXNdEmr.jpg" alt="banner" width=300px> <h4>Welcome to our humble abode!</h4>
+<p></p> </br> <p> (Feel free to contact me via <span style="color:blue">techartlei@gmail.com</span>) </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.88px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.13px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.13px;">rendering</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.13px;">style</a> <a href="/tags/template/" style="font-size: 13.63px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.5px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/ue-rendering-basic/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/ue-rendering-basic/" class="title">Learn to Automate Unreal Rendering Using Python</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-12-03T05:00:00.000Z" itemprop="datePublished">2022-12-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/ue-commandline-python/" class="thumb">
+    
+    
+        <span style="background-image:url(https://2.bp.blogspot.com/-TAOsVGZBJpY/WYe9le4VJ8I/AAAAAAAAIDY/e1OVOwl1Zq8nFzqDfHRms2rVTl-dDtsmwCLcBGAs/s1600/20170807-picocli-javapCommandLineClassNestedInterpreterOption.PNG)" alt="How to Use Unreal Command Line for Python (3 Ways)" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/learning-log/">learning log</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/ue-commandline-python/" class="title">How to Use Unreal Command Line for Python (3 Ways)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-11-06T04:00:00.000Z" itemprop="datePublished">2022-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-xform-conversion/" class="thumb">
+    
+    
+        <span style="background-image:url(https://hips.hearstapps.com/hmg-prod/images/23-1597850983.jpg)" alt="How Transformation Matrix Conversion Works between DCCs" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/learning-log/">learning log</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-xform-conversion/" class="title">How Transformation Matrix Conversion Works between DCCs</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-10-22T04:00:00.000Z" itemprop="datePublished">2022-10-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-change-of-basis/" class="thumb">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/3d_basis_transformation.svg/1200px-3d_basis_transformation.svg.png)" alt="What is Change of Basis Matrix?" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/3d-math/">3d math</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-change-of-basis/" class="title">What is Change of Basis Matrix?</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-09-25T04:00:00.000Z" itemprop="datePublished">2022-09-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/post/math-euler-gimbal/" class="thumb">
+    
+    
+        <span style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gyroscope_operation.gif/220px-Gyroscope_operation.gif)" alt="The Infamous Gimbal Lock Problem with Euler Angles" class="thumb-image"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/3d-math/">3d math</a>
+              </p>
+              <p class="item-title">
+                <a href="/post/math-euler-gimbal/" class="title">The Infamous Gimbal Lock Problem with Euler Angles</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-09-17T04:00:00.000Z" itemprop="datePublished">2022-09-17</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#movie-render-queue"><span class="toc-text"> Movie Render Queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#movie-render-queue-in-editor"><span class="toc-text"> Movie Render Queue in Editor</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bare-minimal"><span class="toc-text"> Bare Minimal</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#override-settings"><span class="toc-text"> Override Settings</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#callback"><span class="toc-text"> Callback</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#movie-render-queue-commandline"><span class="toc-text"> Movie Render Queue Commandline</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#movie-scene-capture"><span class="toc-text"> Movie Scene Capture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#movie-scene-capture-editor"><span class="toc-text"> Movie Scene Capture Editor</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bare-minimal-2"><span class="toc-text"> Bare Minimal</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#callback-2"><span class="toc-text"> Callback</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#override-setting"><span class="toc-text"> Override Setting</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#movie-scene-capture-commandline"><span class="toc-text"> Movie Scene Capture Commandline</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#additional-references"><span class="toc-text"> Additional References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ue-rendering-basic" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Learn to Automate Unreal Rendering Using Python
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/ue-rendering-basic/" class="article-date">
+	  <time datetime="2022-12-03T05:00:00.000Z" itemprop="datePublished">2022-12-03</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/rendering/" rel="tag">rendering</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>In this post, I’ll cover Python automation using Movie Render Queue (MRQ) and
+Movie Scene Capture.</p>
+<p>I’ll go over how to make Python tools to run in the Unreal Editor as well
+as outside Unreal through command line; How to change settings and add call backs.</p>
+<p>The MRQ is more preferred over Movie Scene Capture as it’s much more customizable,
+both in supported render setting and in automation (In a later post you’ll see).</p>
+<h2 id="movie-render-queue"><a class="markdownIt-Anchor" href="#movie-render-queue"></a> Movie Render Queue</h2>
+<blockquote>
+<p>Movie Render Queue is a successor to the Sequencer Render Movie feature, and is built for higher quality, easier integration into production pipelines, and user extensibility. With Movie Render Queue you can accumulate multiple render samples together to produce the final output frame, which allows for higher quality anti-aliasing, radial motion blur, and reduced noise in ray tracing.</p>
+</blockquote>
+<p>The Movie Render Queue (MRQ) is the latest and the greatest from Unreal for
+Rendering out cinematic, over the legacy Movie Scene Capture Tool.</p>
+<p><img src="https://docs.unrealengine.com/4.26/Images/AnimatingObjects/Sequencer/Workflow/RenderAndExport/HighQualityMediaExport/settings2.webp" alt="MRQ" /></p>
+<h3 id="movie-render-queue-in-editor"><a class="markdownIt-Anchor" href="#movie-render-queue-in-editor"></a> Movie Render Queue in Editor</h3>
+<p>Here you can find the full example from Epic:
+<code>Engine\Plugins\MovieScene\MovieRenderPipeline\Content\Python\MoviePipelineEditorExample.py</code></p>
+<h4 id="bare-minimal"><a class="markdownIt-Anchor" href="#bare-minimal"></a> Bare Minimal</h4>
+<p>Through Unreal Editor, we use a render executor called PlayInEditor (PIE) executor.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">movie_queue_render</span>(<span class="params">u_level_file, u_level_seq_file, u_preset_file</span>):</span></span><br><span class="line">    subsystem = unreal.get_editor_subsystem(unreal.MoviePipelineQueueSubsystem)</span><br><span class="line">    queue = subsystem.get_queue()</span><br><span class="line">    executor = unreal.MoviePipelinePIEExecutor()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># config render job with movie pipeline config</span></span><br><span class="line">    job = queue.allocate_new_job(unreal.MoviePipelineExecutorJob)</span><br><span class="line">    job.job_name = <span class="string">&#x27;test&#x27;</span></span><br><span class="line">    job.<span class="built_in">map</span> = unreal.SoftObjectPath(u_level_file)</span><br><span class="line">    job.sequence = unreal.SoftObjectPath(u_level_seq_file)</span><br><span class="line">    preset = unreal.EditorAssetLibrary.find_asset_data(u_preset_file).get_asset()</span><br><span class="line">    job.set_configuration(preset)</span><br><span class="line">    </span><br><span class="line">    subsystem.render_queue_with_executor_instance(executor)</span><br></pre></td></tr></table></figure>
+<h4 id="override-settings"><a class="markdownIt-Anchor" href="#override-settings"></a> Override Settings</h4>
+<p>All the render settings are stored as an <code>unreal.MoviePipelineMasterConfig</code> object.</p>
+<p>It has sub setting components class <code>unreal.MoviePipeline</code>, for example: <code>unreal.MoviePipelineOutputSetting</code>,
+<code>unreal.MoviePipelineCameraSetting</code>, <code>unreal.MoviePipelineColorSetting</code> and etc</p>
+<p>Each Setting class then have properties, for <code>unreal.MoviePipelineOutputSetting</code>, it has
+properties such as:</p>
+<ul>
+<li><code>use_custom_frame_rate</code></li>
+<li><code>frame_number_offset</code></li>
+<li><code>output_directory</code></li>
+<li>etc</li>
+</ul>
+<p>All of which can be modified, attached, and removed.</p>
+<p>Example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uPreset = unreal.MoviePipelineMasterConfig()</span><br><span class="line">uSetting = uPreset.find_setting_by_class(unreal.MoviePipelineOutputSetting)</span><br><span class="line">uSetting.output_resolution = unreal.IntPoint(<span class="number">1280</span>, <span class="number">720</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="callback"><a class="markdownIt-Anchor" href="#callback"></a> Callback</h4>
+<p>Callbacks can be added upon each Shot, Job, Queue Finished. The callback function
+has to be kept as global variable here to prevent it being destroyed by GC.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">render_finished</span>(<span class="params">params</span>):</span></span><br><span class="line">    unreal.log(params)</span><br><span class="line"></span><br><span class="line">executor.on_individual_job_work_finished_delegate.add_callable_unique(render_finished)</span><br></pre></td></tr></table></figure>
+<p>or.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">render_errored</span>(<span class="params">executor, pipeline, is_fatal, error_msg</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">ERROR_CALLBACK = unreal.OnMoviePipelineExecutorErrored()</span><br><span class="line">ERROR_CALLBACK.add_callable(render_errored)</span><br><span class="line">exector.on_executor_errored_delegate = ERROR_CALLBACK</span><br></pre></td></tr></table></figure>
+<p>See my convenient class for PIE here: <a target="_blank" rel="noopener" href="https://github.com/leixingyu/unrealUtil/blob/master/render/render.py">https://github.com/leixingyu/unrealUtil/blob/master/render/render.py</a></p>
+<h3 id="movie-render-queue-commandline"><a class="markdownIt-Anchor" href="#movie-render-queue-commandline"></a> Movie Render Queue Commandline</h3>
+<p>The default MRQ command line offers customization by using
+either an Unreal Render Preset/Config asset or an Unreal Render Queue asset.</p>
+<p>Since there are so many settings in the MRQ you can modify, it’s hard to expose
+all of the little details through command line. If you do wish to do so, I have
+an entire blog about <a href="https://www.xingyulei.com/post/ue-rendering-custom-executor">Unreal MRQ Custom Executor</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">movie_queue_render</span>(<span class="params">u_level_file, u_level_seq_file, u_preset_file</span>):</span></span><br><span class="line">    command = [</span><br><span class="line">        UNREAL_EXE,</span><br><span class="line">        U_PROJECT,</span><br><span class="line">        u_level_file,</span><br><span class="line"></span><br><span class="line">        <span class="comment"># required</span></span><br><span class="line">        <span class="string">&quot;-LevelSequence=%s&quot;</span> % u_level_seq_file,  <span class="comment"># The sequence to render</span></span><br><span class="line">        <span class="string">&quot;-MoviePipelineConfig=\&quot;%s\&quot;&quot;</span> % u_preset_file,</span><br><span class="line">        <span class="string">&quot;-game&quot;</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment"># options</span></span><br><span class="line">        <span class="string">&quot;-NoLoadingScreen&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-log&quot;</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment"># window size not resolution</span></span><br><span class="line">        <span class="string">&quot;-Windowed&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-ResX=800&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-ResY=600&quot;</span>,</span><br><span class="line">    ]</span><br><span class="line">    proc = subprocess.Popen(command)</span><br><span class="line">    <span class="keyword">return</span> proc.communicate()</span><br></pre></td></tr></table></figure>
+<h2 id="movie-scene-capture"><a class="markdownIt-Anchor" href="#movie-scene-capture"></a> Movie Scene Capture</h2>
+<p><strong>Now this part may or may not be relevant anymore as many people treats the
+Movie Scene Capture as deprecated</strong>. But I thought I write it down anyway,
+as it might be helpful as a comparison to MRQ</p>
+<h3 id="movie-scene-capture-editor"><a class="markdownIt-Anchor" href="#movie-scene-capture-editor"></a> Movie Scene Capture Editor</h3>
+<p><img src="https://docs.unrealengine.com/4.27/Images/AnimatingObjects/Sequencer/Overview/RenderMovieSettings/MovieSettingsWindow.webp" alt="MSC" /></p>
+<p>Here you can find an example from Epic:</p>
+<p><code>Engine\Plugins\MovieScene\SequencerScripting\Content\Python\sequencer_examples.py</code></p>
+<h4 id="bare-minimal-2"><a class="markdownIt-Anchor" href="#bare-minimal-2"></a> Bare Minimal</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line">capture = unreal.AutomatedLevelSequenceCapture()</span><br><span class="line">capture.level_sequence_asset = unreal.SoftObjectPath(sequencer_path)</span><br><span class="line">unreal.SequencerTools.render_movie(capture, unreal.OnRenderMovieStopped())</span><br></pre></td></tr></table></figure>
+<p>In this example, you only need to supply the path to the Unreal sequencer asset.</p>
+<p>Note that the render happens in the current level, so make sure to pre-load the map
+before running the Movie Scene Capture.</p>
+<h4 id="callback-2"><a class="markdownIt-Anchor" href="#callback-2"></a> Callback</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_render_movie_finished</span>(<span class="params">success</span>):</span></span><br><span class="line">	unreal.log(<span class="string">&quot;Movie has finished rendering&quot;</span>)</span><br><span class="line">	</span><br><span class="line">on_finished_callback = unreal.OnRenderMovieStopped()</span><br><span class="line">on_finished_callback.bind_callable(on_render_movie_finished)</span><br></pre></td></tr></table></figure>
+<p>Note the <code>on_finished_callback</code> is a global variable so it is persistent and won’t
+get destroyed during GC.</p>
+<p>The next step is to register the callback function:
+<code>unreal.SequencerTools.render_movie(capture_settings, unreal.OnRenderMovieStopped())</code></p>
+<h4 id="override-setting"><a class="markdownIt-Anchor" href="#override-setting"></a> Override Setting</h4>
+<p>The settings can be modified through class <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/PythonAPI/class/MovieSceneCaptureSettings.html#unreal.MovieSceneCaptureSettings"><code>unreal.MovieSceneCaptureSettings</code></a></p>
+<p>Example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">capture = unreal.AutomatedLevelSequenceCapture()</span><br><span class="line">setting = capture.settings</span><br><span class="line">setting.output_directory = unreal.DirectoryPath(export_path)</span><br></pre></td></tr></table></figure>
+<h3 id="movie-scene-capture-commandline"><a class="markdownIt-Anchor" href="#movie-scene-capture-commandline"></a> Movie Scene Capture Commandline</h3>
+<p>A lot of custom flags can be specified through the command line, see the full list
+of control commands: <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/4.26/en-US/AnimatingObjects/Sequencer/Workflow/RenderAndExport/RenderingCmdLine/">Command Line Arguments for Rendering Movies</a></p>
+<p>Console variables can even be set through command line which is decent.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">movie_scene_capture</span>(<span class="params">u_level_file, u_level_seq_file, output_folder</span>):</span></span><br><span class="line">    command = [</span><br><span class="line">        UNREAL_EXE,</span><br><span class="line">        U_PROJECT,</span><br><span class="line">        u_level_file,</span><br><span class="line"></span><br><span class="line">        <span class="comment"># required</span></span><br><span class="line">        <span class="string">&quot;-LevelSequence=%s&quot;</span> % u_level_seq_file,  <span class="comment"># The sequence to render</span></span><br><span class="line">        <span class="string">&quot;-MovieSceneCaptureType=/Script/MovieSceneCapture.AutomatedLevelSequenceCapture&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-NoLoadingScreen&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-game&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-log&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-MovieCinematicMode=yes&quot;</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment"># general property</span></span><br><span class="line">        <span class="string">&quot;-MovieFolder=%s&quot;</span> % output_folder,</span><br><span class="line"></span><br><span class="line">        <span class="comment"># if doing .avi</span></span><br><span class="line">        <span class="string">&quot;-MovieFormat=Video&quot;</span>,  <span class="comment"># JPG, BMP, PNG or Video</span></span><br><span class="line">        <span class="string">&quot;-MovieFrameRate=24&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-MovieQuality=100&quot;</span>,  <span class="comment"># compression quality in percentage</span></span><br><span class="line">        <span class="string">&quot;-Windowed&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-ResX=1920&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-ResY=1080&quot;</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment"># other</span></span><br><span class="line">        <span class="string">&quot;-NoTextureStreaming&quot;</span>,  <span class="comment"># for final render</span></span><br><span class="line">        <span class="string">&quot;-NoScreenMessages&quot;</span>,  <span class="comment"># no screen debug message</span></span><br><span class="line">    ]</span><br><span class="line">    proc = subprocess.Popen(command)</span><br><span class="line">    <span class="keyword">return</span> proc.communicate()</span><br></pre></td></tr></table></figure>
+<h2 id="additional-references"><a class="markdownIt-Anchor" href="#additional-references"></a> Additional References</h2>
+<p><a target="_blank" rel="noopener" href="https://forums.unrealengine.com/t/unable-to-execute-moviepipelinequeue-from-python/467250/5">Unreal Forums - Unable to execute MoviePipelineQueue from Python</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/ue-rendering-basic/" title="Learn to Automate Unreal Rendering Using Python" target="_blank" rel="external">https://www.xingyulei.com/post/ue-rendering-basic/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/ue-commandline-python/" title="How to Use Unreal Command Line for Python (3 Ways)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
