@@ -326,13 +326,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/rendering/</loc>
-    <lastmod>2023-01-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/math/</loc>
     <lastmod>2023-01-07</lastmod>
     <changefreq>daily</changefreq>
@@ -355,6 +348,13 @@
   
   <url>
     <loc>https://www.xingyulei.com/tags/unity/</loc>
+    <lastmod>2023-01-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/rendering/</loc>
     <lastmod>2023-01-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -461,14 +461,14 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/categories/graphics-programming/</loc>
+    <loc>https://www.xingyulei.com/categories/3d-math/</loc>
     <lastmod>2023-01-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/categories/3d-math/</loc>
+    <loc>https://www.xingyulei.com/categories/graphics-programming/</loc>
     <lastmod>2023-01-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
