@@ -326,13 +326,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/general/</loc>
-    <lastmod>2023-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/rendering/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
@@ -340,14 +333,14 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/maya/</loc>
+    <loc>https://www.xingyulei.com/tags/general/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/python/</loc>
+    <loc>https://www.xingyulei.com/tags/maya/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -369,6 +362,13 @@
   
   <url>
     <loc>https://www.xingyulei.com/tags/unity/</loc>
+    <lastmod>2023-01-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/python/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -410,14 +410,14 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/style/</loc>
+    <loc>https://www.xingyulei.com/tags/server/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/server/</loc>
+    <loc>https://www.xingyulei.com/tags/style/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -461,13 +461,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/categories/tech-summary/</loc>
-    <lastmod>2023-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/categories/graphics-programming/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
@@ -475,7 +468,7 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/categories/maya-python-api/</loc>
+    <loc>https://www.xingyulei.com/categories/tech-summary/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -483,6 +476,13 @@
   
   <url>
     <loc>https://www.xingyulei.com/categories/3d-math/</loc>
+    <lastmod>2023-01-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/categories/maya-python-api/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
