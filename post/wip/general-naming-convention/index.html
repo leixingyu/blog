@@ -19,25 +19,19 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Unreal Distributed Rendering Server Guide (Render Farm Implementation) | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta name="description" content="Introduction  Important: the following blogs are very relevant to this guide, I recommend reading them prior to have a better picture  Unreal Automated Rendering Basics Unreal Customized Rendering Ex">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Unreal Distributed Rendering Server Guide (Render Farm Implementation)">
-<meta property="og:url" content="https://www.xingyulei.com/post/wip/ue-rendering-server/index.html">
+  <title>CFX Cloth Pipeline | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="CFX Cloth Pipeline">
+<meta property="og:url" content="https://www.xingyulei.com/post/wip/general-naming-convention/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Introduction  Important: the following blogs are very relevant to this guide, I recommend reading them prior to have a better picture  Unreal Automated Rendering Basics Unreal Customized Rendering Ex">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.imgur.com/22nFyKR.png">
-<meta property="article:published_time" content="2023-01-08T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-03T23:17:38.762Z">
+<meta property="article:published_time" content="2021-09-17T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-28T17:12:59.796Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="rendering">
-<meta property="article:tag" content="unreal">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="cfx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/22nFyKR.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/wip/ue-rendering-server/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/wip/general-naming-convention/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -182,7 +176,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -192,7 +186,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/batch/" style="font-size: 13.29px;">batch</a> <a href="/tags/c/" style="font-size: 13.14px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.29px;">math</a> <a href="/tags/maya/" style="font-size: 13.86px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.29px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.71px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.29px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.14px;">socket</a> <a href="/tags/style/" style="font-size: 13.14px;">style</a> <a href="/tags/template/" style="font-size: 13.57px;">template</a> <a href="/tags/threading/" style="font-size: 13.14px;">threading</a> <a href="/tags/unity/" style="font-size: 13.43px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.57px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.14px;">windows</a>
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.88px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.25px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.13px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
     </div>
   </div>
 
@@ -206,21 +200,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#distributed-rendering-structure"><span class="toc-text"> Distributed Rendering Structure</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#examples"><span class="toc-text"> Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-does-the-servermastercoordinatormanager-send-job-to-the-slaveagentrender-node"><span class="toc-text"> How does the server&#x2F;master&#x2F;coordinator&#x2F;manager send job to the slave&#x2F;agent&#x2F;render node</span></a></li></ol>
+      
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-wip/ue-rendering-server" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-wip/general-naming-convention" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Unreal Distributed Rendering Server Guide (Render Farm Implementation)
+      CFX Cloth Pipeline
     </h1>
   
 
@@ -228,20 +222,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/wip/ue-rendering-server/" class="article-date">
-	  <time datetime="2023-01-08T05:00:00.000Z" itemprop="datePublished">2023-01-08</time>
+	<a href="/post/wip/general-naming-convention/" class="article-date">
+	  <time datetime="2021-09-17T04:00:00.000Z" itemprop="datePublished">2021-09-17</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+    
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/rendering/" rel="tag">rendering</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+	
   </span>
 
 
@@ -252,71 +246,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
-<blockquote>
-<p>Important: the following blogs are very relevant to this guide, I recommend
-reading them prior to have a better picture</p>
-<ul>
-<li><a href="">Unreal Automated Rendering Basics</a></li>
-<li><a href="">Unreal Customized Rendering Executor</a></li>
-<li><a href="">Building an HTTP Server with REST API in Python</a></li>
-</ul>
-</blockquote>
-<p>See here the <a target="_blank" rel="noopener" href="https://github.com/leixingyu/unrealRenderFarm">complete project code</a></p>
-<h3 id="distributed-rendering-structure"><a class="markdownIt-Anchor" href="#distributed-rendering-structure"></a> Distributed Rendering Structure</h3>
-<p>Network Connection General Rules:</p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7664109/broadcasting-ipport-by-socket-server">https://stackoverflow.com/questions/7664109/broadcasting-ipport-by-socket-server</a></p>
-<ul>
-<li>Servers usually listen to requests and send replies</li>
-<li>A server that sends regular “announce” broadcast packets over a WiFi network, for a client that may arrive or not, wastes the network bandwidth, while a client knows exactly when it needs to poll for available servers, and stop once it’s done.</li>
-</ul>
-<p><img src="https://i.imgur.com/22nFyKR.png" alt="" /></p>
-<h2 id="examples"><a class="markdownIt-Anchor" href="#examples"></a> Examples</h2>
-<p><strong>Unreal Swarm Farm:</strong></p>
-<ul>
-<li>Swarm agent: client, initialize connection by pinging coordinator by hostname/ip (which is pre-configured)
-<ul>
-<li>the agent can send lightmap bake requests to the server, and also can process lightmap bake jobs from the server</li>
-</ul>
-</li>
-<li>Swarm coordinator: server
-<ul>
-<li>Observation: the coordinator gets bake requests immediately (which makes sense because it is a request from a client), but also assigns the job to agents <strong>(how does a server send a job without a request? does it broadcast? or does the agent request for job periodically?)</strong></li>
-</ul>
-</li>
-</ul>
-<p><strong>Blender Network Rendering (Legacy):</strong></p>
-<ul>
-<li>Client: client, only sends render requests
-<ul>
-<li>Observation: client can request to see connected slaves after connecting to the master, which makes sense; it can send requests to master</li>
-</ul>
-</li>
-<li>Master: server, coordinate (process requests from clients and assign jobs to slaves)
-<ul>
-<li>Observation: master broadcasts address? what does this mean? looking for slaves to assign jobs to?</li>
-<li>it can get requests immediately (which makes sense), same question as before, how does it assign the job to a slave?</li>
-</ul>
-</li>
-<li>Slave: a different client, only used to process render job
-<ul>
-<li>Observation: needs a pre-configured address to connect to the master and waits for jobs</li>
-</ul>
-</li>
-</ul>
-<h3 id="how-does-the-servermastercoordinatormanager-send-job-to-the-slaveagentrender-node"><a class="markdownIt-Anchor" href="#how-does-the-servermastercoordinatormanager-send-job-to-the-slaveagentrender-node"></a> How does the server/master/coordinator/manager send job to the slave/agent/render node</h3>
-<ol>
-<li>broadcast</li>
-<li>the client send request periodically</li>
-<li>a listener server on client side that the server pings to</li>
-</ol>
-<ul>
-<li>ajax</li>
-<li><a target="_blank" rel="noopener" href="https://medium.com/geekculture/asynchronously-updating-a-webpage-in-a-standard-html-css-js-frontend-8496a3388c01">https://medium.com/geekculture/asynchronously-updating-a-webpage-in-a-standard-html-css-js-frontend-8496a3388c01</a></li>
-</ul>
-<p>long polling
-<a target="_blank" rel="noopener" href="https://blog.oddbit.com/post/2013-11-23-long-polling-with-ja/">https://blog.oddbit.com/post/2013-11-23-long-polling-with-ja/</a></p>
-<!-- flag of hidden posts -->
+        <!-- flag of hidden posts -->
       
     </div>
     <div class="article-footer">
@@ -326,7 +256,7 @@ reading them prior to have a better picture</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/wip/ue-rendering-server/" title="Unreal Distributed Rendering Server Guide (Render Farm Implementation)" target="_blank" rel="external">https://www.xingyulei.com/post/wip/ue-rendering-server/</a>
+      <a href="https://www.xingyulei.com/post/wip/general-naming-convention/" title="CFX Cloth Pipeline" target="_blank" rel="external">https://www.xingyulei.com/post/wip/general-naming-convention/</a>
     </li>
     
 	

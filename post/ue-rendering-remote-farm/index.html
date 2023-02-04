@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Unreal Distributed Rendering Server Guide (Render Farm Implementation) | Tech Art Learning</title>
+  <meta name="description" content="Introduction  Previous blogs that you may find relevant  Learn to Automate Unreal Rendering Using Python Unreal Movie Render Queue (MRQ) Custom Executor Building HTTP Server with REST API in Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unreal Distributed Rendering Server Guide (Render Farm Implementation)">
+<meta property="og:url" content="https://www.xingyulei.com/post/ue-rendering-remote-farm/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Introduction  Previous blogs that you may find relevant  Learn to Automate Unreal Rendering Using Python Unreal Movie Render Queue (MRQ) Custom Executor Building HTTP Server with REST API in Python">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/h6BqZBP.jpg">
+<meta property="og:image" content="https://i.imgur.com/nk6CKQY_d.jpg?maxwidth=520&amp;shape=thumb&amp;fidelity=high">
+<meta property="article:published_time" content="2023-02-04T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-29T18:10:35.683Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="rendering">
+<meta property="article:tag" content="unreal">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/h6BqZBP.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/ue-rendering-remote-farm/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.88px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.25px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.13px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#distributed-rendering-framework"><span class="toc-text"> Distributed Rendering Framework</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#blender-network-rendering"><span class="toc-text"> Blender Network Rendering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unreal-swarm-farm"><span class="toc-text"> Unreal Swarm Farm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#summary"><span class="toc-text"> Summary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#render-job-request-data-structure"><span class="toc-text"> Render Job Request Data Structure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#structure"><span class="toc-text"> Structure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#database"><span class="toc-text"> Database</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#manager"><span class="toc-text"> Manager</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rest-api"><span class="toc-text"> REST API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#job-coordination"><span class="toc-text"> Job Coordination</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#render-html-landing-page"><span class="toc-text"> Render HTML Landing Page</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#asynchronous-update-using-ajax"><span class="toc-text"> Asynchronous Update using AJAX</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#submitter"><span class="toc-text"> Submitter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#worker"><span class="toc-text"> Worker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#unreal-custom-executor"><span class="toc-text"> Unreal Custom Executor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conclusion"><span class="toc-text"> Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-text"> References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ue-rendering-remote-farm" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Unreal Distributed Rendering Server Guide (Render Farm Implementation)
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/ue-rendering-remote-farm/" class="article-date">
+	  <time datetime="2023-02-04T05:00:00.000Z" itemprop="datePublished">2023-02-04</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/rendering/" rel="tag">rendering</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<blockquote>
+<p>Previous blogs that you may find relevant</p>
+<ul>
+<li><a href="https://www.xingyulei.com/post/ue-rendering-basic/">Learn to Automate Unreal Rendering Using Python</a></li>
+<li><a href="https://www.xingyulei.com/post/ue-rendering-custom-executor/">Unreal Movie Render Queue (MRQ) Custom Executor</a></li>
+<li><a href="https://www.xingyulei.com/post/py-http-server/">Building HTTP Server with REST API in Python</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>GitHub link to the complete project code:
+<a target="_blank" rel="noopener" href="https://github.com/leixingyu/unrealRenderFarm">Unreal Render Farm</a></p>
+</blockquote>
+<p>The first thing to do when creating a distributed remote render farm is to establish
+its framework. I personally have not much experience using render farm, not to
+mention designing one. (It is not surprising since I don’t see anyone would build
+a render farm for personal use). Nevertheless, it’s still such an interesting
+topic that I couldn’t resist exploring.</p>
+<p><strong>Important: the following is a simple implementation of a distributed rendering server/
+render farm with dummy functionalities and are meant to be substituted based on project needs.</strong></p>
+<h2 id="distributed-rendering-framework"><a class="markdownIt-Anchor" href="#distributed-rendering-framework"></a> Distributed Rendering Framework</h2>
+<p>Here are two examples of how other farm system is structured</p>
+<h3 id="blender-network-rendering"><a class="markdownIt-Anchor" href="#blender-network-rendering"></a> Blender Network Rendering</h3>
+<p>This is a blender legacy network rendering system. It consists of three roles:</p>
+<ul>
+<li>Regular client:
+<ul>
+<li>client, sends render requests</li>
+</ul>
+</li>
+<li>Slave:
+<ul>
+<li>also a client, used to process render job</li>
+</ul>
+</li>
+<li>Master:
+<ul>
+<li>server, coordinate (process requests from clients and assign jobs to slave)</li>
+</ul>
+</li>
+</ul>
+<p>The clients need to pre-configure server address in order to talk to master.
+For both types of clients, they have the ability to send request to update job status (add, delete, modify).
+A regular client can also request information about the currently active slaves connected
+to the server.</p>
+<h3 id="unreal-swarm-farm"><a class="markdownIt-Anchor" href="#unreal-swarm-farm"></a> Unreal Swarm Farm</h3>
+<p>This is an Unreal farm system to build lighting. There are two components:</p>
+<ul>
+<li>Swarm agent:
+<ul>
+<li>client, an agent can send light map bake request, it also can process light map bake from the server</li>
+</ul>
+</li>
+<li>Swarm coordinator:
+<ul>
+<li>server, used to coordinate light map bake request</li>
+</ul>
+</li>
+</ul>
+<p>Similarly, the swarm agent initialize connection by pinging coordinator using a
+pre-configured address. The swarm agent role can be split into two which exactly
+maps to the role of a regular client and a slave in the Blender Network Rendering
+Example.</p>
+<p>There is still one question remains: how does the server sends job to client?</p>
+<ul>
+<li>the client send request for jobs periodically</li>
+<li>a listener server on client side that the server pings to</li>
+<li>broadcast</li>
+<li><a target="_blank" rel="noopener" href="https://blog.oddbit.com/post/2013-11-23-long-polling-with-ja/">long polling</a></li>
+</ul>
+<p>I decided to go with the easiest setup: client request for jobs periodically.</p>
+<h3 id="summary"><a class="markdownIt-Anchor" href="#summary"></a> Summary</h3>
+<p><img src="https://i.imgur.com/h6BqZBP.jpg" alt="framework" /></p>
+<p>So, finally I have my Unreal remote rendering framework like above:</p>
+<ul>
+<li>
+<p>Manager: server, used to host the HTTP server, stores job request
+information connected to a database, and coordinates/manages request among render nodes</p>
+</li>
+<li>
+<p>Submitter: client, connect to the manager and submit render job request</p>
+<ul>
+<li>since the submitter only need to send request, this could be entirely web-based</li>
+</ul>
+</li>
+<li>
+<p>Worker: client, connect to manager, periodically pings for new job
+to process, renders the job and periodically pings to update current render progress</p>
+<ul>
+<li><strong>requires Unreal installed, capable for rendering jobs</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="render-job-request-data-structure"><a class="markdownIt-Anchor" href="#render-job-request-data-structure"></a> Render Job Request Data Structure</h2>
+<h3 id="structure"><a class="markdownIt-Anchor" href="#structure"></a> Structure</h3>
+<p>Here’s a data class I’ve made for representing a render job request, which fundamentally
+is a dictionary structure:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RenderRequest</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">            self,</span></span></span><br><span class="line"><span class="function"><span class="params">            uid=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            name=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            owner=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            worker=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            time_created=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            priority=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            category=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            tags=[],</span></span></span><br><span class="line"><span class="function"><span class="params">            status=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            umap_path=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            useq_path=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            uconfig_path=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            output_path=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            width=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            height=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            frame_rate=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="built_in">format</span>=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            start_frame=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            end_frame=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            time_estimate=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">            progress=<span class="number">0</span></span></span></span><br><span class="line"><span class="function"><span class="params">    </span>):</span></span><br><span class="line">        self.uid = uid <span class="keyword">or</span> <span class="built_in">str</span>(uuid.uuid4())[:<span class="number">4</span>]</span><br><span class="line">        self.name = name</span><br><span class="line">        self.owner = owner <span class="keyword">or</span> socket.gethostname()</span><br><span class="line">        self.worker = worker</span><br><span class="line">        self.time_created = time_created <span class="keyword">or</span> datetime.now().strftime(<span class="string">&quot;%m/%d/%Y, %H:%M:%S&quot;</span>)</span><br><span class="line">        self.priority = priority <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">        self.category = category</span><br><span class="line">        self.tags = tags</span><br><span class="line">        self.status = status <span class="keyword">or</span> RenderStatus.unassigned</span><br><span class="line">        self.umap_path = umap_path</span><br><span class="line">        self.useq_path = useq_path</span><br><span class="line">        self.uconfig_path = uconfig_path</span><br><span class="line">        self.output_path = output_path</span><br><span class="line">        self.width = width <span class="keyword">or</span> <span class="number">1280</span></span><br><span class="line">        self.height = height <span class="keyword">or</span> <span class="number">720</span></span><br><span class="line">        self.frame_rate = frame_rate <span class="keyword">or</span> <span class="number">30</span></span><br><span class="line">        self.<span class="built_in">format</span> = <span class="built_in">format</span> <span class="keyword">or</span> <span class="string">&#x27;JPG&#x27;</span></span><br><span class="line">        self.start_frame = start_frame <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">        self.end_frame = end_frame <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">        self.length = self.end_frame - self.start_frame</span><br><span class="line">        self.time_estimate = time_estimate</span><br><span class="line">        self.progress = progress</span><br></pre></td></tr></table></figure>
+<h3 id="database"><a class="markdownIt-Anchor" href="#database"></a> Database</h3>
+<p>For the time-being and testing purpose, I didn’t deploy an actual database. Instead,
+I used localized .json files for render job request storage.
+A render request’s unique <code>uid</code> serves as the primary key.</p>
+<p>Each render request is serialized as a .json file mimicing each row of a database,
+therefore, making each render job independent:
+a GET method queries one .json file (an entry) or all .json files in the ‘database’;
+a POST method creates a .json file;
+a PUT method updates a .json file;
+and a DELETE method removes a .json file.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_db</span>(<span class="params">uid</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Remove a RenderRequest object from the database</span></span><br><span class="line"><span class="string">    :param uid: str. request uid</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    os.remove(<span class="string">&#x27;&#123;&#125;.json&#x27;</span>.<span class="built_in">format</span>(uid))</span><br></pre></td></tr></table></figure>
+<h2 id="manager"><a class="markdownIt-Anchor" href="#manager"></a> Manager</h2>
+<p>I’m using flask - a micro web framework in Python to host my HTTP server with REST API,
+which makes it easier for my client to communicate with the manager.
+For more information on that, check out my previous blog: <a href="https://www.xingyulei.com/post/py-http-server/#using-flask">Building HTTP Server with REST API in Python</a></p>
+<h3 id="rest-api"><a class="markdownIt-Anchor" href="#rest-api"></a> REST API</h3>
+<p>For the server communication part, I implemented four methods:</p>
+<ul>
+<li>GET: api for a render job(s) query request from the clients (submitter or worker)</li>
+<li>POST: api for a new render job creation request from the submitter</li>
+<li>PUT: api for a render job update request from the worker</li>
+<li>DELETE: api for a render job deletion request from the clients</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.delete(<span class="params"><span class="string">&#x27;/api/delete/&lt;uid&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_request</span>(<span class="params">uid</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Server DELETE api response, delete render request from database</span></span><br><span class="line"><span class="string">    :param uid: str. render request uid</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    renderRequest.remove_db(uid)</span><br></pre></td></tr></table></figure>
+<h3 id="job-coordination"><a class="markdownIt-Anchor" href="#job-coordination"></a> Job Coordination</h3>
+<p>Another important role of the manager is to coordinate jobs among the available
+worker/render node. This is obviously a complex problem to solve on its own and
+is not the focus of my simple render farm implementation, thus, I currently have
+it automatically assign any new job to a specific worker:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new_request_trigger</span>(<span class="params">rrequest</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Triggers when a client posts a new render request to the server</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> rrequest.worker:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># currently, as a test, assigns all job to one worker</span></span><br><span class="line">    worker = <span class="string">&#x27;RENDER_MACHINE_01&#x27;</span></span><br><span class="line">    assign_request(rrequest, worker)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># if multiple jobs came in at once, interval between each assignment</span></span><br><span class="line">    time.sleep(<span class="number">4</span>)</span><br><span class="line">    LOGGER.info(<span class="string">&#x27;assigned job %s to %s&#x27;</span>, rrequest.uid, worker)</span><br></pre></td></tr></table></figure>
+<h3 id="render-html-landing-page"><a class="markdownIt-Anchor" href="#render-html-landing-page"></a> Render HTML Landing Page</h3>
+<p>I experimented with rendering the index page to display the all render job
+requests in the database, which looks like this:</p>
+<p><img src="https://i.imgur.com/nk6CKQY_d.jpg?maxwidth=520&amp;shape=thumb&amp;fidelity=high" alt="index-page" /></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index_page</span>():</span></span><br><span class="line">    rrequests = renderRequest.read_all()</span><br><span class="line">    jsons = [rrequest.to_dict() <span class="keyword">for</span> rrequest <span class="keyword">in</span> rrequests]</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;index.html&#x27;</span>, requests=jsons)</span><br></pre></td></tr></table></figure>
+<p>The tables are generated using a javascript where the columns can be customized</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createTable</span>(<span class="params">list</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// header row</span></span><br><span class="line">    cols = [<span class="string">&#x27;uid&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;owner&#x27;</span>, <span class="string">&#x27;worker&#x27;</span>, <span class="string">&#x27;time_created&#x27;</span>, <span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;priority&#x27;</span>, <span class="string">&#x27;time_estimate&#x27;</span>, <span class="string">&#x27;progress&#x27;</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> table = <span class="built_in">document</span>.createElement(<span class="string">&quot;table&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> tr = table.insertRow(-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cols.length; i++) &#123;</span><br><span class="line">        <span class="comment">// header th elements</span></span><br><span class="line">        <span class="keyword">var</span> theader = <span class="built_in">document</span>.createElement(<span class="string">&quot;th&quot;</span>);</span><br><span class="line">        theader.innerHTML = cols[i];</span><br><span class="line">        tr.appendChild(theader);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// data rows</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> trow = table.insertRow(-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">var</span> uid = list[i][<span class="string">&#x27;uid&#x27;</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; cols.length; j++) &#123;</span><br><span class="line">            <span class="keyword">var</span> cell = trow.insertCell(-<span class="number">1</span>);</span><br><span class="line">            cell.innerHTML = list[i][cols[j]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">&quot;table&quot;</span>);</span><br><span class="line">    el.innerHTML = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    el.appendChild(table);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>For the progress bar render</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// add id tag to specific cells for ajax</span></span><br><span class="line"><span class="keyword">if</span> (cols[j] == <span class="string">&#x27;progress&#x27;</span>)&#123;</span><br><span class="line">    <span class="comment">// container</span></span><br><span class="line">    cell.innerHTML = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    cell.style.width = <span class="string">&#x27;200px&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> container = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    cell.appendChild(container);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// bar</span></span><br><span class="line">    <span class="keyword">var</span> bar = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    container.appendChild(bar);</span><br><span class="line">    bar.style.width = list[i][<span class="string">&#x27;progress&#x27;</span>] + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">    bar.innerHTML = list[i][<span class="string">&#x27;progress&#x27;</span>] + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="asynchronous-update-using-ajax"><a class="markdownIt-Anchor" href="#asynchronous-update-using-ajax"></a> Asynchronous Update using AJAX</h3>
+<p>To update data on the index page asynchronously with the PUT method, I opted in
+for AJAX (Asynchronous JavaScript and XML).</p>
+<p>I’ve attached ids to specific HTML elements and set it up
+so the webpage updates the <em>render status</em>, <em>time remaining estimated</em> and
+<em>overall progress</em> every given period of time.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">setInterval</span>(</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;ajaxRequest()&#125;,</span><br><span class="line">        <span class="number">2000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajaxRequest</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $.getJSON(<span class="string">&#x27;/api/get&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        updateProgress(data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateProgress</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> requests = data.results;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; requests.length; i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> uid = requests[i][<span class="string">&#x27;uid&#x27;</span>];</span><br><span class="line">        <span class="keyword">var</span> progress = requests[i][<span class="string">&#x27;progress&#x27;</span>];</span><br><span class="line">        <span class="keyword">var</span> time_estimate = requests[i][<span class="string">&#x27;time_estimate&#x27;</span>];</span><br><span class="line">        <span class="keyword">var</span> status = requests[i][<span class="string">&#x27;status&#x27;</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> bar = <span class="built_in">document</span>.getElementById(uid + <span class="string">&#x27;_progress&#x27;</span>);</span><br><span class="line">        bar.style.width = progress + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">        bar.innerHTML = progress + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">document</span>.getElementById(uid + <span class="string">&#x27;_estimate&#x27;</span>).innerHTML = time_estimate;</span><br><span class="line">        <span class="built_in">document</span>.getElementById(uid + <span class="string">&#x27;_status&#x27;</span>).innerHTML = status;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="submitter"><a class="markdownIt-Anchor" href="#submitter"></a> Submitter</h2>
+<p>Since the server side is established, the submitter part is actually quite
+easy. All we need to do is to pass a data with render request data structure
+and use the POST method (I’m also using the <code>requests</code> standard library)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_request</span>(<span class="params">d</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.post(SERVER_API_URL+<span class="string">&#x27;/post&#x27;</span>, json=d)</span><br><span class="line">    <span class="keyword">except</span> requests.exceptions.ConnectionError:</span><br><span class="line">        LOGGER.error(<span class="string">&#x27;failed to connect to server %s&#x27;</span>, SERVER_API_URL)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> RenderRequest.from_dict(response.json())</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test_job = &#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;owner&#x27;</span>: <span class="string">&#x27;TEST_SUBMITTER_01&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;umap_path&#x27;</span>: <span class="string">&#x27;/Game/Cinematics/Street/Level_Cin_Street.Level_Cin_Street&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;useq_path&#x27;</span>: <span class="string">&#x27;/Game/Cinematics/Street/LS_Master_Street.LS_Master_Street&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;uconfig_path&#x27;</span>: <span class="string">&#x27;/Game/Cinematics/Preset/Test.Test&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    rrequest = add_request(test_job)</span><br><span class="line">    <span class="keyword">if</span> rrequest:</span><br><span class="line">        LOGGER.info(<span class="string">&#x27;request %s sent to server&#x27;</span>, rrequest.uid)</span><br></pre></td></tr></table></figure>
+<h2 id="worker"><a class="markdownIt-Anchor" href="#worker"></a> Worker</h2>
+<p>Each worker represents a render node; The render node unlike other render machine,
+is a full-fledged PC with the complete Unreal Engine installed. In order to render
+the requested job, it also needs to have the corresponding Unreal project installed.</p>
+<p>Before a worker starts rendering a job, it first needs to fetch the latest change
+of the Unreal project, this can be done using the versioning system supported by
+Unreal, like Unreal Game Sync with Perforce.</p>
+<p>When a worker is brought online, it continuously works on the job assigned to it,
+then periodically pings the server for new jobs.</p>
+<p>When a job is available, the worker launches an Unreal render process from the
+command line and calls for the custom Unreal Python executor.</p>
+<h3 id="unreal-custom-executor"><a class="markdownIt-Anchor" href="#unreal-custom-executor"></a> Unreal Custom Executor</h3>
+<p>An Unreal custom executor instance is created using command line, for more detail
+please read the blog regarding <a href="https://www.xingyulei.com/post/ue-rendering-custom-executor/">Unreal Movie Render Queue (MRQ) Custom Executor</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">render</span>(<span class="params">uid, umap_path, useq_path, uconfig_path</span>):</span></span><br><span class="line">    command = [</span><br><span class="line">        UNREAL_EXE,</span><br><span class="line">        UNREAL_PROJECT,</span><br><span class="line">        umap_path,</span><br><span class="line">        <span class="string">&quot;-JobId=&#123;&#125;&quot;</span>.<span class="built_in">format</span>(uid),</span><br><span class="line">        <span class="string">&quot;-LevelSequence=&#123;&#125;&quot;</span>.<span class="built_in">format</span>(useq_path),</span><br><span class="line">        <span class="string">&quot;-MoviePipelineConfig=&#123;&#125;&quot;</span>.<span class="built_in">format</span>(uconfig_path),</span><br><span class="line">        <span class="string">&quot;-game&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-MoviePipelineLocalExecutorClass=/Script/MovieRenderPipelineCore.MoviePipelinePythonHostExecutor&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-ExecutorPythonClass=/Engine/PythonTypes.MyExecutor&quot;</span>,</span><br><span class="line">    ]</span><br><span class="line">    env = os.environ.copy()</span><br><span class="line">    env[<span class="string">&quot;UE_PYTHONPATH&quot;</span>] = MODULE_PATH</span><br><span class="line">    proc = subprocess.Popen(</span><br><span class="line">        command,</span><br><span class="line">        stdout=subprocess.PIPE,</span><br><span class="line">        stderr=subprocess.PIPE,</span><br><span class="line">        env=env</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> proc.communicate()</span><br></pre></td></tr></table></figure>
+<p>Within the executor class, a PUT request is sent to the server after
+every frame render with the latest time remaining estimate and overall
+pipeline progress.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@unreal.uclass()</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyExecutor</span>(<span class="params">unreal.MoviePipelinePythonHostExecutor</span>):</span></span><br><span class="line">  </span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">    @unreal.ufunction(<span class="params">override=<span class="literal">True</span></span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_begin_frame</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(MyExecutor, self).on_begin_frame()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.pipeline:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        status = renderRequest.RenderStatus.in_progress</span><br><span class="line">        progress = <span class="number">100</span> * unreal.MoviePipelineLibrary.\</span><br><span class="line">            get_completion_percentage(self.pipeline)</span><br><span class="line">        time_estimate = unreal.MoviePipelineLibrary.\</span><br><span class="line">            get_estimated_time_remaining(self.pipeline)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> time_estimate:</span><br><span class="line">            time_estimate = unreal.Timespan.MAX_VALUE</span><br><span class="line"></span><br><span class="line">        days, hours, minutes, seconds, _ = time_estimate.to_tuple()</span><br><span class="line">        time_estimate = <span class="string">&#x27;&#123;&#125;h:&#123;&#125;m:&#123;&#125;s&#x27;</span>.<span class="built_in">format</span>(hours, minutes, seconds)</span><br><span class="line"></span><br><span class="line">        self.send_http_request(</span><br><span class="line">            <span class="string">&#x27;&#123;&#125;/put/&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(client.SERVER_API_URL, self.job_id),</span><br><span class="line">            <span class="string">&quot;PUT&quot;</span>,</span><br><span class="line">            <span class="string">&#x27;&#123;&#125;;&#123;&#125;;&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(progress, time_estimate, status),</span><br><span class="line">            unreal.Map(<span class="built_in">str</span>, <span class="built_in">str</span>)</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h2>
+<p>And that’s concludes the break-down of my dummy distributed rendering system; once
+again the complete project source code can be found <a target="_blank" rel="noopener" href="https://github.com/leixingyu/unrealRenderFarm">here</a>
+along with a <a target="_blank" rel="noopener" href="https://youtu.be/4pGhaMQACy8">video demo</a></p>
+<p>There are still lots of components that can be expanded further, namely the job
+coordination functionality, the web application implementation
+(can replace the submitter), the database implementation and actually testing
+this across multiple machines in a network. Unfortunately, I don’t have the
+resources to touch upon these.</p>
+<p>Hope this is useful and see you in the next blog!</p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/30AtJT8yoR8">YouTube - UE4 | Creating a Swarm Farm</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/FNhUnPWzVaw">YouTube - DIY Renderfarm Building Tutorial for Distributed Blender Rendering</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cgdirector.com/how-to-build-your-own-render-farm/">CG Director - How to Build your own Render Farm [Ultimate Guide]</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/ue-rendering-remote-farm/" title="Unreal Distributed Rendering Server Guide (Render Farm Implementation)" target="_blank" rel="external">https://www.xingyulei.com/post/ue-rendering-remote-farm/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/ue-rendering-custom-executor/" title="Unreal Movie Render Queue (MRQ) Custom Executor"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
