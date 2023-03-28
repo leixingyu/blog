@@ -19,10 +19,10 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Unreal Distributed Rendering Server Guide (Render Farm Implementation) | Tech Art Learning</title>
+  <title>Unreal Distributed Rendering Server Handbook: Render Farm Implementation | Tech Art Learning</title>
   <meta name="description" content="Introduction  Previous blogs that you may find relevant  Learn to Automate Unreal Rendering Using Python Unreal Movie Render Queue (MRQ) Custom Executor Building HTTP Server with REST API in Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unreal Distributed Rendering Server Guide (Render Farm Implementation)">
+<meta property="og:title" content="Unreal Distributed Rendering Server Handbook: Render Farm Implementation">
 <meta property="og:url" content="https://www.xingyulei.com/post/ue-rendering-remote-farm/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
 <meta property="og:description" content="Introduction  Previous blogs that you may find relevant  Learn to Automate Unreal Rendering Using Python Unreal Movie Render Queue (MRQ) Custom Executor Building HTTP Server with REST API in Python">
@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://i.imgur.com/h6BqZBP.jpg">
 <meta property="og:image" content="https://i.imgur.com/nk6CKQY_d.jpg?maxwidth=520&amp;shape=thumb&amp;fidelity=high">
 <meta property="article:published_time" content="2023-02-04T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-02-06T16:48:40.048Z">
+<meta property="article:modified_time" content="2023-03-28T15:25:25.341Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="rendering">
 <meta property="article:tag" content="unreal">
@@ -183,7 +183,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -193,7 +193,7 @@
   <div class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.88px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.25px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.13px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.88px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.25px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.13px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
     </div>
   </div>
 
@@ -221,7 +221,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Unreal Distributed Rendering Server Guide (Render Farm Implementation)
+      Unreal Distributed Rendering Server Handbook: Render Farm Implementation
     </h1>
   
 
@@ -452,7 +452,7 @@ resources to touch upon these.</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/ue-rendering-remote-farm/" title="Unreal Distributed Rendering Server Guide (Render Farm Implementation)" target="_blank" rel="external">https://www.xingyulei.com/post/ue-rendering-remote-farm/</a>
+      <a href="https://www.xingyulei.com/post/ue-rendering-remote-farm/" title="Unreal Distributed Rendering Server Handbook: Render Farm Implementation" target="_blank" rel="external">https://www.xingyulei.com/post/ue-rendering-remote-farm/</a>
     </li>
     
 	
@@ -497,7 +497,7 @@ resources to touch upon these.</p>
     
     
     <li class="next">
-      <a href="/post/ue-rendering-custom-executor/" title="Unreal Movie Render Queue (MRQ) Custom Executor"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/post/ue-rendering-custom-executor/" title="Take Your Unreal Movie Renders to the Next Level with Custom MRQ Executors"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
