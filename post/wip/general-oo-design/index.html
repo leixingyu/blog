@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Object-Oriented Design: A Comprehensive Guide to Building Robust and Scalable Software Systems | Tech Art Learning</title>
+  <meta name="description" content="Learn about important principles and techniques in Object-Oriented Design in this comprehensive guide. Discover how to create a conceptual model, use UML class diagrams, and apply software development">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object-Oriented Design: A Comprehensive Guide to Building Robust and Scalable Software Systems">
+<meta property="og:url" content="https://www.xingyulei.com/post/wip/general-oo-design/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Learn about important principles and techniques in Object-Oriented Design in this comprehensive guide. Discover how to create a conceptual model, use UML class diagrams, and apply software development">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-02T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-02T20:11:10.042Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="pipeline">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/wip/general-oo-design/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.88px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.38px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.75px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.13px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text"> Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#steps-for-object-oriented-design"><span class="toc-text"> Steps for Object-Oriented Design</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#softwaresystem-requirements"><span class="toc-text"> Software&#x2F;System Requirements</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sets-of-requirements"><span class="toc-text"> Sets of Requirements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#furps-requirement-model"><span class="toc-text"> FURPS Requirement Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#use-case"><span class="toc-text"> Use Case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conceptual-model"><span class="toc-text"> Conceptual Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#class-diagram-and-class-relationship"><span class="toc-text"> Class Diagram and Class Relationship</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#principles-and-patterns"><span class="toc-text"> Principles and Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#design-pattern"><span class="toc-text"> Design Pattern</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-wip/general-oo-design" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Object-Oriented Design: A Comprehensive Guide to Building Robust and Scalable Software Systems
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/wip/general-oo-design/" class="article-date">
+	  <time datetime="2023-04-02T04:00:00.000Z" itemprop="datePublished">2023-04-02</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>This blog is a second processed product/summary of the tutorial series:
+<a target="_blank" rel="noopener" href="https://www.linkedin.com/learning/topics/object-oriented-programming">Linkedin Learning: Object-Oriented Programming</a>.
+Bullet points extracted by me and reformatted with help from ChatGPT.</p>
+</blockquote>
+<p>Object-oriented design is a fundamental concept in software development that
+focuses on modeling the behavior and characteristics of real-world objects in a program.
+By understanding the basics of object identity, properties and attributes, behavior, and class, developers can create well-designed, efficient, and maintainable software.</p>
+<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p><strong>Object Identity:</strong>
+Objects are unique entities within a program that are separate and distinguishable from one another, even if they belong to the same class or type. Each object has a unique identifier that differentiates it from other objects, and this identity is essential for managing and manipulating objects within a program.</p>
+<p><strong>Properties and Attributes:</strong>
+Objects have properties or attributes that define their characteristics, such as size, weight, color, and shape. These attributes are essential for representing real-world objects in a program and can be used to distinguish between different objects of the same type.</p>
+<p><strong>Behavior:</strong>
+Objects have behavior or actions that they can perform, such as filling, swimming, or ringing. Behavior is typically defined as methods or functions that manipulate an object’s attributes or interact with other objects in the program.</p>
+<p>One of the challenges of object-oriented design is <strong>identifying what can be an object
+in a program</strong>. In general, objects should be represented by nouns and not verbs,
+and they should have a unique identity, attributes, and behavior. The focus should be on identifying the main objects in the program and their interactions with one another.</p>
+<p>A class is a template for creating objects in a program. It defines the name, type, attributes, and behavior of objects that belong to that class. A class can be used to create multiple objects of the same type and is an essential component of object-oriented design.</p>
+<h3 id="steps-for-object-oriented-design"><a class="markdownIt-Anchor" href="#steps-for-object-oriented-design"></a> Steps for Object-Oriented Design</h3>
+<p>The process of object-oriented design involves analyzing and designing the program before writing the code.
+This includes gathering requirements, describing the application, identifying the main objects, describing the interactions between objects, and creating a class diagram using Unified Modeling Language (UML).</p>
+<h2 id="softwaresystem-requirements"><a class="markdownIt-Anchor" href="#softwaresystem-requirements"></a> Software/System Requirements</h2>
+<p>In object-oriented design, understanding the software/system requirements is essential for creating a
+well-designed, efficient, and maintainable program.</p>
+<h3 id="sets-of-requirements"><a class="markdownIt-Anchor" href="#sets-of-requirements"></a> Sets of Requirements</h3>
+<p>Software/system requirements can be divided into two sets of questions:</p>
+<ul>
+<li>what does it need to do?</li>
+<li>how should it do it?</li>
+</ul>
+<p>The first set of questions refers to the functionality of the program, while the second set refers to performance, legal, support, and security requirements.</p>
+<ul>
+<li>
+<p><strong>Function Requirements:</strong>
+refer to what the system/application must do. These requirements capture the bare necessities of the program and define the core functionality that the program needs to provide.</p>
+</li>
+<li>
+<p><strong>Non-Functional Requirements:</strong>
+define how the system/application should do something. These requirements are concerned with aspects such as usability, reliability, performance, supportability, design, implementation, interface, and physical constraints.</p>
+</li>
+</ul>
+<h3 id="furps-requirement-model"><a class="markdownIt-Anchor" href="#furps-requirement-model"></a> FURPS Requirement Model</h3>
+<p>The FURPS requirement model is a framework for thinking about software/system requirements.
+FURPS stands for functionality, usability, reliability, performance, and supportability.</p>
+<ul>
+<li>
+<p><strong>Functionality</strong>
+refers to the capabilities of the system, while the other four elements are non-functional requirements.</p>
+</li>
+<li>
+<p><strong>Usability</strong>
+focuses on the user and include factors such as human factors UI and documentation.
+The usability of the program is essential for ensuring that users can efficiently and effectively use the system.</p>
+</li>
+<li>
+<p><strong>Reliability</strong>
+is concerned with predictability, availability, and failure rate.
+These requirements ensure that the program operates consistently and reliably.</p>
+</li>
+<li>
+<p><strong>Performance</strong>
+relates to speed, efficiency, and limitations. These requirements ensure that the program operates efficiently and effectively, even when processing large amounts of data.</p>
+</li>
+<li>
+<p><strong>Supportability</strong>
+is concerned with extensibility, configurability, and testability. These requirements ensure that the program can be maintained and updated over time.</p>
+</li>
+</ul>
+<p>Design, Implementation, Interface, and Physical Constraints
+In addition to the FURPS requirements, other non-functional requirements include design (how the program is built), implementation (the programming language used and standards to follow), interface (the ability of the program to interface with other systems), and physical constraints (the hardware limitations of the system).</p>
+<h2 id="use-case"><a class="markdownIt-Anchor" href="#use-case"></a> Use Case</h2>
+<p>The use case is a scenario that outlines a particular goal of an actor (user) with the system. It consists of the following elements:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Title] </span><br><span class="line">    Short and simple goal</span><br><span class="line">[Primary Actor] </span><br><span class="line">    The user who desires to achieve the goal</span><br><span class="line">[Success Scenario] </span><br><span class="line">    Steps or paragraphs describing how to achieve the goal</span><br></pre></td></tr></table></figure>
+<p>To create a use case,
+identify the actors who interact with the system and separate them by their roles in the use case, not job titles.
+Focus on the intent of the goal and not go into too specific steps or too broad a goal.
+The scenario should be concise and avoid detailed technical implementation or UI elements.
+Focus on the “sunny-day” scenario and avoid including rarely encountered scenarios.
+Avoid needless words and keep the scenario short and concise.</p>
+<h2 id="conceptual-model"><a class="markdownIt-Anchor" href="#conceptual-model"></a> Conceptual Model</h2>
+<p>In object-oriented design, creating a conceptual model is a
+crucial step in developing a software or system.
+A conceptual model helps to identify the objects and their relationships that will form the backbone of the software.
+Here are the steps involved in creating a conceptual model.</p>
+<ul>
+<li>
+<p><strong>Identify Objects:</strong>
+The first step is to identify the objects that will be used as class objects in the system.
+This can be done by looking at the user story or use case and picking out the relevant <strong>nouns.</strong></p>
+<ul>
+<li>For example, in a user story about ordering a meal, the relevant objects might include “customer,” “menu,” and “order.”</li>
+</ul>
+</li>
+<li>
+<p><strong>Identify Class Relationships:</strong>
+Once the objects have been identified, the next step is to connect them with lines to show their relationships.
+It is important to write down the <strong>verbs</strong> on each line to avoid using generic words like “use.”
+Instead, use verbs that describe the relationship between the objects.</p>
+<ul>
+<li>For example, in the meal ordering system, the “customer” might “place” an “order” from the “menu.”</li>
+</ul>
+</li>
+<li>
+<p><strong>Figure Out Class Responsibilities:</strong>
+The final step is to figure out the responsibilities of each class.
+This involves identifying the behaviors or actions that each class will perform.
+This can be done by looking at the user story or use case and picking out the relevant verbs.</p>
+<ul>
+<li>For example, in the meal ordering system, the “menu” class might have the responsibility of “displaying” the available items while the “order” class might have the responsibility of “calculating” the total cost of the meal.</li>
+</ul>
+</li>
+</ul>
+<p>It is important to note that each behavior should belong to the class that is most responsible for it.
+A behavior usually involves multiple objects, but each object should be responsible for itself.
+Avoid putting too much responsibility on a single object, which can lead to a “god object” that controls everything in the system.</p>
+<p>In addition to these steps, another useful tool for creating a conceptual model is CRC (Class Responsibility Collaboration) cards.
+These cards can be used to organize the classes and their responsibilities, making it easier to visualize the system and identify any potential issues.</p>
+<h2 id="class-diagram-and-class-relationship"><a class="markdownIt-Anchor" href="#class-diagram-and-class-relationship"></a> Class Diagram and Class Relationship</h2>
+<p>In object-oriented design, UML class diagrams are used to represent the structure of a system’s classes and the relationships between them.
+Here are some important considerations when creating UML class diagrams.</p>
+<p>Each class in a UML class diagram should have a name, attributes, and behaviors.
+When creating classes, it’s important to focus on the behaviors of the objects,
+rather than just their attributes. This is because objects are meant to do things,
+not just hold data.
+In general, it’s recommended to keep as many class attributes and methods as private as possible,
+only making them public if you are certain that other objects will need to use them.</p>
+<p><strong>Constructor:</strong></p>
+<p>Constructors are considered as behavior and should be treated as such when creating UML class diagrams.
+In UML, a constructor is represented as a method with the same name as the class.</p>
+<p><strong>Interface:</strong></p>
+<p>In UML, abstract classes and interfaces are represented as types.
+Abstract classes are used to represent a general category of objects,
+while interfaces are used to represent shared capabilities or behaviors.
+For example, a draw() interface can be shared between different types of objects that can be drawn on a screen.
+While objects of different types cannot be categorized under the same abstract class,
+they can all share the draw() interface to be able to draw on the screen.
+A system can iterate through all objects and call the draw() interface to update the screen.</p>
+<h2 id="principles-and-patterns"><a class="markdownIt-Anchor" href="#principles-and-patterns"></a> Principles and Patterns</h2>
+<p>There are several principles and patterns that can help make your software development more efficient and effective.</p>
+<ol>
+<li>
+<p>Single Responsibility Principle: A class should have only one responsibility. Avoid creating god objects that try to do everything. Instead, split responsibilities into multiple classes.</p>
+</li>
+<li>
+<p>Don’t Repeat Yourself (DRY): Avoid duplicating code. Reuse code and extract common functionality into methods or classes.</p>
+</li>
+<li>
+<p>You Ain’t Gonna Need It (YAGNI): Don’t overdo it. Only add features that are necessary and useful. Avoid adding unnecessary complexity.</p>
+</li>
+<li>
+<p>Error Handling and Prompt to Guide Users: Design your software to handle errors gracefully and provide clear prompts to guide users. Good error handling can improve the user experience and prevent bugs.</p>
+</li>
+<li>
+<p>Software Testing: Testing is an important part of software development. Write automated tests to ensure that your code is working as intended and to catch regressions.</p>
+</li>
+<li>
+<p>Design Patterns: Design patterns are reusable solutions to common software design problems.</p>
+</li>
+</ol>
+<h3 id="design-pattern"><a class="markdownIt-Anchor" href="#design-pattern"></a> Design Pattern</h3>
+<p>They provide a template to help structure your code around.
+One of the most well-known books on design patterns is <em>“Design Patterns: Elements of Reusable Object-Oriented Software”</em>
+by the “Gang of Four”, which describes 23 patterns.</p>
+<ul>
+<li>
+<p><strong>Creational Patterns:</strong>
+These patterns deal with the instantiation of objects. Examples include Abstract Factory, Builder, Factory Method, Prototype, and Singleton.</p>
+</li>
+<li>
+<p><strong>Structural Patterns:</strong>
+These patterns deal with how classes are designed and composed. Examples include Adapter, Bridge, Composite, Decorator, Facade, Flyweight, and Proxy.</p>
+</li>
+<li>
+<p><strong>Behavioral Patterns:</strong>
+These patterns deal with communication between objects. Examples include Chain of Responsibility, Command, Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, and Visitor.</p>
+</li>
+</ul>
+<p>By following these principles and patterns, you can create software that is more modular, maintainable, and scalable.</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/wip/general-oo-design/" title="Object-Oriented Design: A Comprehensive Guide to Building Robust and Scalable Software Systems" target="_blank" rel="external">https://www.xingyulei.com/post/wip/general-oo-design/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/ue-rendering-remote-farm/" title="Unreal Distributed Rendering Server Handbook: Render Farm Implementation"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
