@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Take Your Unreal Movie Renders to the Next Level with Custom MRQ Executors | Tech Art Learning</title>
+  <meta name="description" content="Take your Unreal movie renders to the next level with our tutorial on custom MRQ executors. Learn how to optimize your rendering workflow, improve efficiency, and achieve better results with our step-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Take Your Unreal Movie Renders to the Next Level with Custom MRQ Executors">
+<meta property="og:url" content="https://www.xingyulei.com/post/ue-rendering-custom-executor/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Take your Unreal movie renders to the next level with our tutorial on custom MRQ executors. Learn how to optimize your rendering workflow, improve efficiency, and achieve better results with our step-">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-16T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-29T21:42:44.000Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="pipeline">
+<meta property="article:tag" content="rendering">
+<meta property="article:tag" content="unreal">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/ue-rendering-custom-executor/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/cfx/" style="font-size: 13.13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.38px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.88px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#walk-through"><span class="toc-number">2.</span> <span class="toc-text"> Walk-through</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#executor-class"><span class="toc-number">2.1.</span> <span class="toc-text"> Executor Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#executed-delayed"><span class="toc-number">2.2.</span> <span class="toc-text"> Executed Delayed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-callbacks"><span class="toc-number">2.3.</span> <span class="toc-text"> Add Callbacks</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pipeline-finished-callbacks"><span class="toc-number">2.3.1.</span> <span class="toc-text"> Pipeline Finished Callbacks</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-commandline"><span class="toc-number">2.4.</span> <span class="toc-text"> Using Commandline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#preset"><span class="toc-number">2.5.</span> <span class="toc-text"> Preset</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">3.</span> <span class="toc-text"> Reference</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ue-rendering-custom-executor" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Take Your Unreal Movie Renders to the Next Level with Custom MRQ Executors
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/ue-rendering-custom-executor/" class="article-date">
+	  <time datetime="2023-01-16T05:00:00.000Z" itemprop="datePublished">2023-01-16</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/rendering/" rel="tag">rendering</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>In an earlier blog: <a href="https://www.xingyulei.com/post/ue-rendering-basic/">Learn to Automate Unreal Rendering Using Python</a>
+I mentioned how Unreal Movie Render Queue (MRQ) is more powerful than the legacy
+Movie Scene Capture but didn’t really have time to show it.</p>
+<p>In this blog,
+I will create a customized Unreal Python executor using the Movie Render Pipeline
+Plugin; The example script provided by Epic can be found here:
+<em>“Engine\Plugins\MovieScene\MovieRenderPipeline\Content\Python\<a target="_blank" rel="noopener" href="http://MoviePipelineExampleRuntimeExecutor.py">MoviePipelineExampleRuntimeExecutor.py</a>”</em></p>
+<h2 id="walk-through"><a class="markdownIt-Anchor" href="#walk-through"></a> Walk-through</h2>
+<p>You can find the example code provided by Epic mentioned above, or
+from my render farm tool located <a href="https://www.xingyulei.com/post/ue-rendering-remote-farm">here</a></p>
+<h3 id="executor-class"><a class="markdownIt-Anchor" href="#executor-class"></a> Executor Class</h3>
+<blockquote>
+<p>An “executor,” which is responsible for deciding how a queue
+is rendered, giving you complete control over the before, during,
+and after of each render.</p>
+</blockquote>
+<p>The Python class inherit from the <code>unreal.MoviePipelinePythonHostExecutor</code>,
+is a class override which allows us to make an executor that can process render
+jobs in an Unreal standalone commandline launch with ‘-game’ flag;
+It also provides
+async HTTP request functionality, which can be useful in implementing remote rendering.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@unreal.uclass()</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyExecutor</span>(unreal.MoviePipelinePythonHostExecutor):</span><br><span class="line"> </span><br><span class="line">    pipeline = unreal.uproperty(unreal.MoviePipeline)</span><br><span class="line">    queue = unreal.uproperty(unreal.MoviePipelineQueue)</span><br><span class="line">    job_id = unreal.uproperty(unreal.Text)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_post_init</span>(<span class="params">self</span>):</span><br><span class="line">        self.pipeline = <span class="literal">None</span></span><br><span class="line">        self.queue = <span class="literal">None</span></span><br><span class="line">        self.job_id = <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+<p>Instead of using <code>__init__()</code> function in Python, the <code>_post_init()</code> gets called when created by C++ or Python.</p>
+<p>Per the example provided by Unreal, this is also how we declare class properties/variables,
+which we have to specify the type.</p>
+<blockquote>
+<p>Python classes are transient, to allow C++ to spawn a Python
+type, we have to specify the type as a member variable. There is special
+code in C++ which checks that type and spawns that type (instead of the default)</p>
+</blockquote>
+<h3 id="executed-delayed"><a class="markdownIt-Anchor" href="#executed-delayed"></a> Executed Delayed</h3>
+<p>The <code>execute_delayed()</code> is called once the map has finished loading and the
+executor has fully instantiated.</p>
+<p>This is the best place to parse commandline arguments and connect to socket,
+and also where we can initialize a render job using the commandline arguments.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@unreal.ufunction(<span class="params">override=<span class="literal">True</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">execute_delayed</span>(<span class="params">self, queue</span>):</span><br><span class="line">    <span class="comment"># parse commandline</span></span><br><span class="line">    (cmd_tokens, cmd_switches, cmd_parameters) = unreal.SystemLibrary.\</span><br><span class="line">        parse_command_line(unreal.SystemLibrary.get_command_line())</span><br><span class="line"></span><br><span class="line">    self.map_path = cmd_tokens[<span class="number">0</span>]</span><br><span class="line">    self.job_id = cmd_parameters[<span class="string">&#x27;JobId&#x27;</span>]</span><br><span class="line">    self.seq_path = cmd_parameters[<span class="string">&#x27;LevelSequence&#x27;</span>]</span><br><span class="line">    self.preset_path = cmd_parameters[<span class="string">&#x27;MoviePipelineConfig&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># initialize pipeline</span></span><br><span class="line">    self.pipeline = unreal.new_object(</span><br><span class="line">        self.target_pipeline_class,</span><br><span class="line">        outer=self.get_last_loaded_world(),</span><br><span class="line">        base_type=unreal.MoviePipeline</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># initialize queue</span></span><br><span class="line">    self.queue = unreal.new_object(unreal.MoviePipelineQueue, outer=self)</span><br><span class="line">    job = self.queue.allocate_new_job(unreal.MoviePipelineExecutorJob)</span><br><span class="line">    job.<span class="built_in">map</span> = unreal.SoftObjectPath(self.map_path)</span><br><span class="line">    job.sequence = unreal.SoftObjectPath(self.seq_path)</span><br><span class="line"></span><br><span class="line">    preset_path = unreal.SoftObjectPath(self.preset_path)</span><br><span class="line">    u_preset = unreal.SystemLibrary.\</span><br><span class="line">        conv_soft_obj_path_to_soft_obj_ref(preset_path)</span><br><span class="line">    job.set_configuration(u_preset)</span><br><span class="line">    self.pipeline.initialize(job)</span><br></pre></td></tr></table></figure>
+<h3 id="add-callbacks"><a class="markdownIt-Anchor" href="#add-callbacks"></a> Add Callbacks</h3>
+<p>In the <code>execute_delayed()</code> method, we can add callback functions
+when the current pipeline job has finished and when the entire pipeline has finished.
+We even have
+control over when the pipeline has finished processing individual shots of
+a render job’s sequence using: <code>on_movie_pipeline_shot_work_finished_delegate</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">self.pipeline.on_movie_pipeline_finished_delegate.add_function_unique(</span><br><span class="line">    self,</span><br><span class="line">    <span class="string">&quot;on_job_finished&quot;</span></span><br><span class="line">)</span><br><span class="line">self.pipeline.on_movie_pipeline_work_finished_delegate.add_function_unique(</span><br><span class="line">    self,</span><br><span class="line">    <span class="string">&quot;on_pipeline_finished&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>There are also callback functions for socket message received: <code>socket_message_recieved_delete</code> and
+http response received: <code>http_response_recieved_delegate</code>. We could
+register those in the <code>_post_init()</code> method.</p>
+<p>The <code>on_begin_frame()</code> built-in callback function is called once every frame,
+which can be used to update elapse time, remaining time and the completion percentage of the pipeline.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@unreal.ufunction(<span class="params">override=<span class="literal">True</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_begin_frame</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">super</span>(MyExecutor, self).on_begin_frame()        </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> self.pipeline:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">        </span><br><span class="line">    unreal.log(unreal.MoviePipelineLibrary.get_completion_percentage(self.pipeline))</span><br></pre></td></tr></table></figure>
+<h4 id="pipeline-finished-callbacks"><a class="markdownIt-Anchor" href="#pipeline-finished-callbacks"></a> Pipeline Finished Callbacks</h4>
+<p>Here’s how I implement the job finished callback
+<code>on_movie_pipeline_finished_delegate</code> and pipeline finished callback <code>on_movie_pipeline_work_finished_delegate</code>.</p>
+<p>After a job has finished, I manually called the <code>on_executor_finished_impl()</code>
+which marks the end of the render;
+But if there were more than one job to process per execution (for example, a multi-pass
+render), we should process
+the next job of a render pass during this callback function instead of ending it.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@unreal.ufunction(<span class="params">ret=<span class="literal">None</span>, params=[unreal.MoviePipeline, <span class="built_in">bool</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_job_finished</span>(<span class="params">self, pipeline, error</span>):</span><br><span class="line">    self.pipeline = <span class="literal">None</span></span><br><span class="line">    unreal.log(<span class="string">&quot;Finished rendering movie!&quot;</span>)</span><br><span class="line">    self.on_executor_finished_impl()</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="meta">@unreal.ufunction(<span class="params">ret=<span class="literal">None</span>, params=[unreal.MoviePipelineOutputData]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_pipeline_finished</span>(<span class="params">self, results</span>):</span><br><span class="line">    output_data = results</span><br><span class="line">    <span class="keyword">if</span> output_data.success:</span><br><span class="line">        <span class="keyword">for</span> shot_data <span class="keyword">in</span> output_data.shot_data:</span><br><span class="line">            render_pass_data = shot_data.render_pass_data</span><br><span class="line">            <span class="keyword">for</span> k, v <span class="keyword">in</span> render_pass_data.items():</span><br><span class="line">                <span class="keyword">if</span> k.name == <span class="string">&#x27;FinalImage&#x27;</span>:</span><br><span class="line">                    outputs = v.file_paths</span><br><span class="line">                    <span class="comment"># get all final output images</span></span><br><span class="line">                    unreal.log(outputs)</span><br></pre></td></tr></table></figure>
+<h3 id="using-commandline"><a class="markdownIt-Anchor" href="#using-commandline"></a> Using Commandline</h3>
+<p>In the <code>init_unreal.py</code> Unreal startup script, we should include the module where we declared
+the customized python class.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># init_unreal.py</span></span><br><span class="line"><span class="keyword">import</span> myExecutor</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># myExecutor.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyExecutor</span>(unreal.MoviePipelinePythonHostExecutor):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>Now in the commandline, we need to include
+<code>-MoviePipelineLocalExecutorClass=/Script/MovieRenderPipelineCore.MoviePipelinePythonHostExecutor</code>
+and then
+<code>-ExecutorPythonClass=/Engine/PythonTypes.MyExecutor</code> which is
+the custom python executor class.</p>
+<p>An example of the full commandline arguments can be found as follows,
+I also included the “-JobId” custom flag which we are able to parse above.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">command = [</span><br><span class="line">    UNREAL_EXE,</span><br><span class="line">    UNREAL_PROJECT,</span><br><span class="line"></span><br><span class="line">    umap_path,</span><br><span class="line">    <span class="string">&quot;-JobId=a5qo3e80&quot;</span>,</span><br><span class="line">    <span class="string">&quot;-LevelSequence=&#123;&#125;&quot;</span>.<span class="built_in">format</span>(useq_path),</span><br><span class="line">    <span class="string">&quot;-MoviePipelineConfig=&#123;&#125;&quot;</span>.<span class="built_in">format</span>(uconfig_path),</span><br><span class="line"></span><br><span class="line">    <span class="comment"># required</span></span><br><span class="line">    <span class="string">&quot;-game&quot;</span>,</span><br><span class="line">    <span class="string">&quot;-MoviePipelineLocalExecutorClass=/Script/MovieRenderPipelineCore.MoviePipelinePythonHostExecutor&quot;</span>,</span><br><span class="line">    <span class="string">&quot;-ExecutorPythonClass=/Engine/PythonTypes.MyExecutor&quot;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># render preview</span></span><br><span class="line">    <span class="string">&quot;-windowed&quot;</span>,</span><br><span class="line">    <span class="string">&quot;-resX=1280&quot;</span>,</span><br><span class="line">    <span class="string">&quot;-resY=720&quot;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># logging</span></span><br><span class="line">    <span class="string">&quot;-StdOut&quot;</span>,</span><br><span class="line">    <span class="string">&quot;-FullStdOutLogOutput&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="preset"><a class="markdownIt-Anchor" href="#preset"></a> Preset</h3>
+<p>For convenience, I created a custom Unreal render preset class
+to easily overwrite configuration settings by passing in custom flags.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@unreal.uclass()</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyPreset</span>(unreal.MoviePipelineMasterConfig):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, preset</span>):</span><br><span class="line">        <span class="built_in">super</span>(MyPreset, self).__init__(preset)</span><br><span class="line">        self.copy_from(preset)</span><br><span class="line"></span><br><span class="line">        self.set_flush_disk()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @unreal.ufunction(<span class="params">ret=<span class="literal">None</span>, params=[]</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_flush_disk</span>(<span class="params">self</span>):</span><br><span class="line">        u_setting = self.find_setting_by_class(</span><br><span class="line">            unreal.MoviePipelineOutputSetting</span><br><span class="line">        )</span><br><span class="line">        u_setting.flush_disk_writes_per_shot = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_base_preset</span>(<span class="params">cls</span>):</span><br><span class="line">        u_preset = unreal.MoviePipelineMasterConfig()</span><br><span class="line">        u_setting = u_preset.find_setting_by_class(</span><br><span class="line">            unreal.MoviePipelineOutputSetting</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># A job should have a render pass and a file output.</span></span><br><span class="line">        u_setting.output_resolution = unreal.IntPoint(<span class="number">1280</span>, <span class="number">720</span>)</span><br><span class="line"></span><br><span class="line">        render_pass = u_preset.find_or_add_setting_by_class(</span><br><span class="line">            unreal.MoviePipelineDeferredPassBase</span><br><span class="line">        )</span><br><span class="line">        render_pass.disable_multisample_effects = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        u_preset.find_or_add_setting_by_class(</span><br><span class="line">            unreal.MoviePipelineImageSequenceOutput_PNG</span><br><span class="line">        )</span><br><span class="line">        u_preset.initialize_transient_settings()</span><br><span class="line">        <span class="keyword">return</span> cls(u_preset)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">output_path</span>(<span class="params">self</span>):</span><br><span class="line">        u_setting = self.find_setting_by_class(</span><br><span class="line">            unreal.MoviePipelineOutputSetting</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> u_setting.get_editor_property(<span class="string">&#x27;output_directory&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @unreal.ufunction(<span class="params">ret=<span class="literal">None</span>, params=[<span class="built_in">str</span>]</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_output_path</span>(<span class="params">self, path</span>):</span><br><span class="line">        u_setting = self.find_setting_by_class(</span><br><span class="line">            unreal.MoviePipelineOutputSetting</span><br><span class="line">        )</span><br><span class="line">        u_setting.set_editor_property(</span><br><span class="line">            <span class="string">&#x27;output_directory&#x27;</span>,</span><br><span class="line">            unreal.DirectoryPath(path)</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+<p>This can be used like such, the benefit of this is that it will use a base preset
+.uasset and create a temporary copy of it to overwrite settings. Once used, the
+preset created are discarded.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@unreal.ufunction(<span class="params">override=<span class="literal">True</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">execute_delayed</span>(<span class="params">self, queue</span>):</span><br><span class="line">    <span class="comment"># parse commandline</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    self.preset_path = cmd_parameters[<span class="string">&#x27;MoviePipelineConfig&#x27;</span>]</span><br><span class="line">    self.output_path = cmd_parameters[<span class="string">&#x27;OutputDirectory&#x27;</span>]</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    preset_path = unreal.SoftObjectPath(self.preset_path)</span><br><span class="line">    u_preset = unreal.SystemLibrary.conv_soft_obj_path_to_soft_obj_ref(preset_path)</span><br><span class="line">    my_preset = MyPreset(u_preset)</span><br><span class="line">    my_preset.set_output_path(self.output_path)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<p><a target="_blank" rel="noopener" href="https://dev.epicgames.com/community/learning/tutorials/nZ2e/command-line-rendering-with-unreal-engine-movie-render-queue">Unreal Forum - Command Line Rendering With Unreal Engine Movie Render Queue</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/ue-rendering-custom-executor/" title="Take Your Unreal Movie Renders to the Next Level with Custom MRQ Executors" target="_blank" rel="external">https://www.xingyulei.com/post/ue-rendering-custom-executor/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/ue-rendering-remote-farm/" title="Unreal Distributed Rendering Server Handbook: Render Farm Implementation"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/py-http-server/" title="Python REST API: Build and Deploy Your Own Custom Server"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Unreal Engine Cinematic FBX Workflow Explained | Tech Art Learning</title>
+  <meta name="description" content="Discover the Unreal Engine Cinematic FBX workflow with our comprehensive tutorial. Our guide provides practical examples and best practices for importing and exporting FBX files, creating stunning cin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unreal Engine Cinematic FBX Workflow Explained">
+<meta property="og:url" content="https://www.xingyulei.com/post/ue-cinematic-fbx/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Discover the Unreal Engine Cinematic FBX workflow with our comprehensive tutorial. Our guide provides practical examples and best practices for importing and exporting FBX files, creating stunning cin">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/EPwKyeY.png">
+<meta property="og:image" content="https://i.imgur.com/I4YZzTD.png">
+<meta property="og:image" content="https://i.imgur.com/xe9MfeN.png">
+<meta property="og:image" content="https://i.imgur.com/GA2NbrO.png">
+<meta property="og:image" content="https://i.imgur.com/S4AeH4B.png">
+<meta property="og:image" content="https://i.imgur.com/XhsU3UB.png">
+<meta property="og:image" content="https://i.imgur.com/4PupBE3.png">
+<meta property="og:image" content="https://i.imgur.com/YSHFOvD.png">
+<meta property="og:image" content="https://i.imgur.com/GOEIA5l.png">
+<meta property="og:image" content="https://i.imgur.com/yHA3o39.png">
+<meta property="og:image" content="https://i.imgur.com/Ez1x8Zv.png">
+<meta property="og:image" content="https://i.imgur.com/XOkzVrx.png">
+<meta property="og:image" content="https://i.imgur.com/6WXdVzK.png">
+<meta property="article:published_time" content="2022-08-13T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-29T21:39:30.000Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="pipeline">
+<meta property="article:tag" content="maya">
+<meta property="article:tag" content="unreal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/EPwKyeY.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/ue-cinematic-fbx/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/cfx/" style="font-size: 13.13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.38px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.88px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#general"><span class="toc-number">2.</span> <span class="toc-text"> General</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static-mesh"><span class="toc-number">3.</span> <span class="toc-text"> Static Mesh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export"><span class="toc-number">3.1.</span> <span class="toc-text"> Export:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import"><span class="toc-number">3.2.</span> <span class="toc-text"> Import:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-mesh-animation"><span class="toc-number">3.3.</span> <span class="toc-text"> Static Mesh Animation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skeletal-mesh-skm"><span class="toc-number">4.</span> <span class="toc-text"> Skeletal Mesh (SKM)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-2"><span class="toc-number">4.1.</span> <span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-2"><span class="toc-number">4.2.</span> <span class="toc-text"> Import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skeletal-mesh-animation"><span class="toc-number">5.</span> <span class="toc-text"> Skeletal Mesh Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-3"><span class="toc-number">5.1.</span> <span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#blend-shape"><span class="toc-number">5.2.</span> <span class="toc-text"> Blend Shape</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-as-animation-sequence"><span class="toc-number">5.3.</span> <span class="toc-text"> Import (as Animation Sequence)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#camera-animation"><span class="toc-number">6.</span> <span class="toc-text"> Camera Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#export-4"><span class="toc-number">6.1.</span> <span class="toc-text"> Export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import-as-keyframes"><span class="toc-number">6.2.</span> <span class="toc-text"> Import (as Keyframes)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maya-fbx-export-option-reference"><span class="toc-number">7.</span> <span class="toc-text"> Maya FBX Export Option Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unreal-fbx-import-option-reference"><span class="toc-number">8.</span> <span class="toc-text"> Unreal FBX Import Option Reference</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ue-cinematic-fbx" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Unreal Engine Cinematic FBX Workflow Explained
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/ue-cinematic-fbx/" class="article-date">
+	  <time datetime="2022-08-13T04:00:00.000Z" itemprop="datePublished">2022-08-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/maya/" rel="tag">maya</a>, <a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>How do we transfer assets and animation to Unreal needed for cinematic?
+.fbx is the way to go (at least for now).
+For each component of a cinematic, we want to set it up nicely so the data can be
+correctly presented in Unreal.</p>
+<p>However, do note there are limitations in .fbx and differences between DCCs, certain
+things just can’t be transferred through .fbx and certain things can’t be represented
+in Unreal. Always test your workflow before going into full scale production.</p>
+<p>Please refer to <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/fbx-content-pipeline/">Unreal’s FBX Content Pipeline</a></p>
+<h2 id="general"><a class="markdownIt-Anchor" href="#general"></a> General</h2>
+<p>The important thing to keep in mind is that <strong>consistency is king</strong>,
+we want to have consistent world unit, identify coordinate system for each DCC,
+and maintain a hierarchy standard for assets across DCCs.</p>
+<p>Certain workflow involves animating or placing components
+within Unreal instead of importing outside the engine which is totally fine.</p>
+<h2 id="static-mesh"><a class="markdownIt-Anchor" href="#static-mesh"></a> Static Mesh</h2>
+<p>Static Meshes represents anything that is not animated, like a background environment.
+There shouldn’t be any keys on any of the transforms or attribute.
+They are meant to be modeled outside Unreal,
+and imported as a static mesh asset, placed in the level as a static mesh actor.</p>
+<table style="width: 700px">
+  <tr>
+    <td>
+        <img src="https://i.imgur.com/EPwKyeY.png" alt="flag-sm-maya" width="300px">
+    </td>
+    <td>
+        <img src="https://i.imgur.com/I4YZzTD.png" alt="flag-sm-unreal" width="300px">
+    </td>
+  </tr>
+</table>
+<h3 id="export"><a class="markdownIt-Anchor" href="#export"></a> Export:</h3>
+<p>In the outliner, select all the meshes and export as .fbx</p>
+<p><img src="https://i.imgur.com/xe9MfeN.png" alt="flag-sm-hierarchy" /></p>
+<h3 id="import"><a class="markdownIt-Anchor" href="#import"></a> Import:</h3>
+<p>Make sure ‘combine mesh’ is checked, otherwise the asset will be imported as separate meshes (probably not
+what we want)</p>
+<p>We have three types of Unreal assets created: Static Mesh, Textures and Materials.</p>
+<h3 id="static-mesh-animation"><a class="markdownIt-Anchor" href="#static-mesh-animation"></a> Static Mesh Animation</h3>
+<p>If a mesh is animated in any capacity, even if it’s just translating or rotating as a whole
+without any deformation, it needs to be skinned with joint(s). Consider this as a common standard.</p>
+<p>See the process of Skeletal Mesh in the immediate following.</p>
+<p>Note: the joint transform pivot needs to be align with the mesh transform pivot.</p>
+<p><strong>Example:</strong></p>
+<p>Take a look at our previous flag prop. If we want to animate the flag like moving it around in Unreal,
+it needs to have joint hierarchy where we can apply animation to, even if it’s simple as this.
+Applying animation directly to transform is not recommended.</p>
+<img src="https://i.imgur.com/GA2NbrO.png" alt="flag-skm-maya" width="300px">
+<p>Also, no need to worry about the extra joint and weight data added, the file size increase
+is negligible (&lt;10%).</p>
+<h2 id="skeletal-mesh-skm"><a class="markdownIt-Anchor" href="#skeletal-mesh-skm"></a> Skeletal Mesh (SKM)</h2>
+<p>Skeletal Mesh could be used to represent an animated foreground prop or environment,
+or something as complicated as a character/creature.</p>
+<p><strong>Example:</strong></p>
+<table style="width: 800px">
+  <tr>
+    <td>
+        <img src="https://i.imgur.com/S4AeH4B.png" alt="char-rig-maya" height="300px">
+    </td>
+    <td>
+        <img src="https://i.imgur.com/XhsU3UB.png" alt="char-skm-maya" height="300px">
+    </td>
+  </tr>
+</table>
+<h3 id="export-2"><a class="markdownIt-Anchor" href="#export-2"></a> Export</h3>
+<p><a target="_blank" rel="noopener" href="https://discourse.techart.online/t/rigging-in-game-vs-animation/2490">Rigging in Game vs Animation</a></p>
+<p>A complex animation rig can’t translate 1 to 1 to game engine, the rigging phase needs
+to be planned to accommodate the limitation of the engine.</p>
+<p>Once we have a suitable rig in Maya, we need to prepare it for the engine.
+We would clean the rig up to get a desired hierarchy which contains only joints
+and meshes. So remove components like controllers and constraints, also get rid
+of any redundant namespace.</p>
+<img src="https://i.imgur.com/4PupBE3.png" alt="char-skm-outline" width="200px">
+<h3 id="import-2"><a class="markdownIt-Anchor" href="#import-2"></a> Import</h3>
+<p>In addition to Textures and Materials, we have three major components imported:
+Skeleton, Skeletal Mesh and Physics Asset.</p>
+<ul>
+<li>Skeleton: refers the joint hierarchy, it uses the Skeletal Mesh as the preview mesh</li>
+<li>Skeletal Mesh: is the Skinned Mesh along with the Skeleton</li>
+<li>Physics Asset: defines physics and collision used by the Skeletal Mesh (sometimes
+even rendering), a rough physics collision body is defined during import.</li>
+</ul>
+<table style="width: 800px">
+  <tr>
+    <td>
+        <img src="https://i.imgur.com/YSHFOvD.png" alt="import-option" height="400px">
+    </td>
+    <td>
+        <img src="https://i.imgur.com/GOEIA5l.png" alt="char-skm-ue" height="400px">
+    </td>
+  </tr>
+</table>
+<h2 id="skeletal-mesh-animation"><a class="markdownIt-Anchor" href="#skeletal-mesh-animation"></a> Skeletal Mesh Animation</h2>
+<blockquote>
+<p>The exported animation should maintain the exact same hierarchy structure of the exported rig</p>
+</blockquote>
+<p>Generally, the root of the rig/skeleton, whether it’s a transform group or a
+root joint, should not have animation/keyed data on it,
+as it is generally used to offset world transform
+(and keyed transform can’t do that)</p>
+<h3 id="export-3"><a class="markdownIt-Anchor" href="#export-3"></a> Export</h3>
+<p>Since keyframes are usually on controllers, so we have to bake the keys on all joints.</p>
+<p>Select the joint hierarchy and Bake Simulation, after that we can get rid of the controllers
+and constraints just like what we did during the rig clean up.</p>
+<p>This time, we only need to export the joint hierarchy (no meshes).</p>
+<img src="https://i.imgur.com/yHA3o39.png" alt="maya-anim-outline" height="300px">
+<h3 id="blend-shape"><a class="markdownIt-Anchor" href="#blend-shape"></a> Blend Shape</h3>
+<p>Unreal supports blend shapes, if you need to export blend shape animation,
+additional steps needs to be done.</p>
+<ol>
+<li>find all meshes with blend shape node attached</li>
+<li>traverse in the node editor and locate the blend shape node</li>
+<li>bake simulation on the blend shape node</li>
+<li>include these meshes (ones with blend shape) during the export process</li>
+</ol>
+<h3 id="import-as-animation-sequence"><a class="markdownIt-Anchor" href="#import-as-animation-sequence"></a> Import (as Animation Sequence)</h3>
+<p>Now during import phase simply select the Skeleton Unreal asset that matches
+your animation, no need to create a new Skeletal Mesh.</p>
+<img src="https://i.imgur.com/Ez1x8Zv.png" alt="ue-anim-outline" height="300px">
+<p>An Animation Sequence Unreal asset is now created, you can also see a preview
+mesh through the Editor window. It is now ready to be used in the Sequencer.</p>
+<h2 id="camera-animation"><a class="markdownIt-Anchor" href="#camera-animation"></a> Camera Animation</h2>
+<p>Maya Camera cannot be imported as an Unreal asset.
+Unreal has its own native Camera object, which is not 1-to-1 match to Maya’s Camera.</p>
+<p>What we can do is export Maya camera’s animation and attribute and
+import on an Unreal Cinematic Camera Actor.</p>
+<p>See video guide <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qtxLmWquOOY">here</a></p>
+<h3 id="export-4"><a class="markdownIt-Anchor" href="#export-4"></a> Export</h3>
+<p>The camera node has to be on the scene root, with no transform node on top.
+Otherwise, the animation won’t be imported correctly as Unreal is searching
+for the top node.</p>
+<h3 id="import-as-keyframes"><a class="markdownIt-Anchor" href="#import-as-keyframes"></a> Import (as Keyframes)</h3>
+<img src="https://i.imgur.com/XOkzVrx.png" alt="cam-import-option" width="300px">
+<p>Cameras are linked to the game viewport, therefore animation import needs to be plotted on
+the Sequencer as individual keyframes instead of being an Unreal asset.</p>
+<p>Create a camera track and bind it to a newly created Unreal CineCameraActor and
+hit ‘Import’.</p>
+<img src="https://i.imgur.com/6WXdVzK.png" alt="ue-cam-keys">
+<h2 id="maya-fbx-export-option-reference"><a class="markdownIt-Anchor" href="#maya-fbx-export-option-reference"></a> Maya FBX Export Option Reference</h2>
+<p><a target="_blank" rel="noopener" href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2022/ENU/Maya-Basics/files/GUID-FE8DBEAA-C2DD-43B3-9933-4BA4CDDEAA89-htm.html">FBX Export options: Full Help</a></p>
+<p>Embed Media:</p>
+<ul>
+<li>Could be <strong>checked</strong> during Static Mesh/Skeletal Mesh export based on needs,
+the Unreal import can pick up the texture and materials embedded.</li>
+</ul>
+<p>Smoothing Group:</p>
+<ul>
+<li>Usually needs to be <strong>checked</strong> so Unreal can use the smoothing group exported
+from Maya as opposed to perform smoothing calculation on Unreal side.</li>
+</ul>
+<p>Include Children:</p>
+<ul>
+<li>Almost always keep <strong>unchecked</strong>, and explicitly select nodes to export.</li>
+</ul>
+<p>Input Connections:</p>
+<ul>
+<li>Keep <strong>unchecked</strong> is usually a good idea to avoid exporting extra data, but
+also depends on different circumstances</li>
+</ul>
+<p>Deformed Models:</p>
+<ul>
+<li>For Skeletal Mesh export which is commonly a rig, check “Skins” to export
+skin deformation like skin clusters, check “Blend Shapes” to export all blend shape
+targets.</li>
+<li>For Skeletal Mesh <strong>Animation</strong> export, uncheck “Skins” and “Blend Shapes”.
+Skinning data is embedded within the Skeletal Mesh Asset in Unreal, and for
+blend shapes, as long as you are following this <a href="#blend-shape">step</a>,
+the imported .fbx would also carry over blend shape animation.</li>
+</ul>
+<p>Bake Animation:</p>
+<ul>
+<li>Leave this <strong>unchecked</strong> and use Maya’s <em>Edit | Keys | Bake Simulation</em>, as it
+offers more flexible solutions and is also generally much faster.</li>
+</ul>
+<h2 id="unreal-fbx-import-option-reference"><a class="markdownIt-Anchor" href="#unreal-fbx-import-option-reference"></a> Unreal FBX Import Option Reference</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/fbx-import-options-reference-in-unreal-engine/">FBX Import Options Reference: Full Help</a></p>
+<p>Static Mesh:</p>
+<ul>
+<li>“Import Mesh” checked</li>
+<li>“Create New Materials” and “Import Textures” as needed</li>
+</ul>
+<p>Skeletal Mesh:</p>
+<ul>
+<li>Leave “Skeleton” blank, if you need to create a new skeleton asset</li>
+<li>“Create Physics Asset”, if you need to create a new PA</li>
+<li>“Skeletal Mesh” and “Import Mesh” checked to import skinned meshes</li>
+<li>“Create New Materials” and “Import Textures” as needed</li>
+</ul>
+<p>Skeletal Animation: (Import as Animation Sequence)</p>
+<ul>
+<li>Choose existing skeleton for “Skeleton”</li>
+<li>“Import Mesh” unchecked to avoid importing blend shape source mesh if
+blend shape was exported during Maya export.</li>
+<li>“Import Animations” checked</li>
+</ul>
+<p>Camera Animation: (Import as keyframes in Sequencer)</p>
+<ul>
+<li>“Matches by Name Only” unchecked</li>
+<li>“Create Cameras” unchecked</li>
+<li>“Replace Transform Track” checked</li>
+<li>“Reduce Keys” unchecked</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/ue-cinematic-fbx/" title="Unreal Engine Cinematic FBX Workflow Explained" target="_blank" rel="external">https://www.xingyulei.com/post/ue-cinematic-fbx/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/math-euler-gimbal/" title="Euler Angles and Gimbal Lock: Things You Need to Know"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/ue-cinematic-sequencer/" title="Create Professional-Quality Cinematics with Unreal Engine: An Easy-to-Follow Guide"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>

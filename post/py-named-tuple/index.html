@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Step-by-Step Guide to Using namedtuple in Python for Beginners | Tech Art Learning</title>
+  <meta name="description" content="Learn how to use namedtuple in Python with our step-by-step guide designed for beginners. Our tutorial provides practical examples and best practices for creating lightweight and memory-efficient data">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Step-by-Step Guide to Using namedtuple in Python for Beginners">
+<meta property="og:url" content="https://www.xingyulei.com/post/py-named-tuple/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Learn how to use namedtuple in Python with our step-by-step guide designed for beginners. Our tutorial provides practical examples and best practices for creating lightweight and memory-efficient data">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-23T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-29T21:19:10.000Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="style">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/py-named-tuple/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/cfx/" style="font-size: 13.13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.38px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.88px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mutable-and-hashable"><span class="toc-number">1.</span> <span class="toc-text"> Mutable and Hashable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hash-and-id"><span class="toc-number">1.1.</span> <span class="toc-text"> hash() and id()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#why-hash"><span class="toc-number">1.2.</span> <span class="toc-text"> Why Hash?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-number">1.3.</span> <span class="toc-text"> Example:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#namedtuple"><span class="toc-number">2.</span> <span class="toc-text"> NamedTuple</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#initialization"><span class="toc-number">2.1.</span> <span class="toc-text"> Initialization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#access-and-edit-value"><span class="toc-number">2.2.</span> <span class="toc-text"> Access and Edit Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-_asdict"><span class="toc-number">2.3.</span> <span class="toc-text"> Using ._asdict()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dataclass"><span class="toc-number">3.</span> <span class="toc-text"> @dataclass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#frozen-attribute"><span class="toc-number">3.1.</span> <span class="toc-text"> frozen attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#override-__iter__"><span class="toc-number">3.2.</span> <span class="toc-text"> override __iter__()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#subclassing-namedtuple"><span class="toc-number">4.</span> <span class="toc-text"> Subclassing namedtuple</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#__new__-constructor"><span class="toc-number">4.1.</span> <span class="toc-text"> __new__() constructor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#__slots__"><span class="toc-number">4.2.</span> <span class="toc-text"> __slots__</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#comparison-__dict__-vs-__slots__"><span class="toc-number">4.2.1.</span> <span class="toc-text"> Comparison __dict__ vs. __slots__</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">5.</span> <span class="toc-text"> Reference</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-py-named-tuple" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Step-by-Step Guide to Using namedtuple in Python for Beginners
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/py-named-tuple/" class="article-date">
+	  <time datetime="2022-01-23T05:00:00.000Z" itemprop="datePublished">2022-01-23</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/style/" rel="tag">style</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>I recently got side-tracked into exploring the basics of <code>namedtuple()</code> as
+I got a glimpse of its usage in our engineering codebase. Here’s my summary:</p>
+<h2 id="mutable-and-hashable"><a class="markdownIt-Anchor" href="#mutable-and-hashable"></a> Mutable and Hashable</h2>
+<p>To understand the behavior of <code>namedtuple()</code>, it is best to also visit the
+concept of Python object’s mutability and hashability. These two concepts are
+closely linked.</p>
+<p><strong>Hashability</strong>: an object’s is hashable when its hash value never changed during its lifetime</p>
+<blockquote>
+<p>Most of Python’s immutable built-in objects are hashable;
+mutable containers (such as lists or dictionaries) are not;
+immutable containers (such as tuples and frozensets)
+are only hashable if their elements are hashable.
+<strong>Objects</strong> which are <strong>instances</strong> of user-defined classes are hashable by default</p>
+</blockquote>
+<p><strong>Mutability</strong>: an object with a fixed value and cannot be altered is immutable
+(For example: <code>int</code>, <code>float</code>, <code>string</code>, <code>tuple</code>).
+in contrast, an object can keep its value while keeping its <code>id()</code> is mutable.
+(For example: <code>list</code>, <code>dict</code>)</p>
+<h3 id="hash-and-id"><a class="markdownIt-Anchor" href="#hash-and-id"></a> <code>hash()</code> and <code>id()</code></h3>
+<p><strong>identity</strong>: <code>id()</code>, the identity of the two same value variables are the same
+If two objects (that exist at the same time) have the same identity, they’re actually two references to the same object.</p>
+<blockquote>
+<p>The <code>is</code> operator compares items by identity, <code>a is b</code> is equivalent to <code>id(a) == id(b)</code>.</p>
+</blockquote>
+<p><strong>hash value</strong>: <code>hash()</code>, hash value is based off an object’s value, and hash value
+must remain the same for the lifetime of the object. If an object is mutable,
+then it doesn’t make sense for it to have hash.</p>
+<blockquote>
+<p>The hash value is an integer which is used to quickly compare dictionary keys or sets.</p>
+</blockquote>
+<h3 id="why-hash"><a class="markdownIt-Anchor" href="#why-hash"></a> Why Hash?</h3>
+<p>Hash values are very useful, as they enable quick look-up of values
+in a large collection of values, it’s commonly used in <code>set</code> and <code>dict</code>.</p>
+<p>with <code>if x in elements:</code>:</p>
+<ul>
+<li>
+<p>In a <code>list</code>, Python needs to go through the whole list
+and compare <code>x</code>'s value with each value in the list elements.</p>
+</li>
+<li>
+<p>In a <code>set</code>, Python keeps track of each element’s hash,
+Python will get the hash-value for <code>x</code>,
+look that up in an internal structure and find elements that have the same hash as <code>x</code>.</p>
+</li>
+</ul>
+<p>It also means you can have non-hashable objects in a <code>list</code>,
+but not in a <code>set</code> or as <strong>keys</strong> in a <code>dict</code>.</p>
+<p><a name='hash-example'></a></p>
+<h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example:</h3>
+<p>There is no way to change an <code>int</code> object’s value without re-assigning (copy) it
+to a different object.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">5</span></span><br><span class="line"><span class="comment"># id(x) is equal to 3054677212104</span></span><br><span class="line">x = <span class="number">6</span></span><br><span class="line"><span class="comment"># id(x) is equal to 3054677212080</span></span><br></pre></td></tr></table></figure>
+<p>But for <code>list</code>, you can edit its value after assignment while keeping its <code>id()</code>
+the same. (note: use <code>list</code> built-in function rather than re-assignment,
+this is the same for <code>x.sort</code> vs. <code>x=sorted(x)</code>)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">5</span>]</span><br><span class="line"><span class="comment"># ORIGINAL: id(x) is equal to 3054706521672</span></span><br><span class="line">x.append(<span class="number">6</span>)</span><br><span class="line"><span class="comment"># CORRECT: id(x) is equal to 3054706521672</span></span><br><span class="line">x = [<span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="comment"># WRONG: id(x) is equal to 3054713375816</span></span><br></pre></td></tr></table></figure>
+<h2 id="namedtuple"><a class="markdownIt-Anchor" href="#namedtuple"></a> NamedTuple</h2>
+<p>A data class are just regular classes that are geared towards storing state,
+rather than containing a lot of logic, <code>namedtuple()</code> is one kind of data classes.</p>
+<blockquote>
+<p>Every time you create a class that mostly consists of attributes, you make a data class.</p>
+</blockquote>
+<p>With <code>namedtuple()</code>, you can create <strong>immutable</strong> sequence types
+that allow you to access their values using descriptive field names
+and the dot notation instead of unclear integer indices.</p>
+<h3 id="initialization"><a class="markdownIt-Anchor" href="#initialization"></a> Initialization</h3>
+<ol>
+<li><strong>typename</strong>: <code>str</code>, class name of the <code>namedtuple</code></li>
+<li><strong>field names</strong>: names that are used to access values in the <code>namedtuple</code>, it can be declared using any of the following:
+<ul>
+<li>iterable of strings: [“a”, “b”, “c”]</li>
+<li>a string with name seperated by white spaces: “a b c”</li>
+<li>a string with name separated by commas: “a, b, c”</li>
+</ul>
+</li>
+</ol>
+<p>Example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line">Point = namedtuple(<span class="string">&quot;Point&quot;</span>, [<span class="string">&quot;x&quot;</span>, <span class="string">&quot;y&quot;</span>])</span><br><span class="line"></span><br><span class="line">&gt;&gt; Point</span><br><span class="line"><span class="comment"># &lt;class &#x27;__main__.Point&#x27;&gt;</span></span><br><span class="line">&gt;&gt; Point(<span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment"># Point(x=2, y=4)</span></span><br></pre></td></tr></table></figure>
+<h3 id="access-and-edit-value"><a class="markdownIt-Anchor" href="#access-and-edit-value"></a> Access and Edit Value</h3>
+<p>It is very straight-forward to access a tuple’s attribute value using dot notation</p>
+<p>this gives <code>namedtuple</code> a great edge against <code>dict</code> or <code>tuple</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person = namedtuple(<span class="string">&#x27;Person&#x27;</span>, <span class="string">&#x27;name children&#x27;</span>)</span><br><span class="line">jj = Person(<span class="string">&#x27;Johnny J&#x27;</span>, [<span class="string">&#x27;Tobby&#x27;</span>])</span><br><span class="line"></span><br><span class="line">&gt;&gt; jj.children</span><br><span class="line"><span class="comment"># [&#x27;Tobby&#x27;]</span></span><br></pre></td></tr></table></figure>
+<p>Since <code>namedtuple</code> is immutable, you can’t assign value to its attribute;
+what you can do is to use <code>._replace()</code>; and also, its value can be mutable, like
+a <code>list</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; jj.children = [<span class="string">&#x27;Tobby&#x27;</span>, <span class="string">&#x27;Wang&#x27;</span>]</span><br><span class="line"><span class="comment"># AttributeError: can&#x27;t set attribute</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; jj.children.append(<span class="string">&#x27;Wang&#x27;</span>)</span><br><span class="line"><span class="comment"># Correct</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; jj = jj._replace(name=<span class="string">&#x27;John J&#x27;</span>)</span><br><span class="line"><span class="comment"># Correct</span></span><br></pre></td></tr></table></figure>
+<h3 id="using-_asdict"><a class="markdownIt-Anchor" href="#using-_asdict"></a> Using <code>._asdict()</code></h3>
+<p>The built-in function <code>._asdict()</code> converts <code>namedtuple</code> into a dictionary.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person = namedtuple(<span class="string">&quot;Person&quot;</span>, <span class="string">&quot;name age height&quot;</span>)</span><br><span class="line">jane = Person(<span class="string">&quot;Jane&quot;</span>, <span class="number">25</span>, <span class="number">1.75</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt; jane._asdict()</span><br><span class="line"><span class="comment"># &#123;&#x27;name&#x27;: &#x27;Jane&#x27;, &#x27;age&#x27;: 25, &#x27;height&#x27;: 1.75&#125;</span></span><br></pre></td></tr></table></figure>
+<p>and to generate a namedtuple object from dictionary</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;</span><br><span class="line">   <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Jane&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;age&#x27;</span>: <span class="number">25</span>,</span><br><span class="line">   <span class="string">&#x27;height&#x27;</span>: <span class="number">1.75</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jane = Person(**d)</span><br></pre></td></tr></table></figure>
+<h2 id="dataclass"><a class="markdownIt-Anchor" href="#dataclass"></a> <code>@dataclass</code></h2>
+<p><code>@dataclass</code> came out after Python 3.7, which is similar to <code>namedtuple</code>, but they are mutable.
+thus, we can set value to a <code>@dataclass</code> attribute.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass</span><br><span class="line"></span><br><span class="line"><span class="meta">@dataclass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line">    age: <span class="built_in">int</span></span><br><span class="line">    country: <span class="built_in">str</span> = <span class="string">&quot;Canada&quot;</span></span><br><span class="line"></span><br><span class="line">jane = Person(<span class="string">&quot;Jane&quot;</span>, <span class="number">25</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt; jane.name = <span class="string">&quot;Jane Doe&quot;</span></span><br><span class="line">&gt;&gt; jane.name</span><br><span class="line"><span class="string">&#x27;Jane Doe&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="frozen-attribute"><a class="markdownIt-Anchor" href="#frozen-attribute"></a> frozen attribute</h3>
+<p>if we want <code>@dataclass</code> to behave like <code>namedtuple</code> with an un-editable “protected” attribute,
+just use <code>@dataclass(frozen=True)</code>.</p>
+<h3 id="override-__iter__"><a class="markdownIt-Anchor" href="#override-__iter__"></a> override <code>__iter__()</code></h3>
+<p><code>@dataclass</code> are also not iterable by default, unlike <code>namedtuple</code>. We can achieve
+that by implementing the special method <code>.__iter__()</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dataclasses <span class="keyword">import</span> astuple, dataclass</span><br><span class="line"></span><br><span class="line"><span class="meta">@dataclass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__iter__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">iter</span>(astuple(self))</span><br></pre></td></tr></table></figure>
+<h2 id="subclassing-namedtuple"><a class="markdownIt-Anchor" href="#subclassing-namedtuple"></a> Subclassing <code>namedtuple</code></h2>
+<p>Subclassing <code>namedtuple</code> gives us additional functionality.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BasePerson = namedtuple(<span class="string">&quot;BasePerson&quot;</span>, <span class="string">&quot;name birthdate country&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">BasePerson</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;A namedtuple subclass to hold a person&#x27;s data.&quot;&quot;&quot;</span></span><br><span class="line">    __slots__ = ()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Name: &#123;&#125;, age: &#123;&#125; years old&quot;</span>.<span class="built_in">format</span>(self.name, self.age)</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">age</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> (date.today() - self.birthdate).days // <span class="number">365</span></span><br></pre></td></tr></table></figure>
+<p>In the above example, subclassing from <code>namedtuple</code> provides us better documentation
+(i.e. <code>Person.__doc__</code>), better string representation (i.e. <code>print jane</code>) and an
+extra property to access based off a Person’s instance attribute value.</p>
+<h3 id="__new__-constructor"><a class="markdownIt-Anchor" href="#__new__-constructor"></a> <code>__new__()</code> constructor</h3>
+<p><a target="_blank" rel="noopener" href="http://zecong.hu/2019/08/10/inheritance-for-namedtuples/">Zechong Hu’s Blog - Inheritance for Python Namedtuples</a></p>
+<p>To override the constructor for <code>namedtuple</code> class with default value:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BasePerson = namedtuple(<span class="string">&quot;BasePerson&quot;</span>, [<span class="string">&quot;name&quot;</span>, <span class="string">&quot;birthdate&quot;</span> ,<span class="string">&quot;country&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">BasePerson</span>):</span><br><span class="line">    __slots__ = ()</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, name, birthdate=<span class="string">&quot;2000.01.01&quot;</span>, country=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>(Person, cls).__new__(cls, name, birthdate, country)</span><br></pre></td></tr></table></figure>
+<h3 id="__slots__"><a class="markdownIt-Anchor" href="#__slots__"></a> <code>__slots__</code></h3>
+<p>The special attribute <code>__slots__</code> explicitly state what attribute you want
+your class instances to have.</p>
+<p>By default, when an instance (object) is created,
+<code>__dict__</code> is used to store an object’s (writable) attributes.
+A <strong>dynamic</strong> dictionary:</p>
+<ol>
+<li>requires more memory</li>
+<li>takes longer time to create.</li>
+</ol>
+<p>Because <code>namedtuple</code> makes immutable instances that are lightweight,
+we need to prevent the creation of <code>__dict__</code> to get the benefit while subclassing
+by setting <code>__slots__</code> as empty tuple.</p>
+<p>In a more general note, please consider using <code>__slots__</code> when creating
+tons of objects, this saves memory and time when instancing.</p>
+<h4 id="comparison-__dict__-vs-__slots__"><a class="markdownIt-Anchor" href="#comparison-__dict__-vs-__slots__"></a> Comparison <code>__dict__</code> vs. <code>__slots__</code></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">      self.name = name</span><br><span class="line">      self.age = age</span><br><span class="line"></span><br><span class="line">john = Person(<span class="string">&#x27;john&#x27;</span>, <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt; john.__dict__</span><br><span class="line"><span class="comment"># &#123;&#x27;age&#x27;: 15, &#x27;name&#x27;: &#x27;john&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    __slots__ = [<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;age&#x27;</span>]</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">john = Person(<span class="string">&#x27;john&#x27;</span>, <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt; john.__slots__</span><br><span class="line"><span class="comment"># [&#x27;name&#x27;, &#x27;age&#x27;]</span></span><br><span class="line">&gt;&gt; john.__dict__</span><br><span class="line"><span class="comment"># AttributeError: &#x27;Person&#x27; object has no attribute &#x27;__dict__&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/glossary.html">Python Docs - Glossary</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747">Medium megha mohan - Mutable vs Immutable Objects in Python</a></p>
+<p><a target="_blank" rel="noopener" href="https://realpython.com/python-namedtuple/">Real Python - namedtuple</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/47955263/">Stack Overflow - What are data classes and how are they different from common classes?</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/python-use-of-__slots__/">Geeks for Geesk - Use of __slots__</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/472000/">Stack Overflow - Usage of __slots__?</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/34402522">Stack Overflow - Difference between hash() and id()</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38189660/">Stack Overflow - Two variables in Python have same id, but not lists or tuples</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/17585730">Stack Overflow - What does hash do in python?</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/py-named-tuple/" title="Step-by-Step Guide to Using namedtuple in Python for Beginners" target="_blank" rel="external">https://www.xingyulei.com/post/py-named-tuple/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/maya-ik-fk-match/" title="Automate IK FK Matching in Maya with 2 Simple Steps"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/maya-streaming/" title="Streamline Your Maya Communication (2. Streaming Output)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>

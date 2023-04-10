@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>(Hopefully) The Only Qt Template You&#39;ll Ever Need | Tech Art Learning</title>
+  <meta name="description" content="Streamline your Qt development process with our comprehensive template that covers all the essentials. Our guide provides practical examples and best practices for creating a high-quality, reusable Qt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(Hopefully) The Only Qt Template You&#39;ll Ever Need">
+<meta property="og:url" content="https://www.xingyulei.com/post/qt-template/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Streamline your Qt development process with our comprehensive template that covers all the essentials. Our guide provides practical examples and best practices for creating a high-quality, reusable Qt">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-10-16T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-29T21:30:14.000Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="pyqt">
+<meta property="article:tag" content="template">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/qt-template/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/cfx/" style="font-size: 13.13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.38px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.88px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#general"><span class="toc-number">1.</span> <span class="toc-text"> General</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#template"><span class="toc-number">1.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import-qt-modules"><span class="toc-number">1.2.</span> <span class="toc-text"> Import Qt Modules</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-qapplication"><span class="toc-number">1.3.</span> <span class="toc-text"> Using QApplication</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#close-event"><span class="toc-number">1.4.</span> <span class="toc-text"> Close Event</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#delete-widget-when-closed"><span class="toc-number">1.4.1.</span> <span class="toc-text"> Delete Widget when Closed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unique-instance"><span class="toc-number">1.4.2.</span> <span class="toc-text"> Unique Instance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#other"><span class="toc-number">1.5.</span> <span class="toc-text"> Other</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#register-style-sheet"><span class="toc-number">1.5.1.</span> <span class="toc-text"> Register Style Sheet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#register-qresources"><span class="toc-number">1.5.2.</span> <span class="toc-text"> Register QResources</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#maya"><span class="toc-number">2.</span> <span class="toc-text"> Maya</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#parent-to-mayas-main-window"><span class="toc-number">2.1.</span> <span class="toc-text"> Parent to Maya’s Main Window</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#window-docking"><span class="toc-number">2.2.</span> <span class="toc-text"> Window Docking</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dockable-window"><span class="toc-number">2.2.1.</span> <span class="toc-text"> Dockable Window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#auto-docking"><span class="toc-number">2.2.2.</span> <span class="toc-text"> Auto-docking</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#instantiate-widget"><span class="toc-number">2.3.</span> <span class="toc-text"> Instantiate Widget</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#close-application-in-maya"><span class="toc-number">2.3.1.</span> <span class="toc-text"> Close Application in Maya</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#error-in-pycharm"><span class="toc-number">2.3.2.</span> <span class="toc-text"> Error in PyCharm</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unreal-engine"><span class="toc-number">3.</span> <span class="toc-text"> Unreal Engine</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#raise-existing-instance"><span class="toc-number">3.1.</span> <span class="toc-text"> Raise Existing Instance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#override-closeevent"><span class="toc-number">3.2.</span> <span class="toc-text"> Override closeEvent()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bonus"><span class="toc-number">4.</span> <span class="toc-text"> Bonus:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pyside2-ui-loading"><span class="toc-number">4.1.</span> <span class="toc-text"> PySide2 UI Loading</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-number">5.</span> <span class="toc-text"> Reference</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-qt-template" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      (Hopefully) The Only Qt Template You&#39;ll Ever Need
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/qt-template/" class="article-date">
+	  <time datetime="2018-10-16T04:00:00.000Z" itemprop="datePublished">2018-10-16</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/tech-summary/">tech summary</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pyqt/" rel="tag">pyqt</a>, <a class="article-tag-link-link" href="/tags/template/" rel="tag">template</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="general"><a class="markdownIt-Anchor" href="#general"></a> General</h1>
+<h2 id="template"><a class="markdownIt-Anchor" href="#template"></a> Template</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Window</span>(QtWidgets.QMainWindow):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(Window, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)</span><br><span class="line">        self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)</span><br><span class="line">        _loadUi(UI_PATH, self)</span><br></pre></td></tr></table></figure>
+<h2 id="import-qt-modules"><a class="markdownIt-Anchor" href="#import-qt-modules"></a> Import Qt Modules</h2>
+<p>if you are using <code>PyQt5</code> binding:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> PyQt5.uic <span class="keyword">import</span> loadUi</span><br></pre></td></tr></table></figure>
+<p>if you are using <code>PySide2</code> binding, here’s a wrapper I made which can
+be found <a href="#pyside2-ui-loading">here</a>.</p>
+<p>I’m using <a target="_blank" rel="noopener" href="https://github.com/mottosso/Qt.py">Qt.py</a> a Python 2 &amp; 3 shim around all Qt bindings,
+it just saves a lot of work.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> _loadUi</span><br></pre></td></tr></table></figure>
+<h2 id="using-qapplication"><a class="markdownIt-Anchor" href="#using-qapplication"></a> Using QApplication</h2>
+<p>Launch as standalone application using <code>QApplication</code>, or if a <code>QApplication</code> instance
+exist, there’s no need to instantiate it. use <code>QtWidgets.QApplication.instance()</code> to check</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> sys</span><br><span class="line">    <span class="keyword">if</span> QtWidgets.QApplication.instance():</span><br><span class="line">        window = ToolWindow()</span><br><span class="line">        window.show()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">        window = ToolWindow()</span><br><span class="line">        window.show()</span><br><span class="line">        sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<h2 id="close-event"><a class="markdownIt-Anchor" href="#close-event"></a> Close Event</h2>
+<h3 id="delete-widget-when-closed"><a class="markdownIt-Anchor" href="#delete-widget-when-closed"></a> Delete Widget when Closed</h3>
+<p>by default, closing the widget is hiding it not destroying the object</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;WindowObject&#125;.setAttribute(QtCore.Qt.WA_DeleteOnClose)</span><br></pre></td></tr></table></figure>
+<h3 id="unique-instance"><a class="markdownIt-Anchor" href="#unique-instance"></a> Unique Instance</h3>
+<p>Raise existing instance (for example: widgets that are hidden during <code>closeEvent</code>);
+if no instance is available, create a new one.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">show</span>():</span><br><span class="line">    <span class="keyword">global</span> WINDOW</span><br><span class="line"></span><br><span class="line">    exists = WINDOW <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> exists:</span><br><span class="line">        WINDOW = ToolWindow()</span><br><span class="line"></span><br><span class="line">    WINDOW.showNormal()</span><br></pre></td></tr></table></figure>
+<h2 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h2>
+<h3 id="register-style-sheet"><a class="markdownIt-Anchor" href="#register-style-sheet"></a> Register Style Sheet</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">show</span>():</span><br><span class="line">    ...</span><br><span class="line">    APP = QtWidgets.QApplication(sys.argv)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(PATH_TO_STYLESHEET, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        qss = f.read()</span><br><span class="line">        APP.setStyleSheet(qss)</span><br></pre></td></tr></table></figure>
+<h3 id="register-qresources"><a class="markdownIt-Anchor" href="#register-qresources"></a> Register QResources</h3>
+<p><code>QtCore.QResource.registerResource(PATH_TO_RCC)</code></p>
+<h1 id="maya"><a class="markdownIt-Anchor" href="#maya"></a> Maya</h1>
+<h2 id="parent-to-mayas-main-window"><a class="markdownIt-Anchor" href="#parent-to-mayas-main-window"></a> Parent to Maya’s Main Window</h2>
+<p>by default Qt window is <strong>not</strong> parented to Maya application</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> shiboken2 <span class="keyword">import</span> wrapInstance</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_maya_main_window</span>():</span><br><span class="line">    <span class="keyword">import</span> maya.OpenMayaUI</span><br><span class="line">    main_window_ptr = maya.OpenMayaUI.MQtUtil.mainWindow()</span><br><span class="line">    <span class="keyword">return</span> wrapInstance(long(main_window_ptr), QtWidgets.QMainWindow)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ModuleUI</span>(QtWidgets.QMainWindow):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent=get_maya_main_window(<span class="params"></span>)</span>):</span><br><span class="line">        <span class="built_in">super</span>(ModuleUI, self).__init__(parent)</span><br><span class="line">        _loadUi(UI_PATH, self)</span><br></pre></td></tr></table></figure>
+<h2 id="window-docking"><a class="markdownIt-Anchor" href="#window-docking"></a> Window Docking</h2>
+<h3 id="dockable-window"><a class="markdownIt-Anchor" href="#dockable-window"></a> Dockable Window</h3>
+<script src="https://gist.github.com/leixingyu/8fb523cfd38b47c9cb1476b5c41eafd7.js"></script>
+<p>The widget/window can now be docked into Maya’s main window;</p>
+<h3 id="auto-docking"><a class="markdownIt-Anchor" href="#auto-docking"></a> Auto-docking</h3>
+<p>The above example of auto-docking may not work for certain Maya builds</p>
+<p>A workaround is to use the following method, but it only applies to <code>QWidget</code> type not <code>QMainWindow</code> type.</p>
+<script src="https://gist.github.com/leixingyu/83358dedd008f6a51e7f7b2b14d2fb34.js"></script>
+<h2 id="instantiate-widget"><a class="markdownIt-Anchor" href="#instantiate-widget"></a> Instantiate Widget</h2>
+<p>When the UI has no parent (Maya main window), it will get instantly destroyed by the
+garbage collector, unless you keep an instance:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in the show function</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">show</span>():</span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    window.show()</span><br><span class="line">    <span class="keyword">return</span> window</span><br><span class="line"></span><br><span class="line"><span class="comment"># in maya script editor</span></span><br><span class="line">win = moduleName.show()</span><br></pre></td></tr></table></figure>
+<p>or using global variable to store the instance</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">show</span>():</span><br><span class="line">    <span class="keyword">global</span> window</span><br><span class="line">    window = ModuleUI()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># in maya script editor</span></span><br><span class="line">moduleName.show()</span><br></pre></td></tr></table></figure>
+<h3 id="close-application-in-maya"><a class="markdownIt-Anchor" href="#close-application-in-maya"></a> Close Application in Maya</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">show</span>():</span><br><span class="line">    <span class="keyword">if</span> cmds.window(<span class="string">&#x27;xxx&#x27;</span>, q=<span class="number">1</span>, exists=<span class="number">1</span>):</span><br><span class="line">        cmds.deleteUI(<span class="string">&#x27;xxx&#x27;</span>)</span><br><span class="line">    <span class="keyword">global</span> window</span><br><span class="line">    window = somethingWindow()</span><br><span class="line">    window.setObjectName(<span class="string">&#x27;xxx&#x27;</span>)</span><br><span class="line">    window.show()</span><br></pre></td></tr></table></figure>
+<h3 id="error-in-pycharm"><a class="markdownIt-Anchor" href="#error-in-pycharm"></a> Error in PyCharm</h3>
+<p>When this error occurs, it is due to MayaDevKit environment
+MayaDevKit allows maya python command auto-completion, remove it from PyCharm</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">TypeError: <span class="string">&#x27;NoneType&#x27;</span> <span class="built_in">object</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="built_in">callable</span></span><br></pre></td></tr></table></figure>
+<h1 id="unreal-engine"><a class="markdownIt-Anchor" href="#unreal-engine"></a> Unreal Engine</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">show</span>():</span><br><span class="line">    <span class="keyword">global</span> app</span><br><span class="line">    <span class="keyword">global</span> window</span><br><span class="line"></span><br><span class="line">    app = QtWidgets.QApplication.instance() <span class="keyword">or</span> QtWidgets.QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line">    window = TestWindow()</span><br><span class="line">    window.show()  <span class="comment"># this needs to happen before parenting</span></span><br><span class="line">    unreal.parent_external_window_to_slate(<span class="built_in">int</span>(window.winId()))</span><br></pre></td></tr></table></figure>
+<h2 id="raise-existing-instance"><a class="markdownIt-Anchor" href="#raise-existing-instance"></a> Raise Existing Instance</h2>
+<p>in the <code>show()</code> we need to return the window instance and assign it to a global variable:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># main.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">show</span>():</span><br><span class="line">    ...</span><br><span class="line">    window.show()</span><br><span class="line">    <span class="keyword">return</span> window</span><br></pre></td></tr></table></figure>
+<p>in the parent python command call (this maybe an Unreal menu command)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> test <span class="keyword">import</span> main</span><br><span class="line"><span class="keyword">global</span> editor</span><br><span class="line">editor = main.show()</span><br></pre></td></tr></table></figure>
+<h2 id="override-closeevent"><a class="markdownIt-Anchor" href="#override-closeevent"></a> Override <code>closeEvent()</code></h2>
+<p>To exit the Unreal Editor when Qt Window is closed:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">closeEvent</span>(<span class="params">self, event</span>):</span><br><span class="line">    QtWidgets.QMainWindow.closeEvent(event)</span><br><span class="line">    unreal.SystemLibrary.execute_console_command(<span class="literal">None</span>, <span class="string">&quot;QUIT_EDITOR&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>To override at an instance level:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> types</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_close_event</span>(<span class="params">self, event</span>):</span><br><span class="line">        QtWidgets.QMainWindow.closeEvent(event)</span><br><span class="line">        unreal.SystemLibrary.execute_console_command(<span class="literal">None</span>, <span class="string">&quot;QUIT_EDITOR&quot;</span>)</span><br><span class="line"></span><br><span class="line">    win = Window()</span><br><span class="line">    win.closeEvent = types.MethodType(_close_event, win)</span><br></pre></td></tr></table></figure>
+<h1 id="bonus"><a class="markdownIt-Anchor" href="#bonus"></a> Bonus:</h1>
+<h2 id="pyside2-ui-loading"><a class="markdownIt-Anchor" href="#pyside2-ui-loading"></a> PySide2 UI Loading</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PySide2 <span class="keyword">import</span> QtCore, QtWidgets</span><br><span class="line"><span class="keyword">from</span> PySide2.QtUiTools <span class="keyword">import</span> QUiLoader</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WrapperWindow</span>(QtWidgets.QMainWindow):</span><br><span class="line">    ui = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(WrapperWindow, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        loader = QUiLoader()</span><br><span class="line">        _file = QtCore.QFile(self.ui)</span><br><span class="line">        _file.<span class="built_in">open</span>(QtCore.QFile.ReadOnly)</span><br><span class="line">        self.widget = loader.load(_file, parent)</span><br><span class="line">        _file.close()</span><br><span class="line"></span><br><span class="line">        self.setCentralWidget(self.widget)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Window</span>(<span class="title class_ inherited__">WrapperWindow</span>):</span><br><span class="line">    ui = <span class="string">&#x27;PATH_TO_UI_FILE&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(Window, self).__init__(parent)</span><br><span class="line">        </span><br><span class="line">        self.setCentralWidget(self.widget)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># now we can access ui element like so</span></span><br><span class="line">        self.widget.uiBtn.clicked.connect(self.someFunc)</span><br></pre></td></tr></table></figure>
+<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
+<p><a target="_blank" rel="noopener" href="https://www.reddit.com/r/learnpython/comments/jyw8z1/pyqt5_why_do_i_get_an_empty_window/">Reddit - PyQt5 - Why do I get an Empty Window?</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58925453">Stack Overflow - pycharm use pyside2 TypeError: ‘NoneType’ object is not callable</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/qt-template/" title="(Hopefully) The Only Qt Template You&#39;ll Ever Need" target="_blank" rel="external">https://www.xingyulei.com/post/qt-template/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/py-import/" title="Supercharge Your Python Skills with These Essential Import Tips"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>

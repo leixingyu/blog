@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Euler Angles and Gimbal Lock: Things You Need to Know | Tech Art Learning</title>
+  <meta name="description" content="Unlock the power of 3D game development with our in-depth guide to Euler angles and gimbal lock. Learn how to avoid common pitfalls and achieve smooth, realistic animations using essential 3D software">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Euler Angles and Gimbal Lock: Things You Need to Know">
+<meta property="og:url" content="https://www.xingyulei.com/post/math-euler-gimbal/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Unlock the power of 3D game development with our in-depth guide to Euler angles and gimbal lock. Learn how to avoid common pitfalls and achieve smooth, realistic animations using essential 3D software">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gyroscope_operation.gif/220px-Gyroscope_operation.gif">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/4/49/Gimbal_Lock_Plane.gif">
+<meta property="og:image" content="https://i.imgur.com/wVrvepx.png">
+<meta property="og:image" content="https://i.imgur.com/jiUWIWa.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fbc97c759b134aa3b87b1d3fa6bbc567.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBASGVyZW5lXw==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2022-09-17T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-29T21:08:14.000Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="math">
+<meta property="article:tag" content="maya">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gyroscope_operation.gif/220px-Gyroscope_operation.gif">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/math-euler-gimbal/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/cfx/" style="font-size: 13.13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.38px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.88px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rotation-order"><span class="toc-number">2.</span> <span class="toc-text"> Rotation Order</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ambiguity"><span class="toc-number">2.1.</span> <span class="toc-text"> Ambiguity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gimbal-problem"><span class="toc-number">2.2.</span> <span class="toc-text"> Gimbal Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test-in-maya"><span class="toc-number">2.2.1.</span> <span class="toc-text"> Test in Maya</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quaternion"><span class="toc-number">2.3.</span> <span class="toc-text"> Quaternion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rotation-type"><span class="toc-number">3.</span> <span class="toc-text"> Rotation Type</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#intrinsic-and-extrinsic-rotations"><span class="toc-number">3.1.</span> <span class="toc-text"> Intrinsic and Extrinsic Rotations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-number">3.2.</span> <span class="toc-text"> Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#conversion"><span class="toc-number">3.3.</span> <span class="toc-text"> Conversion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-number">4.</span> <span class="toc-text"> Reference</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-math-euler-gimbal" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Euler Angles and Gimbal Lock: Things You Need to Know
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/math-euler-gimbal/" class="article-date">
+	  <time datetime="2022-09-17T04:00:00.000Z" itemprop="datePublished">2022-09-17</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/3d-math/">3d math</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/math/" rel="tag">math</a>, <a class="article-tag-link-link" href="/tags/maya/" rel="tag">maya</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h1>
+<p>When talking about rotation, most of us would picture gimbal movement: an object
+rotate about a set of three axes. This is the same principle of the Euler angles
+presentation of rotation. It being the most popular representation for rotation,
+is used across many DCCs, it is intuitive and easy for us to understand.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Gyroscope_operation.gif/220px-Gyroscope_operation.gif" alt="gimbal" /></p>
+<p>While an Euler angles are usually written as a list of three values representing
+rotation degrees in <em>x</em>, <em>y</em>, <em>z</em> axis.</p>
+<p>Scientifically it is actually denoted as
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span> with radian as rotation unit where</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span> is rotation about the first axis</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span> is rotation about the second axis</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span> is rotation about the third axis</li>
+</ul>
+<h1 id="rotation-order"><a class="markdownIt-Anchor" href="#rotation-order"></a> Rotation Order</h1>
+<p>There are two major issue with Euler angles.</p>
+<h2 id="ambiguity"><a class="markdownIt-Anchor" href="#ambiguity"></a> Ambiguity</h2>
+<p>The target orientation is rotation order dependent, meaning even with the
+same rotation <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span> values,
+the results differs using different order of rotation.</p>
+<p>A <em>zyx</em> order refers to rotation about axis z, y, x in that order (think
+of it as x axis being a child of y axis being a child of z axis).
+Therefore, to represent a target rotation, aside from providing rotation values
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>, we also need to provide
+the rotation order and <a href="#rotation-type">Rotation Type</a>.</p>
+<p>There are a total of 12 possible rotation orders per rotation type/group.</p>
+<h2 id="gimbal-problem"><a class="markdownIt-Anchor" href="#gimbal-problem"></a> Gimbal Problem</h2>
+<p>In short, the Gimbal problem is due to euler angle decomposing a (linear) rotational movement
+as a product of more than one axis rotations.</p>
+<p>Although any target orientation can be achieved using Euler rotation, the rotational
+movements are sometimes undesired. This is due to a problem in Animation field known as
+Gimbal Lock.</p>
+<table style="width: 900px">
+  <tr>
+    <td><img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Gimbal_Lock_Plane.gif" alt="gimbal-lock" width="300px"></td>
+    <td>Gimbal lock happens when two of the three axes are rotated to a parallel
+configuration, 'locking' the system into a two-dimensional space.</td>
+  </tr>
+</table>
+<br>
+<p>In order to “break free” of this configuration,
+the system needs to input rotation along two or more axes simultaneously.</p>
+<p>In the context of keyframe Animation, interpolation along more than one axis means the
+rotational movement will not appear linear, but in an unpredictable trajectory,
+which is bad. (See video illustration <a target="_blank" rel="noopener" href="https://youtu.be/zc8b2Jo7mno?t=130">here</a>)</p>
+<h3 id="test-in-maya"><a class="markdownIt-Anchor" href="#test-in-maya"></a> Test in Maya</h3>
+<p>You can test out the gimbal problem in Maya yourself.</p>
+<p>Going into rotation tools and select <em>“Axis Orientation”</em> to <em>“Gimbal”</em>, you can
+now interact with the object using gimbal rotation. This rotation is what
+actually get recorded by Maya and presented in the channel box.</p>
+<p>If you go back to the <em>“Object”</em> mode rotation, even though your rotation gizmo is
+now unlocked, the gimbal problem don’t just go away.
+Maya is still recording the gimbal rotation in the background.
+The <em>“Object”</em> mode rotation is just an interaction tool.</p>
+<table style="width: 600px">
+  <tr>
+    <td><img src="https://i.imgur.com/wVrvepx.png" alt="gimbal" width="300px"></td>
+    <td><img src="https://i.imgur.com/jiUWIWa.png" alt="object" width="300px"></td>
+  </tr>
+  <tr>
+    <td>Gimbal Mode</td>
+    <td>Object Mode</td>
+  </tr>
+</table>
+<h2 id="quaternion"><a class="markdownIt-Anchor" href="#quaternion"></a> Quaternion</h2>
+<blockquote>
+<p>Rotation lies in non-Euclidean space.</p>
+</blockquote>
+<p>Luckily there is a more advanced representation for rotation: Quaternion, which
+game engines uses internally. This is due to it being data compact (only stores four numbers) and
+computational efficient (rotational movement using Euler angles usually need to be converted to rotation
+matrix, which involves a lot of <em>sin</em> and <em>cos</em> calculation).</p>
+<p>The bigger advantage comes from it
+producing linear and predictable results (the shortest path along source and
+target rotation). It is, however, very hard for users to comprehend.</p>
+<p>A quaternion consists of a scaler part and a vector part:</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mo>=</mo><mo stretchy="false">[</mo><mi>s</mi><mo separator="true">,</mo><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">q = [s, (x, y, z)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span> where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo separator="true">,</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo>∈</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">s, x, y, z \in R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span></p>
+<p>or.
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mo>=</mo><mi>s</mi><mo>+</mo><mi>i</mi><mi>x</mi><mo>+</mo><mi>i</mi><mi>j</mi><mo>+</mo><mi>k</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">q = s + ix + ij + kz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span></span> where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><msup><mi>j</mi><mn>2</mn></msup><mo>=</mo><msup><mi>k</mi><mn>2</mn></msup><mo>=</mo><mi>i</mi><mi>j</mi><mi>k</mi><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i^2 = j^2 = k^2 = ijk = -1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span></p>
+<h1 id="rotation-type"><a class="markdownIt-Anchor" href="#rotation-type"></a> Rotation Type</h1>
+<h2 id="intrinsic-and-extrinsic-rotations"><a class="markdownIt-Anchor" href="#intrinsic-and-extrinsic-rotations"></a> Intrinsic and Extrinsic Rotations</h2>
+<p><strong>Intrinsic rotations</strong> are elemental rotations that occur about the axes of
+a coordinate system XYZ attached to a moving body. (i.e. rotation about axis
+in the current coordinate, like object space)</p>
+<p><strong>Extrinsic rotations</strong> are elemental rotations that occur
+about the axes of the fixed coordinate system xyz. (i.e. rotation about axis
+in the original coordinate, like world space)</p>
+<p><img src="https://img-blog.csdnimg.cn/fbc97c759b134aa3b87b1d3fa6bbc567.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBASGVyZW5lXw==,size_20,color_FFFFFF,t_70,g_se,x_16" alt="intrinsic-vs-extrinsic-rotation" /></p>
+<p>(Fig.1: Intrinsic rotations; Fig.2: Extrinsic rotations)</p>
+<h2 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h2>
+<p>Rotation calculation usually happens along with other transform type using matrix.
+Here I made a matrix composition and decomposition function in Python, utilizing
+a third party math library <a target="_blank" rel="noopener" href="http://matthew-brett.github.io/transforms3d/index.html">transforms3d</a>.</p>
+<p>As you can see, since the rotation matrix varies depending on rotation order and type,
+this is reflected as one of the argument.</p>
+<script src="https://gist.github.com/leixingyu/7496f9981c699a61ccf605c672898f9d.js"></script>
+<blockquote>
+<p>The first character is ‘r’ (rotating == intrinsic),
+or ‘s’ (static == extrinsic).</p>
+<p>The next three characters give the axis (‘x’, ‘y’ or ‘z’)
+about which to perform the rotation,
+in the order in which the rotations will be performed.</p>
+<p>For example the string ‘szyx’ specifies that the angles should be interpreted
+relative to extrinsic (static) coordinate axes, and be performed in the order:
+rotation about z axis; rotation about y axis; rotation about x axis.</p>
+</blockquote>
+<h2 id="conversion"><a class="markdownIt-Anchor" href="#conversion"></a> Conversion</h2>
+<p>Any extrinsic rotation can be represented in intrinsic rotation with the same
+angle values but inverted order or elemental rotation.</p>
+<p>So a <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span> with extrinsic <strong>zyx</strong> order is equivalent to
+the same angle with intrinsic <strong>xyz</strong> order.</p>
+<h1 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
+<p><a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/2943074/">Stack Exchange - Confusion about order of rotations for Euler Angles</a></p>
+<p><a target="_blank" rel="noopener" href="https://forums.unrealengine.com/t/what-is-the-rotation-order-for-components-or-bones/286910/5">Unreal Engine Forum - What is the rotation order for Components or Bones?</a></p>
+<p><a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/1137745">Stack Exchange - Proof of the extrinsic to intrinsic rotation transform</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/zc8b2Jo7mno">YouTube - Euler (Gimbal Lock) Explained</a></p>
+<p><a target="_blank" rel="noopener" href="http://td-matt.blogspot.com/2010/11/rotation-orders.html">TD Matt - Rotation Orders</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42165913/article/details/120167295">CSDN - Understanding Euler Angles</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/math-euler-gimbal/" title="Euler Angles and Gimbal Lock: Things You Need to Know" target="_blank" rel="external">https://www.xingyulei.com/post/math-euler-gimbal/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/math-change-of-basis/" title="A Key to Unlocking 3D Software: Understanding Change of Basis Matrix"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/ue-cinematic-fbx/" title="Unreal Engine Cinematic FBX Workflow Explained"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>

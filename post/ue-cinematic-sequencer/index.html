@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Create Professional-Quality Cinematics with Unreal Engine: An Easy-to-Follow Guide | Tech Art Learning</title>
+  <meta name="description" content="Unlock the full potential of Unreal Engine and create professional-quality cinematics with our easy-to-follow guide. Our step-by-step tutorial provides practical examples and best practices for enhanc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Create Professional-Quality Cinematics with Unreal Engine: An Easy-to-Follow Guide">
+<meta property="og:url" content="https://www.xingyulei.com/post/ue-cinematic-sequencer/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Unlock the full potential of Unreal Engine and create professional-quality cinematics with our easy-to-follow guide. Our step-by-step tutorial provides practical examples and best practices for enhanc">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/UI68i63.png">
+<meta property="og:image" content="https://i.imgur.com/NGIIEAp.png">
+<meta property="og:image" content="https://i.imgur.com/Rh2kTsR.png">
+<meta property="og:image" content="https://i.imgur.com/exrhTgo.png">
+<meta property="og:image" content="https://i.imgur.com/PNHsLUU.png">
+<meta property="og:image" content="https://i.imgur.com/hrVKhin.png">
+<meta property="og:image" content="https://docs.unrealengine.com/4.27/Images/AnimatingObjects/Sequencer/Overview/TracksShot/Thumbnails.png">
+<meta property="article:published_time" content="2022-07-16T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-29T21:40:02.000Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="pipeline">
+<meta property="article:tag" content="unreal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/UI68i63.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/ue-cinematic-sequencer/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.25px;">batch</a> <a href="/tags/c/" style="font-size: 13.13px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/cfx/" style="font-size: 13.13px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.25px;">math</a> <a href="/tags/maya/" style="font-size: 13.75px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.38px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.88px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.38px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.13px;">socket</a> <a href="/tags/style/" style="font-size: 13.25px;">style</a> <a href="/tags/template/" style="font-size: 13.5px;">template</a> <a href="/tags/threading/" style="font-size: 13.13px;">threading</a> <a href="/tags/unity/" style="font-size: 13.38px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.63px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.13px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#glossary"><span class="toc-number">2.</span> <span class="toc-text"> Glossary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-makes-a-sequencer"><span class="toc-number">3.</span> <span class="toc-text"> What makes a Sequencer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#level-sequence"><span class="toc-number">3.1.</span> <span class="toc-text"> Level Sequence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level-sequence-track"><span class="toc-number">3.2.</span> <span class="toc-text"> Level Sequence Track</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level-sequence-section-asset"><span class="toc-number">3.3.</span> <span class="toc-text"> Level Sequence Section Asset</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-cinematic-component"><span class="toc-number">4.</span> <span class="toc-text"> Basic Cinematic Component</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#actor-to-sequence-object-binding"><span class="toc-number">5.</span> <span class="toc-text"> Actor to Sequence (Object Binding)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#static-mesh"><span class="toc-number">5.1.</span> <span class="toc-text"> Static Mesh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skeletal-mesh"><span class="toc-number">5.2.</span> <span class="toc-text"> Skeletal Mesh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#camera-binding-and-camera-cut"><span class="toc-number">5.3.</span> <span class="toc-text"> Camera Binding and Camera Cut</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#audio"><span class="toc-number">5.4.</span> <span class="toc-text"> Audio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#more"><span class="toc-number">5.5.</span> <span class="toc-text"> More</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sub-sequence-and-shot"><span class="toc-number">6.</span> <span class="toc-text"> Sub-sequence and Shot</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#high-quality-render-with-motion-blur"><span class="toc-number">6.1.</span> <span class="toc-text"> High Quality Render with Motion Blur</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">7.</span> <span class="toc-text"> References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ue-cinematic-sequencer" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Create Professional-Quality Cinematics with Unreal Engine: An Easy-to-Follow Guide
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/ue-cinematic-sequencer/" class="article-date">
+	  <time datetime="2022-07-16T04:00:00.000Z" itemprop="datePublished">2022-07-16</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/unreal-cinematic/">unreal cinematic</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>In this blog, I’m going to introduce the different components
+of a cinematic, how they are represented. This hopefully will give you an
+overview of how cinematic works in Unreal.</p>
+<h2 id="glossary"><a class="markdownIt-Anchor" href="#glossary"></a> Glossary</h2>
+<ul>
+<li>
+<p><strong>Skeleton</strong>: a hierarchy that is used to define Bones (sometimes called joints),
+In Unreal, skeletons are used to store/driven by associated animation data.</p>
+</li>
+<li>
+<p><strong>Static Mesh</strong>: a piece of geometry that consists of a set of polygons
+that can be cached in video memory and rendered out.</p>
+</li>
+<li>
+<p><strong>Skeletal Mesh</strong>: in short is a collection of a skeleton hierarchy, and mesh(es) skinned to
+that skeleton. A set of polygons composed to make up the surface of
+the Skeletal Mesh, and a hierarchical set of interconnected bones
+which can be used to animate the vertices of the polygons</p>
+</li>
+<li>
+<p><strong>Level</strong>: is all or part of your game’s “world”. Levels contain everything a
+player can see and interact with, like environments, usable objects,
+other characters, and so on.</p>
+</li>
+<li>
+<p><strong>Actor</strong>: an Actor is any object that can be placed into a Level,
+such as a camera, Static Mesh, or player start location.
+Actors support 3D transformations such as translation, rotation, and scaling.
+They can be created and destroyed.</p>
+</li>
+<li>
+<p><strong>Binding</strong>: a track in sequencer that binds a specific actor in the level, enables
+the level sequence to modify or animate its property when the level sequence is active.</p>
+</li>
+</ul>
+<h2 id="what-makes-a-sequencer"><a class="markdownIt-Anchor" href="#what-makes-a-sequencer"></a> What makes a Sequencer</h2>
+<blockquote>
+<p>Similar to other film and animation editing software, Sequencer requires you
+to add tracks in order to reference elements in your sequence.</p>
+<p>Any character, prop, camera, effect, or other viewport element can be
+referenced and manipulated in Sequencer</p>
+</blockquote>
+<p><img src="https://i.imgur.com/UI68i63.png" alt="overview" /></p>
+<h3 id="level-sequence"><a class="markdownIt-Anchor" href="#level-sequence"></a> Level Sequence</h3>
+<p>A Level Sequence asset is a container for cinematic data, which includes
+tracks, animation and binding.</p>
+<h3 id="level-sequence-track"><a class="markdownIt-Anchor" href="#level-sequence-track"></a> Level Sequence Track</h3>
+<p>If you used any video editing software, then tracks shouldn’t be new to you.
+Tracks are like layers, and the <em>Level Sequence</em> is the whole canvas;</p>
+<p><em>Tracks</em> usually are used to reference different actors in the level,
+and then animated its properties. So in most time, tracks don’t overlay each
+other like layers in Photoshop do, they’re more like controlling
+different color channels that compose the final image.</p>
+<h3 id="level-sequence-section-asset"><a class="markdownIt-Anchor" href="#level-sequence-section-asset"></a> Level Sequence Section Asset</h3>
+<p><em>Sections</em> are the components that laid out in a <em>Track</em>, sections can be treated
+as individual animation clips of which make up the whole track.</p>
+<p>Some common section are <em>Camera Cuts</em> section, <em>Shots</em> section and <em>Animation</em> section.</p>
+<h2 id="basic-cinematic-component"><a class="markdownIt-Anchor" href="#basic-cinematic-component"></a> Basic Cinematic Component</h2>
+<p>We’ll break down a cinematic as the following components and tackle them
+one by one.</p>
+<ul>
+<li>Camera (Camera Actor)</li>
+<li>Background (Static Mesh Actor)</li>
+<li>Foreground &amp; Character (Skeletal Mesh Actor)</li>
+<li>Lighting (Light Actor)</li>
+<li>FX (Visual Effects Actor)</li>
+<li>Audio (Sound Wave Asset)</li>
+<li>Other</li>
+</ul>
+<h2 id="actor-to-sequence-object-binding"><a class="markdownIt-Anchor" href="#actor-to-sequence-object-binding"></a> Actor to Sequence (Object Binding)</h2>
+<p>The level sequence operates within levels and operates on actors in the level.
+It can bind to an existing actor and animates its properties. It can also spawn an actor
+as needed.</p>
+<p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/spawn-temporary-actors-in-unreal-engine-cinematics/">Spawnables vs. Possessables</a></p>
+<h3 id="static-mesh"><a class="markdownIt-Anchor" href="#static-mesh"></a> Static Mesh</h3>
+<p><img src="https://i.imgur.com/NGIIEAp.png" alt="static" /></p>
+<p>This is the simplest scenario, a static mesh actor is bound to the level sequence
+and the transform are keyed.</p>
+<h3 id="skeletal-mesh"><a class="markdownIt-Anchor" href="#skeletal-mesh"></a> Skeletal Mesh</h3>
+<p><img src="https://i.imgur.com/Rh2kTsR.png" alt="skm" /></p>
+<p>When it comes to skeletal mesh, another component is exposed: Animation.</p>
+<p>This sub-track takes Unreal <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/animation-sequences-in-unreal-engine/">Animation Sequence</a> assets, which consists the
+skeleton animation, this effectively drives the skeleton within the skeletal
+mesh actor.</p>
+<h3 id="camera-binding-and-camera-cut"><a class="markdownIt-Anchor" href="#camera-binding-and-camera-cut"></a> Camera Binding and Camera Cut</h3>
+<p><img src="https://i.imgur.com/exrhTgo.png" alt="camera" /></p>
+<p>In order to set up camera view properly, in-addition to the camera binding,
+we also need a <em>Camera Cuts Track</em>. Whatever is on this track is what the viewport
+is capturing, it allows you to switch and blend between different cameras.</p>
+<p>(In short, the Camera Binding tracks drives the Camera Actor, the Camera Cut track decides
+what takes over the viewport)</p>
+<h3 id="audio"><a class="markdownIt-Anchor" href="#audio"></a> Audio</h3>
+<p><img src="https://i.imgur.com/PNHsLUU.png" alt="audio" /></p>
+<p>Audio can be created using by possessing an audio/sound actor, or alternatively
+it can be created by adding Unreal <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/audio-files-in-unreal-engine/">Sound Wave</a> asset. I would recommend
+the latter as it allows you to scrub in the timeline and still have the
+correct audio playback.</p>
+<blockquote>
+<p><strong>Note:</strong> Set Sound Wave Asset’s ‘<em>Sound Asset Compression Type</em>’ to ‘<em>PCM</em>’ so
+it plays correctly when scrubbing in timeline.</p>
+</blockquote>
+<h3 id="more"><a class="markdownIt-Anchor" href="#more"></a> More</h3>
+<p>There are of course different actor types in the level that the level sequence
+can possess/bind to. Such as <em>Light Actors, Gameplay Actors, Visual Effects
+Actors</em> and more.</p>
+<h2 id="sub-sequence-and-shot"><a class="markdownIt-Anchor" href="#sub-sequence-and-shot"></a> Sub-sequence and Shot</h2>
+<p>There are other two types of concept I’d like to touch upon:
+<em>Subsequences</em> and <em>Shots</em>.</p>
+<p>They are usually not directly bound to an actor, but they are containers for
+a level sequence that does. They can be very useful to organize and composite
+the cinematic level sequence structure.</p>
+<p><img src="https://i.imgur.com/hrVKhin.png" alt="subsequence" /></p>
+<p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/cinematic-subscequences-track-in-unreal-engine/">Subsequences</a>
+represent an entire Level Sequence.
+Having subsequences allows multiple level sequence to be added into a “parent” level sequence,
+These subsequences can be considered as the partition of the “parent” and can be worked on as different
+sub-scenes by different artists.</p>
+<p><img src="https://docs.unrealengine.com/4.27/Images/AnimatingObjects/Sequencer/Overview/TracksShot/Thumbnails.png" alt="shot" /></p>
+<p>(Image from Unreal)</p>
+<p>Similar to Subsequence, each <em>Shot Section</em> represents a Level Sequence,
+it allows multiple level sequences be assembled and re-arranged freely on the
+<em>Shots Track</em> as Shot <em>Section</em> to form the full sequence/cinematic. This
+is to get rendering in Unreal to work correctly, and able to set per-shot
+preset in Movie Render Queue.</p>
+<blockquote>
+<p><strong>Note:</strong> avoid using the “lock” property in any of the clip as it sometimes causes
+un-wanted behaviours.</p>
+</blockquote>
+<h3 id="high-quality-render-with-motion-blur"><a class="markdownIt-Anchor" href="#high-quality-render-with-motion-blur"></a> High Quality Render with Motion Blur</h3>
+<p>When implementing a setup with a full sequence length animation clip
+(skeletal mesh .fbx not being broken down into shots). It is important to follow
+the following to ensure there’s no Motion Blur produce during camera cuts.</p>
+<ul>
+<li>
+<p>Camera: separate camera actor for each shot.</p>
+</li>
+<li>
+<p>Animation: leave the animation clip as ‘Keep State’ when finished if possible.</p>
+</li>
+<li>
+<p>Subsequence: a good practice is to not extend sub-sequence range over the
+shot active range; Unreal still calculates motion in sub-sequence extending beyond
+the range of the shot active range such as Motion Blur, which can produce
+unwanted result during cuts between shots.</p>
+</li>
+<li>
+<p>Render Preset</p>
+<ul>
+<li>Camera Setting has to be set to ‘Frame Close’</li>
+<li>Anti-aliasing Setting can be toggled on for better quality</li>
+</ul>
+</li>
+</ul>
+<p>For more information on setting up a sequencer with correct first frame, see
+<a target="_blank" rel="noopener" href="https://dev.epicgames.com/community/learning/tutorials/l4OR/unreal-engine-movie-render-queue-warmup-and-first-frame-issues">Epic’s post on render warm-ups</a></p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/cinematics-and-movie-making-in-unreal-engine/">Unreal Engine Documentation - Cinematics and Sequencer</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/ue-cinematic-sequencer/" title="Create Professional-Quality Cinematics with Unreal Engine: An Easy-to-Follow Guide" target="_blank" rel="external">https://www.xingyulei.com/post/ue-cinematic-sequencer/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/post/ue-cinematic-fbx/" title="Unreal Engine Cinematic FBX Workflow Explained"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/post/qt-threading/" title="Say Goodbye to Freezing with Qt Multithreading: Learn with Examples"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
