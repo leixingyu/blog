@@ -19,22 +19,22 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Save Time and Boost Efficiency: Learn to Run Maya in Batch Mode | Tech Art Learning</title>
+  <title>Run Maya Batch Mode in 2023! | Tech Art Learning</title>
   <meta name="description" content="Learn how to run Maya in batch mode for animation and game development with our step-by-step tutorial. Streamline your workflow and save time with this efficient method for rendering large scenes and">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Save Time and Boost Efficiency: Learn to Run Maya in Batch Mode">
-<meta property="og:url" content="https://www.xingyulei.com/post/maya-batch-mode/index.html">
+<meta property="og:title" content="Run Maya Batch Mode in 2023!">
+<meta property="og:url" content="https://www.xingyulei.com/post/maya-batch-mode-2/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
 <meta property="og:description" content="Learn how to run Maya in batch mode for animation and game development with our step-by-step tutorial. Streamline your workflow and save time with this efficient method for rendering large scenes and">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-05-09T04:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T02:03:08.508Z">
+<meta property="article:published_time" content="2023-05-06T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-09T00:56:34.890Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="maya">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/maya-batch-mode/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/maya-batch-mode-2/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -203,21 +203,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Table of Contents</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#import-standalone-module"><span class="toc-number">1.</span> <span class="toc-text"> Import Standalone Module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-functions"><span class="toc-number">2.</span> <span class="toc-text"> Add Functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#execute-from-mayapy"><span class="toc-number">3.</span> <span class="toc-text"> Execute from mayapy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#standalone-script-with-arguments"><span class="toc-number">4.</span> <span class="toc-text"> Standalone Script with Arguments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reference"><span class="toc-number">5.</span> <span class="toc-text"> Reference</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#standalone-module"><span class="toc-number">1.</span> <span class="toc-text"> Standalone Module</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#using-mayapy-interpreter"><span class="toc-number">1.1.</span> <span class="toc-text"> Using mayapy Interpreter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-external-python-interpreter"><span class="toc-number">1.2.</span> <span class="toc-text"> Using External Python Interpreter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#making-our-first-standalone-script"><span class="toc-number">2.</span> <span class="toc-text"> Making Our First Standalone Script</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#execution"><span class="toc-number">3.</span> <span class="toc-text"> Execution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#standalone-script-with-arguments"><span class="toc-number">4.</span> <span class="toc-text"> Standalone Script with Arguments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#using-sysargv"><span class="toc-number">4.1.</span> <span class="toc-text"> Using sys.argv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#using-argparser"><span class="toc-number">4.2.</span> <span class="toc-text"> Using argparser</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bonus-integrate-ui-elements-from-qt"><span class="toc-number">5.</span> <span class="toc-text"> Bonus: Integrate UI Elements from Qt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bonus-copying-gui-maya-environment"><span class="toc-number">6.</span> <span class="toc-text"> Bonus: Copying GUI Maya Environment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">7.</span> <span class="toc-text"> Reference</span></a></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-maya-batch-mode" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-maya-batch-mode-2" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Save Time and Boost Efficiency: Learn to Run Maya in Batch Mode
+      Run Maya Batch Mode in 2023!
     </h1>
   
 
@@ -225,8 +225,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/maya-batch-mode/" class="article-date">
-	  <time datetime="2019-05-09T04:00:00.000Z" itemprop="datePublished">2019-05-09</time>
+	<a href="/post/maya-batch-mode-2/" class="article-date">
+	  <time datetime="2023-05-06T04:00:00.000Z" itemprop="datePublished">2023-05-06</time>
 	</a>
 </span>
         
@@ -249,49 +249,92 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <blockquote>
-<p><strong>Important:</strong>  Post deprecated</p>
-<p>Please refer this <a href="https://www.xingyulei.com/post/maya-batch-mode-2/">blog post</a>
-for most up-to-date Maya batch mode guide</p>
-</blockquote>
-<h3 id="import-standalone-module"><a class="markdownIt-Anchor" href="#import-standalone-module"></a> Import Standalone Module</h3>
+        <p>I’m reviving a post from exactly 4 years ago ⌛️. It was severely flawed since it was
+one of my earliest post while I’m still learning my ways around Maya.</p>
+<h2 id="standalone-module"><a class="markdownIt-Anchor" href="#standalone-module"></a> Standalone Module</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> maya.standalone</span><br><span class="line">maya.standalone.initialize(name=<span class="string">&#x27;python&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>Sometimes, import error could occur</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImportError: No module named maya.standalone</span><br></pre></td></tr></table></figure>
-<p><strong>Solution</strong></p>
+<h3 id="using-mayapy-interpreter"><a class="markdownIt-Anchor" href="#using-mayapy-interpreter"></a> Using <code>mayapy</code> Interpreter</h3>
+<blockquote>
+<p>I strongly recommend using <code>mayapy</code> in order to stay consistent with the behaviour
+of GUI maya.</p>
+</blockquote>
+<p>Prefer using <code>mayapy</code>: Maya’s own python interpreter, this ensures
+all the libraries and plugins are compatible, it also saves some trouble configuring
+environments.</p>
+<h3 id="using-external-python-interpreter"><a class="markdownIt-Anchor" href="#using-external-python-interpreter"></a> Using External Python Interpreter</h3>
+<p>When using external interpreter for whatever reason, you’ll need to check:</p>
 <ul>
-<li>check your python interpreter, it should match the maya python2 version. I changed my project interpreter in my pycharm setting.</li>
-<li>setup system environment variable, like the following</li>
-<li>if error still occurs, please check your maya directory</li>
+<li>
+<p>The python interpreter should match the maya python version</p>
+<ul>
+<li>e.g. (<em>python27</em> for Maya 2018)</li>
 </ul>
+</li>
+<li>
+<p>System environment variable will need to set up in order to find maya modules</p>
+<ul>
+<li>Otherwise, you may encounter the following:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImportError: No module named maya.standalone</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>To configure the environment for your external interpreter:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MAYA_LOCATION = <span class="string">&quot;C:/Program Files/Autodesk/Maya2018&quot;</span></span><br><span class="line">PYTHON_LOCATION = MAYA_LOCATION + <span class="string">&quot;/Python/Lib/site-packages&quot;</span></span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&quot;MAYA_LOCATION&quot;</span>] = MAYA_LOCATION</span><br><span class="line">os.environ[<span class="string">&quot;PYTHONPATH&quot;</span>] = PYTHON_LOCATION</span><br><span class="line"></span><br><span class="line">sys.path.append(MAYA_LOCATION)</span><br><span class="line">sys.path.append(PYTHON_LOCATION)</span><br><span class="line">sys.path.append(MAYA_LOCATION+<span class="string">&quot;/bin&quot;</span>)</span><br><span class="line">sys.path.append(MAYA_LOCATION+<span class="string">&quot;/lib&quot;</span>)</span><br><span class="line">sys.path.append(MAYA_LOCATION+<span class="string">&quot;/Python&quot;</span>)</span><br><span class="line">sys.path.append(MAYA_LOCATION+<span class="string">&quot;/Python/DLLs&quot;</span>)</span><br><span class="line">sys.path.append(MAYA_LOCATION+<span class="string">&quot;/Python/Lib&quot;</span>)</span><br><span class="line">sys.path.append(MAYA_LOCATION+<span class="string">&quot;/Python/Lib/plat-win&quot;</span>)</span><br><span class="line">sys.path.append(MAYA_LOCATION+<span class="string">&quot;/Python/Lib/lib-tk&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n&#x27;</span>.join(sys.path))</span><br></pre></td></tr></table></figure>
-<h3 id="add-functions"><a class="markdownIt-Anchor" href="#add-functions"></a> Add Functions</h3>
+<h2 id="making-our-first-standalone-script"><a class="markdownIt-Anchor" href="#making-our-first-standalone-script"></a> Making Our First Standalone Script</h2>
+<p>After <code>maya.standalone</code> has initialized, you can import <code>maya.cmds</code> as usual.</p>
 <p>Let’s add a test function to our standalone script.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    <span class="keyword">import</span> maya.cmds <span class="keyword">as</span> cmds</span><br><span class="line">    <span class="comment"># full path to your Maya file to OPEN</span></span><br><span class="line">    maya_file_to_open = <span class="string">r&quot;C:\Users\Lei\Desktop\test.ma&quot;</span></span><br><span class="line">    <span class="comment"># Open your file</span></span><br><span class="line">    cmds.file(maya_file_to_open, o=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># full path to your Maya file to IMPORT</span></span><br><span class="line">    maya_file_to_import = <span class="string">r&quot;C:\Users\Lei\Desktop\import.ma&quot;</span></span><br><span class="line">    <span class="comment"># Import the file. the variable &quot;nodes&quot; will hold the names of all nodes imported, just in case.</span></span><br><span class="line">    cmds.file(maya_file_to_import, i=<span class="literal">True</span>, <span class="built_in">type</span>=<span class="string">&quot;mayaAscii&quot;</span>)</span><br><span class="line">    render = <span class="string">r&quot;C:\Users\Lei\Desktop\te.ma&quot;</span></span><br><span class="line">    cmds.file(rename=render)</span><br><span class="line">    cmds.file(force=<span class="literal">True</span>, save=<span class="literal">True</span>, options=<span class="string">&#x27;v=1;p=17&#x27;</span>, <span class="built_in">type</span>=<span class="string">&#x27;mayaBinary&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;a&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>This test function opens a maya file on my desktop and import a maya file and save out as another file.</p>
-<h3 id="execute-from-mayapy"><a class="markdownIt-Anchor" href="#execute-from-mayapy"></a> Execute from <code>mayapy</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> maya.cmds <span class="keyword">as</span> cmds</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    maya_file_to_open = <span class="string">r&quot;C:\Users\Lei\Desktop\test.ma&quot;</span></span><br><span class="line">    cmds.file(maya_file_to_open, o=<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># import a file and rename</span></span><br><span class="line">    maya_file_to_import = <span class="string">r&quot;C:\Users\Lei\Desktop\import.ma&quot;</span></span><br><span class="line">    cmds.file(maya_file_to_import, i=<span class="literal">True</span>, <span class="built_in">type</span>=<span class="string">&quot;mayaAscii&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    temp_name = <span class="string">r&quot;C:\Users\Lei\Desktop\temp.ma&quot;</span></span><br><span class="line">    cmds.file(rename=temp_name)</span><br><span class="line">    cmds.file(force=<span class="literal">True</span>, save=<span class="literal">True</span>, options=<span class="string">&#x27;v=1;p=17&#x27;</span>, <span class="built_in">type</span>=<span class="string">&#x27;mayaBinary&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>This test function opens a maya file on my desktop and import a maya file
+and save out as another file.</p>
+<h2 id="execution"><a class="markdownIt-Anchor" href="#execution"></a> Execution</h2>
+<p>Here I’m using <code>mayapy</code> as example, you can of course using your external python
+interpreter, but again, it takes extra steps.</p>
 <p><strong>Execute from Command Line</strong></p>
 <ul>
 <li>
-<p>to do so, make sure to add mayapy to your system environment variable.</p>
+<p>make sure to add <code>mayapy</code> to your system environment variable.</p>
+<ul>
+<li>in system variable: add <code>C:\Program Files\Autodesk\Maya2018\bin</code> to <code>Path</code></li>
+</ul>
 </li>
 <li>
-<p>in system variable: add <code>C:\Program Files\Autodesk\Maya2018\bin</code> to <code>Path</code></p>
-</li>
-<li>
-<p>open command prompt, and enter <code>mayapy [directory/firstStandalone.py]</code></p>
+<p>open command prompt, and enter <code>mayapy [directoryTo/firstStandalone.py]</code></p>
 </li>
 </ul>
 <p><strong>Execute using <code>subprocess</code></strong></p>
 <p>you can do it without going to command line, but by executing another <code>.py</code> using subprocess</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">command = <span class="string">&#x27;mayapy [directory/firstStandalone.py]&#x27;</span></span><br><span class="line">process = subprocess.Popen(command, shell=<span class="literal">True</span>, stdout=subprocess.PIPE)</span><br><span class="line">process.wait()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(process.returncode)  <span class="comment"># this return the message from cmd</span></span><br></pre></td></tr></table></figure>
-<h3 id="standalone-script-with-arguments"><a class="markdownIt-Anchor" href="#standalone-script-with-arguments"></a> Standalone Script with Arguments</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">mayapy = <span class="string">r&#x27;C:\Program Files\Autodesk\Maya2018\bin\mayapy.exe&#x27;</span></span><br><span class="line">script = <span class="string">r&#x27;[directory/firstStandalone.py]&#x27;</span></span><br><span class="line"></span><br><span class="line">process = subprocess.Popen(</span><br><span class="line">    [mayapy, script],</span><br><span class="line">    stdout=subprocess.PIPE,</span><br><span class="line">    stderr=subprocess.STDOUT,</span><br><span class="line">    env=env</span><br><span class="line">)</span><br><span class="line">out, error = process.communicate()</span><br></pre></td></tr></table></figure>
+<p>Here I’m removing the environment setup in <code>firstStandlone.py</code>, and add a wrapper:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> maya.standalone</span><br><span class="line">maya.standalone.initialize(name=<span class="string">&#x27;python&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> maya.cmds <span class="keyword">as</span> cmds</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    maya_file_to_open = <span class="string">r&quot;C:\Users\Lei\Desktop\test.ma&quot;</span></span><br><span class="line">    cmds.file(maya_file_to_open, o=<span class="literal">True</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># import a file and rename</span></span><br><span class="line">    maya_file_to_import = <span class="string">r&quot;C:\Users\Lei\Desktop\import.ma&quot;</span></span><br><span class="line">    cmds.file(maya_file_to_import, i=<span class="literal">True</span>, <span class="built_in">type</span>=<span class="string">&quot;mayaAscii&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    temp_name = <span class="string">r&quot;C:\Users\Lei\Desktop\temp.ma&quot;</span></span><br><span class="line">    cmds.file(rename=temp_name)</span><br><span class="line">    cmds.file(force=<span class="literal">True</span>, save=<span class="literal">True</span>, options=<span class="string">&#x27;v=1;p=17&#x27;</span>, <span class="built_in">type</span>=<span class="string">&#x27;mayaBinary&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        cmds.evalDeferred(runMode)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logging.error(traceback.print_exc())</span><br></pre></td></tr></table></figure>
+<h2 id="standalone-script-with-arguments"><a class="markdownIt-Anchor" href="#standalone-script-with-arguments"></a> Standalone Script with Arguments</h2>
 <p>Sometimes, we would want to pass arguments to our standalone script</p>
-<p>get argument as variable using <code>sys.argv</code></p>
+<h3 id="using-sysargv"><a class="markdownIt-Anchor" href="#using-sysargv"></a> Using <code>sys.argv</code></h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">file_path = sys.argv[<span class="number">1</span>]</span><br><span class="line">file_name = sys.argv[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 <p>Example from Toadstorm Nerdblog:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">maya_path = <span class="string">&#x27;directory/mayapy.exe&#x27;</span>  <span class="comment"># mayapy or full path to mayapy.exe</span></span><br><span class="line">script_path = <span class="string">&#x27;directory/firstStandalone.py&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_layer</span>(<span class="params">file_names,layer_name</span>):</span><br><span class="line">    <span class="keyword">for</span> file_name <span class="keyword">in</span> file_names:</span><br><span class="line">        command = <span class="string">r&#x27;mayapy &#123;&#125; &#123;&#125; &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">            script_path, file_name, layer_name</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        process = subprocess.Popen(</span><br><span class="line">            command,</span><br><span class="line">            stdout=subprocess.PIPE,</span><br><span class="line">            stderr=subprocess.PIPE</span><br><span class="line">        )</span><br><span class="line">        process.wait()</span><br><span class="line">        <span class="built_in">print</span>(process.returncode)  <span class="comment"># this return the message from cmd</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># define a list of filenames to iterate through</span></span><br><span class="line">    files = [<span class="string">&#x27;file1&#x27;</span>, <span class="string">&#x27;file2&#x27;</span>, <span class="string">&#x27;file3&#x27;</span>]</span><br><span class="line">    render_layer = <span class="string">&#x27;a new render layer&#x27;</span></span><br><span class="line">     </span><br><span class="line">    <span class="comment"># run procedure, assuming you&#x27;ve already defined it</span></span><br><span class="line">    add_layer(files, render_layer)</span><br></pre></td></tr></table></figure>
-<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
+<h3 id="using-argparser"><a class="markdownIt-Anchor" href="#using-argparser"></a> Using <code>argparser</code></h3>
+<p>In the commandline launch script, add argment:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">scene = <span class="string">r&quot;C:\Users\Lei\Desktop\test.ma&quot;</span></span><br><span class="line"></span><br><span class="line">process = subprocess.Popen(</span><br><span class="line">    [mayapy, script, <span class="string">&#x27;scene=&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(scene)],</span><br><span class="line">    stdout=subprocess.PIPE,</span><br><span class="line">    stderr=subprocess.STDOUT,</span><br><span class="line">    env=env</span><br><span class="line">)</span><br><span class="line">out, error = process.communicate()</span><br></pre></td></tr></table></figure>
+<p>And then in the wrapper, use the <code>ArgumentParser()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">&#x27;scene&#x27;</span>)</span><br><span class="line"></span><br><span class="line">command_line_args = parser.parse_args()</span><br><span class="line">SCENE = command_line_args.scene</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">example</span>():</span><br><span class="line">    cmds.file(SCENE, <span class="built_in">open</span>=<span class="literal">True</span>, force=<span class="literal">True</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h2 id="bonus-integrate-ui-elements-from-qt"><a class="markdownIt-Anchor" href="#bonus-integrate-ui-elements-from-qt"></a> Bonus: Integrate UI Elements from Qt</h2>
+<p>It is easy to integrate UI in a standalone tool by creating a <code>QApplication</code> instance,
+and for Maya GUI, Maya has <code>QApplication</code> instance already created.</p>
+<p>but for maya standalone script, we need to make sure to create a <code>QApplication</code> instance
+before the standalone initialization:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> QtWidgets</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = QtWidgets.QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> maya.standalone</span><br><span class="line">maya.standalone.initialize()</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Depending on your tool need, usually standalone script wouldn’t block the
+main event loop, so we just exit when finished, therefore, no need to add <code>sys.exit(app.exec_())</code></p>
+<h2 id="bonus-copying-gui-maya-environment"><a class="markdownIt-Anchor" href="#bonus-copying-gui-maya-environment"></a> Bonus: Copying GUI Maya Environment</h2>
+<p>To get the exact environment as the GUI Maya version (this could be useful if there’s any
+startup scripts that modifies the environment)</p>
+<p>In the maya session, parse out the environment and save it as a dictionary:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">env_dict = <span class="built_in">dict</span>(os.environ)</span><br></pre></td></tr></table></figure>
+<p>And in the commandline setup .py, apply the environment from the dictionary:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">env_dict_copy_from_maya = &#123;<span class="string">&#x27;TEST&#x27;</span>: <span class="string">&#x27;THIS IS A TEST&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">current_env = os.environ.copy()</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> env_dict_copy_from_maya.items():</span><br><span class="line">    current_env[key] = value</span><br><span class="line"></span><br><span class="line">process = subprocess.Popen(</span><br><span class="line">    ...,</span><br><span class="line">    env=current_env</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
+<p><a href="https://www.xingyulei.com/post/maya-batch-mode/">Xingyu Lei - Save Time and Boost Efficiency: Learn to Run Maya in Batch Mode</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/68062715/maya-standalone-with-pyside2">Stack Overflow - maya standalone with pyside2</a></p>
 <p><a target="_blank" rel="noopener" href="http://discourse.techart.online/t/import-maya-standalone-problem/1437">Tech-Artist Org - Import maya.standalone problem</a></p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27437733">Stack Overflow - use external python script to open maya and run another script inside maya</a></p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/17500157">Stack Overflow - How to use an external interpreter for Maya?</a></p>
@@ -306,7 +349,7 @@ for most up-to-date Maya batch mode guide</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/maya-batch-mode/" title="Save Time and Boost Efficiency: Learn to Run Maya in Batch Mode" target="_blank" rel="external">https://www.xingyulei.com/post/maya-batch-mode/</a>
+      <a href="https://www.xingyulei.com/post/maya-batch-mode-2/" title="Run Maya Batch Mode in 2023!" target="_blank" rel="external">https://www.xingyulei.com/post/maya-batch-mode-2/</a>
     </li>
     
 	
@@ -349,13 +392,9 @@ for most up-to-date Maya batch mode guide</p>
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/post/maya-api-intro/" title="Maya Python API Tutorial Series (0. Introduction)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/post/py-import/" title="Supercharge Your Python Skills with These Essential Import Tips"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/post/general-oo-design/" title="Object-Oriented Design: A Comprehensive Guide to Building Robust and Scalable Software Systems"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

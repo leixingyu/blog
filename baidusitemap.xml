@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/maya-batch-mode-2/</loc>
+    <lastmod>2023-05-09</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-batch-mode/</loc>
+    <lastmod>2023-05-08</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/ue-cinematic-fbx/</loc>
     <lastmod>2023-04-16</lastmod>
   </url>
@@ -113,10 +121,6 @@
     <lastmod>2023-03-29</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/maya-batch-mode/</loc>
-    <lastmod>2023-03-29</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/maya-api-intro/</loc>
     <lastmod>2023-03-29</lastmod>
   </url>
@@ -125,11 +129,11 @@
     <lastmod>2023-03-29</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/maya-api-command/</loc>
+    <loc>https://www.xingyulei.com/post/maya-api-deformer/</loc>
     <lastmod>2023-03-29</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/maya-api-deformer/</loc>
+    <loc>https://www.xingyulei.com/post/maya-api-command/</loc>
     <lastmod>2023-03-29</lastmod>
   </url>
   <url>
