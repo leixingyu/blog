@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://www.scratchapixel.com/images/upload/rasterization/raytracing-raster5.png?">
 <meta property="og:image" content="https://i.stack.imgur.com/e3SXv.png">
 <meta property="og:image" content="https://i.stack.imgur.com/e9CSY.png">
-<meta property="article:published_time" content="2020-09-16T04:00:00.000Z">
+<meta property="article:published_time" content="2020-09-16T07:00:00.000Z">
 <meta property="article:modified_time" content="2023-03-29T21:06:10.000Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="rendering">
@@ -121,7 +121,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about">
             
-            <i class="icon icon-cup-fill"></i>
+            <i class="icon icon-users"></i>
             
             <span class="menu-title">About</span>
           </a>
@@ -131,7 +131,7 @@
         <li class="menu-item menu-item-repository">
           <a href="/repository">
             
-            <i class="icon icon-project"></i>
+            <i class="icon icon-github"></i>
             
             <span class="menu-title">Repository</span>
           </a>
@@ -232,7 +232,7 @@
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/post/graphics-shading-basics/" class="article-date">
-	  <time datetime="2020-09-16T04:00:00.000Z" itemprop="datePublished">2020-09-16</time>
+	  <time datetime="2020-09-16T07:00:00.000Z" itemprop="datePublished">2020-09-16</time>
 	</a>
 </span>
         
@@ -450,6 +450,12 @@ such as more render passes, baked light map, cubemap reflection, but ray tracing
   </ul>
   
   
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$$$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
   
   <div class="bar-right">
     
@@ -457,6 +463,37 @@ such as more render passes, baked light map, cubemap reflection, but ray tracing
   </div>
 </nav>
   
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Thank you for the support! &#9749</p>
+          </div>
+          <div class="tab-content">
+		  
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/paypal.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Donate with &#34;Paypal&#34;</p>
+              <p class="text-grey">Consider buying me a coffee if you found my blog helpful</p>
+            </div>
+			
+			
+          </div>
+		  
+		  
+        
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 </main>
