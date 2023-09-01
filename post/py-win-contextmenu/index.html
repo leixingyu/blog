@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Customize Windows 10/11 Right-click Context Menu | Tech Art Learning</title>
+  <meta name="description" content="Discover how to personalize the Windows right-click context menu using registry tweaks and automation techniques. Elevate your Windows journey with expert insights and step-by-step guides.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Customize Windows 10&#x2F;11 Right-click Context Menu">
+<meta property="og:url" content="https://www.xingyulei.com/post/py-win-contextmenu/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Discover how to personalize the Windows right-click context menu using registry tweaks and automation techniques. Elevate your Windows journey with expert insights and step-by-step guides.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/YGnh1VC.gif">
+<meta property="og:image" content="https://i.imgur.com/ENk9JDP.png">
+<meta property="og:image" content="https://i.imgur.com/wJxCBvL.png">
+<meta property="og:image" content="https://i.imgur.com/0AxLphb.png">
+<meta property="og:image" content="https://i.imgur.com/7f8imK0.png">
+<meta property="og:image" content="https://i.imgur.com/ZmeMdAI.png">
+<meta property="article:published_time" content="2023-08-29T07:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-01T04:34:27.210Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/YGnh1VC.gif">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/py-win-contextmenu/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-users"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-github"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.29px;">batch</a> <a href="/tags/c/" style="font-size: 13.14px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/cfx/" style="font-size: 13.14px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.29px;">math</a> <a href="/tags/maya/" style="font-size: 13.86px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.43px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.86px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.43px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.14px;">socket</a> <a href="/tags/style/" style="font-size: 13.29px;">style</a> <a href="/tags/template/" style="font-size: 13.57px;">template</a> <a href="/tags/threading/" style="font-size: 13.14px;">threading</a> <a href="/tags/unity/" style="font-size: 13.43px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.71px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.29px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#registry-setup"><span class="toc-number">2.</span> <span class="toc-text"> Registry Setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hierarchy"><span class="toc-number">2.1.</span> <span class="toc-text"> Hierarchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#field"><span class="toc-number">2.2.</span> <span class="toc-text"> Field</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setting-up-command"><span class="toc-number">3.</span> <span class="toc-text"> Setting up Command</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#running-python-script"><span class="toc-number">3.1.</span> <span class="toc-text"> Running Python Script</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#passing-argument"><span class="toc-number">3.2.</span> <span class="toc-text"> Passing Argument</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-registry-automation"><span class="toc-number">4.</span> <span class="toc-text"> Python Registry Automation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reg-file"><span class="toc-number">5.</span> <span class="toc-text"> Reg File</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cascade-menu"><span class="toc-number">5.1.</span> <span class="toc-text"> Cascade Menu</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#target-type"><span class="toc-number">6.</span> <span class="toc-text"> Target Type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#noteworthy-mentions"><span class="toc-number">7.</span> <span class="toc-text"> Noteworthy Mentions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">8.</span> <span class="toc-text"> References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-py-win-contextmenu" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Customize Windows 10/11 Right-click Context Menu
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/py-win-contextmenu/" class="article-date">
+	  <time datetime="2023-08-29T07:00:00.000Z" itemprop="datePublished">2023-08-29</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/windows/" rel="tag">windows</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>It’s been a while, today we have a pretty awesome content to explore
+that is how we can create the right-click context menu in Windows.</p>
+<p>I found that there’s not a lot of comprehensive and up-to-date tutorial on
+this subject for tech artists, but this would be a really powerful tool to
+speed up any types of workflow that involves going into Windows Explorer.
+(for example, right-click on a file and have a shortcut to get its perforce depot info)</p>
+<p>And the best thing is: it’s super easy to follow, certainly much easier than learning how to create a context menu in Qt.</p>
+<p><img src="https://i.imgur.com/YGnh1VC.gif" alt="result" /></p>
+<h2 id="registry-setup"><a class="markdownIt-Anchor" href="#registry-setup"></a> Registry Setup</h2>
+<p>Everything regards to the Windows context menu setup is done
+within the Windows Registry Editor.</p>
+<h3 id="hierarchy"><a class="markdownIt-Anchor" href="#hierarchy"></a> Hierarchy</h3>
+<p>First I’m gonna do an example of manual implementation.</p>
+<ol>
+<li>
+<p>we’ll want to navigate to this path for now: <code>HKEY_CURRENT_USER\Software\Classes\directory\Background\shell</code> (we’ll explain this later <a href="">here</a>)</p>
+<ul>
+<li>right-click on the ‘Background’ key/folder and create a new ‘key’ named ‘shell’ if there isn’t one already</li>
+</ul>
+</li>
+<li>
+<p>create a key under ‘shell’ (I named mine ‘test_menu’) and then create a key under it called ‘command’</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/ENk9JDP.png" alt="test menu" /></p>
+<h3 id="field"><a class="markdownIt-Anchor" href="#field"></a> Field</h3>
+<p>Next we’ll want to modify the field of those keys, in the menu item key
+(in my case the ‘test_menu’) there are some optional fields we can add customize
+the appearance of our menu item.</p>
+<p>The following are some optional String Field:</p>
+<p>(To add field, right-click on the right panel, ‘New’ - ‘String Value’
+)</p>
+<ul>
+<li>MUIVerb: The display name of the menu item, if this is not set, the name will default
+to the key name (i.e. “test_menu” in our case)</li>
+<li>Icon: For displaying icon, the data should be set as the icon path, common format for the icons
+are .ico and .dll</li>
+<li>Position: changes the location of the menu item, e.g. “Top”, “Bottom”</li>
+</ul>
+<p><img src="https://i.imgur.com/wJxCBvL.png" alt="test menu field" /></p>
+<p><img src="https://i.imgur.com/0AxLphb.png" alt="result" /></p>
+<h2 id="setting-up-command"><a class="markdownIt-Anchor" href="#setting-up-command"></a> Setting up Command</h2>
+<p>Finally, we’ll want to modify the command key’s field, so it can actually perform
+custom operations.</p>
+<p>Go to the {Default} and edit the Data to whatever operation we would like to perform
+when clicking this menu item. The syntax would be an execution command similar
+to ones we would put in command prompt or a .bat file.</p>
+<h3 id="running-python-script"><a class="markdownIt-Anchor" href="#running-python-script"></a> Running Python Script</h3>
+<p>Here’s an example to run python script:</p>
+<p>In the Data section we would put: <code>&quot;path to python.exe&quot; &quot;path to python script.py&quot;</code></p>
+<h3 id="passing-argument"><a class="markdownIt-Anchor" href="#passing-argument"></a> Passing Argument</h3>
+<p>In order to pass in arguments, such as<br />
+the directory or the file where the menu was initiated.</p>
+<p>We add <code>%v</code> for directory and <code>%1</code> for file path at the end of the command Data:</p>
+<ul>
+<li>e.g. <code>&quot;D:/python39/python.exe&quot; &quot;D:/p4clipboard.py&quot; &quot;%1&quot;</code></li>
+<li>be aware of the slashes</li>
+<li>if you would like to debug your python script and not make it close immediately after execution simply
+add <code>-i</code> flag after the <code>&quot;python.exe&quot;</code></li>
+</ul>
+<p>And within the <code>p4clipboard.py</code> file, we can parse the argument passed in as such:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># converts the selected file to its perforce depot path and add to clipboard</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> p4Util  <span class="comment"># this is a mock p4 module</span></span><br><span class="line"><span class="keyword">import</span> winUtil  <span class="comment"># also a mock module</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">   selected_file = sys.argv[<span class="number">1</span>]</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">with</span> p4Util.connect():</span><br><span class="line">       p4_path = p4Util.get_depot_path(selected_file)</span><br><span class="line">       winUtil.copy_to_clip(p4_path)</span><br></pre></td></tr></table></figure>
+<h2 id="python-registry-automation"><a class="markdownIt-Anchor" href="#python-registry-automation"></a> Python Registry Automation</h2>
+<p>The above examples are very cool, but requires a lot of manual set up, we can
+leverage Python to set up the registry entries for us.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example from: https://github.com/seddie95/folder_organizer/blob/master/make_key.py</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> winreg <span class="keyword">as</span> reg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">python_exe = sys.executable</span><br><span class="line">script_path = <span class="string">r&quot;D:\test.py&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">reg_root_path = <span class="string">r&#x27;Directory\\Background\\shell&#x27;</span></span><br><span class="line"></span><br><span class="line">reg_root = reg.OpenKey(reg.HKEY_CLASSES_ROOT, reg_root_path, <span class="number">0</span>, reg.KEY_ALL_ACCESS)</span><br><span class="line">reg_menu = reg.CreateKey(reg_root, <span class="string">r&quot;test_menu\\&quot;</span>)</span><br><span class="line">reg.SetValue(reg_menu, <span class="string">&#x27;MUIVerb&#x27;</span>, reg.REG_SZ, <span class="string">&#x27;this is my test menu&#x27;</span>)</span><br><span class="line">reg.CloseKey(reg_menu)</span><br><span class="line"></span><br><span class="line">reg_root = reg.OpenKey(reg.HKEY_CLASSES_ROOT, reg_root_path, <span class="number">0</span>, reg.KEY_ALL_ACCESS)</span><br><span class="line">reg_menu_command = reg.CreateKey(reg_root, <span class="string">r&quot;test_menu\\command&quot;</span>)</span><br><span class="line">reg.SetValue(reg_menu_command, <span class="string">&#x27;&#x27;</span>, reg.REG_SZ, <span class="string">&quot;&#123;&#125; &#123;&#125; %v&quot;</span>.<span class="built_in">format</span>(python_exe, script_path))</span><br><span class="line">reg.CloseKey(reg_menu_command)</span><br></pre></td></tr></table></figure>
+<h2 id="reg-file"><a class="markdownIt-Anchor" href="#reg-file"></a> Reg File</h2>
+<p>Another way to transfer out the registry setup is by exporting
+out from registry editor directly to a <code>.reg</code> file.</p>
+<p>This can be done by simply selecting the top key and right-click
+and select ‘Export’; the <code>.reg</code> file is a text based file.</p>
+<h3 id="cascade-menu"><a class="markdownIt-Anchor" href="#cascade-menu"></a> Cascade Menu</h3>
+<p><img src="https://i.imgur.com/7f8imK0.png" alt="cascade result" /></p>
+<p>How should we go about implementing a multi-layered menu?
+I found a lot of examples online that are either complicated/messy
+or not working at all.</p>
+<p>Eventually I’ve come across this blog explaining what I think
+is the ideal way to implement Cascading menu. It keeps everything
+in one place, has this clean and easy to understand hierarchy, and
+very easy.</p>
+<p>Essentially, we only need to add one additional field on the
+top level menu item called: <code>subcommands</code>, and we then keep
+all the children menu item nested within it like what we have previously done.</p>
+<p><img src="https://i.imgur.com/ZmeMdAI.png" alt="cascade menu field" />
+(An example of the full hierarchy breakdown)</p>
+<h2 id="target-type"><a class="markdownIt-Anchor" href="#target-type"></a> Target Type</h2>
+<p>Different context menu triggering condition requires editing different registry keys,
+This goes the same for different user group (registration visible to the current user vs. affecting globally to the machine).</p>
+<p><strong>Background:</strong> when right-click on the backdrop of the explorer or desktop</p>
+<p>if you are administrator</p>
+<ul>
+<li><code>HKEY_CLASSES_ROOT\Directory\Background\shell</code></li>
+</ul>
+<p>if you are a normal user</p>
+<ul>
+<li><code>HKEY_CURRENT_USER\Software\Classes\directory\Background\shell</code></li>
+</ul>
+<p><strong>Folder</strong>: when right-click on a folder in the explorer or desktop</p>
+<p>if you are administrator</p>
+<ul>
+<li><code>HKEY_CLASSES_ROOT\Directory\shell</code></li>
+</ul>
+<p>if you are a normal user</p>
+<ul>
+<li><code>HKEY_CURRENT_USER\Software\Classes\directory\shell</code></li>
+</ul>
+<p><strong>File</strong>: when right-click on a file in the explorer or desktop</p>
+<p>if you are administrator</p>
+<ul>
+<li><code>HKEY_CLASSES_ROOT\*\shell</code></li>
+</ul>
+<p>if you are a normal user</p>
+<ul>
+<li><code>HKEY_CURRENT_USER\Software\Classes\*\shell</code></li>
+</ul>
+<p><strong>File Type Association</strong>: when right-click on a specific file type:</p>
+<p>if you are administrator:</p>
+<ul>
+<li><code>HKEY_LOCAL_MACHINE\Software\Classes\SystemFileAssociations\&#123;.format&#125;\shell</code></li>
+</ul>
+<p>if you are a normal user:</p>
+<ul>
+<li><code>HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\&#123;.format&#125;\shell</code></li>
+</ul>
+<h2 id="noteworthy-mentions"><a class="markdownIt-Anchor" href="#noteworthy-mentions"></a> Noteworthy Mentions</h2>
+<p>To further customize the context menu, we might be interested
+with adding separators between menu items, also having specific order or
+menu items. These can all be achieved quite easily described in Sverrir’s Blog which
+I’ve linked below.</p>
+<p>Furthermore, there are also menu item with toggle box or check box; these are
+not explored as of now.</p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/20449316/how-add-context-menu-item-to-windows-explorer-for-folders">Stack Overflow - How add context menu item to Windows Explorer for folders</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.notion.so/Creating-a-context-menu-with-sub-menu-for-Windows-for-a-specific-file-extension-61d5a0d696ed4b1db52f043656f936d6">Notion - Creating a context menu with sub-menu for Windows for a specific file extension</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2123762/add-menu-item-to-windows-context-menu-only-for-specific-filetype/47745854#47745854">Stack Overflow - Add menu item to Windows context menu only for specific filetype</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.sverrirs.com/2014/05/creating-cascading-menu-items-in.html">Sverrir’s Blog - Creating Cascading Menu Items in Windows Explorer 7, 8, 8.1 &amp; 10</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/archive/blogs/andrew_richards/enhancing-the-open-command-prompt-here-shift-right-click-context-menu-experience">Microsoft - Enhancing the “Open Command Prompt here” Context Menu experience</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/py-win-contextmenu/" title="Customize Windows 10/11 Right-click Context Menu" target="_blank" rel="external">https://www.xingyulei.com/post/py-win-contextmenu/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/maya-batch-mode-2/" title="Run Maya Batch Mode in 2023!"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Table of Contents" role="button">
+        <span>[&nbsp;</span><span>Table of Contents</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$$$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Thank you for the support! &#9749</p>
+          </div>
+          <div class="tab-content">
+		  
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/paypal.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Donate with &#34;Paypal&#34;</p>
+              <p class="text-grey">Consider buying me a coffee if you found my blog helpful</p>
+            </div>
+			
+			
+          </div>
+		  
+		  
+        
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
