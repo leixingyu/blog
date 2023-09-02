@@ -28,7 +28,7 @@
 <meta property="og:description" content="Learn how to use namedtuple in Python with our step-by-step guide designed for beginners. Our tutorial provides practical examples and best practices for creating lightweight and memory-efficient data">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-23T08:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-29T21:19:10.000Z">
+<meta property="article:modified_time" content="2023-09-02T17:56:55.768Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="style">
@@ -294,14 +294,14 @@ Python will get the hash-value for <code>x</code>,
 look that up in an internal structure and find elements that have the same hash as <code>x</code>.</p>
 </li>
 </ul>
-<p>It also means you can have non-hashable objects in a <code>list</code>,
+<p>It also means we can have non-hashable objects in a <code>list</code>,
 but not in a <code>set</code> or as <strong>keys</strong> in a <code>dict</code>.</p>
 <p><a name='hash-example'></a></p>
 <h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example:</h3>
 <p>There is no way to change an <code>int</code> object’s value without re-assigning (copy) it
 to a different object.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">5</span></span><br><span class="line"><span class="comment"># id(x) is equal to 3054677212104</span></span><br><span class="line">x = <span class="number">6</span></span><br><span class="line"><span class="comment"># id(x) is equal to 3054677212080</span></span><br></pre></td></tr></table></figure>
-<p>But for <code>list</code>, you can edit its value after assignment while keeping its <code>id()</code>
+<p>But for <code>list</code>, we can edit its value after assignment while keeping its <code>id()</code>
 the same. (note: use <code>list</code> built-in function rather than re-assignment,
 this is the same for <code>x.sort</code> vs. <code>x=sorted(x)</code>)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">5</span>]</span><br><span class="line"><span class="comment"># ORIGINAL: id(x) is equal to 3054706521672</span></span><br><span class="line">x.append(<span class="number">6</span>)</span><br><span class="line"><span class="comment"># CORRECT: id(x) is equal to 3054706521672</span></span><br><span class="line">x = [<span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="comment"># WRONG: id(x) is equal to 3054713375816</span></span><br></pre></td></tr></table></figure>
@@ -309,10 +309,10 @@ this is the same for <code>x.sort</code> vs. <code>x=sorted(x)</code>)</p>
 <p>A data class are just regular classes that are geared towards storing state,
 rather than containing a lot of logic, <code>namedtuple()</code> is one kind of data classes.</p>
 <blockquote>
-<p>Every time you create a class that mostly consists of attributes, you make a data class.</p>
+<p>Every time we create a class that mostly consists of attributes, we make a data class.</p>
 </blockquote>
-<p>With <code>namedtuple()</code>, you can create <strong>immutable</strong> sequence types
-that allow you to access their values using descriptive field names
+<p>With <code>namedtuple()</code>, we can create <strong>immutable</strong> sequence types
+that allow us to access their values using descriptive field names
 and the dot notation instead of unclear integer indices.</p>
 <h3 id="initialization"><a class="markdownIt-Anchor" href="#initialization"></a> Initialization</h3>
 <ol>
@@ -331,8 +331,8 @@ and the dot notation instead of unclear integer indices.</p>
 <p>It is very straight-forward to access a tuple’s attribute value using dot notation</p>
 <p>this gives <code>namedtuple</code> a great edge against <code>dict</code> or <code>tuple</code>.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person = namedtuple(<span class="string">&#x27;Person&#x27;</span>, <span class="string">&#x27;name children&#x27;</span>)</span><br><span class="line">jj = Person(<span class="string">&#x27;Johnny J&#x27;</span>, [<span class="string">&#x27;Tobby&#x27;</span>])</span><br><span class="line"></span><br><span class="line">&gt;&gt; jj.children</span><br><span class="line"><span class="comment"># [&#x27;Tobby&#x27;]</span></span><br></pre></td></tr></table></figure>
-<p>Since <code>namedtuple</code> is immutable, you can’t assign value to its attribute;
-what you can do is to use <code>._replace()</code>; and also, its value can be mutable, like
+<p>Since <code>namedtuple</code> is immutable, we can’t assign value to its attribute;
+what we can do is to use <code>._replace()</code>; and also, its value can be mutable, like
 a <code>list</code>.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; jj.children = [<span class="string">&#x27;Tobby&#x27;</span>, <span class="string">&#x27;Wang&#x27;</span>]</span><br><span class="line"><span class="comment"># AttributeError: can&#x27;t set attribute</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; jj.children.append(<span class="string">&#x27;Wang&#x27;</span>)</span><br><span class="line"><span class="comment"># Correct</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; jj = jj._replace(name=<span class="string">&#x27;John J&#x27;</span>)</span><br><span class="line"><span class="comment"># Correct</span></span><br></pre></td></tr></table></figure>
 <h3 id="using-_asdict"><a class="markdownIt-Anchor" href="#using-_asdict"></a> Using <code>._asdict()</code></h3>
@@ -362,8 +362,8 @@ extra property to access based off a Person’s instance attribute value.</p>
 <p>To override the constructor for <code>namedtuple</code> class with default value:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BasePerson = namedtuple(<span class="string">&quot;BasePerson&quot;</span>, [<span class="string">&quot;name&quot;</span>, <span class="string">&quot;birthdate&quot;</span> ,<span class="string">&quot;country&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">BasePerson</span>):</span><br><span class="line">    __slots__ = ()</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, name, birthdate=<span class="string">&quot;2000.01.01&quot;</span>, country=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>(Person, cls).__new__(cls, name, birthdate, country)</span><br></pre></td></tr></table></figure>
 <h3 id="__slots__"><a class="markdownIt-Anchor" href="#__slots__"></a> <code>__slots__</code></h3>
-<p>The special attribute <code>__slots__</code> explicitly state what attribute you want
-your class instances to have.</p>
+<p>The special attribute <code>__slots__</code> explicitly state what attribute we want
+our class instances to have.</p>
 <p>By default, when an instance (object) is created,
 <code>__dict__</code> is used to store an object’s (writable) attributes.
 A <strong>dynamic</strong> dictionary:</p>

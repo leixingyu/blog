@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://i.imgur.com/vQMjJ5z.png">
 <meta property="og:image" content="https://i.imgur.com/j6IoXLr.png">
 <meta property="article:published_time" content="2021-08-29T07:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-29T21:45:00.000Z">
+<meta property="article:modified_time" content="2023-09-02T18:08:53.907Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="unity">
 <meta property="article:tag" content="c#">
@@ -262,7 +262,7 @@ Unity’s <code>Animations</code> package in order to dive deeper.</p>
 <p>There’s a lot of parts composing Unity’s Animator: Layer, Parameter, State machine (and everything inside it
 including states of different kind, transition between states), there are of course multiple parameters inside a single state.</p>
 <p>The examples in this post is only about accessing states and state machines, as the rest is translatable.</p>
-<p>We start from the root: Base layer, if you think about it, a layer is essentially a state machine.
+<p>We start from the root: Base layer, if we think about it, a layer is essentially a state machine.
 Inside this root state machine are sets of states (including blend tree/state/sub-state machine)</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// getting the base layer state machine</span></span><br><span class="line">AnimatorStateMachine rootStateMachine = controller.layers[<span class="number">0</span>].stateMachine;</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.imgur.com/HuSyYGs.png" alt="base layer state machine" /></p>

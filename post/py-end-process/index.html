@@ -28,7 +28,7 @@
 <meta property="og:description" content="Learn how to find PIDs and end processes with ease, automate routine tasks, and streamline your workflow. Our step-by-step guide provides practical examples and best practices for optimizing your syst">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-25T07:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-29T21:16:46.000Z">
+<meta property="article:modified_time" content="2023-09-02T17:40:02.207Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="windows">
@@ -256,17 +256,17 @@ there are many ways to do so, like through the traditional batch script</p>
 <p>but to gain more flexibility, using python is probably a better idea.</p>
 <ul>
 <li><code>os.system</code> is not the most elegant way to use, and it is meant to be replaced by <code>subprocess</code></li>
-<li><code>subprocess</code> comes with Python standard library and allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes</li>
+<li><code>subprocess</code> comes with Python standard library and allows us to spawn new processes, connect to their input/output/error pipes, and obtain their return codes</li>
 <li><code>psutil</code> (python system and process utilities) is a <strong>cross-platform</strong> library for retrieving information on running processes and system utilization.
 However, it is a third-party library</li>
 </ul>
 <hr />
 <h3 id="bare-minimum"><a class="markdownIt-Anchor" href="#bare-minimum"></a> Bare Minimum</h3>
 <p>the bare minimum command to kill process utilizes window’s <code>taskkill</code>;
-which doesn’t matter if you use <code>os.system</code> or <code>subprocess</code></p>
+which doesn’t matter if we use <code>os.system</code> or <code>subprocess</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">PROCESS = <span class="string">&#x27;notepad.exe&#x27;</span></span><br><span class="line">STATUS = <span class="string">&#x27;running&#x27;</span>  <span class="comment"># running or not responding</span></span><br><span class="line">CMD = <span class="string">r&#x27;taskkill /fi &quot;IMAGENAME eq &#123;&#125;&quot; /fi &quot;STATUS eq &#123;&#125;&quot; &#x27;</span>.<span class="built_in">format</span>(PROCESS, STATUS)</span><br><span class="line"></span><br><span class="line">os.system(CMD)</span><br></pre></td></tr></table></figure>
 <h3 id="using-ossystem"><a class="markdownIt-Anchor" href="#using-ossystem"></a> Using <code>os.system</code></h3>
-<p>Now consider a more flexible case where you want to gather information about the processes like its PID,
+<p>Now consider a more flexible case where we want to gather information about the processes like its PID,
 and then proceed on ending the process. One of the downside of window shell command is that the output
 can’t be passed on to other command, the output is just text. Therefore, we
 output the text to a csv file which we will later process.</p>

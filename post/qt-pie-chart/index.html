@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://i.imgur.com/fR6H2PO.gif">
 <meta property="og:image" content="https://i.imgur.com/vxQHPEz.jpg">
 <meta property="article:published_time" content="2022-04-27T07:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-29T21:26:44.000Z">
+<meta property="article:modified_time" content="2023-09-02T17:59:21.039Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="pyqt">
 <meta property="article:tag" content="template">
@@ -325,7 +325,7 @@ as a container for inserting our slices (generated from our data).</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pie_chart = QChart()</span><br><span class="line">series = QPieSeries()</span><br><span class="line">slice_ = QPieSlice(label, value)</span><br><span class="line"></span><br><span class="line">series.append(slice_)</span><br><span class="line">pie_chart.addSeries(series)</span><br></pre></td></tr></table></figure>
 <p>note: <em>slice</em> is a Python built-in name so I’m against using it as variable name</p>
 <h3 id="labels-and-legend"><a class="markdownIt-Anchor" href="#labels-and-legend"></a> Labels and Legend</h3>
-<p>As you can see from the example above, we have some flexibility with
+<p>As we can see from the example above, we have some flexibility with
 label formatting (<code>QLabel</code> methods and HTML formatting),
 we can also do legend formatting to some extent. Such as alignment and marker shapes.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.legend().setAlignment(QtCore.Qt.AlignRight)</span><br><span class="line">self.legend().setMarkerShape(QtChart.QLegend.MarkerShapeCircle)</span><br></pre></td></tr></table></figure>

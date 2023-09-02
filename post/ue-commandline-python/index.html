@@ -28,7 +28,7 @@
 <meta property="og:description" content="Unlock the power of Unreal Command Line with Python using our easy-to-follow tutorial. Learn three proven methods to automate tasks and enhance your Unreal Engine workflow with ease. Our step-by-step">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-06T07:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-29T21:41:42.000Z">
+<meta property="article:modified_time" content="2023-09-02T18:06:44.041Z">
 <meta property="article:author" content="Xingyu Lei">
 <meta property="article:tag" content="unreal">
 <meta property="article:tag" content="python">
@@ -288,9 +288,9 @@ Either of this will not let the render to finish.</p>
 <p>This method, although not present on Unreal Engine’s wiki, it is mentioned
 in the FAQ by the official Epic Games account on Linear Content Creation.</p>
 <blockquote>
-<p>For Automation/Testing you can pass the following to keep the editor running.</p>
+<p>For Automation/Testing we can pass the following to keep the editor running.</p>
 <p>–ExecCmds=“py PathToPyFile”</p>
-<p>Once you are done, you can call:
+<p>Once we are done, we can call:
 unreal.SystemLibrary.execute_console_command(None,“QUIT_EDITOR”)</p>
 </blockquote>
 <p>This is almost like running a specified startup python script in Unreal,
@@ -308,7 +308,7 @@ and <code>-FullStdOutLogOutput</code>.</p>
 <h2 id="environment"><a class="markdownIt-Anchor" href="#environment"></a> Environment</h2>
 <p>Another thing to consider is that, running in batch mode can mess up our tools and start up scripts.
 due to it being a different environment. We might want to re-configure our environment
-which you can do like such:</p>
+which we can do like such:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">env = os.environ.copy()</span><br><span class="line">env[<span class="string">&#x27;FOO&#x27;</span>] = <span class="string">&#x27;BAR&#x27;</span></span><br><span class="line"><span class="comment"># more env ...</span></span><br><span class="line"></span><br><span class="line">proc = subprocess.Popen(</span><br><span class="line">        command,</span><br><span class="line">        stdout=subprocess.PIPE,</span><br><span class="line">        stderr=subprocess.PIPE,</span><br><span class="line">        env=env</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
 <h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2>
 <p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/scripting-the-unreal-editor-using-python/">Unreal Doc - Scripting the Unreal Editor Using Python</a></p>
