@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Write Metadata in Unreal: Integration in Blueprint-Driven Workflows | Tech Art Learning</title><meta name="robots" content="noindex">
+  <meta name="description" content="Explore the seamless integration of metadata in Unreal Engine, and learn how to access and utilize native metadata within Blueprint-driven workflows. Unleash the full potential of Unreal Engine with t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Write Metadata in Unreal: Integration in Blueprint-Driven Workflows">
+<meta property="og:url" content="https://www.xingyulei.com/post/ue-metadata/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="Explore the seamless integration of metadata in Unreal Engine, and learn how to access and utilize native metadata within Blueprint-driven workflows. Unleash the full potential of Unreal Engine with t">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/E3CUgEy.png">
+<meta property="og:image" content="https://i.imgur.com/2eFGgas.png">
+<meta property="og:image" content="https://i.imgur.com/OhmFOSY.png">
+<meta property="og:image" content="https://i.imgur.com/vJ4P1H2.png">
+<meta property="og:image" content="https://i.imgur.com/zYKf2l8.png">
+<meta property="og:image" content="https://i.imgur.com/645AMpd.png">
+<meta property="article:published_time" content="2023-10-13T07:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-19T22:34:50.674Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="unreal">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/E3CUgEy.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/ue-metadata/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332331939325190"
+     crossorigin="anonymous"></script>
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-users"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-github"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <h4>Featured Tools (<b>Free</b>)</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/jsonEditor"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/3d-math/">3d math</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics-programming/">graphics programming</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/learning-log/">learning log</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-communication/">maya communication</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya-python-api/">maya python api</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/model-view-programming/">model view programming</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/pipeline-discussion/">pipeline discussion</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech-summary/">tech summary</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal-cinematic/">unreal cinematic</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/batch/" style="font-size: 13.29px;">batch</a> <a href="/tags/c/" style="font-size: 13.14px;">c#</a> <a href="/tags/c/" style="font-size: 13px;">c++</a> <a href="/tags/cfx/" style="font-size: 13.14px;">cfx</a> <a href="/tags/command-port/" style="font-size: 13px;">command port</a> <a href="/tags/general/" style="font-size: 13px;">general</a> <a href="/tags/math/" style="font-size: 13.29px;">math</a> <a href="/tags/maya/" style="font-size: 13.86px;">maya</a> <a href="/tags/pipeline/" style="font-size: 13.43px;">pipeline</a> <a href="/tags/pyqt/" style="font-size: 13.86px;">pyqt</a> <a href="/tags/python/" style="font-size: 14px;">python</a> <a href="/tags/rendering/" style="font-size: 13.43px;">rendering</a> <a href="/tags/server/" style="font-size: 13px;">server</a> <a href="/tags/socket/" style="font-size: 13.14px;">socket</a> <a href="/tags/style/" style="font-size: 13.29px;">style</a> <a href="/tags/template/" style="font-size: 13.57px;">template</a> <a href="/tags/threading/" style="font-size: 13.14px;">threading</a> <a href="/tags/unity/" style="font-size: 13.43px;">unity</a> <a href="/tags/unreal/" style="font-size: 13.71px;">unreal</a> <a href="/tags/windows/" style="font-size: 13.29px;">windows</a>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text"> Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#data-table"><span class="toc-number">2.</span> <span class="toc-text"> Data Table</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-to-read-data-table"><span class="toc-number">2.1.</span> <span class="toc-text"> How to Read Data Table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#how-to-write-data-table"><span class="toc-number">2.2.</span> <span class="toc-text"> How to Write Data Table</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#metadata"><span class="toc-number">3.</span> <span class="toc-text"> Metadata</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-to-read-metadata"><span class="toc-number">3.1.</span> <span class="toc-text"> How to Read Metadata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#how-to-write-metadata"><span class="toc-number">3.2.</span> <span class="toc-text"> How to Write Metadata</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#blueprint-variable"><span class="toc-number">4.</span> <span class="toc-text"> Blueprint Variable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#how-to-read-blueprint-variable"><span class="toc-number">4.1.</span> <span class="toc-text"> How to Read Blueprint Variable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#how-to-write-blueprint-variable"><span class="toc-number">4.2.</span> <span class="toc-text"> How to Write Blueprint Variable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-number">4.3.</span> <span class="toc-text"> Example</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">5.</span> <span class="toc-text"> References</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ue-metadata" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Write Metadata in Unreal: Integration in Blueprint-Driven Workflows
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/ue-metadata/" class="article-date">
+	  <time datetime="2023-10-13T07:00:00.000Z" itemprop="datePublished">2023-10-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/learning-log/">learning log</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/unreal/" rel="tag">unreal</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>In the world of digital workflows, handling metadata is a common practice.
+In most CG pipelines, metadata is stored in external text files,
+allowing tools to easily read and write data. But when dealing with Unreal Engine,
+which operates predominantly in real-time,
+the challenge arises to access metadata through Blueprint scripting,
+requiring the metadata to be in Unreal’s native format.</p>
+<p>After some research, I came across a proposal from a staff member in the Unreal
+Developer Community. In this article,
+we’ll explore the different methods from the proposal and
+discuss the approach I’ve settled on.</p>
+<h2 id="data-table"><a class="markdownIt-Anchor" href="#data-table"></a> Data Table</h2>
+<p>Data tables offer a flexible way to structure data.
+However, it’s important to note that you need to define the data structure
+in advance to use them effectively</p>
+<p>To have a working data table we need to first create a
+data structure where each entry of the data table will conform to.</p>
+<p><img src="https://i.imgur.com/E3CUgEy.png" alt="data table and data structure" />
+Data Table (left) with corresponding Data Structure (right)</p>
+<h3 id="how-to-read-data-table"><a class="markdownIt-Anchor" href="#how-to-read-data-table"></a> How to Read Data Table</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line"></span><br><span class="line">dt_path = <span class="string">r&#x27;/Game/Cinematics/Metadata/DT_TestMetadata.DT_TestMetadata&#x27;</span></span><br><span class="line"></span><br><span class="line">dt = unreal.EditorAssetLibrary.find_asset_data(dt_path).get_asset()</span><br><span class="line"></span><br><span class="line">col_name = <span class="string">&quot;Version&quot;</span>    </span><br><span class="line">row_names = unreal.DataTableFunctionLibrary.get_data_table_row_names(dt)</span><br><span class="line">positions = unreal.DataTableFunctionLibrary.get_data_table_column_as_string(dt, col_name)</span><br><span class="line"><span class="keyword">for</span> idx, col <span class="keyword">in</span> <span class="built_in">enumerate</span>(positions):</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;row_names[idx]&#125;</span> - <span class="subst">&#123;col_name&#125;</span>: <span class="subst">&#123;col&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># entry1 - Version: 2</span></span><br><span class="line"><span class="comment"># entry2 - Version: 0</span></span><br></pre></td></tr></table></figure>
+<h3 id="how-to-write-data-table"><a class="markdownIt-Anchor" href="#how-to-write-data-table"></a> How to Write Data Table</h3>
+<p>It seems like data tables are ready-only at first, as there are only <code>get_data</code> function sets:
+<a target="_blank" rel="noopener" href="https://forums.unrealengine.com/t/set-data-table-row/85844">https://forums.unrealengine.com/t/set-data-table-row/85844</a></p>
+<p>However, there are in fact a way to write to data table, and that is with the use of
+.csv or .json.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unreal.DataTableFunctionLibrary.fill_data_table_from_json_file(data_table, json_file_path, data_structure)</span><br><span class="line">unreal.EditorAssetLibrary.save_loaded_asset(data_table, <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>I won’t go into how to update .csv or .json files, but do note that the formatting of
+the text file is important, and you can get a reference of
+what the file would look at by simply export out the data table with some test data like so:</p>
+<p><img src="https://i.imgur.com/2eFGgas.png" alt="export option" /></p>
+<h2 id="metadata"><a class="markdownIt-Anchor" href="#metadata"></a> Metadata</h2>
+<p>To access metadat for each asset, you can do a right-click “Asset Actions”, “Show Metadata”.</p>
+<p><img src="https://i.imgur.com/OhmFOSY.png" alt="asset action" /></p>
+<p>This is quite handy since, based on our need, it can be bound to an asset.</p>
+<p>And if we want to separate the binding between the asset and the data,
+we can also do so by creating
+an empty blueprint asset and use it as a central container to store metadata.</p>
+<p>The limitation however is that all the values are string type.</p>
+<h3 id="how-to-read-metadata"><a class="markdownIt-Anchor" href="#how-to-read-metadata"></a> How to Read Metadata</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line"></span><br><span class="line">u_asset_path = <span class="string">r&#x27;/Game/LevelPrototyping/Meshes/SM_ChamferCube.SM_ChamferCube&#x27;</span></span><br><span class="line">asset = unreal.EditorAssetLibrary.find_asset_data(u_asset_path).get_asset()</span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span> = unreal.EditorAssetLibrary.get_metadata_tag_values(asset)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">map</span>)</span><br><span class="line"><span class="comment"># &#123;&quot;version&quot;: &quot;4&quot;&#125;</span></span><br><span class="line"></span><br><span class="line">value = unreal.EditorAssetLibrary.get_metadata_tag(asset, <span class="string">&quot;version&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(value)</span><br><span class="line"><span class="comment"># 4</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/vJ4P1H2.png" alt="show metadata" /></p>
+<h3 id="how-to-write-metadata"><a class="markdownIt-Anchor" href="#how-to-write-metadata"></a> How to Write Metadata</h3>
+<p>We can also easily set and remove the metadata tag and values like so.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unreal.EditorAssetLibrary.set_metadata_tag(asset, <span class="string">&quot;version&quot;</span>, <span class="string">&quot;4&quot;</span>)</span><br><span class="line">unreal.EditorAssetLibrary.save_asset(u_asset_path)</span><br><span class="line"></span><br><span class="line">unreal.EditorAssetLibrary.remove_metadata_tag(asset, <span class="string">&quot;version&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="blueprint-variable"><a class="markdownIt-Anchor" href="#blueprint-variable"></a> Blueprint Variable</h2>
+<p>And lastly, I want to introduce the approach I ended up with:
+map variable in a custom blueprint asset.</p>
+<p>We first create a Blueprint asset using the basic Object class, and then add our
+custom ‘Version’ variable as a string: integer map
+this is basically equivalent to:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Version&quot;</span>: &#123;<span class="built_in">str</span>: <span class="built_in">int</span>&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/zYKf2l8.png" alt="" /></p>
+<p><img src="https://i.imgur.com/645AMpd.png" alt="" /></p>
+<p>Can we create a new variable through code if it doesn’t exist?</p>
+<h3 id="how-to-read-blueprint-variable"><a class="markdownIt-Anchor" href="#how-to-read-blueprint-variable"></a> How to Read Blueprint Variable</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#access a NewVar map variable on a custom blueprint</span></span><br><span class="line"></span><br><span class="line">bp_path = <span class="string">r&quot;/Game/Cinematics/Vignettes/9000_Testing/NewBlueprint.NewBlueprint&quot;</span></span><br><span class="line">bp = unreal.EditorAssetLibrary.find_asset_data(bp_path).get_asset()</span><br><span class="line"><span class="comment"># get the generated class of the Blueprint (note the _C)</span></span><br><span class="line">bp_gc = unreal.load_object(<span class="literal">None</span>, bp.generated_class().get_path_name())</span><br><span class="line"><span class="comment"># get the Class Default Object (CDO) of the generated class</span></span><br><span class="line">bp_cdo = unreal.get_default_object(bp_gc)</span><br><span class="line"><span class="comment"># values needs to exist already and compiled</span></span><br><span class="line">st = bp_cdo.get_editor_property(<span class="string">&quot;NewVar&quot;</span>)</span><br><span class="line">it = bp_cdo.get_editor_property(<span class="string">&quot;NewVar_0&quot;</span>)</span><br><span class="line"><span class="comment">#bp_cdo.set_editor_property(&quot;MyBoolProp&quot;, True)</span></span><br><span class="line">unreal.EditorAssetLibrary.save_asset(bp_path)</span><br></pre></td></tr></table></figure>
+<h3 id="how-to-write-blueprint-variable"><a class="markdownIt-Anchor" href="#how-to-write-blueprint-variable"></a> How to Write Blueprint Variable</h3>
+<h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h3>
+<p>Since, this approach is the one I have experimented the furthest along,
+here’s an example on how I access it in another Blueprint:</p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p><a target="_blank" rel="noopener" href="https://forums.unrealengine.com/t/how-to-store-text-data-with-python/688813">Unreal Forum - How to store text data with Python?</a></p>
+<p><a target="_blank" rel="noopener" href="https://forums.unrealengine.com/t/reimport-datatable-csv-with-python/567768">Unreal Forum - Reimport DataTable(csv) with python</a></p>
+<p><a target="_blank" rel="noopener" href="https://forums.unrealengine.com/t/reading-a-datatables-values-with-python/232300">Unreal Forum - Reading a DataTable’s Values with Python</a></p>
+<!-- flag of hidden posts -->
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/ue-metadata/" title="Write Metadata in Unreal: Integration in Blueprint-Driven Workflows" target="_blank" rel="external">https://www.xingyulei.com/post/ue-metadata/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2023 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
