@@ -6,7 +6,7 @@
   <link href="https://www.xingyulei.com/atom.xml" rel="self"/>
   
   <link href="https://www.xingyulei.com/"/>
-  <updated>2023-09-02T17:57:40.751Z</updated>
+  <updated>2023-10-21T04:35:42.105Z</updated>
   <id>https://www.xingyulei.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Write Metadata in Unreal: Integration in Blueprint-Driven Workflows</title>
+    <link href="https://www.xingyulei.com/post/ue-metadata/"/>
+    <id>https://www.xingyulei.com/post/ue-metadata/</id>
+    <published>2023-10-13T07:00:00.000Z</published>
+    <updated>2023-10-21T04:35:42.105Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2><p>In the world of digital workflows, handling metadata is a common practice.In most CG pipelines, metadata is stored in external text files,allowing tools to easily read and write data. But when dealing with Unreal Engine,which operates predominantly in real-time,the challenge arises to access metadata through Blueprint scripting,requiring the metadata to be in Unreal’s native format.</p><p>After some research, I came across a proposal from a staff member in the UnrealDeveloper Community. In this article,we’ll explore the different methods from the proposal anddiscuss the approach I’ve settled on.</p><h2 id="data-table"><a class="markdownIt-Anchor" href="#data-table"></a> Data Table</h2><p>Data tables offer a flexible way to structure data.However, it’s important to note that you need to define the data structurein advance to use them effectively</p><p>To have a working data table we need to first create adata structure where each entry of the data table will conform to.</p><p><img src="https://i.imgur.com/E3CUgEy.png" alt="data table and data structure" />Data Table (left) with corresponding Data Structure (right)</p><h3 id="how-to-read-data-table"><a class="markdownIt-Anchor" href="#how-to-read-data-table"></a> How to Read Data Table</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line"></span><br><span class="line">dt_path = <span class="string">r&#x27;/Game/Cinematics/Metadata/DT_TestMetadata.DT_TestMetadata&#x27;</span></span><br><span class="line"></span><br><span class="line">dt = unreal.EditorAssetLibrary.find_asset_data(dt_path).get_asset()</span><br><span class="line"></span><br><span class="line">col_name = <span class="string">&quot;Version&quot;</span>    </span><br><span class="line">row_names = unreal.DataTableFunctionLibrary.get_data_table_row_names(dt)</span><br><span class="line">positions = unreal.DataTableFunctionLibrary.get_data_table_column_as_string(dt, col_name)</span><br><span class="line"><span class="keyword">for</span> idx, col <span class="keyword">in</span> <span class="built_in">enumerate</span>(positions):</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;row_names[idx]&#125;</span> - <span class="subst">&#123;col_name&#125;</span>: <span class="subst">&#123;col&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># entry1 - Version: 2</span></span><br><span class="line"><span class="comment"># entry2 - Version: 0</span></span><br></pre></td></tr></table></figure><h3 id="how-to-write-data-table"><a class="markdownIt-Anchor" href="#how-to-write-data-table"></a> How to Write Data Table</h3><p>It seems like data tables are ready-only at first, as there are only <code>get_data</code> function sets:<a href="https://forums.unrealengine.com/t/set-data-table-row/85844">https://forums.unrealengine.com/t/set-data-table-row/85844</a></p><p>However, there are in fact a way to write to data table, and that is with the use of.csv or .json.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unreal.DataTableFunctionLibrary.fill_data_table_from_json_file(data_table, json_file_path, data_structure)</span><br><span class="line">unreal.EditorAssetLibrary.save_loaded_asset(data_table, <span class="literal">True</span>)</span><br></pre></td></tr></table></figure><p>I won’t go into how to update .csv or .json files, but do note that the formatting ofthe text file is important, and you can get a reference ofwhat the file would look at by simply export out the data table with some test data like so:</p><p><img src="https://i.imgur.com/2eFGgas.png" alt="export option" /></p><h2 id="metadata"><a class="markdownIt-Anchor" href="#metadata"></a> Metadata</h2><p>To access metadat for each asset, you can do a right-click “Asset Actions”, “Show Metadata”.</p><p><img src="https://i.imgur.com/OhmFOSY.png" alt="asset action" /></p><p>This is quite handy since, based on our need, it can be bound to an asset.</p><p>And if we want to separate the binding between the asset and the data,we can also do so by creatingan empty blueprint asset and use it as a central container to store metadata.</p><p>The limitation however is that all the values are string type.</p><h3 id="how-to-read-metadata"><a class="markdownIt-Anchor" href="#how-to-read-metadata"></a> How to Read Metadata</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line"></span><br><span class="line">u_asset_path = <span class="string">r&#x27;/Game/LevelPrototyping/Meshes/SM_ChamferCube.SM_ChamferCube&#x27;</span></span><br><span class="line">asset = unreal.EditorAssetLibrary.find_asset_data(u_asset_path).get_asset()</span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span> = unreal.EditorAssetLibrary.get_metadata_tag_values(asset)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">map</span>)</span><br><span class="line"><span class="comment"># &#123;&quot;version&quot;: &quot;4&quot;&#125;</span></span><br><span class="line"></span><br><span class="line">value = unreal.EditorAssetLibrary.get_metadata_tag(asset, <span class="string">&quot;version&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(value)</span><br><span class="line"><span class="comment"># 4</span></span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/vJ4P1H2.png" alt="show metadata" /></p><h3 id="how-to-write-metadata"><a class="markdownIt-Anchor" href="#how-to-write-metadata"></a> How to Write Metadata</h3><p>We can also easily set and remove the metadata tag and values like so.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unreal.EditorAssetLibrary.set_metadata_tag(asset, <span class="string">&quot;version&quot;</span>, <span class="string">&quot;4&quot;</span>)</span><br><span class="line">unreal.EditorAssetLibrary.save_asset(u_asset_path)</span><br><span class="line"></span><br><span class="line">unreal.EditorAssetLibrary.remove_metadata_tag(asset, <span class="string">&quot;version&quot;</span>)</span><br></pre></td></tr></table></figure><h2 id="blueprint-variable"><a class="markdownIt-Anchor" href="#blueprint-variable"></a> Blueprint Variable</h2><p>And lastly, I want to introduce the approach I ended up with:map variable in a custom blueprint asset.</p><p>We first create a Blueprint asset using the basic Object class, and then add ourcustom ‘Version’ variable as a string: integer mapthis is basically equivalent to:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Version&quot;</span>: &#123;<span class="built_in">str</span>: <span class="built_in">int</span>&#125;</span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/zYKf2l8.png" alt="variable-1" /></p><p><img src="https://i.imgur.com/645AMpd.png" alt="variable-2" /></p><p>Through scripting, we first need to get the default class object of the blueprint,which can be achieved like so:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unreal</span><br><span class="line"></span><br><span class="line">u_bp_path = <span class="string">r&#x27;/asset_path&#x27;</span></span><br><span class="line">u_bp = unreal.EditorAssetLibrary.find_asset_data(u_bp_path).get_asset()</span><br><span class="line"></span><br><span class="line"><span class="comment"># generated class</span></span><br><span class="line">u_bp_generated = unreal.load_object(<span class="literal">None</span>, u_bp.generated_class().get_path_name())</span><br><span class="line"></span><br><span class="line"><span class="comment"># dco</span></span><br><span class="line">u_bp_dco = unreal.get_default_object(u_bp_generated)</span><br></pre></td></tr></table></figure><p>The advantage here lies in having a single blueprint asset capable of storingnumerous variables, each natively typed to Unreal.Nevertheless, I haven’t yet attempted to create variables solely through code.</p><h3 id="how-to-read-blueprint-variable"><a class="markdownIt-Anchor" href="#how-to-read-blueprint-variable"></a> How to Read Blueprint Variable</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_version</span>(<span class="params">dco, name</span>):</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">version = dco.get_editor_property(<span class="string">&#x27;version&#x27;</span>)[name]</span><br><span class="line"><span class="keyword">except</span> KeyError:</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;no &#123;&#125; key&#x27;</span>.<span class="built_in">format</span>(name))</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> version</span><br></pre></td></tr></table></figure><h3 id="how-to-write-blueprint-variable"><a class="markdownIt-Anchor" href="#how-to-write-blueprint-variable"></a> How to Write Blueprint Variable</h3><p>Note that we use the <code>get_editor_property()</code> to set the metadata</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">set_version</span>(<span class="params">dco, name, version</span>):</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">u_bp_dco.get_editor_property(<span class="string">&#x27;version&#x27;</span>)[name] = version</span><br><span class="line"><span class="keyword">except</span> TypeError <span class="keyword">as</span> e:</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;TypeError: &#123;&#125; of &#123;&#125; incorrect, &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">type</span>(version), version, e))</span><br><span class="line"><span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">unreal.EditorAssetLibrary.save_asset(bp_path)</span><br><span class="line"><span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h3><p>Since, this approach is the one I have experimented the furthest along,here’s an example on how I access it in another Blueprint:</p><p><img src="https://i.imgur.com/8FhwmLA.png" alt="bp" /></p><p>Another way is to use ‘Get Class Default Object’ and ‘Cast To BP Test Metadata’ whichreturn ‘As BP Test Metadata’ and can then access the “Version” variable.</p><h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2><p><a href="https://forums.unrealengine.com/t/how-to-store-text-data-with-python/688813">Unreal Forum - How to store text data with Python?</a></p><p><a href="https://forums.unrealengine.com/t/reimport-datatable-csv-with-python/567768">Unreal Forum - Reimport DataTable(csv) with python</a></p><p><a href="https://forums.unrealengine.com/t/reading-a-datatables-values-with-python/232300">Unreal Forum - Reading a DataTable’s Values with Python</a></p>]]></content>
+    
+    
+    <summary type="html">Explore the seamless integration of metadata in Unreal Engine, and learn how to access and utilize native metadata within Blueprint-driven workflows. Unleash the full potential of Unreal Engine with this in-depth guide.</summary>
+    
+    
+    
+    <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
+    
+    
+    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
+    
+    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>Customize Windows 10/11 Right-click Context Menu</title>
@@ -100,9 +123,9 @@
     <category term="unreal cinematic" scheme="https://www.xingyulei.com/categories/unreal-cinematic/"/>
     
     
-    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
-    
     <category term="rendering" scheme="https://www.xingyulei.com/tags/rendering/"/>
+    
+    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
     <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
@@ -125,11 +148,11 @@
     <category term="unreal cinematic" scheme="https://www.xingyulei.com/categories/unreal-cinematic/"/>
     
     
-    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
+    <category term="rendering" scheme="https://www.xingyulei.com/tags/rendering/"/>
     
     <category term="pipeline" scheme="https://www.xingyulei.com/tags/pipeline/"/>
     
-    <category term="rendering" scheme="https://www.xingyulei.com/tags/rendering/"/>
+    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
     <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
@@ -175,9 +198,9 @@
     <category term="unreal cinematic" scheme="https://www.xingyulei.com/categories/unreal-cinematic/"/>
     
     
-    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
-    
     <category term="rendering" scheme="https://www.xingyulei.com/tags/rendering/"/>
+    
+    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
     <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
     
@@ -225,13 +248,13 @@
     <category term="learning log" scheme="https://www.xingyulei.com/categories/learning-log/"/>
     
     
-    <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
-    
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
-    
     <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
     <category term="unity" scheme="https://www.xingyulei.com/tags/unity/"/>
+    
+    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
+    
+    <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
     
   </entry>
   
@@ -252,13 +275,13 @@
     <category term="3d math" scheme="https://www.xingyulei.com/categories/3d-math/"/>
     
     
-    <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
-    
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
-    
     <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
     <category term="unity" scheme="https://www.xingyulei.com/tags/unity/"/>
+    
+    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
+    
+    <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
     
   </entry>
   
@@ -279,9 +302,9 @@
     <category term="3d math" scheme="https://www.xingyulei.com/categories/3d-math/"/>
     
     
-    <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
-    
     <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
+    
+    <category term="math" scheme="https://www.xingyulei.com/tags/math/"/>
     
   </entry>
   
@@ -302,11 +325,11 @@
     <category term="unreal cinematic" scheme="https://www.xingyulei.com/categories/unreal-cinematic/"/>
     
     
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
+    <category term="pipeline" scheme="https://www.xingyulei.com/tags/pipeline/"/>
     
     <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
-    <category term="pipeline" scheme="https://www.xingyulei.com/tags/pipeline/"/>
+    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
     
   </entry>
   
@@ -327,9 +350,9 @@
     <category term="unreal cinematic" scheme="https://www.xingyulei.com/categories/unreal-cinematic/"/>
     
     
-    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
-    
     <category term="pipeline" scheme="https://www.xingyulei.com/tags/pipeline/"/>
+    
+    <category term="unreal" scheme="https://www.xingyulei.com/tags/unreal/"/>
     
   </entry>
   
@@ -476,33 +499,6 @@
     <category term="socket" scheme="https://www.xingyulei.com/tags/socket/"/>
     
     <category term="threading" scheme="https://www.xingyulei.com/tags/threading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Streamline Your Maya Communication Workflow (1. Command Port)</title>
-    <link href="https://www.xingyulei.com/post/maya-commandport/"/>
-    <id>https://www.xingyulei.com/post/maya-commandport/</id>
-    <published>2021-12-17T08:00:00.000Z</published>
-    <updated>2023-03-29T21:12:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="maya-connector"><a class="markdownIt-Anchor" href="#maya-connector"></a> Maya Connector</h2><p>The end result of this two-part blog is the <a href="https://github.com/leixingyu/mayaConnector">Maya Connector</a> tool.</p><p>This external standalone tool is able to send command to maya and receivereal-time feedback from maya’s script editor output.</p><p><img src="https://i.imgur.com/89SJibG.gif" alt="maya-connector" /></p><h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2><blockquote><p>If you are already familiar with maya command port and socket programming, skip to<a href="https://www.xingyulei.com/post/maya-streaming/">Part 2</a> for Maya output streaming.</p></blockquote><p>Although there are a lot of tools that can run internally in Maya which facilitatethe pipeline. The capability of communicating (monitor and control) with Maya externally is very handy.</p><p>Why? we sometime don’t need to interact with Maya GUI directly or have way toomany maya instances to manage. examples are:</p><ul><li>sending cross-application remote command to active maya sessions or syncing between different maya sessions</li><li>batch processing on either maya standalone sessions or active maya sessions</li></ul><p>This requires two components which I will be covering:</p><ol><li>command port: sending commands to maya to execute</li><li>output streaming: actively listening/receiving maya outputs (next blog)</li></ol><p>These two parts can work independently, but are powerful as a whole. Also, referencesin creating <a href="https://www.xingyulei.com/post/maya-batch-mode/">maya standalone sessions</a></p><h2 id="using-cmdscommandport"><a class="markdownIt-Anchor" href="#using-cmdscommandport"></a> Using <code>cmds.commandPort()</code></h2><blockquote><p><a href="https://help.autodesk.com/cloudhelp/2018/ENU/Maya-Tech-Docs/CommandsPython/">cmds.commandPort()</a>:The command port comprises a socket to which a client program may connect</p></blockquote><p>Traditional socket connection provides the basic communication betweenclient and server.But Maya’s built-in command port provides us a very convenient way of sending command for mayato execute.</p><h2 id="procedures"><a class="markdownIt-Anchor" href="#procedures"></a> Procedures</h2><ol><li>Open command port</li></ol><p>The port needs to be opened on Maya’s (server) end first in order for clientto send command; ideally this would be achieved by adding a <code>cmds.commandPort()</code> openduring Maya startup.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> maya.cmds <span class="keyword">as</span> cmds</span><br><span class="line">port = <span class="number">5050</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> cmds.commandPort(<span class="string">&quot;:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(port), query=<span class="literal">True</span>):</span><br><span class="line">    cmds.commandPort(name=<span class="string">&quot;:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(port))</span><br></pre></td></tr></table></figure><ol start="2"><li>Send command through an external application</li></ol><p>the command sent can be either <code>MEL</code> or <code>Python</code> command which must be specified duringthe opening the port determined by <code>sourceType</code> flag</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the local host</span></span><br><span class="line">HOST = <span class="string">&#x27;127.0.0.1&#x27;</span> </span><br><span class="line">PORT = <span class="number">5050</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sendCommand</span>():</span><br><span class="line">    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    client.connect(ADDR)</span><br><span class="line">    command = <span class="string">&#x27;polyCube()&#x27;</span></span><br><span class="line">    client.send(command)</span><br><span class="line">    client.close()</span><br></pre></td></tr></table></figure><h3 id="tcp-return-message"><a class="markdownIt-Anchor" href="#tcp-return-message"></a> TCP Return Message</h3><p>We are using <strong>TCP</strong> for our communication protocol to guarantee command being sentwhen the connection is established successfully.</p><blockquote><p><strong>Important:</strong>At this point, we are not attempting to use <code>client.recv(xxx)</code> for data returningfrom Maya, unless it’s a super simple single statement.</p></blockquote><p>Trying to use <code>client.recv(xxx)</code> will result in either <code>None</code> data returned or singlereturn as it is the behaviour of <strong>TCP</strong>. <a href="https://stackoverflow.com/questions/10434525/c-socket-programming-only-receiving-one-line-at-a-time">See here</a></p><p>Also sending command line by line is not reliable as there are no context betweenlines for Maya server to understand. <a href="https://forums.cgsociety.org/t/telnet-or-socket-no-result-back-from-maya/1730817/2">Unless it’s super simple series of commands</a></p><p>In order to receive output, we need a custom listening server to do that which is explained in <a href="https://www.xingyulei.com/post/maya-streaming">Part 2</a>.</p><h3 id="sourcetype"><a class="markdownIt-Anchor" href="#sourcetype"></a> SourceType</h3><p>We are opening a default command port which takes <code>MEL</code> input,we don’t need to specify <code>Python</code> as source type, as we can just use <code>python(&quot;[insert command here]&quot;)</code>to wrap it into <code>MEL</code>, this can be blocks of independent codes or importingand executing python files.</p><h3 id="mixed-quotation-symbol"><a class="markdownIt-Anchor" href="#mixed-quotation-symbol"></a> Mixed Quotation symbol</h3><p>Note that when doing a source type conversion with a string type command, quotation symbol may cause conflicts.</p><p>the solution is to replace it with backslash before quotation symbol.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command = <span class="string">&#x27;python(&quot;&#x27;</span> + command.replace(<span class="string">r&#x27;&quot;&#x27;</span>, <span class="string">r&#x27;\&quot;&#x27;</span>) + <span class="string">&#x27;&quot;)&#x27;</span></span><br></pre></td></tr></table></figure><h2 id="socket-programming-introduction"><a class="markdownIt-Anchor" href="#socket-programming-introduction"></a> Socket Programming Introduction</h2><p>It is also very helpful to know the basics of socket programming in Pythonto better understand how server and client communicates, and the differencebetween TCP and UDP, which will be used in the next part.</p><p>This <a href="https://youtu.be/3QiPPX-KeSc">tutorial</a> is very handy, and the followingare a basic template for setting up client and server using <code>socket</code> and <code>thread</code></p><script src="https://gist.github.com/leixingyu/f4b4d6ca7b84cf01af5311857219295e.js"></script><script src="https://gist.github.com/leixingyu/5e55f23113c0280ab5ab16595bda900d.js"></script><h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h2><p><a href="https://groups.google.com/g/python_inside_maya/c/7AgWlldtvbE/m/zUTQlAcjBgAJ?pli=1">Google Group - Receiving data from commandPort</a></p><p><a href="https://stackoverflow.com/questions/10434525">Stack Overflow - c socket programming, only receiving one line at a time</a></p><p><a href="https://forums.cgsociety.org/t/telnet-or-socket-no-result-back-from-maya/1730817/2">CG Talk - Telnet or Socket: no result back from Maya</a></p><p><a href="https://youtu.be/3QiPPX-KeSc">Youtube - Python Socket Programming Tutorial</a></p>]]></content>
-    
-    
-    <summary type="html">Learn how to enhance your Maya workflow by running the command port and utilizing socket communication. Our step-by-step tutorial covers everything from setup to execution, providing you with the knowledge and tools to streamline your workflow and improve collaboration.</summary>
-    
-    
-    
-    <category term="maya communication" scheme="https://www.xingyulei.com/categories/maya-communication/"/>
-    
-    
-    <category term="maya" scheme="https://www.xingyulei.com/tags/maya/"/>
-    
-    <category term="python" scheme="https://www.xingyulei.com/tags/python/"/>
-    
-    <category term="socket" scheme="https://www.xingyulei.com/tags/socket/"/>
-    
-    <category term="command port" scheme="https://www.xingyulei.com/tags/command-port/"/>
     
   </entry>
   
