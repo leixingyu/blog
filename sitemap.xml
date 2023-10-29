@@ -354,13 +354,6 @@
 
   
   <url>
-    <loc>https://www.xingyulei.com/tags/c/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/tags/math/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
@@ -396,7 +389,7 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/rendering/</loc>
+    <loc>https://www.xingyulei.com/tags/c/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -410,6 +403,13 @@
   </url>
   
   <url>
+    <loc>https://www.xingyulei.com/tags/rendering/</loc>
+    <lastmod>2023-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.xingyulei.com/tags/socket/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
@@ -417,7 +417,7 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/threading/</loc>
+    <loc>https://www.xingyulei.com/tags/command-port/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -445,14 +445,14 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/style/</loc>
+    <loc>https://www.xingyulei.com/tags/threading/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/command-port/</loc>
+    <loc>https://www.xingyulei.com/tags/style/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -496,13 +496,6 @@
 
   
   <url>
-    <loc>https://www.xingyulei.com/categories/learning-log/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/categories/3d-math/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
@@ -510,7 +503,7 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/categories/graphics-programming/</loc>
+    <loc>https://www.xingyulei.com/categories/learning-log/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -518,6 +511,13 @@
   
   <url>
     <loc>https://www.xingyulei.com/categories/maya-python-api/</loc>
+    <lastmod>2023-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/categories/graphics-programming/</loc>
     <lastmod>2023-10-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
