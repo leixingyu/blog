@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-streaming/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-commandport/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-pie-chart/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-threading/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-http-server/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-win-contextmenu/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/unity-api-statemachine/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-admin/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/ue-metadata/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/ue-cinematic-fbx/</loc>
+    <lastmod>2023-11-19</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/ue-rendering-custom-executor/</loc>
     <lastmod>2023-11-18</lastmod>
   </url>
@@ -14,10 +86,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/ue-cinematic-sequencer/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/ue-cinematic-fbx/</loc>
     <lastmod>2023-11-17</lastmod>
   </url>
   <url>
@@ -69,35 +137,7 @@
     <lastmod>2023-11-17</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/maya-commandport/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-streaming/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-admin/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/ue-commandline-python/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-win-contextmenu/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-http-server/</loc>
     <lastmod>2023-11-17</lastmod>
   </url>
   <url>
@@ -109,19 +149,7 @@
     <lastmod>2023-11-17</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/qt-button-alignment/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-detect-click/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/qt-enum-flag/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-pie-chart/</loc>
     <lastmod>2023-11-17</lastmod>
   </url>
   <url>
@@ -130,34 +158,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-signal-in-for-loop/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template-no-ui/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-threading/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/ue-metadata/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/unity-api-statemachine/</loc>
     <lastmod>2023-11-17</lastmod>
   </url>
   <url>
