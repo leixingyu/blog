@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/general-cfx/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-admin/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/ue-rendering-remote-farm/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/ue-rendering-custom-executor/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-commandport/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-streaming/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-api-node/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-api-intro/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-api-deformer/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-api-command/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/math-xform-conversion/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/math-euler-gimbal/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/math-change-of-basis/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/maya-batch-mode/</loc>
+    <lastmod>2024-01-03</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/qt-sorting/</loc>
     <lastmod>2023-11-19</lastmod>
   </url>
@@ -25,22 +89,6 @@
     <lastmod>2023-11-19</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
-    <lastmod>2023-11-19</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-streaming/</loc>
-    <lastmod>2023-11-19</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-commandport/</loc>
-    <lastmod>2023-11-19</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
-    <lastmod>2023-11-19</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/qt-pie-chart/</loc>
     <lastmod>2023-11-19</lastmod>
   </url>
@@ -61,24 +109,12 @@
     <lastmod>2023-11-19</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/py-admin/</loc>
-    <lastmod>2023-11-19</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/ue-metadata/</loc>
     <lastmod>2023-11-19</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/ue-cinematic-fbx/</loc>
     <lastmod>2023-11-19</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/ue-rendering-custom-executor/</loc>
-    <lastmod>2023-11-18</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/ue-rendering-remote-farm/</loc>
-    <lastmod>2023-11-17</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/ue-rendering-basic/</loc>
@@ -98,38 +134,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/graphics-shading-basics/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/math-change-of-basis/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/math-euler-gimbal/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/math-xform-conversion/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-api-command/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-api-deformer/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-api-intro/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-api-node/</loc>
-    <lastmod>2023-11-17</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/maya-batch-mode/</loc>
     <lastmod>2023-11-17</lastmod>
   </url>
   <url>
