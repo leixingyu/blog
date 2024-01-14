@@ -19,22 +19,22 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Qt Model View List Model | Tech Art Learning</title><meta name="robots" content="noindex">
-  <meta name="description" content="The following example demonstrates how to create custom list model for displaying list-like data 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556">
+  <title>Demo Reel 2024 - Xingyu Lei | Tech Art Learning</title>
+  <meta name="description" content="Dive into the world of dynamic simulations, emphasizing the role of artists in offline cloth simulation. It covers the stages of cloth rig building, simulation, and post-processing. The article also e">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt Model View List Model">
-<meta property="og:url" content="https://www.xingyulei.com/post/hid/qt-mv-list/index.html">
+<meta property="og:title" content="Demo Reel 2024 - Xingyu Lei">
+<meta property="og:url" content="https://www.xingyulei.com/post/general-demo-reel/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="The following example demonstrates how to create custom list model for displaying list-like data 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556">
+<meta property="og:description" content="Dive into the world of dynamic simulations, emphasizing the role of artists in offline cloth simulation. It covers the stages of cloth rig building, simulation, and post-processing. The article also e">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-07T08:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-17T19:17:37.249Z">
+<meta property="article:published_time" content="2024-01-14T08:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-14T18:28:51.777Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="design">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="animation">
+<meta property="article:tag" content="pipeline">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/hid/qt-mv-list/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/general-demo-reel/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -204,14 +204,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-hid/qt-mv-list" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-general-demo-reel" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Qt Model View List Model
+      Demo Reel 2024 - Xingyu Lei
     </h1>
   
 
@@ -219,20 +219,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/hid/qt-mv-list/" class="article-date">
-	  <time datetime="2021-02-07T08:00:00.000Z" itemprop="datePublished">2021-02-07</time>
+	<a href="/post/general-demo-reel/" class="article-date">
+	  <time datetime="2024-01-14T08:00:00.000Z" itemprop="datePublished">2024-01-14</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/qt/">qt</a>
+    <a class="article-category-link" href="/categories/general/">general</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/design/" rel="tag">design</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
+	<a class="article-tag-link-link" href="/tags/animation/" rel="tag">animation</a>, <a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>
   </span>
 
 
@@ -243,35 +243,21 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>The following example demonstrates how to create custom list model for
-displaying list-like data</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Qt <span class="keyword">import</span> QtGui, QtCore, QtWidgets</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PaletteListModel</span>(QtCore.QAbstractListModel):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, colors=[], parent=<span class="literal">None</span></span>):</span><br><span class="line">        QtCore.QAbstractListModel.__init__(self, parent)</span><br><span class="line">        self.__colors = colors</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">headerData</span>(<span class="params">self, section, orientation, role</span>):</span><br><span class="line">        <span class="comment"># orientation: indicates horizontal or vertical header</span></span><br><span class="line">        <span class="comment"># section:     indicates which index on the header</span></span><br><span class="line">        <span class="keyword">if</span> role == QtCore.Qt.DisplayRole:</span><br><span class="line">            <span class="keyword">if</span> orientation == QtCore.Qt.Horizontal:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&#x27;Palette&#x27;</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&#x27;Color &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(section+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rowCount</span>(<span class="params">self, parent</span>):</span><br><span class="line">        <span class="comment"># parent: are for tree view with hierarchical structure</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.__colors)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">data</span>(<span class="params">self, index, role</span>):</span><br><span class="line">        <span class="comment"># display data for each index, of each data role</span></span><br><span class="line">        <span class="keyword">if</span> role == QtCore.Qt.EditRole:</span><br><span class="line">            <span class="keyword">return</span> self.__colors[index.row()].name()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> role == QtCore.Qt.ToolTipRole:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Hex code: &quot;</span>+self.__colors[index.row()].name()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> role == QtCore.Qt.DecorationRole:</span><br><span class="line">            row = index.row()</span><br><span class="line">            value = self.__colors[row]</span><br><span class="line"></span><br><span class="line">            pixmap = QtGui.QPixmap(<span class="number">26</span>, <span class="number">26</span>)</span><br><span class="line">            pixmap.fill(value)</span><br><span class="line">            icon = QtGui.QIcon(pixmap)</span><br><span class="line">            <span class="keyword">return</span> icon</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> role == QtCore.Qt.DisplayRole:</span><br><span class="line">            row = index.row()</span><br><span class="line">            value = self.__colors[row]</span><br><span class="line">            <span class="keyword">return</span> value.name()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">flags</span>(<span class="params">self, index</span>):</span><br><span class="line">        <span class="keyword">return</span> QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setData</span>(<span class="params">self, index, value, role=QtCore.Qt.EditRole</span>):</span><br><span class="line">        <span class="comment"># set data for each index of the value, data role is set to edit role default</span></span><br><span class="line">        <span class="keyword">if</span> role == QtCore.Qt.EditRole:</span><br><span class="line">            row = index.row()</span><br><span class="line">            color = QtGui.QColor(value)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> color.isValid():</span><br><span class="line">                self.__colors[row] = color</span><br><span class="line">                <span class="comment"># have to emit and dataChanged signal to sync with display</span></span><br><span class="line">                self.dataChanged.emit(index, index)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">insertRows</span>(<span class="params">self, position, rows, parent=QtCore.QModelIndex(<span class="params"></span>)</span>):</span><br><span class="line">        self.beginInsertRows(parent, position, position+rows-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">            self.__colors.insert(position, QtGui.QColor(<span class="string">&quot;#000000&quot;</span>))</span><br><span class="line"></span><br><span class="line">        self.endInsertRows()</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeRows</span>(<span class="params">self, position, rows, parent=QtCore.QModelIndex(<span class="params"></span>)</span>):</span><br><span class="line">        self.beginRemoveRows(parent, position, position+rows-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">            value = self.__colors[position]</span><br><span class="line">            self.__colors.remove(value)</span><br><span class="line"></span><br><span class="line">        self.endRemoveRows()</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line">    red = QtGui.QColor(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    green = QtGui.QColor(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">    blue = QtGui.QColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line">    model = PaletteListModel([red, green, blue])</span><br><span class="line">    model.insertRows(<span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    listView = QtWidgets.QListView()</span><br><span class="line">    listView.show()</span><br><span class="line">    listView.setModel(model)</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
-<h3 id="note"><a class="markdownIt-Anchor" href="#note"></a> Note</h3>
-<ol>
-<li>
-<p>Since <code>parent</code> is used  for hierarchical structure, it is not set or set to null index
-in this example.</p>
-</li>
-<li>
-<p><code>index</code> is a <code>QModelIndex</code> instance to locate data in model</p>
-</li>
-<li>
-<p>In <code>setData()</code>, make sure to add <code>self.dataChanged.emit(index, index)</code> for syncing data change</p>
-</li>
-<li>
-<p>For inserting and removing rows</p>
-<ol>
-<li>always starts with <code>insertRows/removeRows</code> and
-close with <code>endInsertRows/endRemoveRows</code> so that view and model is in-sync</li>
-<li>no parent in list view so pass a null index: <code>QModelIndex()</code></li>
-<li>essentially, it is modifying the <code>self.__colors</code> which is displayed in <code>data()</code></li>
-</ol>
-</li>
-</ol>
-<h3 id="source"><a class="markdownIt-Anchor" href="#source"></a> Source</h3>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mCHVI8OXDxw&amp;list=PLG4y4w32mF3qmweFe59P_8INlVNOm_IHo">https://www.youtube.com/watch?v=mCHVI8OXDxw&amp;list=PLG4y4w32mF3qmweFe59P_8INlVNOm_IHo</a></p>
-<p><a target="_blank" rel="noopener" href="https://doc.qt.io/qtforpython-5.12/PySide2/QtCore/QModelIndex.html#PySide2.QtCore.QModelIndex">https://doc.qt.io/qtforpython-5.12/PySide2/QtCore/QModelIndex.html#PySide2.QtCore.QModelIndex</a></p>
-<!-- flag of hidden posts -->
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="a401cd40756710535bcb24e4e602179139a4b9be6e65261556cb294401e65d44">3b3cf79b0eabd6299e13c545e84d581a3ad91fd2f9693df4b51640ec52663ed7c6eb2023757b86e53061e70ec5e5adac7aed7f9c609c8450953354d360f39e8b08d694c618e9c8870b6ef23bc8e1b4f4f66c15d75f38cd49693843502203ad6fcc5c84ad79a0b2356dafc9e5b767bb8fe63f8d64096030c513fb68189db476eaa9a4b0116b37e5d85d6a72c5970ad401015cd7debf4200e1b5fb5c911c451c2e5e92a009d4cdd15d1f8a6f4c4702d391a5477e7e885c4d2cbdb6967e5923499e6eda6dc81f8f51583b74bdc0faaa88ba8f430542a20881e2f375fc06a450022f8da1a0902ceb4ae390a3712ec7f33b106fd2a774f6d176204adb67416d47e330153f41c0239bb0acef4144ad15cb01c942be0f015705058cea7c88ea8d2a100bf72643f1f17727981f87f07306a7ab4a52e21181de0f2b8cc0ecdafd990751742c134233fc80cae4c8f94e52b7551add335e8cd848173f76447e7edc699d9fac3fe09e20b09674104c5809d04dc1535e2b0a549c7afbc7adcf83e22bd5c6b42218c35de3a5523d5a2e736d901d6e80a598d37249707bbbbe3e807e62006e1ced667024cbc26ba55219b27bd66d598245471a2ae89d5a5f62232ea86a6692513aef5e6fab41d32081944876b071de3f86655e111dc7c4cdc47ece33461ecb3f7ed28e2e7bf99bc318496c27ded00b0c4dddeb8add51051f6df43ec8aed7ad846da8d8a027137a3ea546330f4843ce643a3292ba3555f73d75f959b6503728eb9ea415402cb68b8239d777ab277a75b19ab7044d0e055bea423bca97c03189decd795a068e55a481481b8b1b5c69e231b806e48a568a623cc0451193361832dc7d172e14aaf54d435c4b9b837e18ec0776388889c89e4bcd2f020e4164057b1e94c72951f07b5f8103076b753ce12cdc1ee7978b90a219cace5cb67c5359007aca2091497b107714881ba4e83658e988d81d81aeda1d84d8fca9c6289c2f550d7b5089e12da9612018210c43da2fa9accc886771e06c404d5c4b3c5312098c18ec62e781e72917a04a04cefdd9cc1ee9a03a32da0bf0bb405e3ae0478d19e144feb5b4f8e315a106bbbfb710cf685d2ccc0588f55ddb57d8351d92d1dc0dba16b63b7c870a0cd3eb34ba69df95ae3a8218de55fa03ecc55b380e34abc065b7472cc42b1ba1db8a17406831d3a730cf7ed00875028615cf04b46735cd4e11296cf263d650b0280ee82b2e8ba9c446f72e2f05132d8f798b7a3c3dbdd0de1c0421fd9579ea0de342c80988a218b491e02e14553577b763049fa57d74126deaf87cc9934e67dc535e05cf02e15cfd23e790eac2d55b49376a95642acb34acdb55e19cae2822c072b0d12e39157c282dfac5238907da11a29ba0934be1c496624ffb860fb9c2839361fcf80767f4bf51b4ffe3073b4e38def6772bb311783c50a7b57da66ae1ee00ebf8b7f46ddeb48a392a10d933787889df40efa3e9c453b56148d97c13cc0ffdc84f6a4a23e0a1ab01ae5e016e12971572f45dfc17ff9dbc83a9354ca19626323a2356e560e9d812fa76d81c34d2d6d295788026fab2924783b1e35419cd146bbbdbc568f627b219120962110d6b4b9bd838f5190a3733ca8cbe96fe6102d550fd0b6d30912fefd67e34a6d8c089be844ec399ec755c49cab2c11176020ae651ea341173d624135e811ab98d06808914abbdb4f6c824a804b7a87983681cd9f7a0b65511adc5713e8b04aec3d32ba90473e29f53d962cf31210d6e448bdac5dcd8541fea5ccc7deeaadb2e6fa9517e11636507b3cd41905086af28ca24865c6b5f62f660c8366bf4f68d43710f0b855f5d6187b6dbbcff9bf1dd6c195ef5e3b0db43afc9954c4eb28b7ccc9d3437d766e694cba934b070870ec34319316a2c5b9db49f10f20a42163daed026f377d3669cdd2f99fd4b992fa689e9cb99f387679a64aa5ff11b1f1c61eed460e398ec6468525518b517a9e6d5c608c6da6591f9c9883cad0ea8ea3569aa860d3286c11a17c1f83964cdfcef37062313ed579afaf5d580b68e76aa64d878838d37b34ed89266b2e30a7e0ac85ee216ce943a1963d916fbd7890e45753a5ee43932d74335c9af726912ba31027d4d5a30c726503ce65ca74261c5254c26c6add820dcfd3bcf8c8771923783127fa1828bd29cb0f8dec977e2fbc5641ba3a6abfb2a6be0d1992e0359d643a6e6bf1d8fe5eb1f01e6b4f9663953676e8eb4a0d2ed7187fc23b2de048c474b5f59af8bca937b85e34bfc2fe6f48b5e8ffc26fda91da0263b720886ef543a079c171da6d7a9e38b832578d302b021609c894361154bd89e8d661bc3aa7722d700218eddd91d07ed1cf129578569ec9ac7de9e5457eb31a1a0f0a3869933356a368e1aabd8b335996c191b783b840d5811c7b717ebef80965001eb3541a2febda2302032718e76eb86fdf739878a942a35e92fce5d8bc7e9029b92e82e6e16e39601afc6ff832370487e593a12f29b43c3d2dc8c0e1580e7ee383f19e00f8e354fe2193fd73be85def242f2727ae024d5d9506070cf3cdf1f9b93238921a42d509e8c6701f77f29536d5207fa1db5da02a8c7c67a86796b0119aa8e7ae0d22efc33d0555f83f611cf0fd17d38821f2f27eb7147c24218a2017b18b44c57637a641096630e2d1f43a9caaeb7c420669beca97c1d31490f78e4e94b7c442bb1f7cf4249ef6a5506db0025aa181ad6d9747dbe9323a246ace98cfa3defd9ad140b80766425fedd8e731664ad463c765527b03b227d5e1e04fd6dca92e0b26743b5a176e5c635b9203ef5eeb81e7d0d0f7d1d4276fc720be91aaf2d0d6016377b75a8b58719757bdace8f385eb43577192638e54b604e375dbb4f338fdae895611d41fc6d6c076fda85cb75543eca2ae0b98fc2cc5092d3a8e017cbcfc7a1f9162364654db49890726db433dfafd5391158ab696e2e43c23ae932b6742940abaa36990234ac293815e078058bc65bb19712ac8433ee3aa8ca80c60bfb2fd7ffacbb3ed64ee6c57883a557fc40a2c258526f51a118258dbdd6b4f5e8f98177d5416fffbed8c7c92ebc55415225174840bf600a32a50a1f409bc4bbec70344e8f7cd8a713ac755a0ef5d8cfd0f05c636f0cd1f3de00de4147b7e68653b3ff9ad3731ad2ea5e771cb534ac65699cb7f64d568064d4e47c1e644bda2f1d389ded70c8f27127ae263983468acf2519b862d5e08bdbdeb95b77fbdf8eee1e32c59d0bc50a5dc213b1c278bb45e568bb1bb34d162341085d47ce6ccb0fa74d58aa1245da31920a0e9548c60867e984c66c39cf8361d1ceebb85fd616ff48f77e3b5f0701af6c246550916aa6314a8f6ed9d542acc4409dc3ff2ebde2c14f5900aa140de9d1077d70bf72ea75cacfc288942956ba97ff63757ffe3661ca48a35548c3bc9f329089e820da33e8ad3647df7cab157c840b5213c558edb1435a4dc60429c1212548690e31c6805b9d0cff7ee7f101999b97a49a3bfd849809b366d7a62ff0c7906c3598e94209e9adbfba9c7613ddd29e20234797412def511153a5246374325cef79f078a16cd97f6f7ae99b2fddcd9813bcc7d69941485b38312d9fb12c07e8cf05165b08a02e504bcb895f9f8f6f649d3fbb0d4401b729fab2e3b03da1f5c906ee5f52e05c871cbfd17b28b16d91746100efc86241c9146dc9ca2b9f287146c5bad9f0376fc9ad893bd0472162927c451665182a14fbd8cacc5ee18d560294ef9702d26cab7cedfc4791b255fc4d1f4db27edd706b58d53241a15f7b096aea37649e3268310c12d0d5cf1c7679e827fa3a57575c8e8453b46c1326b0b48dcd6beb0a28c7de2c335981af7991a5d846e1f0db94c1231f6704154c4f1188d40d783eca75a5fba9d41c6c540c25d1435a85cb76f9d5d4e9b8431b5791621e6da4f49f9e28b24a642db2f9e428a418b0075d19ea02b1e0bf8ab4cdbe6a7729bc346547940d8501435f899f5b45fe11b0074e0a571835303fe0e1a65c513d8e6f00aafccd7e3b0cb8dc5d801863fed68c590a30b8e3bb4da05ffddd11d884c0f3f20346e0537f160c08bf63ee4c049f8d6a288daa5b90ad656c9dbe461bea278ca5c2b4be07eb360b360057d82930d764f0693ec074a186e994cb7e590165d2afcd0b33e01a2d1b085d81f5312660577bfc709da814a6875b9cf83702b9bb21ec531db1ca8e7d1211e7e7bdf7db5c64f577aaa595d42cc0d6696f929b8f71e342b943131f5c5641ecfff560dd20884234421283b963721ff482dc7c6596ed3561cd6f86616667c4c28d18c5c33ee65c36f9b0a47437f1cf818f0fe3dec6feff705cd1df950bde4cd745ee1b55bae0e2a4fd919143a501b92c3fd90af8cb1828e42ba3663c6bb5b488e2c300d242e12478b6f315fe771fe15e0a1d4662bd21d553668a7df01ac260ef5e67c5e21d8127ff7b65bf92c9ffaaf7a2214e656f77afcf7bdd7f03990a6d6d52c897bcca3d3eb49b0ed4a5697c237326acf305efacf22e3afb8598b9f90d8c360f633c3dba627c9df44e39756640aa769bc689a7f1f5767f421e9883d2363a2de3d54da6c4a5834d36bb1923e40bed30cb4b56ffc124a57be571254bdba24d03125e0b8b3b2f2f0f218b50c557eec4a7a7ec27a2e47e9ba88464e5d1687f995b62b5d3700bacb87a1c378518450f682265f699ab32a68e5018b179edfb0f50458667ee1f95b5f9818f2ff133c2c4be30cc3b0401f719ddf07526d1c0f4d6b9510967346c998103a651ceedd19996a7154b7906cc6e669d245fa2ed42eb14d58500c304292547cffc725f769c249ac6876480f08804087831ea481d6d1e48e57152a6f741e039d8994064a2dd5bdd34199125e16231e169e2813feaf05789391fa164562bffeba848ad83331051ad48c447b0d3b9aadf16474c2f10b1ee7fdf692264cc18f5db11047ee5f76929015afedf8b13b046682879b41fe67f9d5c6c413c7e188bdacb94a816a4cfe50945b7f4f785c697bb942b6cb149b978c1ebcaf348a527139189e1e72fc5dbe579aa386d410eae8dc006ce6baaa142b062243014c26d934edd8089e99e368ade0e0377f9a38a53f393cba97fb6c96857e8438cbc8de3709d56b36a2b4a02286002ed144aaadd678ce1f43bdcf2ce4b0d77c12b0f2a324fb8bd3cb72aea66c4c00a8d31c263f75f244f258dfddbdf7e8cdaaa52f5402314faa1d5ce21560368b5276372bdb2b04c2669ae3ed7c5ecb2837ddd4eb370cfbe779bd26c49ee85183675623f1bae4face7b5a1f6e25bf0b36c6a508506a5d51644628a4e85a0952a8981568d6acbff7a9139c5f4a3f38ef7feaafb28d3f89947e52df682c31a28055139ac23e0bb37d6fc318ae6e3ac5c94be8c7ecf9e1ab1043149a32f78bec95fa5986409a9a3bd2253dbe1bc457db9c80dd8ccad520b6733489c6cb1951b1fd7e348e217e4f36e0cf3c006549a7d9983d374f590b0e49a461d22a75e60c3e19000135eabee92c69ddee1bdbf7fdd41951369126280aff7565e38187ded46b805cf59edba3abea4c85e66657605d64b0138c108fb11cad7c6c5bb4d36b06938aa0d65d95818d43fa234992c2bbedbce73e73f84c023d631b6f8c992be530141c8cbdd11c863ce8a45a8178325d86c6953ecf0a2c9729d28d7c78ff12778bef7481ae916e2dc3ba9a32df2715f335791889bf172f99300bf4ac9405c214b245fc7ba678f26aff2bba849f1a6cc93247b7483f1d65000dc6c0ae6f2aea78dedce1ec183668c134ad7d6241d338e2c990eb7a5e52b925a7bd94e0df7cee1fb0c718d6782d520c36f6d92fa54d8cd3f7bda15b314cddccbc875a5be386a8c37a3bce75f4106615624adb0ae23ff47d4077ee924130</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-surge">
+      <input class="hbe hbe-input-field hbe-input-field-surge" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-surge" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-surge" data-content="Please contact techartlei@gmail.com for password (interview purpose only)">Please contact techartlei@gmail.com for password (interview purpose only)</span>
+      </label>
+      <svg class="hbe hbe-graphic hbe-graphic-surge" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
       
     </div>
     <div class="article-footer">
@@ -281,7 +267,7 @@ close with <code>endInsertRows/endRemoveRows</code> so that view and model is in
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/hid/qt-mv-list/" title="Qt Model View List Model" target="_blank" rel="external">https://www.xingyulei.com/post/hid/qt-mv-list/</a>
+      <a href="https://www.xingyulei.com/post/general-demo-reel/" title="Demo Reel 2024 - Xingyu Lei" target="_blank" rel="external">https://www.xingyulei.com/post/general-demo-reel/</a>
     </li>
     
 	
@@ -321,6 +307,16 @@ close with <code>endInsertRows/endRemoveRows</code> so that view and model is in
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/general-cfx/" title="Cloth CFX Pipeline for Offline Simulation"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
   
   <!-- Button trigger modal -->

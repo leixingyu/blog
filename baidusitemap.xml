@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.xingyulei.com/post/general-demo-reel/</loc>
+    <lastmod>2024-01-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/qt-template/</loc>
+    <lastmod>2024-01-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
+    <lastmod>2024-01-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/py-admin/</loc>
+    <lastmod>2024-01-14</lastmod>
+  </url>
+  <url>
     <loc>https://www.xingyulei.com/post/general-cfx/</loc>
     <lastmod>2024-01-03</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/py-end-process/</loc>
-    <lastmod>2024-01-03</lastmod>
-  </url>
-  <url>
     <loc>https://www.xingyulei.com/post/maya-ik-fk-match/</loc>
-    <lastmod>2024-01-03</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/py-admin/</loc>
     <lastmod>2024-01-03</lastmod>
   </url>
   <url>
@@ -74,10 +82,6 @@
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-template-context-menu/</loc>
-    <lastmod>2023-11-19</lastmod>
-  </url>
-  <url>
-    <loc>https://www.xingyulei.com/post/qt-template/</loc>
     <lastmod>2023-11-19</lastmod>
   </url>
   <url>
