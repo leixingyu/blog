@@ -19,21 +19,22 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Qt Application Custom Widgets and Dialogs Templates (No .ui File) | Tech Art Learning</title>
-  <meta name="description" content="Enhance your Qt app with custom widgets and dialogs using our tutorial – no .ui file needed. Our step-by-step guide provides practical examples and best practices for creating custom widgets and dialo">
+  <title>Performance Optimization Part 3: Memory | Tech Art Learning</title>
+  <meta name="description" content="Subscriber&#x2F;Supporter Exclusive Content">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qt Application Custom Widgets and Dialogs Templates (No .ui File)">
-<meta property="og:url" content="https://www.xingyulei.com/post/qt-template-no-ui/index.html">
+<meta property="og:title" content="Performance Optimization Part 3: Memory">
+<meta property="og:url" content="https://www.xingyulei.com/post/wip/graphics-optimization-3/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Enhance your Qt app with custom widgets and dialogs using our tutorial – no .ui file needed. Our step-by-step guide provides practical examples and best practices for creating custom widgets and dialo">
+<meta property="og:description" content="Subscriber&#x2F;Supporter Exclusive Content">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-11T08:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-19T00:18:00.737Z">
+<meta property="article:published_time" content="2024-01-20T08:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-21T05:31:01.920Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="template">
+<meta property="article:tag" content="rendering">
+<meta property="article:tag" content="optimization">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/qt-template-no-ui/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/wip/graphics-optimization-3/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -203,14 +204,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-qt-template-no-ui" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-wip/graphics-optimization-3" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Qt Application Custom Widgets and Dialogs Templates (No .ui File)
+      Performance Optimization Part 3: Memory
     </h1>
   
 
@@ -218,20 +219,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/qt-template-no-ui/" class="article-date">
-	  <time datetime="2021-02-11T08:00:00.000Z" itemprop="datePublished">2021-02-11</time>
+	<a href="/post/wip/graphics-optimization-3/" class="article-date">
+	  <time datetime="2024-01-20T08:00:00.000Z" itemprop="datePublished">2024-01-20</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/qt/">qt</a>
+    <a class="article-category-link" href="/categories/graphics/">graphics</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/template/" rel="tag">template</a>
+	<a class="article-tag-link-link" href="/tags/optimization/" rel="tag">optimization</a>, <a class="article-tag-link-link" href="/tags/rendering/" rel="tag">rendering</a>
   </span>
 
 
@@ -242,51 +243,21 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="ui-module-without-ui-file"><a class="markdownIt-Anchor" href="#ui-module-without-ui-file"></a> UI Module without <code>.ui</code> file</h3>
-<p>There is a different between inheriting from <code>QWidget</code> class vs <code>QMainWindow</code></p>
-<p>Inheriting from <code>QWidget</code>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">InheritQWidget</span>(QtWidgets.QWidget):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(InheritQWidget, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># initialization object</span></span><br><span class="line">        layout = QtWidgets.QGridLayout()</span><br><span class="line">        listWidget = QtWidgets.QListWidget()</span><br><span class="line">        <span class="comment">#treeWidget = QtWidgets.QTreeWidget()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># set</span></span><br><span class="line">        <span class="comment"># treeWidget.setParent(listWidget)</span></span><br><span class="line">        layout.addWidget(listWidget)</span><br><span class="line">        self.setLayout(layout)</span><br><span class="line"></span><br><span class="line">        listWidget.addItem(<span class="string">&#x27;item A&#x27;</span>)</span><br><span class="line">        listWidget.addItem(<span class="string">&#x27;item B&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>Inheriting from <code>QMainWindow</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">InheritQMainWindow</span>(QtWidgets.QMainWindow):</span><br><span class="line">    <span class="comment"># Window inherits from QMainWindow the layout is already defined</span></span><br><span class="line">    <span class="comment"># to accommodate any toolbars or any other QMainWindow component</span></span><br><span class="line">    <span class="comment"># use the setCentralWidget() to accommodate this</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(InheritQMainWindow, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># initialization object</span></span><br><span class="line">        widget = QtWidgets.QWidget()</span><br><span class="line">        layout = QtWidgets.QGridLayout()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># set</span></span><br><span class="line">        self.setCentralWidget(widget)</span><br><span class="line">        widget.setLayout(layout)</span><br><span class="line">        </span><br><span class="line">        label = QtWidgets.QLabel(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">        layout.addWidget(label, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="custom-dialog"><a class="markdownIt-Anchor" href="#custom-dialog"></a> Custom Dialog</h3>
-<script src="https://gist.github.com/leixingyu/2d14eec59143c2b3622a2bb56375ffc0.js"></script>
-<p>Sometimes we need a quick window to display some information,
-but the built-in qt message boxes aren’t suitable for the job.</p>
-<hr />
-<h3 id="custom-widget"><a class="markdownIt-Anchor" href="#custom-widget"></a> Custom Widget</h3>
-<p>We can choose to create a widget class, but also for saving time, we can create
-a temporary custom widget</p>
-<p>example:</p>
-<script src="https://gist.github.com/leixingyu/f0b339a3fb66c62c87b6ffadf7777df2.js"></script>
-<p>Couple of things worth noting:</p>
-<ol>
-<li>
-<p>correctly initialize the widget</p>
-<p><code>self.customWidget = QtWidgets.QWidget()</code> will allow widget be child of the main window,
-thus allow widget to close when main window is closed</p>
-<p>so not <code>customWidget = QtWidgets.QWidget()</code> or <code>self.customWidget = QtWidgets.QWidget(self)</code></p>
-</li>
-<li>
-<p>use <code>getattr</code> in combination with <code>QStyle</code> and name of the built-in icon</p>
-</li>
-<li>
-<p>use <code>win.setAttribute(QtCore.Qt.WA_DeleteOnClose)</code> to make sure the child widget is killed
-after main window is closed, because default close only hides window objects</p>
-</li>
-<li>
-<p><code>self.customWidget.show()</code> is the core command to call it to display</p>
-</li>
-</ol>
-<h3 id="custom-qmessagebox"><a class="markdownIt-Anchor" href="#custom-qmessagebox"></a> Custom <code>QMessageBox</code></h3>
-<p>add custom buttons to the <code>QMessageBox</code> layout</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dialog = QtWidgets.QMessageBox()</span><br><span class="line">dialog.setText(<span class="string">&quot;Overwrite?&quot;</span>)</span><br><span class="line">dialog.setIcon(QtWidgets.QMessageBox.Critical)</span><br><span class="line"></span><br><span class="line">yes_btn = dialog.addButton(<span class="string">&quot;Yes!&quot;</span>, QtWidgets.QMessageBox.YesRole)</span><br><span class="line">no_btn = dialog.addButton(<span class="string">&quot;No&quot;</span>, QtWidgets.QMessageBox.NoRole)</span><br><span class="line">abort_btn = dialog.addButton(<span class="string">&quot;Abort&quot;</span>, QtWidgets.QMessageBox.RejectRole)</span><br><span class="line">dialog.exec_()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> dialog.clickedButton() == yes_btn:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;yes&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> dialog.clickedButton() == no_btn:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;no&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> dialog.clickedButton() == abort_btn:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;abort&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>Don’t use the return value of <code>QMessageBox::exec</code>, as it only makes sense
-for standard buttons. Also don’t rely on <code>buttonRole</code>
-as multiple buttons could be sharing the same role.</p>
-<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
-<p><a target="_blank" rel="noopener" href="https://www.programiz.com/python-programming/methods/built-in/getattr">Programiz - Python getattr()</a></p>
-<p><a target="_blank" rel="noopener" href="https://forum.learnpyqt.com/t/are-there-any-built-in-qicons/185/2">GUIS - Q&amp;A: Are there any built-in QIcons?</a></p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="367ce0ba8193cbc184252ae91955d883351056a3b13cc0970ee959ace009c8be">da052b93e76b35e73c6abe0355fb20f5faac986f0daa350b0eac62e27184e57c67121fc3037a74db4608d5ed621ceec6471c32c17f8de0098026f2d3ee06944cb0cdc3a2f6bc04076431da2ba4267ab72040a3da217d1f7ba1424b3ceee09d3fc64c4805096d40d83b9514db54ce29334596c17928830ca713337abfc79f9ca0f65cb5871be93759a61d8bbefb7e7bebe1ee6f7722635e4635c0b3e6adbaefcdd97b01b98b0166f5e45353604a3a4753fc20e9039ad48672940ea67286358dcc0b1159a20595380d8ecd5c7f39b017f39951504db53737d4744bea01c93dfab21e697d07a1a0675bb4506373f5292a26459d64998a8fb02e589fbc6622ca0cf915bb9d41d9a07149a01fc7f3838113cb221db65ae30b9bdf756560b2b256001d3a106435e17e617a25ab05ed68ef43e2aa4363b4f3f3ec106169b87e227506738555febdffe3cd294249638b8791a170dba55d34f48199c56c2ba83620d21652aa30c76920e96bc756efd0e2a780655d2168824e86022a33cfb16ef4eb9107d59dff0b41859fb9410b63cc44cd1a9fc73ca4eef1d8d3e8386548a31ddf6600d6d54927219d703dd2213b67ca00cdf4b612e84795a81e543cb648cf0af4e8638a3e5a32270a7f0b591e5e5c52baa00b12196e3cbd6e15530fb977b1e269d7f33e3349d922c1f9d80ac32883cd6d34d9519190d5aacab451dab39b0be5c711edf3e7069d68a978fb9d533ae5012ee2c03d7dff7437f3f3c248d4b203013166fc65d67a3d254c7c44ac24add103d051f5dd95e97a21c6e1cd6278350cdfd27408135bd167568d5e08a3fd61a0e218c5949c2bcdb95ea4adff6aa36b26a0ac4ff6a5db2bd93f3d5fd0b00296afb122fbd6a13db0bebcfed32861e7af4d5364bdacdcccb33f68a7a3b39ce23d71ee4a7559418428c7cc171e1a9f7f5aa255642dc1c824623dfb98549d2eda490df7d18804d401109122e3b424622a3e0bbf8f7e581dbe6df43741066a479e88b37086778ec68c7a7360276c261455dce8bcf9b10a2303ee4005a9ee6ea4bc17e4d6d4537c11f795746df0d53b766acfff916621dde9d691c2fe1186d4ed78f9037215363120c6045ff0cf9c5176cd80b3445ef332361be9f7a9606deac987cb3cc05a42b7f1a3dbe8bdbd5ccb58923a90489fa7848651c97abb4db4cfa89ccf920ca4e67621c8e9011a10cba284f43fa4cee2bffdf2af1488528f2e430f7ea87b143db4a7f8f17c5a17058bde52280304ca8126edd28a917a26139b0746aa384d5c6d61ab761e7e495427f97b235530f6b5aabf470d5b240284c2120d48939becaa203702592da24a6de5c342db70d20da7d378d417ab5824cd3c04a69d932d55377a126e10e2fd052aff6690583decae2c10dea3e2616451fcd3d4feca081a82f6f7a53fc6188265e64e4b85b5e4e2621819665f7f02ccc1197a57d0eb541a76bbe6beb466beb584fde745d25557b1e55f05f443cffa92a8f1fb5018f68054fc057a8849ae8ca7fb12bf30730af6d2a198bf576c0cbd05343883ee1c615112caa5e5feeb82efb90325625845e5dfd524388ff633932397cca65f8962fff7a24ebf595917279cedcd15de74f2effe6b2a447ba242622bf143ff67baeb8b6e7aafff545ee73f3d41ad9ce35bd3107de253e02d216fe0dafd0041f95d7c0f086f0aeb5dad31fc70a2ba669fedfe4e5657f4e3dfa31e76ae78cc833195c512dee65282bdbf1dbd320af6179bf29ff369c3da9e8f9294317386926351bf9ba6f733874866f663d4f5178b12ed7f163310294c234122baed825c7dca0c903df0fc17783981bdaa6c954634c8f9d2bf552aa43aecb1e90edbb12966705619d4603ed3bb5e8512443245b7e60f567503074bde83a57d3d0c49c599804f1ff562601c606e4df6c20f5552ad36561d783c11bf32488da21ba5ca8b8d1c455cc9774a6a57ba4d2bf4dc550eb83f1fedcc68ea9b61c2c247acfcc08de2d2af277ad6f3a7732a2b3c78e086823aa75023f3a341d0e99a27964af58088c12a74b55aabec9a34be90cf85afdae593990d6034eddc17dc6855ae1b1cf6bbe78bdd62afa220b364b852c2dcc212d1930f3732fb753ac73011b126ca30b583fa734d10230a61ec6fea199d007508d9834c9b5f64a5c7dacbe391b6080c6c8764521d2415e3c89bc4d5cedcd3d711028c07c16920233884e4df6920e0f9dc10035e6f7218fd193bfcbb81ed29fc4614a16136e5b89fdc4530ca12cc87173fbecbcb7df33fe8bd3349c9be5da80fcf010bd07e2cba5bfd7efcbbc49f0e6d0369f3e33e210c76ccd9bdad3b98778bbb2a52f7eeabc4f51becfd7f12a6fc41e7ff6fe65408069355470675bdff9b85b9e164ec2c5b538337ef3e6121042825af1fa5d0946b039fb19322222cd50dac35e8a41cd33aff8180a4db07be0b23608b24883ac7121683961aadb305bf021837785a773d01e6d98ae3cd8cb683db595aef045ec3aa557c470d3f4b4f4b074f2a280ddf1b4e2bd17fb376e98d1757ae0add6ebd25a2ca2ebfa7e865d3b97278e25b4c951addd20f81c60ee71832f33cb83890ee378f5360a38771240fed23bc7fcb3e7aec8e0af2cc7f03f7ff39ea52da4d3e623dd8f494f082f52e7a7aaeb2573acc059f1c01a7a65ba75720b876742946f50aac35c20a41f130cd629b07e65f4bb136f53aefbc177c46d2d5e7efbe0efc1f978b27c053fa2c0e9246111af5b1e96fed8415bea20c6872f19d73564a69c742ccef18442adc49d746cec457c0eed3ab685827b4692e8a3774d877a90c44c5f55f0ffb4a313e458dd7b4c9eef43a3c8f5f32afdcf6e4c6e5a5b316e86115c912df4a71ae236d3919be758ed8195533af7e3dbefe6e9dda7d2481d7d9d295f5c75b93bdaab71aafd7139bd153ee41d6d59ff6f0f6e62d3b2f651ec5a3a4a5f78d91e7672cd7cb2b298692b939bdf15586696a98116c94760adfb787317627debaf976253bca5279428267b5b6787fcffe008eac0ec316d29920d1deb67b824aca8ac7203369b6ac0074f656cfd0ea757702eb6faf1ae73811eaee05e8b217fba1ec1aec39ffaf2e97361433d961fb901eced65a5990e542cadc9772877aa650839564b65f1caa3191623206e1dc36914db34f9e91202916cd424426507397a2e30bb762a28fe4dd6f0867a5e0fccb87090180bc271b0f86d6d2c94e0c734c6ed0c14c4886cf631b3395d5c9d29badf148c14b6460e8484cad394eda0197da66759361c6a004979b8532dcf126342179264a48b4f5350e23fdd401ceebf0493d0b7bd95bd1000c006ae8b2beb4aed6676a29f1ceba32cb0f428cb37c47db6412f8c86a0d7f11f4348eec5f0479bdd471c1dec6882cfd5f7594aff8fc3dd277891351cd045b51d99a7334462ba57e3b5164786799e8a3120c654c4649f5de748a22d06978f260c039a6861cdc8fe06053a1a3e32741e3eeba8400dc4b493142cb44c1ff0f7fc927495c5e9cd6afdabe23329abd41b38ee74b1d0f19bad5aa7df42a5a162bf8fcae26d5ad335a9af1f8eb875385e9483a3c246aba74e486e95b8d704e487642e9751f671af5eafa87b0e4ab65cb47f197049afcb682224909aed6f7db3c6c8d84689f31312d076ae4c34e7db3bfad1c526008c69d419ac69f80129642b8878d4d5bb18213e7507fe5121f5cd4869d3a6fdefef5ec81187b63412e3451e486a8c67524d66b369bcbceab0ad16c6b989459094e0c84253f584f73be0e2aecec906e944bdf5a91650cacf51e50e878d4e67c856f603ac1b970b7aa92e95a0ab9858d8df5232ff455c03a3a43c9f341e913ddd21ba4c659bfaed91a876d76ee3dcf409a25b34725fe8630a0ce79b067b8e49a453d0f0908cfa2106270305e12f893afd7853155b6bfda3fac771b3ee978d37afbc4382a80ff0362c65fd5f339fd12526d526327dcbf9934fa6976e04fb410164e55421f32405b75fb530c5952854dbb68a55713b7e1d3a1ffd5eea581ef1773042f01ea2a0a5f7ef1bed242436fa86f26b849c60698ebc066b52d241f8cc59efdcac341e58f453987356834ebf925ea2a4ee874f0f20d693790ca770360ddee52af2a0f33091bf0314def4c1e0983de35b6245bec9255116192f88bcb03760bb191e88d804d6e73cc6daa7c51b674d3599b1259b320886fae8f0fc01b4c81d24cea1021985d47d3c274f65560a1262cf7c451ba15941f3bea907948c49db052609af22b2eb1d36c2ec7300cc32a473eb5f6338890ebf389a505a1dc66c949f5132bf8710868e975726e2fb054911354246fd4c689f49200ead3fd7fbff5378142346a4edda9aca5c3f69bb42638283184b3c505059c4eb384c5fa6cecd210356d0895bd5a441e79b37b91da3f552c8b4b841fca8d828b43ef8dc235ad3b1f4c3e3d9ed17856656b557c1a6dd79747ba9865c323f8121ad65f9e75b69f0343ac77ce3b8c2301a0fb5a7e4d5b97c6ea6e2322fc605f3b7090e7299ca6c0e2c60de5700f7e4b42df41555c8e638979f6c5ad1be5cc2799e5cf8c1c819690556854b0f9f6a74b17e059a300ff0a271fa40ac53ada5f3cba5ebb4b77c0f11751b1eb4c59d27f8ec7d6ff79a84141e811355844bd18fd8b10a51f26bffb27e69b875675a8eb51916e2e24c1ecd9753f358c5fae760143f04d5895eec2afbc03c05d849325b13160ac075a4c464beac43730e9bbc3b55c78bfbdc2c75cfe61e26b1cb56ba8e0ab1dc8ae9a3a814566504616452f259f30b330bc187a01fc1ee38f0387107ba91ee943f98b61fd9d6bce4a3e07b876fc0643bde83b7461c676076bfcdf07d24dd9104166faa35357d49cb71624d2f17190e51f75f5d20fea9f64702b4b356dba7691864ed703a19281a1269b562736f197bb4afa31ba655d88c7bb534ad45f577cc4921c1277948b422b8fb1a05a1d59e7bc17a2071ee4143ecae4fcc78eeb48233095e83baf7dbadd79f01b9f5c3b952b5216104e479aa18fb87f1f11a879678f07c0ae03ddc4173a2a087b20f48a3bf9fa8eb46990489189097fc816a2e8684f10cff54dcfb0029d190878d57dce56e0ef26d65adf105fd42ac4749568f95edb4a0ea80fa712a74507d8b5842d067e6851918b4a48e75cec76b5246e8107dfcd6d7632a12f068abc61049ef913259e2a57a91e1e91f1750ebc580f235c2fc1deb9018143f7e3999eeecd549888de083d76bcbb5cc3a7f94081a76e81e04de0d4012843777f12dc6a20eb98dd57592f3c6117cfcd27415ef6ec20ffde867385f16aaada0fc21e190c52a727051d6dc3cce82e73a015ba87d6bdfaf7dcf2edea7332ce378e51c4690b2adf946f7797773a392ea215ca1d00f96e2cfa1e10be43ba434fca0738f2336ee5734656d3ded4d412de77a341b0cd3a3be9d52caeca9b2bda11c106c1f0f3920cab3efc152d156404695461ab76d22e383feef701839cf437a3817d3ada6247090b20b346ef335690aa1e3edad3342b0ac53d3dc8330db657ef2cd2fcc865ccb6c74b8e44372281d657a567d511a664aedc9c1f0b743fbb729f7a57bbd3ba289bd1c6949e790ac09633bab60afe199bc36a9d13688fad1d9a967c823c16a01e5e7e91c230c5468c24ec225f8fffdc53a6bd956cc7ca146e3ba2b39aeaaba8093abac2311a01c29c5db9951813fb5023ad2f5ab48f70b1c5f08faf24c7d1552943c59c8a6f3fbbbf06ce63d59c458aeef17aa77a4b42166cec150e80c4e685ce6935af6f675b2dfc4430566d1f48be3d7eac7166ad2682641a6035bc2a2d56167e737f262f0a8b1913f28512fd40b024c31e6d2c1ffdc58e8f4adf392c76772b5b87e0a3b8c9f3e23ac961bbf51e5a784c0190b8b9f2d317210071550cec513862741099a52dc4cdaa466dbf8ae4e10864e96e5d59a8ff2227cfe62ef42bf53ee7b474bb93dbd56ed8c58cab3ae6b2a2590da94cb8b46219a11dad830a59d85edcb8fb4f88751f36ffeb3952c2276521a4a247fafa42dd0f8123848de6fb9de388359e1f5769ea1e4d49b246da638ae58ac1d02ed17803141e4081c31bca86a6d0a7ec90e6d82d62768b562035b8dc6a2818f2191737696eb812489662b0b8ae0ce8e4ce5f1f4745cbb64480a6a5afb2158408de761d11fbf86dcde026540519cb89717e54e502a9b4172b4340ab24f8e5223cbfd242232d036168eb7fcb27853699ae97b6ec96c9ea2f488f827b2c74cb10b9b04525e761f8a7a59052eb18fa50569645453cac62ca59276c54f521971b408bd16491999978e84d27ee78a1a07115eccdefa118322a4acb3b7b0add048fa2937078d63e8457dcd271ab8c312df9b35c63675c579a65a63a7af641141c592918ca42868757a51b8d4a1b55080294dcbd83dfac38faa07b4d23c63e7b49b006428196886e01dc8871047200221ceee052f6937f9369296315f6a79cae49c20d86d6bf7d0dd65ec3c3c996f3d22bc3acfc07bb6db5ae5b342c960f1a05d6e12cfdbb60f609668c53215db89e807bdab0c7315dcc2ca4c503c1db273ef8664cf774d40d341ebb84e79cf6dfaab4e262ed91f99f699183f98af8aa5951176bb21e8931c58028ce69aa4b205abb9a817d34d4ae5e19f26d1bb307bd8db02a8e077ff904b20188594f84541677ea8c9dcafe63a59b7c832f33fcd0653d55f78c924952a37f73e7a6c910e06c88eca6110e31c4e669815f7e451c405b0bdcc8d678b505e07c426a9836c8ce307ebe38209274020b510069ff792877443e78d24e4e4f81c3a877b5af3cb4576218819faa0156fa594c807f8c33af16547592fce7da5c68e04c1df115e6ae90bda43716f70012b2878e14f0843cbd226adbc50573efada8b1e9501bbadc41779acead5db852c1e7738b297c4cbb722cbf1c73656bd0c7bb2d06a470ed8c1c3e0ce83a1be7921c4c61789ab224b3e67c659ad6b045a7f1085f871ffa232be5c8c1ee7ebb9e17c35bb314a230cc9bb2c61ee0</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-surge">
+      <input class="hbe hbe-input-field hbe-input-field-surge" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-surge" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-surge" data-content="Donate $2 or subscribe $1/month for password access to exclusive posts">Donate $2 or subscribe $1/month for password access to exclusive posts</span>
+      </label>
+      <svg class="hbe hbe-graphic hbe-graphic-surge" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
       
     </div>
     <div class="article-footer">
@@ -296,7 +267,7 @@ as multiple buttons could be sharing the same role.</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/qt-template-no-ui/" title="Qt Application Custom Widgets and Dialogs Templates (No .ui File)" target="_blank" rel="external">https://www.xingyulei.com/post/qt-template-no-ui/</a>
+      <a href="https://www.xingyulei.com/post/wip/graphics-optimization-3/" title="Performance Optimization Part 3: Memory" target="_blank" rel="external">https://www.xingyulei.com/post/wip/graphics-optimization-3/</a>
     </li>
     
 	
@@ -336,20 +307,6 @@ as multiple buttons could be sharing the same role.</p>
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/post/qt-signal-in-for-loop/" title="Connecting Qt Signal in For Loop"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/post/qt-template-context-menu/" title="Qt Template with Qt Menus, Submenus and Actions"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
   
   
   <!-- Button trigger modal -->
