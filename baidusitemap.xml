@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.xingyulei.com/post/graphics-optimization-1/</loc>
-    <lastmod>2024-01-21</lastmod>
+    <loc>https://www.xingyulei.com/post/general-demo-reel/</loc>
+    <lastmod>2024-01-27</lastmod>
   </url>
   <url>
-    <loc>https://www.xingyulei.com/post/general-demo-reel/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <loc>https://www.xingyulei.com/post/general-git-tip/</loc>
+    <lastmod>2024-01-27</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xingyulei.com/post/graphics-optimization-1/</loc>
+    <lastmod>2024-01-21</lastmod>
   </url>
   <url>
     <loc>https://www.xingyulei.com/post/qt-template/</loc>
