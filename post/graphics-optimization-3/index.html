@@ -19,32 +19,22 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Professional-Quality Cinematic with Unreal Engine Sequencer | Tech Art Learning</title>
-  <meta name="description" content="Unlock the full potential of Unreal Engine and create professional-quality cinematic with our easy-to-follow guide. Our step-by-step tutorial provides practical examples and best practices for enhanci">
+  <title>Performance Optimization Part 3: Environmental Memory | Tech Art Learning</title>
+  <meta name="description" content="Learn how to streamline actor and texture memory usage for improved performance without sacrificing visual quality. Dive into LOD, instance reduction, texture compression, and more. Learn strategies l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Professional-Quality Cinematic with Unreal Engine Sequencer">
-<meta property="og:url" content="https://www.xingyulei.com/post/ue-cinematic-sequencer/index.html">
+<meta property="og:title" content="Performance Optimization Part 3: Environmental Memory">
+<meta property="og:url" content="https://www.xingyulei.com/post/graphics-optimization-3/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Unlock the full potential of Unreal Engine and create professional-quality cinematic with our easy-to-follow guide. Our step-by-step tutorial provides practical examples and best practices for enhanci">
+<meta property="og:description" content="Learn how to streamline actor and texture memory usage for improved performance without sacrificing visual quality. Dive into LOD, instance reduction, texture compression, and more. Learn strategies l">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.imgur.com/UI68i63.png">
-<meta property="og:image" content="https://i.imgur.com/NGIIEAp.png">
-<meta property="og:image" content="https://i.imgur.com/Rh2kTsR.png">
-<meta property="og:image" content="https://i.imgur.com/exrhTgo.png">
-<meta property="og:image" content="https://i.imgur.com/PNHsLUU.png">
-<meta property="og:image" content="https://i.imgur.com/hrVKhin.png">
-<meta property="og:image" content="https://docs.unrealengine.com/4.27/Images/AnimatingObjects/Sequencer/Overview/TracksShot/Thumbnails.png">
-<meta property="article:published_time" content="2022-07-16T07:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-17T19:25:37.159Z">
+<meta property="article:published_time" content="2024-03-19T07:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-16T17:15:07.351Z">
 <meta property="article:author" content="Xingyu Lei">
-<meta property="article:tag" content="animation">
-<meta property="article:tag" content="pipeline">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="sequencer">
+<meta property="article:tag" content="rendering">
+<meta property="article:tag" content="optimization">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/UI68i63.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/ue-cinematic-sequencer/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/graphics-optimization-3/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -216,14 +206,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-ue-cinematic-sequencer" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-graphics-optimization-3" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Professional-Quality Cinematic with Unreal Engine Sequencer
+      Performance Optimization Part 3: Environmental Memory
     </h1>
   
 
@@ -231,20 +221,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/ue-cinematic-sequencer/" class="article-date">
-	  <time datetime="2022-07-16T07:00:00.000Z" itemprop="datePublished">2022-07-16</time>
+	<a href="/post/graphics-optimization-3/" class="article-date">
+	  <time datetime="2024-03-19T07:00:00.000Z" itemprop="datePublished">2024-03-19</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/unreal/">unreal</a>
+    <a class="article-category-link" href="/categories/graphics/">graphics</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/animation/" rel="tag">animation</a>, <a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="article-tag-link-link" href="/tags/sequencer/" rel="tag">sequencer</a>
+	<a class="article-tag-link-link" href="/tags/optimization/" rel="tag">optimization</a>, <a class="article-tag-link-link" href="/tags/rendering/" rel="tag">rendering</a>
   </span>
 
 
@@ -255,165 +245,21 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
-<p>In this blog, I’m going to introduce the different components
-of a cinematic, how they are represented. This hopefully will give you an
-overview of how cinematic works in Unreal.</p>
-<h2 id="glossary"><a class="markdownIt-Anchor" href="#glossary"></a> Glossary</h2>
-<ul>
-<li>
-<p><strong>Skeleton</strong>: a hierarchy that is used to define Bones (sometimes called joints),
-In Unreal, skeletons are used to store/driven by associated animation data.</p>
-</li>
-<li>
-<p><strong>Static Mesh</strong>: a piece of geometry that consists of a set of polygons
-that can be cached in video memory and rendered out.</p>
-</li>
-<li>
-<p><strong>Skeletal Mesh</strong>: in short is a collection of a skeleton hierarchy, and mesh(es) skinned to
-that skeleton. A set of polygons composed to make up the surface of
-the Skeletal Mesh, and a hierarchical set of interconnected bones
-which can be used to animate the vertices of the polygons</p>
-</li>
-<li>
-<p><strong>Level</strong>: is all or part of our game’s “world”. Levels contain everything a
-player can see and interact with, like environments, usable objects,
-other characters, and so on.</p>
-</li>
-<li>
-<p><strong>Actor</strong>: an Actor is any object that can be placed into a Level,
-such as a camera, Static Mesh, or player start location.
-Actors support 3D transformations such as translation, rotation, and scaling.
-They can be created and destroyed.</p>
-</li>
-<li>
-<p><strong>Binding</strong>: a track in sequencer that binds a specific actor in the level, enables
-the level sequence to modify or animate its property when the level sequence is active.</p>
-</li>
-</ul>
-<h2 id="what-makes-a-sequencer"><a class="markdownIt-Anchor" href="#what-makes-a-sequencer"></a> What makes a Sequencer</h2>
-<blockquote>
-<p>Similar to other film and animation editing software, Sequencer requires us
-to add tracks in order to reference elements in our sequence.</p>
-<p>Any character, prop, camera, effect, or other viewport element can be
-referenced and manipulated in Sequencer</p>
-</blockquote>
-<p><img src="https://i.imgur.com/UI68i63.png" alt="overview" /></p>
-<h3 id="level-sequence"><a class="markdownIt-Anchor" href="#level-sequence"></a> Level Sequence</h3>
-<p>A Level Sequence asset is a container for cinematic data, which includes
-tracks, animation and binding.</p>
-<h3 id="level-sequence-track"><a class="markdownIt-Anchor" href="#level-sequence-track"></a> Level Sequence Track</h3>
-<p>If you used any video editing software, then tracks shouldn’t be new to you.
-Tracks are like layers, and the <em>Level Sequence</em> is the whole canvas;</p>
-<p><em>Tracks</em> usually are used to reference different actors in the level,
-and then animated its properties. So in most time, tracks don’t overlay each
-other like layers in Photoshop do, they’re more like controlling
-different color channels that compose the final image.</p>
-<h3 id="level-sequence-section-asset"><a class="markdownIt-Anchor" href="#level-sequence-section-asset"></a> Level Sequence Section Asset</h3>
-<p><em>Sections</em> are the components that laid out in a <em>Track</em>, sections can be treated
-as individual animation clips of which make up the whole track.</p>
-<p>Some common section are <em>Camera Cuts</em> section, <em>Shots</em> section and <em>Animation</em> section.</p>
-<h2 id="basic-cinematic-component"><a class="markdownIt-Anchor" href="#basic-cinematic-component"></a> Basic Cinematic Component</h2>
-<p>We’ll break down a cinematic as the following components and tackle them
-one by one.</p>
-<ul>
-<li>Camera (Camera Actor)</li>
-<li>Background (Static Mesh Actor)</li>
-<li>Foreground &amp; Character (Skeletal Mesh Actor)</li>
-<li>Lighting (Light Actor)</li>
-<li>FX (Visual Effects Actor)</li>
-<li>Audio (Sound Wave Asset)</li>
-<li>Other</li>
-</ul>
-<h2 id="actor-to-sequence-object-binding"><a class="markdownIt-Anchor" href="#actor-to-sequence-object-binding"></a> Actor to Sequence (Object Binding)</h2>
-<p>The level sequence operates within levels and operates on actors in the level.
-It can bind to an existing actor and animates its properties. It can also spawn an actor
-as needed.</p>
-<p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/spawn-temporary-actors-in-unreal-engine-cinematics/">Spawnables vs. Possessables</a></p>
-<h3 id="static-mesh"><a class="markdownIt-Anchor" href="#static-mesh"></a> Static Mesh</h3>
-<p><img src="https://i.imgur.com/NGIIEAp.png" alt="static" /></p>
-<p>This is the simplest scenario, a static mesh actor is bound to the level sequence
-and the transform are keyed.</p>
-<h3 id="skeletal-mesh"><a class="markdownIt-Anchor" href="#skeletal-mesh"></a> Skeletal Mesh</h3>
-<p><img src="https://i.imgur.com/Rh2kTsR.png" alt="skm" /></p>
-<p>When it comes to skeletal mesh, another component is exposed: Animation.</p>
-<p>This sub-track takes Unreal <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/animation-sequences-in-unreal-engine/">Animation Sequence</a> assets, which consists the
-skeleton animation, this effectively drives the skeleton within the skeletal
-mesh actor.</p>
-<h3 id="camera-binding-and-camera-cut"><a class="markdownIt-Anchor" href="#camera-binding-and-camera-cut"></a> Camera Binding and Camera Cut</h3>
-<p><img src="https://i.imgur.com/exrhTgo.png" alt="camera" /></p>
-<p>In order to set up camera view properly, in-addition to the camera binding,
-we also need a <em>Camera Cuts Track</em>. Whatever is on this track is what the viewport
-is capturing, it allows us to switch and blend between different cameras.</p>
-<p>(In short, the Camera Binding tracks drives the Camera Actor, the Camera Cut track decides
-what takes over the viewport)</p>
-<h3 id="audio"><a class="markdownIt-Anchor" href="#audio"></a> Audio</h3>
-<p><img src="https://i.imgur.com/PNHsLUU.png" alt="audio" /></p>
-<p>Audio can be created using by possessing an audio/sound actor, or alternatively
-it can be created by adding Unreal <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/audio-files-in-unreal-engine/">Sound Wave</a> asset. I would recommend
-the latter as it allows us to scrub in the timeline and still have the
-correct audio playback.</p>
-<blockquote>
-<p><strong>Note:</strong> Set Sound Wave Asset’s ‘<em>Sound Asset Compression Type</em>’ to ‘<em>PCM</em>’ so
-it plays correctly when scrubbing in timeline.</p>
-</blockquote>
-<h3 id="more"><a class="markdownIt-Anchor" href="#more"></a> More</h3>
-<p>There are of course different actor types in the level that the level sequence
-can possess/bind to. Such as <em>Light Actors, Gameplay Actors, Visual Effects
-Actors</em> and more.</p>
-<h2 id="sub-sequence-and-shot"><a class="markdownIt-Anchor" href="#sub-sequence-and-shot"></a> Sub-sequence and Shot</h2>
-<p>There are other two types of concept I’d like to touch upon:
-<em>Subsequences</em> and <em>Shots</em>.</p>
-<p>They are usually not directly bound to an actor, but they are containers for
-a level sequence that does. They can be very useful to organize and composite
-the cinematic level sequence structure.</p>
-<p><img src="https://i.imgur.com/hrVKhin.png" alt="subsequence" /></p>
-<p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/cinematic-subscequences-track-in-unreal-engine/">Subsequences</a>
-represent an entire Level Sequence.
-Having subsequences allows multiple level sequence to be added into a “parent” level sequence,
-These subsequences can be considered as the partition of the “parent” and can be worked on as different
-sub-scenes by different artists.</p>
-<p><img src="https://docs.unrealengine.com/4.27/Images/AnimatingObjects/Sequencer/Overview/TracksShot/Thumbnails.png" alt="shot" /></p>
-<p>(Image from Unreal)</p>
-<p>Similar to Subsequence, each <em>Shot Section</em> represents a Level Sequence,
-it allows multiple level sequences be assembled and re-arranged freely on the
-<em>Shots Track</em> as Shot <em>Section</em> to form the full sequence/cinematic. This
-is to get rendering in Unreal to work correctly, and able to set per-shot
-preset in Movie Render Queue.</p>
-<blockquote>
-<p><strong>Note:</strong> avoid using the “lock” property in any of the clip as it sometimes causes
-un-wanted behaviours.</p>
-</blockquote>
-<h3 id="high-quality-render-with-motion-blur"><a class="markdownIt-Anchor" href="#high-quality-render-with-motion-blur"></a> High Quality Render with Motion Blur</h3>
-<p>When implementing a setup with a full sequence length animation clip
-(skeletal mesh .fbx not being broken down into shots). It is important to follow
-the following to ensure there’s no Motion Blur produce during camera cuts.</p>
-<ul>
-<li>
-<p>Camera: separate camera actor for each shot.</p>
-</li>
-<li>
-<p>Animation: leave the animation clip as ‘Keep State’ when finished if possible.</p>
-</li>
-<li>
-<p>Subsequence: a good practice is to not extend sub-sequence range over the
-shot active range; Unreal still calculates motion in sub-sequence extending beyond
-the range of the shot active range such as Motion Blur, which can produce
-unwanted result during cuts between shots.</p>
-</li>
-<li>
-<p>Render Preset</p>
-<ul>
-<li>Camera Setting has to be set to ‘Frame Close’</li>
-<li>Anti-aliasing Setting can be toggled on for better quality</li>
-</ul>
-</li>
-</ul>
-<p>For more information on setting up a sequencer with correct first frame, see
-<a target="_blank" rel="noopener" href="https://dev.epicgames.com/community/learning/tutorials/l4OR/unreal-engine-movie-render-queue-warmup-and-first-frame-issues">Epic’s post on render warm-ups</a></p>
-<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
-<p><a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/cinematics-and-movie-making-in-unreal-engine/">Unreal Engine Documentation - Cinematics and Sequencer</a></p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="ba22df98350cb9f06bff474e1c89f687effbbc8c5e582790caf69ea6d6c77436">e5dd38fef24b701df016b1b380b1b2dea4ebd2f6079e3b594aca2e4bb09d96567dbce31d0e892489c4bb28c9db9bbfd2bc90ad20c573df89bc1fa87f05043c0d1c09630bb808144253ac1a260529c040c01eca7721da83d427918a014d5daf5296c46f69046a3d985a9e57ff53534174ee80cd1ebeb3e3d77169aaff608fb5008ea30f53a2d1d5d7c357d1c4e1a4712894b9fd5dbabf3bdb394a093db7e772c30b74b44030f30eab3aaafdbc95777715b6d7db76c468fb2f832de6b142c486109a36deb39abd8dcd9b983bdbc848ea63fe383adbbc3fb85c6ee9ecc6e7c4ff5d0ed3e0a12cff4bc6dd902d26dc7af19d6ed39be87540926ac92eb97e1f2684ec3ad8d1167a9cbdf635eb1a34bbb86b54a0466937f008b06fe5ce3e6229fb48a0115a91443a2b0546a850354b6cf6da11049a7c81ec80231e55dd3b51caf269b502b6bd89882c7706195d92c3d99bef04a4b20c402afb59a4e1600b62478e091039eea982b64f436aaa4770670e6141b1818125a4e6e3a362a178f6cebf4ea951433d95860c6955af863d27ca72d737d917c80357720d46d1e062707ee39f1e32d358d02703cfd6a2cf536f874c02d35f0a22953c34fa0ecd3866fd4b0b09d5e5356371a0d9757c3584922d18cc4b9a2f7793b8a40f10ad9fac4bb9c33c9d27a95421595ee2d73d3e4ba39beb1b10911e604e3662d288fdd3608839b43472443d6c8248b4f3815a4b5e82b86bb22e926e3fb3f684c7d34d40e6aed7111767ea042b47a2fa7e6064024000816c4fe6927c6bc9717f18e679e0c866a41b702ea69e1ec95af5437007d103be0fe31e8e8d0e465ea677b1b0c83033ac0f54af7476c8628ff63e334d355fc23120b140f4a475cb9c753ea8491ab55ca1b6160c31bedf43dec806c4d56e85394cbf2ee65189fc293d8d9cc3486d3254605dbf21210b3b0b2bd56eb566563e54bbc5b073e5bd18cac7efe0ba1f8cf6ad9817c09d131c8cf893f2d21b27971699c69b655154126b17fca04f87b82cbf327289cbd869a334bcb2b3d95cc8e918d83afa80023392a332b46a7bca8a9ca2a28cd059c03a25a178df612d7dd7a6f5665023992c4faa50516b770c090f768f2dfa2b06a18901021c0ee88580cf6061a2dc2d7b736ac4afd6f895ea2b361ca1fbfc157f9d6eea5880c401992f01b4a33faf64261d26f9b696b4f2c7ba579bb1951aa28a6d2a83044806e3afea32fe6945b05dbb52167ba391f30dc5f0d37ba41c62b2bdb6e120601595896ad637cdfdefe86014be99e87391e98c62895a1680f7740d264b6ae9c2c136021de8349d627d0a15d33c624c0a13ad8c34ce7ec5aa6ebf35a336124442e21cce7ba540f7f7bd3ddcaa87924cd1ab71f0a258772631c4f48b1806838d0e66bed745c063b129f344e1c2652ef772768893e69779f730e006c183fd5b9a9321ff48bd53cccc28c917f59bf885c11c9ebf3bb69a4658c3ea7f7b584d099b4682ddcd10996da40b73057c0fbdafe9cc4f31f9cd92e28d0442a313cf0b71449a927915e2e8fa35bedc5d3f6475fbaee7f0505f1cbe85673ebd0c54dfca003c45278a1e3565c4b0559a06610638110f441d70610937af57580f80364896d1528eaa7fd31dd15f0b587b06683b6f74c5ad264a8d48c21ca00fd7146087d30d16315879bf24794f0b6cd62e8fde556d8f92084b90899f68c74de1612bc4d5dd500f6cf526b8fff3cd345dd637f6572a56196d44db6325b0dd8e08bfdafb841be42a317d480ecc4b6cca6e66d987be2a9deba7365b56d7ede5ab07f58fdbd06562a01f71e4eff5f83278846fb9e425aaee60e5b04ff4dd4d0fcdfd296e5d6a631e9b38c7bf3a09d7e1a9afb4853eabd3689a99417f4264cc64435ce501801c7b0224b0ed060804da93c8c4fccad4c3ab4c52e1eb99788b454c140b3fcc3b53147739282a5b74761b56c21aef6798d1801e2f41e1d1b9bd6d7f8bdaa335d332bb49d031da973b927760acc16f6c4b4f6c9f7ebf50fbe296a883a9f050c66c13a4b5680c6e1a1132d97d0152611a35bbf7dad4e936f42b998d71510f3b4ea78a0a012247884a7cb6f139a1246a49a8229b7cc8f2920edf665562146909e4b5a6a1c12e560083caf54e667069ae5db5c5ec3ab500804129ae0cb07ee5b5c4e513c3a14ec0ea76f717afc670ff43df8a5ca24bc7a8990dd617155c771c55c9cb1fc87fdfbc474363f994ea385d0f57081c62b3393d95335bbf14d18827c3dca99b13fb35b1798258792790497f3127f799dc67906c309141f619a1244dff1a592786ab715f1b7e74dea8dde5640289ad546b3ac62086cc54ed0079f8e88fd52c931dfa552bae6dc7762fdf76e2734c3a314d651a980fde7d52cf351fc10ca564d46b9ebf7a98555fe6870ddfbbf4d537cc95ed8dedf4d3951eb7209ca2cb0ad214fc904ccf6d7c76a69f1ef993ece5728ae964ec2b190bf733d9866ba4a88e83f309c53c984c86706dd50c5f2c036490d58063cc69713fe9cc79dff0c72b0903acedb4a089b49a23582a03793f2d33473443a1f2bd564178a4bfda73f5a100bb0031094b1db4de2431d1cb72841126c71736e398e961fed52b4d1d31ee32dfed2b9c2f6642d0cccca55173f1700433e47107c16f233d407f359b34be71252d6d56f45c64c31dd5726b0c3f9b16f0a44f70288a52d7b81efd7f2a2ac4d22c1a18488c23f667253c470d09134b1e42e2b09e843c76ec115b49fa13fa8f6f5512f3ed2045942477826890fcff8d44a963921e0a703bb84656a7548e1db2a640f0e114f124531dca229b0f8638d618405ed74d5dd8b43ef4ebbef8479188983a69f8d01b0ab09b6db6c1138077790ee9c3b8e51723163f3ab535829cd1a6be1adc2967b166e9c72470b10a2de3239c93096ac682c2de3c591cdcf142ee7cfd9fbda148f84cf0d3cbb83cd43268e74f0cde76221b5914f620782f50617abb1ddc5a66d6f890d9209341fa08492350223d1b393c8ae0dc26ee3e0038838f10576ec08531d6b78d17a2ebd8eb73b68ef38f80a15f3ab7ade7de6473d19fd14b59a01a6d3839fc03f51ce0c287bd4ef8df91df635a174d915ecab4be5eb4557927f5d0dd65903580bbbd2121bb52e4a9f52e843cf6f049e674096d2c068909da6ef4ed713a7dea7aa8edc5029a0ca8d36d66483fb403a7a3a0aca545d9b1fb46e0633e8653fddd2a3308fc0beab818b93186a0a3e22902e43009e4b7cddaf2707e62547d1936db3dc6e57a9bb492c5670a8950331448d38d560cb1e86419b6fb7e02ebd03043c33f3d0ed125b6416d9f0715d902b7465d0b2c7a2fda7c6939c9a15e715f3168935c3f8930ead4b4696befc3554af2dd380677b2bc0cbcb969d9a6134e2f9305aba6def5647b242e94c41f006b91c1a2d24a5e6cc24fbc8081b1adfe7438a204d95d7d0bad76d201ad0c4b99803454936fdeb3434a7b048f9b69e79a881d290cb8b72d1c6c01cfac54a6b1056e7b843865642b67739da865052faa58d130e16bd71ea6e19c69903681a2811c885dbe697d19128b53492a50cf8b2036e8876798b638d9520d4518ba0bb9af455090871aa47e04e6b7a1703b54255b6c5f016eebfdea81c513b1a58dff67b9d070d3dbe9b8a8002d3a4d77717a3e373f1aea4a8a8fab558d2c9c55330679a18a73169f915d08ec574ce90265b856b641c8802db832d4dfb945efa05271351ea94b36f98c2b0c06abe906fab61a038cf3162d3e52d3fefaff5ff2a27d5199d42bb0c12f8501f2870c5f7083dcf872ae1dd4b82e7f3a38080f60743c9115a984c5c56d6b232997cc6937726192d3cdd6d0355fc30b86c48b4fb7b92453fc8d9cef4ecfdd4b051d6ef9d244003de81e3ecb6260fbba2d9ed2d4d47d44297f93b6f94e22571514775313a40aebe72dad68e847d659abe358b92ddc0c14c9d09a5e21f74b66e125aee9d239e4928291ae957f560edd2e3c54a424db3ab9b2352ace0039cfa851bcbbd3859eceb0338b7d9f663e5e952cc3dd48e54bea38220a7158ac19b352e59571c83067f5d834db4e45962e477a18553b5e0fd0f569ffabd9b02fcb0ce8e754a255af32cddee81a5807bdd4cef3fa0e40e2a1b58823d7539232e3aa7e0654c74b21189812f119e5e449c908774fa3a529793fb0e2eb4adec6bd64345df4229e32dbd8e22cdf5732ea26e371b4e081adcfd4a02d20209c2445d54bfe4e3adb8170a257a8a257a595355827211c46ed7b8fa448b55b21c3e518173ad47ba083724be8cf73f3a47822f140b7047e37f46f0b9dbfd44f848a3cf5ff4b61179385d4a50fa876389af275733f45b730a0c584a11512b9222f34bbc4e5d7e322c9ad1b12ca3c2969e83847638a4339020017bb55ec5dff53b97484b2cdbdaab07665692dad395f45545eeafc83fb65b8269c53c125458b0631914d181cb622696cd0d2b71fc0b8d856b78b0f025ffda9438ef7abf3fc6c2498e3e7e1e83cb2fa390e43036c5efee1f15aafad4cebe4f89654ee2a521166a0b592da9702911c66b12bceb7a66549f5f1ac0651f223f5582e4705488c9a2647aae6621a7658986442fc3b7e584c8cf96c7715f0c77b284b32cbaff397805adb5c0a0dec00365e2b51c5f67f55ebec9cef9fcb8c2575e23d900b80a6485bcfb55c19504aaaf5bf7041b290caa5ddfcb5dec5713e8912367a4b4fb8c812dbbc53ff684630cd71fd22aa3cc2cd723fb3d35ad8fa578984909036f4b11168d0aa9f37c6d635d1f4df0ad6a92e0ac24467f5f079423e4d2fbe89fc4650130ebce6eaf7d7a38c4f687883fd23f6455d895ba67771484cb19a815f6cd8dcb47ff17f16ddf1491d7de9185d8632c346e03dfbff73a02839c1e5610534046dabc02d1ed11dab97f28626729904a307eeea4c333c6fab156b089b5afa00d2606593af912f3b44095fa21db7fef16d1fe114848e86f2cf7980ebc8a83d17c91a1af888d29acc5022c521df821be4ab15fb3cbaab564a60f89cdad3e0732bdd8d35711d9ac625b25c63ff0cbe3591dc61a0517b287933878a9e3689e26e56696c34818ed796575b8ba8566de3688a9bc346f6b630277d9e2710b14ff8a050c55d3aadb24fcaa3c7cfc85cda3ff1f0919562e304ca0a35d8588340e38b61dfe60436850102efcb93dd80a0fc75cf31f20fe1f1719997e602fed90a8869446ecb72dbaee1da1496e4260200204191d1685aa7bcdd382bd62093780fc3f321445cc0cb85e31fb3297480ad64cb75f3655369bea8cd1f33e7a70f24157274bf4937c9624fc8539a806a01f59f0f571eeb94d7de230575215c4895fe1cdbc7866427fddad8e82ed134b5f2b6f020b18cf2430af3da7ab07723bf9f038160d45c3cc0acfe2f1d3ab18bf28d3094f2c00ecbd39caa77f97930d94820da44c75e8ed319ebf9442e778050143cf7e72edef11076c102c3f8d37845bf6195b8b7dc9d87c4112b904c59bc5bc2957c6a975fdd82db1350f82980834fa88ba39694ab7c75babecb06eb426dc583d31feea81e38faf9feebed3314adf0d070391bc69b6abd026ab88c3f54ff834e3650ab83b33d44d10cbf83c112b2acdbf94f88c7dcd20ddaceec0c6f485959726ef1c67940829fa955bc185224e2d5f1fb9538f14f3cb59b2494c7e5ee284c1e9ec585133d130e862075c5fe3f423402f264a123b622c2516b069ddd10a9a8f695cbf4bd7edfebdd03c2e324965e23545dde0c9bdaab6ef8fb1883fb838e09da6d56fbca9dc5aa31459b687d5452a0cd3e8e73671b27b6a1832293d857509e2fe67e5e96e51c19a62605ce5aa9ce79b82f0875f1be55d9f1b52776bd97f86e800afddb5d340c63c75a5c9d2b8de8a024a98ebbf92f9d8d6712fe713026ec6baa21de293f0a71ed5ad342a98cf593ed32fcc8e7c2bf3e41974b224f5f4b939055fdfc2b259d8cb23edb490f0c1a12dc2c2cdeeb7d81bf1f55f53f6133c71aa5ee83e5b16f576e6a8d38cd969c50e43427b562e03f726b4730aae77bdde920ebd1b107ef34c4d3649881c0796deca7fd20849a4b42f40a7f08a239d00822f087d796046d515f45e4dc27f76bcae4a1a84048549ad063f80e31ab33fcf69e0380cc79cc24997eb7d0eaeca0e58bed4f7c8578f2dc25ff7df0b7e35ea614193ae893102c119dc4091808e6a35f42c55ca9d6ac37202c3897b9906e47870687d09fdfc9faf4f462d6e6c0b0cc76cd6779232a1c822c3b93ce4056300033aee167362e3ddda76cd1b3168ad2aace515cf308163314bf1d9466fe241371831055d82a1281e7c22a365277c7fb48183d38261fd311ca7f41e7d108ece6f22e5afaf40d1afc871a03c51cbf64d9d1db07cd66577c7da48692d256fd07219df979a82ccaf06d583d23ddef84936dc75a3c8b01668a1b4e240d613b6f0670869e9a56ee2ae1d7f1e7acf5b2781249549cb27c7d099702e04de9318042a8db83a6091b7c48db8956d47fc9b6c8db303e0035899e49f26b2e3fdde49cb79ce86bbdecdc293a8c93c925a09c77d588aee5d868e20e7559aafadbcd9d849a78052438078407cbf8cc6423142b5fb7a028af4b879277b309b3805587e501a30b67ab9325134e036f3e1b86d66ca2fe084d944e2799caa63abe8c38900266bc481c12ae1929ab5fa410cc8c70bcdeafb409ac398d9f960a8e328d570b2087f0845673f9be4235c6c2af8b2aa976b7c00027c3e861def339c636ca61d6c10504e86a7627009fbc0f23e0db47a6b4a32e7d24baa9a8cfc22a731d8592e9ae16d4f37360cc967831f5680058fb79cb010c59f7f86e77c61922dc68a6b213263d9846dbc1316ec1fe919ee8fecc8599a997ca78685570f016043419cef022ab4204dea2efd83bca503d06b3aabdf2e3974b7a63c5832cb97f31d7389d089582285c32943e8424e8ed50dbd5050c5c9c5574afd9ffae552f609e4fffa1bd4e6ac93e25ea87f21b024b670630f496b4d987256d27383825ac4d51507ab63d0e9453517915961addda9478cff5a29cc1e6ac388c7fc6d6ed699f3b3c3381c310ab31ea39089c89f8b6399a2aa0e0fa38bab7b1e232dd20c33957214c1e56b8b6e381d94f5627a6ed98bdd256818199c65206afc0c648a7eccdea694aa5fd9ff74b1daf3d5b497f7339b92b5272b2f4136d6697217482ebe29976d3a5c943d55d3bf272e5da457fa5c00b14414f449f309ea68b1d9f1dd9225bd9c152c253908925c3dadd52803ef5e8ba9d40497c90ac9516fb3c4dd97f0c429732947c8d10980b3cf4d0872f59a8c24053dd164016a1773700516a78bb34c81b0f61d5df2a65b5fd4320823c64e55622bcd37790296d01ae6c8d89e1f4d6cc11311c5d73dbdc61fcdb4402a32310f1a2afe0031a9d05380c1d9baf58a8b2a6eddc7689c391d3072d30bcd286823850bf885f33dd8b557f503bd3f0fe2de3c2ec47db70e1b7fca603371ae2dab8d417857b5b9d9ef5d3c7e19bb8b03b7d4b254b218837044f8944b4900f4a2928c3c3da561936c20f3cbc11b5074fec05f7aa24b18a80fcbd0ea08491f6545a79c579e7000d7ed8040bb2f2af354e8c1847a3294b75b9417996c3c2a34deb3ab43e12dc4215439996d81272f69d053e8bbfa9572c339ed5804e0892172e6f9efdbf251cb1ae06ee4d79392f4e9712cf78bbd0cce0df61ffacca6b9a49d81ac4044cf38f2b7e97e1d06dbc827fccebd938415f0c0a2c4a4f4b5a1b91e3a6b1098bdffcd6a83240b1b2b321b06304c848ba5aba510ed7e8751e37930d075cf4e287dbb53780bb9eac46ffc6a868e0c1fc5b7226c5ed74b7a3a7551fe129332f0c01def83146d12fad18b99e9752d8111a190cea93991dc177a0f979c65596d599198f20dd56c505919f5f2a229fe1da5586f609787d366eb9336021a0bb0e064fc10de89889ccc10539dc8df95fa5d0c48355fbbb6153e8da08d74766e3468768e5a20880499dff07e6fbc2158e46489f7cf0f57ef06adb825e2551bca585c2b96af25d8dbfa9b32a608a2271528f320099bbcf0adbf84fd4144ee3f0635517703fdd8f6ecced64024f07f16f8fce25ec358912f82caa880cfee3681094c6c3394b1ec12038b3348137bf885241cc1423e8a0a7bea1b94b2d0e6a492e3d44bd2259bfc848ddf0720dd06b1de8ba7b2e00a672ef512ef79f1c2309a1de9d6c199a96a17fcf1e703c022b807864b80ecf2b8cbab0958342810317facf5a0be825352debad68154f8660654235175dff4c31ea11312403bb9000abc551690bc408b41b1697b3ad9a32d2dd1ba7ca4945759671295c5f2944ba935585d345069f0626829e48146231566fe38f40314b8ffbb939c2422d08b05d065871b22ee372fbe5665e5a1feccfc3dece931f5c6dbcc8e2258079520b673deb81bef5ce7809ecd1669b5443ae01958a40e99728dcd71868832afef83bdebf2bf56ba3a844aa5e8c5d8424890abb81c11ac95faa4435690355c2e1f601e3808dcdff600a629cc439d135a7d2b72738bc0f0b0c3a7f51f4ac9e593858468fb9464d2efb1490c2adfbf0edc8710307f34350a7b4b922371fa6a38c50dca187ca8beadd0662d4137c0219174d76f436dc0fd756c5ee96189a5539049e499199315506354f066fe1928ff96ee11380706420d706a6ae053aa5d5</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-surge">
+      <input class="hbe hbe-input-field hbe-input-field-surge" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-surge" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-surge" data-content="Donate $3 or subscribe $2/month for password access to exclusive posts">Donate $3 or subscribe $2/month for password access to exclusive posts</span>
+      </label>
+      <svg class="hbe hbe-graphic hbe-graphic-surge" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
       
     </div>
     <div class="article-footer">
@@ -423,7 +269,7 @@ unwanted result during cuts between shots.</p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/ue-cinematic-sequencer/" title="Professional-Quality Cinematic with Unreal Engine Sequencer" target="_blank" rel="external">https://www.xingyulei.com/post/ue-cinematic-sequencer/</a>
+      <a href="https://www.xingyulei.com/post/graphics-optimization-3/" title="Performance Optimization Part 3: Environmental Memory" target="_blank" rel="external">https://www.xingyulei.com/post/graphics-optimization-3/</a>
     </li>
     
 	
@@ -466,13 +312,9 @@ unwanted result during cuts between shots.</p>
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/post/ue-cinematic-fbx/" title="Unreal Engine Cinematic FBX Workflow Explained"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/post/qt-threading/" title="No More Freezing using Qt Multithreading: Learn with Examples"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/post/graphics-optimization-2/" title="Performance Optimization Part 2: Light, Shadow and Shading"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
