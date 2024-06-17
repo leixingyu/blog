@@ -19,23 +19,31 @@
   <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
   
   
-  <title>Windows Process Management using Python: Find PIDs and End Processes | Tech Art Learning</title>
-  <meta name="description" content="Learn how to find PIDs and end processes with ease, automate routine tasks, and streamline your workflow. Our step-by-step guide provides practical examples and best practices for optimizing your syst">
+  <title>Unreal Physics System: Learning the Essentials in 10 Minutes | Tech Art Learning</title>
+  <meta name="description" content="Unreal Engine&#39;s powerful real-time physics system allows easy, organic animation without hand-keying. This 10-minute tutorial shows how to create a dynamic jump pad while teaching basic physics princi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows Process Management using Python: Find PIDs and End Processes">
-<meta property="og:url" content="https://www.xingyulei.com/post/py-end-process/index.html">
+<meta property="og:title" content="Unreal Physics System: Learning the Essentials in 10 Minutes">
+<meta property="og:url" content="https://www.xingyulei.com/post/ue-physics-basic/index.html">
 <meta property="og:site_name" content="Tech Art Learning">
-<meta property="og:description" content="Learn how to find PIDs and end processes with ease, automate routine tasks, and streamline your workflow. Our step-by-step guide provides practical examples and best practices for optimizing your syst">
+<meta property="og:description" content="Unreal Engine&#39;s powerful real-time physics system allows easy, organic animation without hand-keying. This 10-minute tutorial shows how to create a dynamic jump pad while teaching basic physics princi">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-24T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-14T17:21:39.587Z">
+<meta property="og:image" content="https://i.imgur.com/ZM2ifvF.gif">
+<meta property="og:image" content="https://i.imgur.com/FXcwAKq.png">
+<meta property="og:image" content="https://i.imgur.com/3Y44geb.png">
+<meta property="og:image" content="https://i.imgur.com/Up0xqPE.png">
+<meta property="og:image" content="https://i.imgur.com/XuCMNzQ.png">
+<meta property="og:image" content="https://d3kjluh73b9h9o.cloudfront.net/original/4X/3/6/c/36ce57be35bf5ffa0571bf85b70cde17c274c6a1.png">
+<meta property="og:image" content="https://i.imgur.com/0374icV.png">
+<meta property="og:image" content="https://i.imgur.com/BSkPyok.png">
+<meta property="article:published_time" content="2024-06-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-17T03:47:55.656Z">
 <meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="animation">
 <meta property="article:tag" content="pipeline">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="batch">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/ZM2ifvF.gif">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.xingyulei.com/post/py-end-process/index.html">
+  <link rel="canonical" href="https://www.xingyulei.com/post/ue-physics-basic/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
   
@@ -207,14 +215,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-py-end-process" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-ue-physics-basic" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Windows Process Management using Python: Find PIDs and End Processes
+      Unreal Physics System: Learning the Essentials in 10 Minutes
     </h1>
   
 
@@ -222,20 +230,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/post/py-end-process/" class="article-date">
-	  <time datetime="2021-10-24T16:00:00.000Z" itemprop="datePublished">2021-10-25</time>
+	<a href="/post/ue-physics-basic/" class="article-date">
+	  <time datetime="2024-06-16T16:00:00.000Z" itemprop="datePublished">2024-06-17</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/windows/">windows</a>
+    <a class="article-category-link" href="/categories/unreal/">unreal</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/batch/" rel="tag">batch</a>, <a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>, <a class="article-tag-link-link" href="/tags/python/" rel="tag">python</a>
+	<a class="article-tag-link-link" href="/tags/animation/" rel="tag">animation</a>, <a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>
   </span>
 
 
@@ -246,50 +254,114 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h3>
-<p>Interacting with Windows shell to end process is very common,
-there are many ways to do so, like through the traditional batch script</p>
-<p>but to gain more flexibility, using python is probably a better idea.</p>
+        <h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>Unreal’s real-time physics body system is quite powerful, using physics it is easy to add fun and organic animation to your project, (also as a non-animator, I don’t have to hand key anything) which is why I just love it.</p>
+<p>Today I want to show you a basic example that you can create within 10 minutes as an introductory to Unreal’s physics system. Afterward, you’ll be able to create many physics mechanic using the principle we learned today.</p>
+<p>Here’s the final result we’re creating: a dynamic jump bad that bounces object off, then return to original position.</p>
+<p><img src="https://i.imgur.com/ZM2ifvF.gif" alt="jump pad" /></p>
+<h2 id="physics-body-and-constraints"><a class="markdownIt-Anchor" href="#physics-body-and-constraints"></a> Physics Body and Constraints</h2>
+<p>Generally speaking we need at least one physics body (two in our case) and an physics constraints to build a dynamic mechanic system.</p>
+<p><img src="https://i.imgur.com/FXcwAKq.png" alt="outline" /></p>
 <ul>
-<li><code>os.system</code> is not the most elegant way to use, and it is meant to be replaced by <code>subprocess</code></li>
-<li><code>subprocess</code> comes with Python standard library and allows us to spawn new processes, connect to their input/output/error pipes, and obtain their return codes</li>
-<li><code>psutil</code> (python system and process utilities) is a <strong>cross-platform</strong> library for retrieving information on running processes and system utilization.
-However, it is a third-party library</li>
+<li>
+<p><strong>Physics body:</strong> contains the physics attribute of the object, usually mass, center of gravity, collision shape, physics material (how it reacts to surface) and etc</p>
+</li>
+<li>
+<p><strong>Physics constraints:</strong> dictate the movement of the physics object/body.</p>
+</li>
 </ul>
-<hr />
-<h3 id="bare-minimum"><a class="markdownIt-Anchor" href="#bare-minimum"></a> Bare Minimum</h3>
-<p>the bare minimum command to kill process utilizes window’s <code>taskkill</code>;
-which doesn’t matter if we use <code>os.system</code> or <code>subprocess</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">PROCESS = <span class="string">&#x27;notepad.exe&#x27;</span></span><br><span class="line">STATUS = <span class="string">&#x27;running&#x27;</span>  <span class="comment"># running or not responding</span></span><br><span class="line">CMD = <span class="string">r&#x27;taskkill /fi &quot;IMAGENAME eq &#123;&#125;&quot; /fi &quot;STATUS eq &#123;&#125;&quot; &#x27;</span>.<span class="built_in">format</span>(PROCESS, STATUS)</span><br><span class="line"></span><br><span class="line">os.system(CMD)</span><br></pre></td></tr></table></figure>
-<h3 id="using-ossystem"><a class="markdownIt-Anchor" href="#using-ossystem"></a> Using <code>os.system</code></h3>
-<p>Now consider a more flexible case where we want to gather information about the processes like its PID,
-and then proceed on ending the process. One of the downside of window shell command is that the output
-can’t be passed on to other command, the output is just text. Therefore, we
-output the text to a csv file which we will later process.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> signal</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">PROCESS = <span class="string">&#x27;notepad.exe&#x27;</span></span><br><span class="line">STATUS = <span class="string">&#x27;running&#x27;</span>  <span class="comment"># running or not responding</span></span><br><span class="line">TMP = <span class="string">r&#x27;&#123;&#125;/Desktop/tmp.txt&#x27;</span>.<span class="built_in">format</span>(os.environ[<span class="string">&#x27;userprofile&#x27;</span>])</span><br><span class="line">CMD = <span class="string">r&#x27;tasklist /fi &quot;IMAGENAME eq &#123;&#125;&quot; /fi &quot;STATUS eq &#123;&#125;&quot; /fo &quot;csv&quot; &gt; &quot;&#123;&#125;&quot;&#x27;</span>.<span class="built_in">format</span>(PROCESS, STATUS, TMP)</span><br><span class="line"></span><br><span class="line"><span class="comment"># output as csv format</span></span><br><span class="line">os.system(CMD)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(TMP, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> temp:</span><br><span class="line">	reader = csv.reader(temp)</span><br><span class="line">	header = <span class="built_in">next</span>(reader)</span><br><span class="line">	pids = [<span class="built_in">int</span>(row[<span class="number">1</span>]) <span class="keyword">for</span> row <span class="keyword">in</span> reader]</span><br><span class="line"></span><br><span class="line"><span class="comment"># kill process</span></span><br><span class="line"><span class="keyword">for</span> pid <span class="keyword">in</span> pids:</span><br><span class="line">	os.kill(pid, signal.SIGTERM) <span class="comment"># or signal.SIGKILL </span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;killed process with pid: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pid))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> os.path.exists(TMP):</span><br><span class="line">  os.remove(TMP)</span><br></pre></td></tr></table></figure>
-<h3 id="using-subprocess"><a class="markdownIt-Anchor" href="#using-subprocess"></a> Using <code>subprocess</code></h3>
-<p>With <code>subprocess</code>, we no longer need to create a temp file to store the output.</p>
-<script src="https://gist.github.com/leixingyu/293918b0f2bda5112c696f3cccecceec.js"></script>
-<h3 id="using-psutil"><a class="markdownIt-Anchor" href="#using-psutil"></a> Using <code>psutil</code></h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"></span><br><span class="line">PROGRAM = <span class="string">r&#x27;maya.exe&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">findProcess</span>(<span class="params">name</span>):    </span><br><span class="line">    procs = <span class="built_in">list</span>()</span><br><span class="line">    <span class="comment">#Iterate over the all the running process</span></span><br><span class="line">    <span class="keyword">for</span> proc <span class="keyword">in</span> psutil.process_iter():</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> proc.name() == name <span class="keyword">and</span> proc.status() == psutil.STATUS_RUNNING:</span><br><span class="line">            	pid = proc.pid            	</span><br><span class="line">                procs.append(pid)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span>      </span><br><span class="line">    <span class="keyword">return</span> procs</span><br><span class="line"></span><br><span class="line">processes = findProcess(PROGRAM)</span><br></pre></td></tr></table></figure>
-<p>we can find process start time by using</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">startTime = time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>, time.localtime(proc.create_time()))</span><br></pre></td></tr></table></figure>
-<p>to kill process, either <code>kill()</code> or <code>terminate()</code> will work
-respectfully, <code>SIGKILL</code> or <code>SIGTERM</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = psutil.Process(PID)</span><br><span class="line">p.terminate()</span><br><span class="line">p.kill()</span><br><span class="line">p.wait</span><br></pre></td></tr></table></figure>
-<p><a name="find-open-port"></a></p>
-<h3 id="bonus-find-open-port-for-socket-connection"><a class="markdownIt-Anchor" href="#bonus-find-open-port-for-socket-connection"></a> Bonus: Find Open Port (for socket connection)</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">process = psutil.Process(pid=PID)</span><br><span class="line"></span><br><span class="line">connections = process.connections(kind=<span class="string">&#x27;tcp4&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> [x <span class="keyword">for</span> x <span class="keyword">in</span> connections <span class="keyword">if</span> x.status == psutil.CONN_LISTEN]:</span><br><span class="line">    <span class="comment"># gets the port number</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;port opened: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(c.laddr[-<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
-<p><a name="find-win-title"></a></p>
-<h3 id="bonus-find-main-window-title"><a class="markdownIt-Anchor" href="#bonus-find-main-window-title"></a> Bonus: Find Main Window Title</h3>
-<p><code>ctypes</code> is a foreign function library for python, resulting a not-pythonic function</p>
-<script src="https://gist.github.com/leixingyu/7d85c0c1439b0cf9b423ba5c0d5ef184.js"></script>
-<h3 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference</h3>
-<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist">Microsoft Doc - tasklist</a></p>
-<p><a target="_blank" rel="noopener" href="https://thispointer.com/python-check-if-a-process-is-running-by-name-and-find-its-process-id-pid/">ThisPointer - Python : Check if a process is running by name and find it’s Process ID (PID)</a></p>
-<p><a target="_blank" rel="noopener" href="https://sjohannes.wordpress.com/2012/03/23/win32-python-getting-all-window-titles/">Johannes Sasongko - Win32 Python: Getting all window titles</a></p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/10266281">Stack Overflow - Obtain Active window using Python</a></p>
-<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/">Microsoft Docs - winuser.h header</a></p>
+<p>To create physics body, is quite easy, we add static meshes and check “Simulate Physics”,</p>
+<p>To create a physics constraint there must be two component specified, we can have many constrains, but each constraint tell Unreal the relationship between the two physics body. (we only need one in our example, which is the relationship between our pad and our base)</p>
+<ul>
+<li>
+<p>Base (Component 1): Our base is static, which means you can also leave this component as “None” which will default as the scene root</p>
+</li>
+<li>
+<p>Pad (Component 2): the one with simulated physics turned on</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/3Y44geb.png" alt="constraint" /></p>
+<p>Disabled collision in the physics constraint should be enabled if possible to avoid collision between the two simulated component</p>
+<h2 id="constraint-limits"><a class="markdownIt-Anchor" href="#constraint-limits"></a> Constraint Limits</h2>
+<p>The movement limits is one of the most important attribute of our system. There are two types of constraint limits: linear and angular.</p>
+<p>Axes:
+Usually if you want the movement on certain axes either rotation or translation toggle on free (unrestricted) or limited motion (restricted within certain range), if you don’t want any movement at certain axes you would specify it to be locked</p>
+<p><img src="https://i.imgur.com/Up0xqPE.png" alt="linear" /></p>
+<p>For our jump pad example, we would like to limit our translation movement to be up and down, so we locked the X and Y motion.</p>
+<p><img src="https://i.imgur.com/XuCMNzQ.png" alt="angular" /></p>
+<p>We would like our jump pad to swing sideways but no twisting motion, which is why we locked the twist motion axis (the naming can be confusing sometime)</p>
+<p>What is good is that unreal provides this gizmo which you can easily tell if you have the correct range of motion setup.</p>
+<p><img src="https://d3kjluh73b9h9o.cloudfront.net/original/4X/3/6/c/36ce57be35bf5ffa0571bf85b70cde17c274c6a1.png" alt="gizmo" /></p>
+<h3 id="soft-constraint"><a class="markdownIt-Anchor" href="#soft-constraint"></a> Soft Constraint</h3>
+<p>Movement Range:
+Limited motion allows you to specify a limit range also enabling you to turn on soft constraint</p>
+<p>The soft constraint being soft means that you can also tweak the stiffness and the damping of the soft constraint to mimic a spring behavior</p>
+<ul>
+<li>There’s also an angular breakable or linear breakable which can be helpful to break the constraint when the force reached a certain threshold</li>
+</ul>
+<h2 id="motor"><a class="markdownIt-Anchor" href="#motor"></a> Motor</h2>
+<p>A simulated body with no reaction will appear very boring, because it will basic rest eventually.</p>
+<p>That’s where motor are introduced, this can be used in example such as a revolving door that rotates infinitely, a seesaw that returns to its neutral balanced position, and in our case, after our jump pad launches, it will snap back to its initial position.</p>
+<p>Another example usage of motor is to create a resilient resistances internal force that fights back the external force. In our case the bouncing springy motion when an external heavy object is dropped on our jump pad.</p>
+<p>I will explain the linear and angular motor together as they have the same principle:</p>
+<h3 id="target-positionorientation"><a class="markdownIt-Anchor" href="#target-positionorientation"></a> Target Position/Orientation:</h3>
+<p>The settling position/orientation that the constraint will try to make our physics body rest at, <strong>the strength is how much the motor forces to drive the simulated component back to the target (i.e. how much this is enforced by our motor)</strong></p>
+<ul>
+<li>The target position/orientation should be kept at zero if the initial position is the desired rest position.</li>
+</ul>
+<h3 id="velocity-target"><a class="markdownIt-Anchor" href="#velocity-target"></a> Velocity Target:</h3>
+<p>The settling velocity that the constraint will try to maintain on our physics body, the strength is the same as before.</p>
+<p>For angular motor:
+the drives should match the movement along certain axes</p>
+<ul>
+<li>The target velocity should be kept at zero if we want the physics body to stay still (0 velocity) at the end.</li>
+</ul>
+<h3 id="note-and-tips"><a class="markdownIt-Anchor" href="#note-and-tips"></a> Note and Tips</h3>
+<ul>
+<li>
+<p>The motor force is determined by both the strength and multiply the mass/weight of the simulated component. The heavier the object, the more strength you’ll need</p>
+</li>
+<li>
+<p>The target velocity kept at zero (means the constraint will try to cancel out any velocity) with a small strength can help reduce the wobbliness caused by the motor fighting the gravity.</p>
+</li>
+<li>
+<p>A target velocity only (meaning no target position/rotation), this will be able to apply a continuous movement/velocity to keep it moving, good for infinite rotating door</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/0374icV.png" alt="motor" /></p>
+<h2 id="bp-access"><a class="markdownIt-Anchor" href="#bp-access"></a> BP Access</h2>
+<h3 id="example-not-starting-with-non-neutral-position"><a class="markdownIt-Anchor" href="#example-not-starting-with-non-neutral-position"></a> Example: Not starting with non-neutral position</h3>
+<p>Let’s consider an initial pulled back springboard that will return to neutral position.</p>
+<p>In order to achieve this effect, we need to pull the simulated component in the viewport and apply the counter offset value which will put the component back to neutral</p>
+<p>if the neutral is (0, 0, 120), and pull back is (0, 0, 60)</p>
+<p>Steps:</p>
+<ol>
+<li>in the viewport set it to (0, 0, 60)</li>
+<li>then in the linear motor set it to (0, 0, -60)
+<ul>
+<li>-60 comes from subtracting 60 with 120</li>
+</ul>
+</li>
+<li>this will make the springboard launch to the neutral position when starting as pulled back</li>
+</ol>
+<p><img src="https://i.imgur.com/BSkPyok.png" alt="bp" /></p>
+<p>This can be done in blueprint via set linear position target on the constraint.</p>
+<ul>
+<li>you can also use this BP node to dynamically change the target, for instance you need to make a radial switch level that can flip-flop between 2 target state, or a seesaw that bouncing back and forth infinitely.</li>
+</ul>
+<h2 id="other-notes"><a class="markdownIt-Anchor" href="#other-notes"></a> Other Notes</h2>
+<ul>
+<li>
+<p>To save compute power, Unreal will put physics object to sleep if it’s not moving, we need to specify “sleep velocity threshold” or make use of the “Wake Rigid Body” function call in BP to make our physics object operating as normal</p>
+</li>
+<li>
+<p>The base can be hidden or set to not visible, but it has to exist because the physics constraint needs two components to work you can also disable collision on the base by setting the collision preset to query only and ignore everything</p>
+</li>
+</ul>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p>Everything in this guy’s YouTube channel is gold:
+<a target="_blank" rel="noopener" href="https://www.youtube.com/@Lusiogenic">YouTube -
+Lusiogenic</a></p>
 
       
     </div>
@@ -300,7 +372,7 @@ respectfully, <code>SIGKILL</code> or <code>SIGTERM</code></p>
     
     <li class="post-copyright-link hidden-xs">
       <strong>Shared Link：</strong>
-      <a href="https://www.xingyulei.com/post/py-end-process/" title="Windows Process Management using Python: Find PIDs and End Processes" target="_blank" rel="external">https://www.xingyulei.com/post/py-end-process/</a>
+      <a href="https://www.xingyulei.com/post/ue-physics-basic/" title="Unreal Physics System: Learning the Essentials in 10 Minutes" target="_blank" rel="external">https://www.xingyulei.com/post/ue-physics-basic/</a>
     </li>
     
 	
@@ -343,13 +415,9 @@ respectfully, <code>SIGKILL</code> or <code>SIGTERM</code></p>
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/post/qt-enum-flag/" title="Understanding QEnum and QFlags in Qt"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/post/unity-api-statemachine/" title="Dynamic Animation with Unity&#39;s State Machine Scripting API"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/post/general-hexo-blog-2/" title="Create Hexo Blog for Free Part 2: Custom Blog Theme and Url"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

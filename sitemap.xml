@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.xingyulei.com/post/ue-physics-basic/</loc>
+    
+    <lastmod>2024-06-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/post/general-hexo-blog-2/</loc>
+    
+    <lastmod>2024-06-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/about/index.html</loc>
+    
+    <lastmod>2024-06-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.xingyulei.com/post/maya-api-intro/</loc>
     
     <lastmod>2024-05-22</lastmod>
@@ -110,13 +131,6 @@
     <loc>https://www.xingyulei.com/post/math-euler-gimbal/</loc>
     
     <lastmod>2024-05-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/post/general-hexo-blog-2/</loc>
-    
-    <lastmod>2024-05-12</lastmod>
     
   </url>
   
@@ -345,13 +359,6 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/about/index.html</loc>
-    
-    <lastmod>2023-10-25</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.xingyulei.com/links/index.html</loc>
     
     <lastmod>2022-04-25</lastmod>
@@ -380,14 +387,14 @@
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/tags/index.html</loc>
+    <loc>https://www.xingyulei.com/repository/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.xingyulei.com/repository/index.html</loc>
+    <loc>https://www.xingyulei.com/tags/index.html</loc>
     
     <lastmod>2021-02-07</lastmod>
     
@@ -396,7 +403,7 @@
 
   <url>
     <loc>https://www.xingyulei.com/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -404,119 +411,119 @@
   
   <url>
     <loc>https://www.xingyulei.com/tags/c/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/animation/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/pipeline/</loc>
-    <lastmod>2024-05-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.xingyulei.com/tags/design/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/rendering/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/optimization/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.xingyulei.com/tags/design/</loc>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/math/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/maya-api/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/python/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/batch/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/socket/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/threading/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/style/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/template/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/sequencer/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/blueprint/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/tags/c/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -525,49 +532,49 @@
   
   <url>
     <loc>https://www.xingyulei.com/categories/general/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/maya/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/graphics/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/windows/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/qt/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/unreal/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://www.xingyulei.com/categories/unity/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
