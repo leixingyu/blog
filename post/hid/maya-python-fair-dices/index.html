@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  <meta name="google-site-verification" content="7qTkiEaZmufzh-fLDsly9ceOH7ZJnGX0vK_iBzTaGT0" />
+  
+  
+  <title>Design Dices with Any Number of Faces in Maya | Tech Art Learning</title>
+  <meta name="description" content="This blog explores generating fair, visually appealing dice with any number of faces using Maya and Python. It moves beyond traditional Platonic solids by experimenting with mesh subdivision, reductio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Dices with Any Number of Faces in Maya">
+<meta property="og:url" content="https://www.xingyulei.com/post/hid/maya-python-fair-dices/index.html">
+<meta property="og:site_name" content="Tech Art Learning">
+<meta property="og:description" content="This blog explores generating fair, visually appealing dice with any number of faces using Maya and Python. It moves beyond traditional Platonic solids by experimenting with mesh subdivision, reductio">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.gmdice.com/cdn/shop/files/uncommon-dice-set_grande.jpg">
+<meta property="og:image" content="https://i.imgur.com/uQmZb8t.png">
+<meta property="og:image" content="https://i.imgur.com/SOt6GFw.png">
+<meta property="og:image" content="https://i.imgur.com/sgijlv0.png">
+<meta property="og:image" content="https://i.imgur.com/BtccFxu.png">
+<meta property="og:image" content="https://i.imgur.com/T5VaLOj.png">
+<meta property="article:published_time" content="2025-06-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-21T04:39:07.562Z">
+<meta property="article:author" content="Xingyu Lei">
+<meta property="article:tag" content="pipeline">
+<meta property="article:tag" content="math">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.gmdice.com/cdn/shop/files/uncommon-dice-set_grande.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.xingyulei.com/post/hid/maya-python-fair-dices/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Tech Art Learning" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332331939325190"
+     crossorigin="anonymous"></script>
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/leixingyu" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Xingyu Lei</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Technical Artist</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> California, US</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-users"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-github"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title"></h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="xingyulei" data-color="#5F7FFF" data-emoji="🔓"  data-font="Lato" data-text="Subscribe Here" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+<hr> <h4>Board</h4> <p>Hello! I will put my findings here every so often.</p> <a style="color:blue;" target="_blank" rel="noopener" href="https://www.buymeacoffee.com/xingyulei">Buy me a coffee ($2) for exclusive content that you won't find anywhere else!</a>
+<hr> <h4>Free Tools</h4>
+<script src="https://tarptaeya.github.io/repo-card/repo-card.js"></script> <div class="repo-card" data-repo="leixingyu/unrealStylesheet"></div> <div class="repo-card" data-repo="leixingyu/unrealScriptEditor"></div> <div class="repo-card" data-repo="leixingyu/mayaAsciiViewer"></div> <div class="repo-card" data-repo="leixingyu/autoRigger"></div> <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/general/">general</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/graphics/">graphics</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/maya/">maya</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/qt/">qt</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unity/">unity</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unreal/">unreal</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation/" rel="tag">animation</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/batch/" rel="tag">batch</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blueprint/" rel="tag">blueprint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c#</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/" rel="tag">design</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/" rel="tag">math</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maya-api/" rel="tag">maya api</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimization/" rel="tag">optimization</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pipeline/" rel="tag">pipeline</a><span class="tag-list-count">36</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rendering/" rel="tag">rendering</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sequencer/" rel="tag">sequencer</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/style/" rel="tag">style</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threading/" rel="tag">threading</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-hid/maya-python-fair-dices" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Design Dices with Any Number of Faces in Maya
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/post/hid/maya-python-fair-dices/" class="article-date">
+	  <time datetime="2025-06-20T16:00:00.000Z" itemprop="datePublished">2025-06-21</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/maya/">maya</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/math/" rel="tag">math</a>, <a class="article-tag-link-link" href="/tags/pipeline/" rel="tag">pipeline</a>
+  </span>
+
+
+        
+
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="the-goal-any-n-faced-dice-fair-and-beautiful"><a class="markdownIt-Anchor" href="#the-goal-any-n-faced-dice-fair-and-beautiful"></a> The Goal: Any-N-Faced Dice, Fair and Beautiful</h2>
+<p><img src="https://www.gmdice.com/cdn/shop/files/uncommon-dice-set_grande.jpg" alt="dices" /></p>
+<p>Dice are everywhere in games and probability, but traditional geometry only allows a handful of Platonic solids — regular polyhedra like the cube (d6), dodecahedron (d12), and icosahedron (d20). What if we want a d17, a d32, or even a d91? How do we make a die with any number of faces that is:</p>
+<ul>
+<li>Visually balanced</li>
+<li>Approximately fair (equal probability for each face)</li>
+<li>Controllable and artistically tunable</li>
+<li>Procedurally generated in Maya</li>
+</ul>
+<p>This post follows my journey through geometry, mesh hacking, and custom algorithms in Maya Python to create these “impossible” dice.</p>
+<hr />
+<h2 id="what-is-regular-polyhedra-the-platonic-limit"><a class="markdownIt-Anchor" href="#what-is-regular-polyhedra-the-platonic-limit"></a> What is Regular Polyhedra &amp; the Platonic Limit</h2>
+<p>At first, I explored regular polyhedra — Platonic and Archimedean solids. These are geometrically perfect, with identical faces and angles. Unfortunately, there’s a strict limit:</p>
+<ul>
+<li>Only 5 Platonic solids exist</li>
+<li>Only a few more semi-regular solids offer symmetric face layouts</li>
+<li>Only specific face counts are possible (like 4, 6, 8, 12, 20, 32)</li>
+</ul>
+<p>So unless your dice are one of those lucky numbers, this approach doesn’t scale.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mesh = cmds.polyPlatonicSolid(r=<span class="number">2</span>, st=<span class="number">0</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>Here you can choose the limited solid type available: dodecahedron, icosahedron, octahedron or tertrahedron.</p>
+<p><img src="https://i.imgur.com/uQmZb8t.png" alt="solid" /></p>
+<hr />
+<h2 id="method-1-face-subdivision-and-reduction"><a class="markdownIt-Anchor" href="#method-1-face-subdivision-and-reduction"></a> Method 1: Face Subdivision and Reduction</h2>
+<p>Next, I tried a workaround using a combination of Maya’s Subdivide and Reduce tool. The idea:</p>
+<ol>
+<li>Start with a low-poly geometry</li>
+<li>Apply polySubdivideFacet until roughly N faces available</li>
+</ol>
+<p>or.</p>
+<ol>
+<li>Start with a high-poly geometry</li>
+<li>Apply polyReduce and tweak until roughly N faces remain</li>
+</ol>
+<p>It kind of works, but control is limited. Face counts are not exact, and distribution can be messy. Also, most faces become triangles, which limits aesthetics and fairness perception.</p>
+<h3 id="subdivide"><a class="markdownIt-Anchor" href="#subdivide"></a> Subdivide</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">face_count = cmds.polyEvaluate(mesh, face=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">while</span> face_count &lt; <span class="number">25</span>:</span><br><span class="line">    cmds.polySubdivideFacet(mesh + <span class="string">&quot;.f[*]&quot;</span>, dv=<span class="number">1</span>, ch=<span class="literal">False</span>)</span><br><span class="line">    face_count = cmds.polyEvaluate(mesh, face=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>The problem as you can see is that extra faces are generated by dividing existing flat faces, which is not actually creating the dice faces which can be rolled on.</p>
+<p><img src="https://i.imgur.com/SOt6GFw.png" alt="subdivide" /></p>
+<h3 id="face-reduction"><a class="markdownIt-Anchor" href="#face-reduction"></a> Face Reduction</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cmds.polyReduce(mesh,</span><br><span class="line">                version=<span class="number">1</span>,            <span class="comment"># modern polyReduce</span></span><br><span class="line">                termination=<span class="number">2</span>,        <span class="comment"># 0=ratio, 1=vertex, 2=face target</span></span><br><span class="line">                tct=face_count,</span><br><span class="line">                keepBorder=<span class="number">1</span>,</span><br><span class="line">                keepHardEdge=<span class="number">1</span>,</span><br><span class="line">                cachingReduce=<span class="number">0</span>,</span><br><span class="line">                symmetryPlaneW=<span class="number">0</span>)     <span class="comment"># no symmetry enforcement</span></span><br></pre></td></tr></table></figure>
+<p>Note that the face count here is actually the triangle count.
+There’s also other options such as limiting the percentage or the vertex.</p>
+<p><img src="https://i.imgur.com/sgijlv0.png" alt="reduce" /></p>
+<hr />
+<h2 id="method-2-triangulation-with-scattered-points"><a class="markdownIt-Anchor" href="#method-2-triangulation-with-scattered-points"></a> Method 2: Triangulation with Scattered Points</h2>
+<p>Trying to control geometry directly, I generated N evenly scattered points on a sphere, and connected them using Delaunay-like triangulation. The result is a clean triangle mesh.</p>
+<p>Problems:</p>
+<ul>
+<li>The number of points ≠ number of faces</li>
+<li>Every face is a triangle — no variation</li>
+<li>Hard to get patch-like regions, like you’d see on a real ball</li>
+</ul>
+<p>for generating points on surface, see: <a href="#bonus-how-to-scatter-points-evenly-on-a-sphere">this section</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> maya.cmds <span class="keyword">as</span> cmds</span><br><span class="line"><span class="keyword">from</span> scipy.spatial <span class="keyword">import</span> ConvexHull</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_polyhedron</span>(<span class="params">n_faces=<span class="number">32</span>, scale=<span class="number">5.0</span></span>):</span><br><span class="line">    <span class="comment"># Step 1: Generate points</span></span><br><span class="line">    points = fibonacci_sphere(n_faces)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 2: Compute convex hull</span></span><br><span class="line">    hull = ConvexHull(points)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Step 3: Create mesh from hull</span></span><br><span class="line">    all_verts = []</span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> points:</span><br><span class="line">        all_verts.append([coord * scale <span class="keyword">for</span> coord <span class="keyword">in</span> p])</span><br><span class="line">    </span><br><span class="line">    face_verts = []</span><br><span class="line">    <span class="keyword">for</span> simplex <span class="keyword">in</span> hull.simplices:</span><br><span class="line">        face_verts.append([all_verts[i] <span class="keyword">for</span> i <span class="keyword">in</span> simplex])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Flatten vertices and create mesh</span></span><br><span class="line">    mesh_verts = []</span><br><span class="line">    mesh_faces = []</span><br><span class="line"></span><br><span class="line">    vert_index_map = &#123;&#125;</span><br><span class="line">    index_counter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> face <span class="keyword">in</span> face_verts:</span><br><span class="line">        face_indices = []</span><br><span class="line">        <span class="keyword">for</span> vertex <span class="keyword">in</span> face:</span><br><span class="line">            v_key = <span class="built_in">tuple</span>(vertex)</span><br><span class="line">            <span class="keyword">if</span> v_key <span class="keyword">not</span> <span class="keyword">in</span> vert_index_map:</span><br><span class="line">                vert_index_map[v_key] = index_counter</span><br><span class="line">                mesh_verts.append(vertex)</span><br><span class="line">                index_counter += <span class="number">1</span></span><br><span class="line">            face_indices.append(vert_index_map[v_key])</span><br><span class="line">        mesh_faces.append(face_indices)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Create Maya mesh</span></span><br><span class="line">    mesh_name = <span class="string">&quot;d&#123;&#125;_hull&quot;</span>.<span class="built_in">format</span>(n_faces)</span><br><span class="line">    mesh = cmds.polyCreateFacet(p=mesh_verts, n=mesh_name)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Delete default faces and rebuild custom ones</span></span><br><span class="line">    cmds.delete(mesh, ch=<span class="literal">True</span>)</span><br><span class="line">    cmds.delete(mesh, constructionHistory=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(cmds.polyEvaluate(mesh, face=<span class="literal">True</span>)):</span><br><span class="line">        cmds.delete(<span class="string">f&quot;<span class="subst">&#123;mesh&#125;</span>.f[<span class="subst">&#123;i&#125;</span>]&quot;</span>, ch=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">for</span> face <span class="keyword">in</span> mesh_faces:</span><br><span class="line">        face_points = [mesh_verts[i] <span class="keyword">for</span> i <span class="keyword">in</span> face]</span><br><span class="line">        cmds.polyCreateFacet(p=face_points)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> mesh</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/BtccFxu.png" alt="triangulate" /></p>
+<p>As you can see, the dice seems fair with its face approximately the same size, but it doesn’t look nice, with only triangle faces, it just looks like an oddly-shape polygon.</p>
+<hr />
+<h2 id="method-3-soccer-ball-inspiration-the-slicing-trick"><a class="markdownIt-Anchor" href="#method-3-soccer-ball-inspiration-the-slicing-trick"></a> Method 3: Soccer Ball Inspiration – The Slicing Trick</h2>
+<p>Eventually, inspiration struck from something unexpected: soccer balls.</p>
+<p>Soccer balls use a combination of hexagons and pentagons — not regular polyhedra, but still visually even and fair enough. This led to a breakthrough: What if we scattered points on a sphere, and used them to slice the sphere into patches?</p>
+<p>The Slicing Method:</p>
+<ol>
+<li>Scatter N points on a sphere surface</li>
+<li>For each point, slice a patch using a spherical Voronoi or convex cut</li>
+<li>The result: a mesh with N face-like patches, not limited to triangles!</li>
+</ol>
+<p>This allows for any number of sides — even prime numbers like 17 or 19 — and visually balanced results that look and feel like real dice.</p>
+<p>for generating points on surface, see: <a href="#bonus-how-to-scatter-points-evenly-on-a-sphere">this section</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">generate</span>(<span class="params">faces, iteration, depth</span>):</span><br><span class="line">    pts = generate_even_sphere_points(n_points=faces, iterations=iteration)</span><br><span class="line">    locators = create_locators(pts)</span><br><span class="line">    sphere = cmds.polySphere(r=<span class="number">5</span>, name=<span class="string">&#x27;targetSphere&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, pos <span class="keyword">in</span> <span class="built_in">enumerate</span>(pts):</span><br><span class="line">        <span class="comment"># 2. Create a cutter plane for each point</span></span><br><span class="line">        cutter = cmds.polyCube(w=<span class="number">10</span>, h=depth, d=<span class="number">10</span>, name=<span class="string">f&#x27;cutter_<span class="subst">&#123;i&#125;</span>&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">        cmds.xform(cutter, translation=[pos[<span class="number">0</span>], pos[<span class="number">1</span>], pos[<span class="number">2</span>]], worldSpace=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 3. Rotate the cutter to face the center (0,0,0)</span></span><br><span class="line">        cmds.aimConstraint(sphere, cutter, aimVector=(<span class="number">0</span>,-<span class="number">1</span>,<span class="number">0</span>), upVector=(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>), worldUpType=<span class="string">&quot;scene&quot;</span>)</span><br><span class="line">        sphere = cmds.polyCBoolOp(sphere, cutter, op=<span class="number">2</span>, name=<span class="string">&#x27;cutResult&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/T5VaLOj.png" alt="slice" /></p>
+<ul>
+<li>You can adjust the depth of the slice: more depth creates narrower edges between dice faces</li>
+<li>Iteration controls the repulsion based algorithm to generate evenly distributed splice points, note that the larger the number of faces in combination with iteration will significantly increase the generation time</li>
+</ul>
+<h2 id="bonus-how-to-scatter-points-evenly-on-a-sphere"><a class="markdownIt-Anchor" href="#bonus-how-to-scatter-points-evenly-on-a-sphere"></a> Bonus: How to Scatter Points Evenly on a Sphere</h2>
+<p>Getting evenly distributed points on a sphere is a problem on its own. Two methods I tested:</p>
+<h3 id="fibonacci-sphere"><a class="markdownIt-Anchor" href="#fibonacci-sphere"></a> Fibonacci Sphere</h3>
+<ul>
+<li>Fast and elegant</li>
+<li>Uses golden angle to place points around the sphere</li>
+<li>Good for approximate distributions</li>
+</ul>
+<p>Drawback: Not perfectly uniform — more clustering near poles</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fibonacci_sphere</span>(<span class="params">n_points</span>):</span><br><span class="line">    points = []</span><br><span class="line">    golden_angle = math.pi * (<span class="number">3</span> - math.sqrt(<span class="number">5</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_points):</span><br><span class="line">        y = <span class="number">1</span> - (i / <span class="built_in">float</span>(n_points - <span class="number">1</span>)) * <span class="number">2</span></span><br><span class="line">        radius = math.sqrt(<span class="number">1</span> - y * y)</span><br><span class="line">        theta = golden_angle * i</span><br><span class="line">        x = math.cos(theta) * radius</span><br><span class="line">        z = math.sin(theta) * radius</span><br><span class="line">        points.append([x, y, z])</span><br><span class="line">    <span class="keyword">return</span> points</span><br></pre></td></tr></table></figure>
+<h3 id="repulsion-based-relaxation"><a class="markdownIt-Anchor" href="#repulsion-based-relaxation"></a> Repulsion-Based Relaxation</h3>
+<ul>
+<li>Start with random points</li>
+<li>Simulate repelling forces between them</li>
+<li>After several iterations, points naturally spread out evenly</li>
+<li>Much fairer for small N (like 7, 17, etc.)</li>
+</ul>
+<p>In practice: For 10–100 points, repulsion-based methods yield the best results visually and statistically.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> maya.cmds <span class="keyword">as</span> cmds</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">normalize</span>(<span class="params">v</span>):</span><br><span class="line">    mag = math.sqrt(<span class="built_in">sum</span>(x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> v))</span><br><span class="line">    <span class="keyword">return</span> [x / mag <span class="keyword">for</span> x <span class="keyword">in</span> v]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">subtract</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="keyword">return</span> [a[i] - b[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="keyword">return</span> [a[i] + b[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">scale</span>(<span class="params">v, s</span>):</span><br><span class="line">    <span class="keyword">return</span> [x * s <span class="keyword">for</span> x <span class="keyword">in</span> v]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">distance</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="keyword">return</span> math.sqrt(<span class="built_in">sum</span>((a[i] - b[i]) ** <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">repulsion_step</span>(<span class="params">points, strength=<span class="number">0.01</span></span>):</span><br><span class="line">    new_points = []</span><br><span class="line">    <span class="keyword">for</span> i, pi <span class="keyword">in</span> <span class="built_in">enumerate</span>(points):</span><br><span class="line">        force = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> j, pj <span class="keyword">in</span> <span class="built_in">enumerate</span>(points):</span><br><span class="line">            <span class="keyword">if</span> i == j:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            diff = subtract(pi, pj)</span><br><span class="line">            dist = <span class="built_in">max</span>(distance(pi, pj), <span class="number">0.001</span>)</span><br><span class="line">            f = scale(normalize(diff), strength / (dist ** <span class="number">2</span>))</span><br><span class="line">            force = add(force, f)</span><br><span class="line">        new_pi = normalize(add(pi, force))  <span class="comment"># project back to sphere</span></span><br><span class="line">        new_points.append(new_pi)</span><br><span class="line">    <span class="keyword">return</span> new_points</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_even_sphere_points</span>(<span class="params">n_points=<span class="number">17</span>, iterations=<span class="number">500</span>, radius=<span class="number">5</span></span>):</span><br><span class="line">    <span class="comment"># Start with random points on the sphere</span></span><br><span class="line">    points = []</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_points):</span><br><span class="line">        theta = random.uniform(<span class="number">0</span>, <span class="number">2</span> * math.pi)</span><br><span class="line">        phi = math.acos(random.uniform(-<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        x = math.sin(phi) * math.cos(theta)</span><br><span class="line">        y = math.sin(phi) * math.sin(theta)</span><br><span class="line">        z = math.cos(phi)</span><br><span class="line">        points.append([x, y, z])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Relax points using repulsion</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(iterations):</span><br><span class="line">        points = repulsion_step(points)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Scale to radius and return</span></span><br><span class="line">    <span class="keyword">return</span> [scale(p, radius) <span class="keyword">for</span> p <span class="keyword">in</span> points]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_locators</span>(<span class="params">points</span>):</span><br><span class="line">    locators = <span class="built_in">list</span>()</span><br><span class="line">    <span class="keyword">for</span> i, p <span class="keyword">in</span> <span class="built_in">enumerate</span>(points):</span><br><span class="line">        loc=cmds.spaceLocator(p=p, name=<span class="string">&quot;slicePoint_%d&quot;</span> % i)</span><br><span class="line">        center = cmds.objectCenter(loc, gl = <span class="literal">True</span>)</span><br><span class="line">        cmds.xform(loc, pivots = center)</span><br><span class="line">        locators.append(loc)</span><br><span class="line">    <span class="keyword">return</span> locators</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+  
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Shared Link：</strong>
+      <a href="https://www.xingyulei.com/post/hid/maya-python-fair-dices/" title="Design Dices with Any Number of Faces in Maya" target="_blank" rel="external">https://www.xingyulei.com/post/hid/maya-python-fair-dices/</a>
+    </li>
+    
+	
+    <li class="post-copyright-license">
+      <strong>Copyright Notice： </strong> This post is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/deed.en" target="_blank" rel="external">Creative Commons Attribution 4.0 International License </a>. Please give appropriate credit.
+    </li>
+	
+	<li class="post-copyright-license">
+      <strong>Disclaimer： </strong> The information contained in this post is provided on an "as is" basis. The author assumes no responsibility or liability for any errors or omissions in the content of this post. 
+    </li>
+	
+  </ul>
+</blockquote>
+
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/leixingyu" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/leixingyu" target="_blank"><span class="text-dark">Xingyu Lei</span><small class="ml-1x">Technical Artist</small></a></h3>
+        <div>Problem solver; Game and film enthusiast;</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/post/ue-remote-control/" title="Unreal Remote Control (TikTok Integration)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$$$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Thank you for the support! &#9749</p>
+          </div>
+          <div class="tab-content">
+		  
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/bmc_qr.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan QR Code</p>
+              <p class="text-grey">Subscribe for exclusive posts for as little as $1</p>
+            </div>
+			
+			
+          </div>
+		  
+		  
+        
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/leixingyu" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/xingyu-lei/" target="_blank" title="Linkedin" data-toggle=tooltip data-placement=top><i class="icon icon-linkedin"></i></a></li>
+        
+        <li><a href="https://www.youtube.com/@xingyulei" target="_blank" title="Youtube" data-toggle=tooltip data-placement=top><i class="icon icon-youtube"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2025 Xingyu Lei
+        
+        <!-- <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div> -->
+    </div>
+	
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+
+
+
+
+    <script defer type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-206682944-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+</html>
